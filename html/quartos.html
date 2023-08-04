@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Suits | Quartos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="shortcut icon" type="image/png" href="../imagens/motel (1).png">
+  <!-- JQuery -->
+  <script src="../js/jquery.js"></script>
+  <!-- Responsividade -->
+  <script src="../js/responsividade/home.js"></script>
+  <!-- Preloader -->
+  <script>
+    $(window).on('load', function () {
+      $('#preloader .inner').fadeOut();
+      $('#preloader').delay(100).fadeOut('slow');
+      $('body').delay(100).css({ 'overflow': 'visible' });
+    })
+  </script>
+  <!-- CSS -->
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap-responsive.min.css">
+  <link rel="stylesheet" href="../css/matrix-style.css">
+  <link rel="stylesheet" href="../css/matrix-media.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/css.css">
+  <link rel="stylesheet" href="../css/css2.css">
+  <link rel="stylesheet" href="../css/boxicons.min.css">
+  <link rel="stylesheet" href="../css/css2(1).css">
+  <link rel="stylesheet" href="../css/css2(2).css">
+  <link rel="stylesheet" href="../css/menu.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link rel="stylesheet" href="../css/responsividade/quartos_responsividade.css">
+
+</head>
+
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="inner">
+      <div class="bolas">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="content">
+    <!--start-top-serch-->
+    <div id="content-header">
+      <!-- New Bem-vindos -->
+      <div class="bemv">
+        <h5 id="saudacao_usuario"></h5>
+      </div>
+      <div id="breadcrumb">
+        <a href="./home.html" class="tip-bottom"> Início</a>
+        <a href="" class="current tip-bottom"> Quartos </a>
+      </div>
+    </div>
+    <div class="container-flu">
+      <div class="row-fluid">
+        <div class="span12">
+          <!--Quartos-->
+          <div class="span8">
+            <div class="">
+              <ul class="cardBox">
+              </ul>
+            </div>
+          </div>
+          <!-- Painel -->
+          <div class="span4">
+            <div class="widget-box">
+
+              <!--Título-->
+              <div class="widget-title">
+                <h5>Painel</h5>
+              </div>
+
+              <!--Abas-->
+              <ul class="nav nav-tabs" id="tabs">
+                <li class="active">
+                  <a data-toggle="tab" href="#painel">Painel</a>
+                </li>
+                <li id="li1">
+                  <a data-toggle="tab" href="#produtos">Produtos</a>
+                </li>
+                <li id="li2">
+                  <a data-toggle="tab" href="#patio">Patio</a>
+                </li>
+              </ul>
+
+              <form class="form-horizontal" id="formCadastros" name="formCadastros">
+                <div class="widget-content nopadding tab-content">
+                  <!-- Paineis -->
+                  <div id="painel" class="tab-pane fade in active">
+
+                    <div class="control-group">
+                      <div class="controls">
+
+                        <!--Painel Primário-->
+                        <div class="livia">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th>Quarto</th>
+                                <th>Hora Add</th>
+                                <th>Quarto</th>
+                                <th>Consumo</th>
+                                <th>Parcial</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td id="quarto_painel">0</td>
+                                <td>R$ <span id="vh_painel">0</span></td>
+                                <td>R$ <span id="vq_painel">0</span></td>
+                                <td>R$ <span id="consumo_painel">0</span></td>
+                                <td>R$ <span id="parcial_painel">0</span></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+
+                        <!--Painel Produtos-->
+                        <div class="livia" id="li1">
+                          <div>
+                            <h5 class="cardHeader">Produtos</h5>
+                          </div>
+                          <div class="new-bottons">
+                            <div>
+                              <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th>Descrição</th>
+                                    <th>Quantidade</th>
+                                    <th>Valor Unitário</th>
+                                    <th>Total</th>
+                                    <th>Ação</th>
+                                  </tr>
+                                </thead>
+                                <tbody id="listaProdutosComprados"></tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!--Painel Pátio-->
+                        <div class="livia" id="li2">
+                          <div>
+                            <h5 class="cardHeader">Patio</h5>
+                          </div>
+                          <div class="new-bottons">
+                            <div>
+                              <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th>Placa</th>
+                                    <th>Modelo</th>
+                                    <th>Ação</th>
+                                  </tr>
+                                </thead>
+                                <tbody id="listaveiculosguardados"></tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Paineis -->
+
+                  <!-- Produtos -->
+                  <div id="produtos" class="tab-pane fade">
+
+                    <!--Código-->
+                    <div class="control-group">
+                      <div class="controls" id="campo_produtos">
+                        <input type="text" name="codigo_produto" id="codigo_produto" placeholder="Código">
+                      </div>
+                    </div>
+
+                    <!--Produtos-->
+                    <div class="control-group">
+                      <div class="controls" id="campo_produtos">
+                        <select name="checkbox_produto" id="checkbox_produto">
+                          <option hidden>Produto</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <!--Quantidade-->
+                    <div class="control-group">
+                      <div class="controls" id="campo_produtos">
+                        <input type="text" name="quantidade" id="quantidade" placeholder="Quantidade">
+                      </div>
+                    </div>
+
+                    <!--Descrição-->
+                    <div class="control-group">
+                      <div class="controls" id="campo_produtos">
+                        <input type="text" name="descricao" id="descricao" placeholder="Descrição" readonly>
+                      </div>
+                    </div>
+
+                    <!--Valor Unitário-->
+                    <div class="control-group">
+                      <div class="controls" id="campo_produtos">
+                        <input type="text" name="valor_unitario" id="valor_unitario" placeholder="Valor Unitário"
+                          readonly>
+                      </div>
+                    </div>
+
+                    <!--Valor Total-->
+                    <div class="control-group">
+                      <div class="controls" id="campo_produtos">
+                        <input type="text" name="valor_total" id="valor_total" placeholder="Valor Total" readonly>
+                      </div>
+                    </div>
+
+                    <div class="control-group" hidden>
+                      <div class="controls" id="campo_produtos">
+                        <input type="text" name="hora" id="hora" value="">
+                      </div>
+                    </div>
+
+                    <div class="control-group" hidden>
+                      <div class="controls" id="campo_produtos">
+                        <input type="text" name="vs" id="vs" value="">
+                      </div>
+                    </div>
+
+                    <!--Botões-->
+                    <div class="control-group">
+                      <div class="controls" id="campo_produtos">
+                        <button type="button" class="button btn btn-primary" id="registrar_produto">
+                          <span class="button__icon">
+                            <i class="fa-solid fa-floppy-disk"></i>
+                          </span>
+                          <span class="button__text2">Salvar</span>
+                        </button>
+                        <button type="button" class="button btn btn-danger" id="">
+                          <span class="button__icon">
+                            <i class="fa-solid fa-xmark"></i>
+                          </span>
+                          <span class="button__text2">Limpar</span>
+                        </button>
+                      </div>
+                    </div>
+
+                  </div>
+                  <!-- Produtos -->
+
+                  <!-- Patio -->
+                  <div id="patio" class="tab-pane fade">
+
+                    <!--Suite-->
+                    <div class="control-group" hidden>
+                      <div class="controls" id="campo_patio">
+                        <input type="text" name="suiteE" id="suiteE" value="">
+                      </div>
+                    </div>
+
+                    <!--Placa-->
+                    <div class="control-group">
+                      <div class="controls" id="campo_patio">
+                        <input type="text" name="placa" id="placa" placeholder="Placa">
+                      </div>
+                    </div>
+
+                    <!--Modelo-->
+                    <div class="control-group">
+                      <div class="controls" id="campo_patio">
+                        <input type="text" name="modelo" id="modelo" placeholder="Modelo">
+                      </div>
+                    </div>
+
+                    <!--Botões-->
+                    <div class="control-group">
+                      <div class="controls" id="campo_patio">
+                        <button type="button" class="button btn btn-primary" id="registrar_veiculo">
+                          <span class="button__icon">
+                            <i class="fa-solid fa-floppy-disk"></i>
+                          </span>
+                          <span class="button__text2">Salvar</span>
+                        </button>
+                        <button type="reset" class="button btn btn-danger" id="">
+                          <span class="button__icon">
+                            <i class="fa-solid fa-xmark"></i>
+                          </span>
+                          <span class="button__text2">Limpar</span>
+                        </button>
+                      </div>
+                    </div>
+
+                  </div>
+                  <!-- Patio -->
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--MODAU MENU, CAMAREIRAS-->
+  <div id="modau-camareiras" class="modau-container">
+    <div class="modau">
+      <button class="fechar">X</button>
+      <h3 id="titulo_caixa">Menu</h3>
+      <form id="FormMain" name="botoes">
+        <button type="button" name="" id="" class="btn manutencao">Manutenção</button>
+        <button type="button" name="" id="" class="btn locado">Locação</button>
+        <button type="button" name="" id="" class="btn faxina">Faxina</button>
+        <input type="button" id="" class="btn btn-warning inferior" name="" data-toggle="" value="">
+        <input type="button" id="acoes2" class="btn btn-warning inferior" name="" data-toggle="" value="">
+        <input type="button" id="acoes3" class="btn btn-warning inferior" name="" data-toggle="" value="">
+        <select id="">
+          <option value="" hidden>Camareiras</option>
+        </select>
+        <button type="button" name="botao" class="btn btn-warning" id="camareira_limpeza" value="">OK</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="modau-troca" class="modau-container">
+    <div class="modau">
+      <button class="fechar">X</button>
+      <h3 id="titulo_caixa">Troca de Suítes</h3>
+      <form id="FormMainTroca" name="botoes">
+        <!-- <input type="text" id="quarto_antigo" disabled>
+        <select id="quartos_disponiveis">
+          <option hidden>Suítes Disponíveis</option>
+        </select>
+        <button type="button" name="botao" class="btn btn-warning" id="substituir" value="">Substituir</button> -->
+      </form>
+    </div>
+  </div>
+
+  <!-- <div id="modau-menu" class="modau-container">
+    <div class="modau">
+      <button class="fechar">X</button>
+      <h3 id="titulo_menu">Menu</h3>
+      <form id="menu" name="menu">
+
+      </form>
+    </div>
+  </div> -->
+
+  <!-- <div style="display: none;">
+    <h4>Entrada</h4>
+    <h5><span id="entrada">0:0</span></h5>
+    <h4>Quarto</h4>
+    <h5><span id="numquarto">0</span></h5>
+    <h4>Valor</h4>
+    <h5>R$ <span id="valor-quarto">0</span></h5>
+    <h4>Consumo</h4>
+    <h5>R$ 0</h5>
+    <span id="atualizacaoPreco"></span>
+    <span id="tipo" hidden>livre</span>
+    <span id="intervalo" hidden>0</span>
+    <span id="tabela_emvigor" hidden></span>
+    <span id="codigo_processo" hidden></span>
+  </div> -->
+
+  <div id="modau-menu" class="modau-container">
+    <div class="modau">
+      <button class="fechar">X</button>
+      <h3 id="titulo_caixa">Ações</h3>
+      <form method="post" id="FormMain" name="FormMain"></form>
+    </div>
+  </div>
+
+</body>
+<!-- JS -->
+<script src="../js/estilo/bootstrap.min.js"></script>
+<script src="../js/estilo/matrix.js"></script>
+<script src="https://kit.fontawesome.com/88ea2c002f.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/moment.min.js"></script>
+<!-- Responsividade Suítes -->
+<script src="../js/responsividade/quartos.js"></script>
+<!-- Saudação ao Usuário -->
+<script src="../js/estilo/nomes.js"></script>
+<!-- Dados -->
+<script type="module" src="../js/quartos/estrutural/inicializando.js"></script>
+<!-- Menu Principal -->
+<script type="module" src="../js/suites/menus/principal.js"></script>
+<!-- Menu Principal Botões -->
+<script type="module" src="../js/botoes/manutencao.js"></script>
+<script type="module" src="../js/botoes/locacao.js"></script>
+<script type="module" src="../js/botoes/faxina.js"></script>
+<!-- Reseta Padrões -->
+<script type="module" src="../js/setup/reseta.js"></script>
+<!-- Exibe as Suítes -->
+<script type="module" src="../js/relatorios/getExibicaoQuartos.js"></script>
+<!-- Monitora a Execução das Tarefas -->
+<script type="module" src="../js/suites/tarefas/monitores/tarefas_suites.js"></script>
+<!-- Reiniciar Contadores -->
+<script type="module" src="../js/contadores/reinicia_contador.js"></script>
+<!-- Produtos -->
+<script type="module" src="../js/suites/produtos/entradas/registro.js"></script>
+<script type="module" src="../js/suites/produtos/saidas/consumo_suites.js"></script>
+<script type="module" src="../js/suites/produtos/saidas/calculo_consumo.js"></script>
+<script type="module" src="../js/suites/produtos/saidas/produtos_disponiveis.js"></script>
+<script type="module" src="../js/suites/produtos/saidas/remover_produto.js"></script>
+<!-- Garagem -->
+<script type="module" src="../js/suites/garagem/entradas/registro.js"></script>
+<script type="module" src="../js/suites/garagem/saidas/patio.js"></script>
+<script type="module" src="../js/suites/garagem/saidas/remover_veiculo.js"></script>
+<!-- Init -->
+<script type="module" src="../js/suites/init/estado.js"></script>
+<!-- Conta -->
+<script type="module" src="../js/suites/conta/parcial.js"></script>
+<script type="module" src="../js/suites/conta/suite.js"></script>
+<script type="module" src="../js/suites/conta/adicional.js"></script>
+<script type="module" src="../js/suites/conta/atualiza_valores.js"></script>
+<!-- Operação -->
+<script type="module" src="../js/suites/operacao/substituicao.js"></script>
+<script type="module" src="../js/suites/operacao/operacoes.js"></script>
+<script type="module" src="../js/suites/operacao/operacoes/disponibilizar_suite.js"></script>
+<script type="module" src="../js/suites/operacao/operacoes/iniciar_faxina.js"></script>
+<script type="module" src="../js/suites/operacao/operacoes/iniciar_limpeza.js"></script>
+<script type="module" src="../js/suites/operacao/operacoes/trocar_suite.js"></script>
+<script type="module" src="../js/suites/operacao/operacoes/encerrar.js"></script>
+<script type="module" src="../js/suites/operacao/operacoes/encerrar_limpeza.js"></script>
+<script type="module" src="../js/suites/operacao/operacoes/encerrar_registro.js"></script>
+
+
+<script type="module" src="../js/suites/operacao/operacoes/encerrar_faxina.js"></script>
+<script type="module" src="../js/suites/operacao/operacoes/encerrar_registro2.js"></script>
+
+
+<script type="module" src="../js/pernoite/main.js"></script>
+
+
+<!-- <script type="module" src="../js/contadores/auditoria.js"></script> -->
+
+</html>

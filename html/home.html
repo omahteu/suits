@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Suits | Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="../imagens/motel (1).png">
+    <!-- JQuery -->
+    <script src="../js/jquery.js"></script>
+    <!-- Responsividade -->
+    <script src="../js/responsividade/home.js"></script>
+    <!-- Preloader -->
+    <script>
+        $(window).on('load', function () {
+            $('#preloader .inner').fadeOut();
+            $('#preloader').delay(100).fadeOut('slow');
+            $('body').delay(100).css({ 'overflow': 'visible' });
+        })
+    </script>
+
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="../css/matrix-style.css">
+    <link rel="stylesheet" href="../css/matrix-media.css">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+
+</head>
+
+<body>
+
+    <div id="preloader">
+        <div class="inner">
+            <div class="bolas">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <nav id="sidebar">
+        <div id="newlog">
+            <div class="icon2">
+                <img src="../imagens/motel (1).png">
+            </div>
+            <div class="title1">
+                <h2>Suits</h2>
+            </div>
+        </div>
+        <a href="#" class="visible-phone">
+            <div class="mode">
+                <div class="moon-menu">
+                    <iconify-icon icon="mdi:microsoft-xbox-controller-menu" width="40" height="40"
+                        flip="horizontal"></iconify-icon>
+                </div>
+            </div>
+        </a>
+        <div class="menu-bar">
+            <div class="menu">
+                <ul class="menu-links" style="position: relative;">
+                    <li><a href="./quartos.html"><iconify-icon icon="material-symbols:meeting-room-rounded" width="50"
+                                height="50" flip="horizontal"></iconify-icon> <span class="title nav-title">
+                                Quartos</span></a></li>
+                    <li class="sumir"><a href="./cadastro.html"><iconify-icon icon="mdi:pen-plus" width="50" height="50"
+                                flip="horizontal"></iconify-icon> <span class="title"> Cadastros</span></a></li>
+                    <li><a href="./relatorio.html"><iconify-icon icon="material-symbols:list-alt" width="50" height="50"
+                                flip="horizontal"></iconify-icon> <span class="title"> Relatórios</span></a></li>
+                    <li><a href="./configuracoes.html"><iconify-icon icon="material-symbols:settings" width="50"
+                                height="50" flip="horizontal"></iconify-icon> <span class="title">
+                                Configurações</span></a></li>
+                    <li><a href="./caixa2.html"><iconify-icon icon="mingcute:coin-2-fill" width="50" height="50"
+                                flip="horizontal"></iconify-icon> <span class="title">Caixa</span></a></li>
+                    <li><a href="./dadoscaixa.html"><iconify-icon icon="material-symbols:data-exploration" width="50"
+                                height="50" flip="horizontal"></iconify-icon> <span class="title"> Auditoria</span></a>
+                    </li>
+                    <li><a href="./estoque.html"><iconify-icon icon="vaadin:stock" width="47" height="50"
+                                flip="horizontal"></iconify-icon> <span class="title">&#8291; Estoque</span></a></li>
+                    <li><a href="./cloud.html"><iconify-icon icon="material-symbols:cloud" width="47" height="50"
+                                flip="horizontal"></iconify-icon> <span class="title">&#8291; Cloud</span></a></li>
+                </ul>
+            </div>
+            <div class="botton-content">
+                <li>
+                    <a id="btn_off" style="display: inline-block;">
+                        <iconify-icon icon="fa6-solid:power-off" width="47" height="50"
+                            flip="horizontal"></iconify-icon>
+                        <span class="title">&#8291; Sair</span>
+                    </a>
+                </li>
+            </div>
+        </div>
+    </nav>
+
+    <div id="content">
+        <div id="content-header">
+            <div class="bemv">
+                <h5 id="saudacao_usuario"></h5>
+            </div>
+        </div>
+        <div class="container-flu">
+            <div class="row-fluid">
+                <div class="span12">
+                    <ul class="cardBox" id="btn_principal">
+                        <!-- Quartos -->
+                        <li class="card">
+                            <div>
+                                <div class="numbers">Quartos</div>
+                            </div>
+                            <a href="../html/quartos.html">
+                                <div class="iconBx">
+                                    <i class="fa-solid fa-bed"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <!-- Cadastros -->
+                        <li class="card">
+                            <div>
+                                <div class="numbers">Cadastros</div>
+                            </div>
+                            <a href="../html/cadastro.html">
+                                <div class="iconBx">
+                                    <i class="fa-solid fa-pen"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <!-- Relatórios -->
+                        <li class="card">
+                            <div>
+                                <div class="numbers">Relatórios</div>
+                            </div>
+                            <a href="../html/relatorio.html">
+                                <div class="iconBx">
+                                    <i class="fa-solid fa-list"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <!-- Configurações-->
+                        <li class="card">
+                            <div>
+                                <div class="numbers">Configurações</div>
+                            </div>
+                            <a href="../html/configuracoes.html">
+                                <div class="iconBx">
+                                    <i class="fa-solid fa-gears"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <!--Caixa-->
+                        <li class="card">
+                            <div>
+                                <div class="numbers">Caixa</div>
+                            </div>
+                            <a href="../html/caixa2.html">
+                                <div class="iconBx">
+                                    <i class="fa-solid fa-coins"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <!--Dados Caixa-->
+                        <li class="card">
+                            <div>
+                                <div class="numbers">Auditoria</div>
+                            </div>
+                            <a href="../html/dadoscaixa.html">
+                                <div class="iconBx">
+                                    <i class="fa-solid fa-server"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <!--Estoque-->
+                        <li class="card">
+                            <div>
+                                <div class="numbers">Estoque</div>
+                            </div>
+                            <a href="./estoque.html">
+                                <div class="iconBx">
+                                    <i class="fa-solid fa-boxes-stacked"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <!--Estoque-->
+                        <li class="card">
+                            <div>
+                                <div class="numbers">Cloud</div>
+                            </div>
+                            <a href="./cloud.html">
+                                <div class="iconBx">
+                                    <i class="fa-solid fa-cloud"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <!-- Sair -->
+                        <li class="card" style="background: red;">
+                            <div>
+                                <div class="numbers">Sair</div>
+                            </div>
+                            <a id="sair">
+                                <div class="iconBx">
+                                    <i class="fa-solid fa-power-off"></i>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="" class="span12A" style="margin-left: 0">
+                <div class="AAA">
+                    <div class="widget-box0">
+                        <canvas id="myChart2"></canvas>
+                    </div>
+                </div>
+                <div class="widget-box0">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+
+            <!--Relatórios-->
+            <div id="tabelas_relatorios" class="span12A" style="margin-left: 0">
+                <div class="AAA">
+                    <div class="widget-box0">
+                        <div>
+                            <h5 class="cardHeader">Produtos em Estoque</h5>
+                        </div>
+                        <div class="widget-content">
+                            <div id="container">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Cod.</th>
+                                            <th>Descrição</th>
+                                            <th>Valor Unitário</th>
+                                            <th>Estoque</th>
+                                            <th>Categoria</th>
+                                            <th>Data Compra</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tabelaHomeProdutos">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-box0">
+                    <div>
+                        <h5 class="cardHeader">Ocupações</h5>
+                    </div>
+                    <div class="widget-content">
+                        <div id="container">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Data</th>
+                                        <th>Código</th>
+                                        <th>Quarto</th>
+                                        <th>Entrada</th>
+                                        <th>Saída</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabelaHomeOcupacoes">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Relatórios-->
+        </div>
+    </div>
+
+</body>
+<!-- JS -->
+<script src="../js/estilo/bootstrap.min.js"></script>
+<script src="../js/estilo/matrix.js"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
+<script src="https://kit.fontawesome.com/88ea2c002f.js" crossorigin="anonymous"></script>
+<!-- Saudação ao Usuário -->
+<script src="../js/estilo/nomes.js"></script>
+<!--Relatórios-->
+<script type="module" src="../js/relatorios/produtos.js"></script>
+<script type="module" src="../js/relatorios/ocupacoes2.js"></script>
+<script type="module" src="../js/relatorios/estoque.js"></script>
+]<!-- Gráficos -->
+<script type="module" src="../js/graficos/line/render.js"></script>
+<script type="module" src="../js/graficos/bar/render.js"></script>
+<!-- erificação de Login -->
+<!-- <script src="../js/setup/validacao_login.js"></script> -->
+<!-- Auditoria -->
+<!-- <script type="module" src="../js/contadores/auditoria.js"></script> -->
+<!-- Permissões -->
+<script src="../js/home/permissoes/permissoes.js"></script>
+<!-- Sair -->
+<script src="../js/botoes/sair.js"></script>
+
+</html>

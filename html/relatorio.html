@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Suits | Relatórios</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/png" href="../imagens/motel (1).png">
+
+  <!-- JQuery -->
+  <script src="../js/jquery.js"></script>
+  <!-- Responsividade -->
+  <script src="../js/responsividade/home.js"></script>
+  <!-- Preloader -->
+  <script>
+    $(window).on('load', function () {
+      $('#preloader .inner').fadeOut();
+      $('#preloader').delay(100).fadeOut('slow');
+      $('body').delay(100).css({ 'overflow': 'visible' });
+    })
+  </script>
+
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap-responsive.min.css">
+  <link rel="stylesheet" href="../css/matrix-style.css">
+  <link rel="stylesheet" href="../css/matrix-media.css">
+  <link rel="stylesheet" href="../css/tab_relatorios.css">
+</head>
+
+<body>
+
+  <div id="preloader">
+    <div class="inner">
+      <div class="bolas">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+
+  <!--MENU MOBILE-->
+  <nav id="sidebar">
+    <div id="newlog">
+      <div class="icon2">
+        <img src="../imagens/motel (1).png">
+      </div>
+      <div class="title1">
+        <h2>Suits</h2>
+      </div>
+    </div>
+    <a href="#" class="visible-phone">
+      <div class="mode">
+        <div class="moon-menu">
+          <iconify-icon icon="mdi:microsoft-xbox-controller-menu" width="40" height="40"
+            flip="horizontal"></iconify-icon>
+        </div>
+      </div>
+    </a>
+    <div class="menu-bar">
+      <div class="menu">
+        <ul class="menu-links" style="position: relative;">
+          <li><a data-toggle="tab" href="#camareiras" id="tab_camareiras"><span class="title nav-title">Camareiras</span></a></li>
+          <li><a data-toggle="tab" href="#cartoes" id="tab_cartoes"><span class="title">Cartões</span></a></li>
+          <li><a data-toggle="tab" href="#ocupações" id="tab_ocupacoes"><span class="title">Ocupações</span></a></li>
+          <li><a data-toggle="tab" href="#sangrias" id="tab_sangrias"><span class="title">Sangrias</span></a></li>
+          <li><a data-toggle="tab" href="#suites" id="tab_suites"><span class="title">Suítes</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="content">
+    <!--start-top-serch-->
+    <div id="content-header">
+      <!-- New Bem-vindos -->
+      <div class="bemv">
+        <h5 id="saudacao_usuario"></h5>
+      </div>
+      <div id="breadcrumb">
+        <a href="./home.html" class="tip-bottom"> Início</a>
+        <a href="" class="current tip-bottom"> Relatórios </a>
+      </div>
+    </div>
+    <div class="container-flu">
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="row-fluid" style="margin-top: 0">
+            <!-- Caixa de Impressão de Relatórios-->
+            <div class="span4">
+              <div class="widget-box">
+                <div class="widget-title">
+                  <span class="icon">
+                    <i class="fas fa-users"></i>
+                  </span>
+                  <h5>Relatórios Rápidos</h5>
+                </div>
+                <div class="widget-content" id="relatorios_rapidos">
+
+                  <!--PE Camareiras-->
+                  <ul style="flex-direction: row;" class="site-stats">
+                    <li style="width: 200px;">
+                      <a id="p_camareiras">
+                        <i class="fa-regular fa-file-pdf"></i>
+                        <small>Camareiras | PDF</small>
+                      </a>
+                    </li>
+                    <li style="width: 200px;">
+                      <a id="e_camareiras">
+                        <i class="fa-regular fa-file-excel"></i>
+                        <small>Camareiras | EXCEL</small>
+                      </a>
+                    </li>
+                  </ul>
+
+                  <!--PE Cartões-->
+                  <ul style="flex-direction: row;" class="site-stats">
+                    <li style="width: 200px;">
+                      <a id="p_cartoes">
+                        <i class="fa-regular fa-file-pdf"></i>
+                        <small>Cartões | PDF</small>
+                      </a>
+                    </li>
+                    <li style="width: 200px;">
+                      <a id="e_cartoes">
+                        <i class="fa-regular fa-file-excel"></i>
+                        <small>Cartões | EXCEL</small>
+                      </a>
+                    </li>
+                  </ul>
+
+                  <!--PE Ocupações-->
+                  <ul style="flex-direction: row;" class="site-stats">
+                    <li style="width: 200px;">
+                      <a id="p_ocupacoes">
+                        <i class="fa-regular fa-file-pdf"></i>
+                        <small>Ocupações | PDF</small>
+                      </a>
+                    </li>
+                    <li style="width: 200px;">
+                      <a id="e_ocupacoes">
+                        <i class="fa-regular fa-file-excel"></i>
+                        <small>Ocupações | EXCEL</small>
+                      </a>
+                    </li>
+                  </ul>
+
+                  <!--PE Sangrias-->
+                  <ul style="flex-direction: row;" class="site-stats">
+                    <li style="width: 200px;">
+                      <a id="p_sangrias">
+                        <i class="fa-regular fa-file-pdf"></i>
+                        <small>Sangrias | PDF</small>
+                      </a>
+                    </li>
+                    <li style="width: 200px;">
+                      <a id="e_sangrias">
+                        <i class="fa-regular fa-file-excel"></i>
+                        <small>Sangrias | EXCEL</small>
+                      </a>
+                    </li>
+                  </ul>
+
+                  <!--PE Suites-->
+                  <ul style="flex-direction: row;" class="site-stats">
+                    <li style="width: 200px;">
+                      <a id="p_suites">
+                        <i class="fa-regular fa-file-pdf"></i>
+                        <small>Suítes | PDF</small>
+                      </a>
+                    </li>
+                    <li style="width: 200px;">
+                      <a id="e_suites">
+                        <i class="fa-regular fa-file-excel"></i>
+                        <small>Suítes | EXCEL</small>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="span8">
+              <div class="widget-box">
+                <div class="widget-title">
+                  <span class="icon">
+                    <i class="fas fa-users"></i>
+                  </span>
+                  <h5>Relatórios</h5>
+                </div>
+
+                <!--MENU DESKTOP-->
+                <ul class="nav nav-tabs" id="desktop">
+                  <li>
+                    <a data-toggle="tab" href="#camareiras" id="tab_camareiras">Camareiras</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#cartoes" id="tab_cartoes">Cartões</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#ocupacoes" id="tab_ocupacoes">Ocupações</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#sangrias" id="tab_sangrias">Sangrias</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#suites" id="tab_suites">Suítes</a>
+                  </li>
+                </ul>
+
+                <div class="widget-content nopadding tab-content">
+
+                  <!--Quartos -->
+                  <div id="suites" class="tab-pane fade tabRelatorios">
+                    <table id="relQuartos" class="table table-bordered  dataTable no-footer" role="grid">
+                      <thead>
+                        <tr role="row">
+                          <th>Código</th>
+                          <th>Número</th>
+                          <th>Nome</th>
+                          <th>Horas Locação</th>
+                          <th>Tolerancia</th>
+                          <th>Cobrança</th>
+                          <th>Excedente</th>
+                      </thead>
+                      <tbody id="tabrlaRelatorioQuartos"></tbody>
+                    </table>
+                  </div>
+
+                  <!--Camareiras -->
+                  <div id="camareiras" class="tab-pane fade tabRelatorios">
+                    <table id="" class="table table-bordered  dataTable no-footer" role="grid">
+                      <thead>
+                        <tr role="row">
+                          <th class="sorting_disabled" rowspan="1" colspan="1">Nome</th>
+                          <th class="sorting_disabled" rowspan="1" colspan="1">Código</th>
+                        </tr>
+                      </thead>
+                      <tbody id="tabelaRelatorioCamareira"></tbody>
+                    </table>
+                  </div>
+
+                  <!--Ocupações-->
+                  <div id="ocupacoes" class="tab-pane fade tabRelatorios">
+                    <table id="relOcupacoes" class="table table-bordered  dataTable no-footer" role="grid">
+                      <thead>
+                        <tr role="row">
+                          <th>Usuário</th>
+                          <th>Data</th>
+                          <th>Código</th>
+                          <th>Quarto</th>
+                          <th>Entrada</th>
+                          <th>Saída</th>
+                          <th>Total</th>
+                        </tr>
+                      </thead>
+                      <tbody id="tabelaRelatorioOcupacoes"></tbody>
+                    </table>
+                  </div>
+
+                  <!--Cartões-->
+                  <div id="cartoes" class="tab-pane fade tabRelatorios">
+                    <table id="relCartoes" class="table table-bordered  dataTable no-footer" role="grid">
+                      <thead>
+                        <tr role="row">
+                          <th>Tipo</th>
+                          <th>Bandeira</th>
+                          <th>Porcentagem</th>
+                        </tr>
+                      </thead>
+                      <tbody id="tabelaRelatorioCartoes"></tbody>
+                    </table>
+                  </div>
+
+                  <!--Sangria-->
+                  <div id="sangrias" class="tab-pane fade tabRelatorios">
+                    <table id="relSangria" class="table table-bordered  dataTable no-footer" role="grid">
+                      <thead>
+                        <tr role="row">
+                          <th>Dia</th>
+                          <th>Hora</th>
+                          <th>Usuário</th>
+                          <th>Valor Retirado</th>
+                          <th>Antigo Caixa</th>
+                          <th>Novo Caixa</th>
+                        </tr>
+                      </thead>
+                      <tbody id="tabelaRelatorioSangria"></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<!-- JS -->
+<script src="../js/estilo/bootstrap.min.js"></script>
+<script src="../js/estilo/matrix.js"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
+<script src="https://kit.fontawesome.com/88ea2c002f.js" crossorigin="anonymous"></script>
+<!-- Saudação ao Usuário -->
+<script src="../js/estilo/nomes.js"></script>
+<!-- Histórico -->
+<!-- <script src="../js/setup/sitePath.js"></script> -->
+<!-- Verificação de Login -->
+<!-- <script src="../js/setup/validacao_login.js"></script> -->
+
+<!-- Relatórios | Exibição -->
+<script type="module" src="../js/relatorios/camareiras.js"></script>
+<script type="module" src="../js/relatorios/cartoes.js"></script>
+<script type="module" src="../js/relatorios/ocupacoes.js"></script>
+<script type="module" src="../js/relatorios/sangria.js"></script>
+<script type="module" src="../js/relatorios/suites.js"></script>
+<!-- Relatórios | PDF -->
+<script type="module" src="../js/relatorios/pdf/camareiras.js"></script>
+<script type="module" src="../js/relatorios/pdf/cartoes.js"></script>
+<script type="module" src="../js/relatorios/pdf/ocupacoes.js"></script>
+<script type="module" src="../js/relatorios/pdf/sangrias.js"></script>
+<script type="module" src="../js/relatorios/pdf/suites.js"></script>
+<!-- Relatórios | Excel -->
+<script src="../js/relatorios/excel/camareiras.js"></script>
+<script src="../js/relatorios/excel/cartoes.js"></script>
+<script src="../js/relatorios/excel/ocupacoes.js"></script>
+<script src="../js/relatorios/excel/sangrias.js"></script>
+<script src="../js/relatorios/excel/suites.js"></script>
+
+<!-- <script type="module" src="../js/contadores/auditoria.js"></script>
+
+<script type="module" src="../js/cadastros/postAuditoria.js"></script> -->
+
+
+</html>

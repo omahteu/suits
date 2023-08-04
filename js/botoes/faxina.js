@@ -1,0 +1,31 @@
+import registraLimite from "../suites/tarefas/registros/faxina.js"
+
+// import ligar_luz from "../automacao/ligar.js"
+
+import { play } from "../setup/start_relogios.js"
+
+import faxina from "../tags/faxina.js"
+import {index} from "../tags/particao.js"
+
+import {fimMenu} from "../setup/menu.js"
+
+
+$(document).on("click", ".faxina", function () {
+    const suite = $('#quarto_painel').text()
+
+    if (confirm(`Iniciar Faxina na Suíte ${suite}?`) == true) {
+
+        setTimeout(() => { faxina(suite) }, 1)
+        
+        // setTimeout ( () => {ligar_luz(suite)
+        //             localStorage.setItem("luz", "ligada")               }, 100)
+        
+        setTimeout(() => { registraLimite(suite, "b", "faxina") }, 200)
+
+        setTimeout(() => { index(suite, "faxina") }, 300)
+
+        setTimeout(() => { fimMenu() }, 400)
+
+        setTimeout(() => { play[suite](suite, "0", "0", "0") }, 500)
+    }
+})

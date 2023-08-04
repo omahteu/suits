@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Suits | Configurações</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/png" href="../imagens/motel (1).png">
+
+  <!-- JQuery -->
+  <script src="../js/jquery.js"></script>
+  <!-- Responsividade -->
+  <script src="../js/responsividade/home.js"></script>
+  <!-- Preloader -->
+  <script>
+    $(window).on('load', function () {
+      $('#preloader .inner').fadeOut();
+      $('#preloader').delay(100).fadeOut('slow');
+      $('body').delay(100).css({ 'overflow': 'visible' });
+    })
+  </script>
+
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/matrix-style.css">
+  <link rel="stylesheet" href="../css/matrix-media.css">
+  <link rel="stylesheet" href="../css/camareiras.css">
+  <link rel="stylesheet" href="../css/menu.css">
+</head>
+
+<body onload="layout()">
+
+  <!--MENU MOBILE-->
+  <nav id="sidebar">
+    <div id="newlog">
+      <div class="icon2">
+        <img src="../imagens/motel (1).png">
+      </div>
+      <div class="title1">
+        <h2>Suits</h2>
+      </div>
+    </div>
+    <a href="#" class="visible-phone">
+      <div class="mode">
+        <div class="moon-menu">
+          <iconify-icon icon="mdi:microsoft-xbox-controller-menu" width="40" height="40"
+            flip="horizontal"></iconify-icon>
+        </div>
+      </div>
+    </a>
+    <div class="menu-bar">
+      <div class="menu">
+        <ul class="menu-links" style="position: relative;">
+          <li>
+            <a data-toggle="tab" href="#automacao">
+              <span class="title nav-title">Automação</span>
+            </a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#cartao" id="aba_cartoes">
+              <span class="title"> Cartão</span>
+            </a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#email" id="aba_mail">
+              <span class="title">Email</span>
+            </a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#ig" id="aba_ig">
+              <span class="title">Informações Gerais</span>
+            </a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#pernoite" id="aba_pernoite">
+              <span class="title">Pernoite</span>
+            </a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#tempo" id="aba_tempo">
+              <span class="title">Tempo</span>
+            </a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#teto" id="aba_teto">
+              <span class="title">&#8291; Teto</span>
+            </a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#valor"  id="aba_valor">
+              <span class="title">&#8291; Valor</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="content">
+    <!--start-top-serch-->
+    <div id="content-header">
+      <!-- New Bem-vindos -->
+      <div class="bemv">
+        <h5 id="saudacao_usuario"></h5>
+      </div>
+      <div id="breadcrumb">
+        <a href="./home.html" class="tip-bottom"> Início</a>
+        <a href="" class="current tip-bottom"> Configurações </a>
+      </div>
+    </div>
+    <div class="container-flu">
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="row-fluid" style="margin-top:0">
+            <div class="span12">
+              <div class="widget-box">
+                <div class="widget-title" style="margin: -20px 0 0">
+                  <span class="icon">
+                    <i class="fas fa-wrench"></i>
+                  </span>
+                  <h5>Configurações</h5>
+                </div>
+                <!--MENU DESKTOP-->
+                <ul class="nav nav-tabs" id="desktop">
+                  <li>
+                    <a data-toggle="tab" href="#automacao">Automação</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#cartao" id="aba_cartoes">Cartões</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#email" id="aba_mail">Email</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#ig" id="aba_ig">IGs</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#pernoite" id="aba_pernoite">Pernoite</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#tempo" id="aba_tempo">Tempo</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#teto" id="aba_teto">Teto</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#valor" id="aba_valor">Valores</a>
+                  </li>
+                </ul>
+
+                <div class="widget-content nopadding tab-content">
+                  <!--Automação-->
+                  <div id="automacao" class="tab-pane fade">
+
+                    <!--Tabela de Automações-->
+                    <div id="" class="tab-pane fade in active">
+                      <table id="relQuartos" class="table table-bordered  dataTable no-footer" role="grid">
+                        <thead>
+                          <tr role="row">
+                            <th>Quarto</th>
+                            <th>Placa</th>
+                            <th>Relé</th>
+                            <th>Ações</th>
+                        </thead>
+                        <tbody id="tabelaAutomacao"></tbody>
+                      </table>
+                    </div>
+
+                  </div>
+                  <!--Automação-->
+
+                  <!-- Cartões -->
+                  <div id="cartao" class="tab-pane fade">
+
+                    <div id="" class="">
+                      <table id="" class="table table-bordered  dataTable no-footer" role="grid">
+                        <thead>
+                          <tr role="row">
+                            <th>Tipo</th>
+                            <th>Bandeira</th>
+                            <th>Porcentagem</th>
+                        </thead>
+                        <tbody id="tabela_cartoes"></tbody>
+                      </table>
+                    </div>
+
+                  </div>
+                  <!-- Cartões -->
+
+                  <!-- Email -->
+                  <div id="email" class="tab-pane fade">
+
+                    <form action="../php/configuracoes/mail.php" method="post" class="form-horizontal" id="formEmail">
+                      <!--Usuário-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="usuarioEmail" id="usuarioEmail" placeholder="Usuário">
+                          <span>Usuário</span>
+                        </div>
+                      </div>
+
+                      <!--Senha-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="senhaEmail" id="senhaEmail" placeholder="Senha">
+                          <span>Senha</span>
+                        </div>
+                      </div>
+
+                      <!--SMTP-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="smtpEmail" id="smtpEmail" placeholder="SMTP">
+                          <span>SMTP</span>
+                        </div>
+                      </div>
+
+                      <!--Porta-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="portaEmail" id="portaEmail" placeholder="Porta">
+                          <span>Porta</span>
+                        </div>
+                      </div>
+
+                      <!--Timeout-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="timeoutEmail" id="timeoutEmail" placeholder="Timeout (segundos)">
+                          <span>Timeout</span>
+                        </div>
+                      </div>
+
+                      <!--Email Destino-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="email_destino" id="email_destino" placeholder="Email Destino">
+                          <span>Email Destino</span>
+                        </div>
+                      </div>
+
+                      <!--Email Contabilidade-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="email_contabilidade" id="email_contabilidade"
+                            placeholder="Email Contabilidade">
+                          <span>Email Contabilidade</span>
+                        </div>
+                      </div>
+
+                      <!--Autênticação-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <select name="autenticacaoEmail" id="autenticacaoEmail">
+                            <option hidden>Requer Autênticação</option>
+                            <option value="1">Sim</option>
+                            <option value="0">Não</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <!--Botões-->
+                      <div class="form-actions sumir">
+                        <div class="span8">
+                          <div class="span9">
+                            <button type="submit" class="button btn btn-primary">
+                              <span class="button__icon">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                              </span>
+                              <span class="button__text2">Salvar Alterações</span>
+                            </button>
+                            <button type="reset" class="button btn btn-danger">
+                              <span class="button__icon">
+                                <i class="fa-solid fa-xmark"></i>
+                              </span>
+                              <span class="button__text2">Limpar</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+
+                  </div>
+                  <!-- Email -->
+
+                  <!-- Informações Gerais -->
+                  <div id="ig" class="tab-pane fade">
+
+                    <form action="../php/configuracoes/igs.php" method="post" class="form-horizontal" name="formIg" id="formIg">
+                      <!--Social-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="socialIg" id="socialIg" placeholder="Razão Social">
+                          <span>Razão Social</span>
+                        </div>
+                      </div>
+
+                      <!--Fantasia-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="fantasiaIg" id="fantasiaIg" placeholder="Nome Fantasia">
+                          <span>Nome Fantasia</span>
+                        </div>
+                      </div>
+
+                      <!--CNPJ-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="cnpjIg" id="cnpjIg" placeholder="CNPJ">
+                          <span>CNPJ</span>
+                        </div>
+                      </div>
+
+                      <!--Cidade-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="cidadeIg" id="cidadeIg" placeholder="Cidade">
+                          <span>Cidade</span>
+                        </div>
+                      </div>
+
+                      <!--Endereço-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="enderecoIg" id="enderecoIg" placeholder="Endereço">
+                          <span>Endereço</span>
+                        </div>
+                      </div>
+
+                      <!--Número-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="numeroIg" id="numeroIg" placeholder="Número">
+                          <span>Número</span>
+                        </div>
+                      </div>
+
+                      <!--Bairro-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="bairroIg" id="bairroIg" placeholder="Bairro">
+                          <span>Bairro</span>
+                        </div>
+                      </div>
+
+                      <!--Telefone-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="telefoneIg" id="telefoneIg" placeholder="Telefone">
+                          <span>Telefone</span>
+                        </div>
+                      </div>
+
+                      <!--Telefone 2-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="telefone2Ig" id="telefone2Ig" placeholder="Telefone 2">
+                          <span>Telefone 2</span>
+                        </div>
+                      </div>
+
+                      <!--Telefone 3-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="telefone3Ig" id="telefone3Ig" placeholder="Telefone 3">
+                          <span>Telefone 3</span>
+                        </div>
+                      </div>
+
+                      <!--Botões-->
+                      <div class="form-actions sumir">
+                        <div class="span8">
+                          <div class="span9">
+                            <button type="submit" class="button btn btn-primary">
+                              <span class="button__icon">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                              </span>
+                              <span class="button__text2">Salvar Alterações</span>
+                            </button>
+                            <button type="reset" class="button btn btn-danger">
+                              <span class="button__icon">
+                                <i class="fa-solid fa-xmark"></i>
+                              </span>
+                              <span class="button__text2">Limpar</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+
+                  </div>
+                  <!-- Informações Gerais -->
+
+                  <!-- Pernoite -->
+                  <div id="pernoite" class="tab-pane fade">
+                    <form action="../php/configuracoes/pernoite.php" method="post" class="form-horizontal" id="formPernoite">
+                      <!--Permanência-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="permanenciaPernoite" id="permanenciaPernoite" required>
+                          <span>Permanência</span>
+                        </div>
+                      </div>
+                      <!--Início-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="time" name="inicioPernoite" id="inicioPernoite">
+                          <span>Início da Pernoite</span>
+                        </div>
+                      </div>
+                      <!--Fim-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="time" name="fimPernoite" id="fimPernoite">
+                          <span>Fim da Pernoite</span>
+                        </div>
+                      </div>
+                      <!--Tipo Pernoite-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <select name="tipoPernoite" id="tipoPernoite">
+                            <option value="" hidden>Tipo Pernoite</option>
+                            <option value="1">Automática</option>
+                            <option value="2">Fixa</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-actions sumir">
+                        <div class="span8">
+                          <div class="span9">
+                            <button type="submit" class="button btn btn-primary">
+                              <span class="button__icon">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                              </span>
+                              <span class="button__text2">Salvar Alterações</span>
+                            </button>
+                            <button type="reset" class="button btn btn-danger">
+                              <span class="button__icon">
+                                <i class="fa-solid fa-xmark"></i>
+                              </span>
+                              <span class="button__text2">Limpar</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <!-- Pernoite -->
+
+                  <!-- Tempo -->
+                  <div id="tempo" class="tab-pane fade">
+
+                    <!--Tempos-->
+                    <table class="table table-bordered  dataTable no-footer" role="grid">
+                      <thead>
+                        <tr>
+                          <th>Desistência</th>
+                          <th>Faxina</th>
+                          <th>Limpeza</th>
+                          <th>Manutenção</th>
+                          <th>Troca de Quarto</th>
+                        </tr>
+                      </thead>
+                      <tbody id="tabelaTempos"></tbody>
+                    </table>
+                    <!--Tempos-->
+
+                  </div>
+                  <!-- Tempo -->
+
+                  <!--Teto-->
+                  <div id="teto" class="tab-pane fade">
+
+                    <form action="../php/configuracoes/teto.php" method="post" class="form-horizontal" id="formTeto">
+                      <!--Teto-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="tetoCaixa" id="tetoCaixa">
+                          <span>Valor Teto (R$)</span>
+                        </div>
+                      </div>
+
+                      <!--Botões-->
+                      <div class="form-actions sumir">
+                        <div class="span8">
+                          <div class="span9">
+                            <button type="submit" class="button btn btn-primary">
+                              <span class="button__icon">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                              </span>
+                              <span class="button__text2" id="botao_tabela">Salvar Alterações</span>
+                            </button>
+                            <button type="reset" class="button btn btn-danger">
+                              <span class="button__icon">
+                                <i class="fa-solid fa-xmark"></i>
+                              </span>
+                              <span class="button__text2">Limpar</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+
+                  </div>
+                  <!--Teto-->
+
+                  <!--Valores-->
+                  <div id="valor" class="tab-pane fade">
+
+                    <form action="../php/configuracoes/valores.php" method="post" class="form-horizontal" id="formValores">
+
+                      <!-- Suíte -->
+                      <div class="control-group">
+                        <div class="controls">
+                          <select name="selecionarSuite" id="selecionarSuite">
+                            <option value="" hidden>Selecione a Suíte</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <!--Valor Locação-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="valorLocacaoQuarto" id="valorLocacaoQuarto"
+                            placeholder="Valor Locação" required>
+                          <span>Valor Hora Locação</span>
+                        </div>
+                      </div>
+
+                      <!--Valor Pernoite-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" id="valorPernoite" name="valorPernoite" placeholder="Valor Pernoite"
+                            required>
+                          <span>Valor Pernoite</span>
+                        </div>
+                      </div>
+
+                      <!--Valor 1 Hora-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="v1hQuarto" id="v1hQuarto" placeholder="Valor 1 Hora" required>
+                          <span>Valor 1ª Hora</span>
+                        </div>
+                      </div>
+
+                      <!--Valor 2 Hora-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="v2hQuarto" id="v2hQuarto" placeholder="Valor 2 Hora" required>
+                          <span>Valor 2ª Hora</span>
+                        </div>
+                      </div>
+
+                      <!--Valor 3 Hora-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="v3hQuarto" id="v3hQuarto" placeholder="Valor 3 Hora" required>
+                          <span>Valor 3ª Hora</span>
+                        </div>
+                      </div>
+
+                      <!--Valor 4 Hora-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="v4hQuarto" id="v4hQuarto" placeholder="Valor 4 Hora" required>
+                          <span>Valor 4ª Hora</span>
+                        </div>
+                      </div>
+
+                      <!--Valor 5 Hora-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="v5hQuarto" id="v5hQuarto" placeholder="Valor 5 Hora" required>
+                          <span>Valor 5ª Hora</span>
+                        </div>
+                      </div>
+
+                      <!--Valor 6 Hora-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="v6hQuarto" id="v6hQuarto" placeholder="Valor 6 Hora" required>
+                          <span>Valor 6ª Hora</span>
+                        </div>
+                      </div>
+
+                      <!--Botões-->
+                      <div class="form-actions sumir">
+                        <div class="span8">
+                          <div class="span9">
+                            <button type="submit" class="button btn btn-primary">
+                              <span class="button__icon">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                              </span>
+                              <span class="button__text2" id="botao_tabela">Salvar Alterações</span>
+                            </button>
+                            <button type="reset" class="button btn btn-danger">
+                              <span class="button__icon">
+                                <i class="fa-solid fa-xmark"></i>
+                              </span>
+                              <span class="button__text2">Limpar</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+
+                  </div>
+                  <!--Valores-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="modau-menu" class="modau-container">
+    <div class="modau">
+      <button class="fechar">X</button>
+      <h3 id="titulo_caixa">Ações</h3>
+      <form method="post" id="FormMain" name="FormMain"></form>
+    </div>
+  </div>
+</body>
+
+<!-- JS -->
+<script src="../js/estilo/bootstrap.min.js"></script>
+<script src="../js/estilo/matrix.js"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
+<script src="https://kit.fontawesome.com/88ea2c002f.js" crossorigin="anonymous"></script>
+<!-- Saudação ao Usuário -->
+<script src="../js/estilo/nomes.js"></script>
+<!-- Histórico -->
+<!-- <script src="../js/setup/sitePath.js"></script> -->
+<!-- Verificação de Login -->
+<!-- <script src="../js/setup/validacao_login.js"></script> -->
+
+
+<!-- <script type="module" src="../js/quartos/estrutural/inicializando.js"></script> -->
+
+<!-- <script type="module" src="../js/contadores/auditoria.js"></script> -->
+
+<!-- <script src="../js/home/validacoes/permissao.js"></script> -->
+<!-- Máscara Moeda -->
+<script src="../js/configuracoes/estrutural/format_moeda.js"></script>
+
+<!-- Configurações | Show -->
+<script type="module" src="../js/configuracoes/show/automacoes.js"></script>
+<script type="module" src="../js/configuracoes/show/cartoes.js"></script>
+<script type="module" src="../js/configuracoes/show/mail.js"></script>
+<script type="module" src="../js/configuracoes/show/ig.js"></script>
+<script type="module" src="../js/configuracoes/show/pernoite.js"></script>
+<script type="module" src="../js/configuracoes/show/tempos.js"></script>
+<script type="module" src="../js/configuracoes/show/teto.js"></script>
+<script type="module" src="../js/configuracoes/show/suites.js"></script>
+<!-- Configurações | Modal -->
+<script type="module" src="../js/configuracoes/modal/automacao.js"></script>
+<script type="module" src="../js/configuracoes/modal/cartoes.js"></script>
+<script type="module" src="../js/configuracoes/modal/tempos.js"></script>
+<script type="module" src="../js/configuracoes/modal/suites.js"></script>
+
+</html>

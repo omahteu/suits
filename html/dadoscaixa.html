@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Suits | Auditoria</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/png" href="../imagens/favicon-removebg-preview.png">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/matrix-style.css">
+  <link rel="stylesheet" href="../css/matrix-media.css">
+  <link rel="stylesheet" href="../css/caixa.css">
+
+</head>
+
+<body onload="layout()">
+
+  <!--MENU MOBILE-->
+  <nav id="sidebar">
+    <div id="newlog">
+      <div class="icon2">
+        <img src="../imagens/motel (1).png">
+      </div>
+      <div class="title1">
+        <h2>Suits</h2>
+      </div>
+    </div>
+    <a href="#" class="visible-phone">
+      <div class="mode">
+        <div class="moon-menu">
+          <iconify-icon icon="mdi:microsoft-xbox-controller-menu" width="40" height="40"
+            flip="horizontal"></iconify-icon>
+        </div>
+      </div>
+    </a>
+    <div class="menu-bar">
+      <div class="menu">
+        <ul class="menu-links" style="position: relative;">
+          <li><a data-toggle="tab" href="#atividade"><span class="title nav-title">Atividades</span></a></li>
+          <li><a data-toggle="tab" href="#cartoes"><span class="title">Cartões</span></a></li>
+          <li><a data-toggle="tab" href="#desistencia"><span class="title">Desistências</span></a></li>
+          <li><a data-toggle="tab" href="#encerramento"><span class="title">Encerramentos</span></a></li>
+          <li><a data-toggle="tab" href="#faxina"><span class="title">Faxinas</span></a></li>
+          <li><a data-toggle="tab" href="#limpeza"><span class="title">Limpezas</span></a></li>
+          <li><a data-toggle="tab" href="#locacao"><span class="title">Locações</span></a></li>
+          <li><a data-toggle="tab" href="#manutencao"><span class="title">Manutenções</span></a></li>
+          <li><a data-toggle="tab" href="#pagamento"><span class="title">Pagamentos</span></a></li>
+          <li><a data-toggle="tab" href="#produtos"><span class="title">Produtos</span></a></li>
+          <li><a data-toggle="tab" href="#revisao"><span class="title">Revisões</span></a></li>
+          <li><a data-toggle="tab" href="#tquarto"><span class="title">Trocas de Quartos</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="content">
+    <div id="content-header">
+      <div class="bemv">
+        <h5 id="saudacao_usuario"></h5>
+      </div>
+      <div id="breadcrumb">
+        <a id="home" class="tip-bottom"> Início</a>
+        <a href="" class="current tip-bottom"> Aauditoria </a>
+      </div>
+    </div>
+    <div class="container-flu">
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="row-fluid" style="margin-top:0">
+            <div class="span12">
+              <div class="widget-box">
+                <div class="widget-title" style="margin: -20px 0 0">
+                  <span class="icon">
+                    <i class="fas fa-wrench"></i>
+                  </span>
+                  <h5>Auditoria</h5>
+                  <form action="" method="post" class="form-horizontal">
+                    <div class="control-group">
+                      <div class="controls">
+                        <select name="" id="codigo_caixa">
+                          <option hidden>Caixa</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <div class="controls">
+                        <input placeholder="De" class="textbox-n" type="text" onfocus="(this.type='date')"
+                          id="inicio_filtro" onblur="(this.type='text')" id="" />
+                        <br>
+                        <input placeholder="Até" class="textbox-n" type="text" onfocus="(this.type='date')"
+                          id="final_filtro" onblur="(this.type='text')" id="" />
+                        <button type="button" class="btn btn-warning" id="buscar_dados">Buscar</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <!--MENU DESKTOP-->
+                <ul class="nav nav-tabs" id="desktop">
+                  <li>
+                    <a data-toggle="tab" href="#atividade">Atividades</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#desistencia">Desistências</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#faxina">Faxinas</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#limpeza">Limpezas</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#locacao">Locações</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#manutencao">Manutenções</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#pagamentos">Pagamentos</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#produtos">Produtos</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#tquarto">Trocas de Quartos</a>
+                  </li>
+                </ul>
+
+                <div class="widget-content nopadding tab-content">
+
+                  <!--Atividades-->
+                  <div id="atividade" class="tab-pane fade">
+                    <table id="" class="table table-bordered  dataTable no-footer" role="grid">
+                      <thead>
+                        <tr role="row">
+                          <th>Nome</th>
+                          <th>Data</th>
+                          <th>Tempo</th>
+                        </tr>
+                      </thead>
+                      <tbody id="dados_atividades"></tbody>
+                    </table>
+                  </div>
+
+                  <!--Desistência-->
+                  <div id="desistencia" class="tab-pane fade">
+                    <table id="" class="table table-bordered  dataTable no-footer" role="grid">
+                      <thead>
+                        <tr role="row">
+                          <th>Caixa</th>
+                          <th>Data</th>
+                          <th>Hora</th>
+                          <th>Quarto</th>
+                          <th>Motivo</th>
+                        </tr>
+                      </thead>
+                      <tbody id="dados_desistencias"></tbody>
+                    </table>
+                  </div>
+
+                  <!--Encerramento-->
+                  <div id="encerramento" class="tab-pane fade">
+                    <table id="" class="table table-bordered  dataTable no-footer" role="grid">
+                      <thead>
+                        <tr role="row">
+                          <th>Caixa</th>
+                          <th>Data</th>
+                          <th>Hora</th>
+                          <th>Tempo</th>
+                        </tr>
+                      </thead>
+                      <tbody id=""></tbody>
+                    </table>
+                  </div>
+
+                  <!--Faxina-->
+                  <div id="faxina" class="tab-pane fade">
+                    <table id="" class="table table-bordered  dataTable no-footer" role="grid">
+                      <thead>
+                        <tr role="row">
+                          <th>Caixa</th>
+                          <th>Data</th>
+                          <th>Hora</th>
+                          <th>Quarto</th>
+                          <th>Duração</th>
+                        </tr>
+                      </thead>
+                      <tbody id="dados_faxinas"></tbody>
+                    </table>
+                  </div>
+
+                  <!--Limpeza-->
+                  <div id="limpeza" class="tab-pane fade">
+                    <table id="" class="table table-bordered  dataTable no-footer" role="grid">
+                      <thead>
+                        <tr role="row">
+                          <th>Caixa</th>
+                          <th>Data</th>
+                          <th>Hora</th>
+                          <th>Quarto</th>
+                          <th>Duração</th>
+                          <th>Camareira</th>
+                        </tr>
+                      </thead>
+                      <tbody id="dados_limpezas"></tbody>
+                    </table>
+                  </div>
+
+                  <!--Locação-->
+                  <div id="locacao" class="tab-pane fade">
+                    <table id="" class="table table-bordered  dataTable no-footer" role="grid">
+                      <thead>
+                        <tr role="row">
+                          <th>Código</th>
+                          <th>Usuário</th>
+                          <th>Data</th>
+                          <th>Suíte</th>
+                          <th>Entrada</th>
+                          <th>Saída</th>
+                          <th>Total</th>
+                        </tr>
+                      </thead>
+                      <tbody id="dados_locacoes"></tbody>
+                    </table>
+                  </div>
+
+                  <!--Manutenção-->
+                  <div id="manutencao" class="tab-pane fade">
+                    <table id="" class="table table-bordered  dataTable no-footer" role="grid">
+                      <thead>
+                        <tr role="row">
+                          <th>Caixa</th>
+                          <th>Data</th>
+                          <th>Hora</th>
+                          <th>Quarto</th>
+                          <th>Motivo</th>
+                          <th>Duração</th>
+                        </tr>
+                      </thead>
+                      <tbody id="dados_manutencoes"></tbody>
+                    </table>
+                  </div>
+
+                  <!--Pagamentos-->
+                  <div id="pagamentos" class="tab-pane fade">
+                    <table id="" class="table table-bordered  dataTable no-footer" role="grid">
+                      <thead>
+                        <tr role="row">
+                          <th>Valor</th>
+                          <th>Forma</th>
+                          <th>Parcelas</th>
+                          <th>Data</th>
+                        </tr>
+                      </thead>
+                      <tbody id="dados_pagamentos"></tbody>
+                    </table>
+                  </div>
+
+                  <!--Produtos-->
+                  <div id="produtos" class="tab-pane fade">
+                    <table id="" class="table table-bordered  dataTable no-footer" role="grid">
+                      <thead>
+                        <tr role="row">
+                          <th>Código do Produto</th>
+                          <th>Nome</th>
+                          <th>Data</th>
+                          <th>Tipo</th>
+                          <th>Quantidade</th>
+                        </tr>
+                      </thead>
+                      <tbody id="dados_produtos"></tbody>
+                    </table>
+                  </div>
+
+                  <!--Troca de Quartos-->
+                  <div id="tquarto" class="tab-pane fade">
+                    <table id="" class="table table-bordered  dataTable no-footer" role="grid">
+                      <thead>
+                        <tr role="row">
+                          <th>Caixa</th>
+                          <th>Data</th>
+                          <th>Hora</th>
+                          <th>Quarto Antigo</th>
+                          <th>Novo Quarto</th>
+                        </tr>
+                      </thead>
+                      <tbody id="dados_trocas"></tbody>
+                    </table>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+<script src="../js/jquery.js"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
+<script src="../js/estilo/bootstrap.min.js"></script>
+<script src="../js/estilo/matrix.js"></script>
+<script src="../js/estilo/nomes.js"></script>
+<script src="../js/responsividade/home.js"></script>
+
+<script src="../js/setup/sitePath.js"></script>
+<script src="../js/setup/validacao.js"></script>
+
+<script src="https://kit.fontawesome.com/88ea2c002f.js" crossorigin="anonymous"></script>
+
+<script src="../js/home/validacoes/permissao.js"></script>
+
+<script type="module" src="../js/auditoria/leitura/caixas.js"></script>
+<script type="module" src="../js/auditoria/pesquisa/index.js"></script>
+</html>

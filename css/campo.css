@@ -1,0 +1,9 @@
+#numero_parcelas {
+    width: 10rem;
+    margin-left: 0px;
+    display: none;
+}
+
+#valorFundoCaixa {
+    display: none;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suits | Check-out</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="card">
+        <div class="card-body mx-4">
+            <div class="container">
+                <p class="my-5 mx-5" style="font-size: 30px;">Check Out</p>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Quarto</th>
+                            <th>Permanência</th>
+                            <th>Permanência</th>
+                            <th>Itens</th>
+                            <th>Desconto</th>
+                            <th>Subtotal</th>
+                            <th>Parcelas</th>
+                            <th>Valor Parcelas</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dados_cliente"></tbody>
+                </table>
+
+
+                <div class="row text-black">
+
+                    <div class="col-xl-12">
+                        <p class="float-end fw-bold">Total: R$ <span id="totalgeral">0</span>
+                        </p>
+                    </div>
+                    <hr style="border: 2px solid black;">
+                </div>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Quantidade	</th>
+                            <th>Valor Unitário</th>
+                            <th>Valor Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dados_cliente_produtos"></tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/estilo/bootstrap.min.js"></script>
+    <script type="module" src="../js/setup/segundaTela.js"></script>
+</body>
+
+</html>

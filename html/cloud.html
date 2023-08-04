@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Suits | Cloud</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/png" href="../imagens/motel (1).png">
+  <!-- JQuery -->
+  <script src="../js/jquery.js"></script>
+  <!-- Responsividade -->
+  <script src="../js/responsividade/home.js"></script>
+  <!-- Preloader -->
+  <script>
+    $(window).on('load', function () {
+      $('#preloader .inner').fadeOut();
+      $('#preloader').delay(100).fadeOut('slow');
+      $('body').delay(100).css({ 'overflow': 'visible' });
+    })
+  </script>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/matrix-style.css">
+  <link rel="stylesheet" href="../css/matrix-media.css">
+  <link rel="stylesheet" href="../css/menu.css">
+  <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+  <div id="preloader">
+    <div class="inner">
+      <div class="bolas">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+
+  <!--MENU MOBILE-->
+  <nav id="sidebar">
+    <div id="newlog">
+      <div class="icon2">
+        <img src="../imagens/motel (1).png">
+      </div>
+      <div class="title1">
+        <h2>Suits</h2>
+      </div>
+    </div>
+    <a href="#" class="visible-phone">
+      <div class="mode">
+        <div class="moon-menu">
+          <iconify-icon icon="mdi:microsoft-xbox-controller-menu" width="40" height="40"
+            flip="horizontal"></iconify-icon>
+        </div>
+      </div>
+    </a>
+    <div class="menu-bar">
+      <div class="menu">
+        <ul class="menu-links" style="position: relative;">
+          <li>
+            <a data-toggle="tab" href="#suites">
+              <span class="title nav-title">Suites</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="content">
+    <!--start-top-serch-->
+    <div id="content-header">
+      <!-- New Bem-vindos -->
+      <div class="bemv">
+        <h5 id="saudacao_usuario"></h5>
+      </div>
+      <div id="breadcrumb">
+        <a href="./home.html" class="tip-bottom"> Início</a>
+        <a href="" class="current tip-bottom"> Cloud </a>
+      </div>
+    </div>
+    <div class="container-flu">
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="row-fluid" style="margin-top:0">
+            <div class="span12">
+              <div class="widget-box">
+                <div class="widget-title" style="margin: -20px 0 0">
+                  <span class="icon">
+                    <i class="fas fa-wrench"></i>
+                  </span>
+                  <h5>Cloud</h5>
+                </div>
+
+                <!--MENU DESKTOP-->
+                <ul class="nav nav-tabs" id="desktop">
+                  <li>
+                    <a data-toggle="tab" href="#suites">Suítes</a>
+                  </li>
+                </ul>
+
+                <div class="widget-content nopadding tab-content">
+
+                  <!--SUÍTES-->
+                  <div id="suites" class="tab-pane fade">
+                    <table class="table table-bordered  dataTable no-footer" role="grid">
+                      <thead>
+                        <tr role="row">
+                          <th>Placa</th>
+                          <th>Rele</th>
+                          <th>Suíte</th>
+                          <th>Status</th>
+                          <th>Ações</th>
+                      </thead>
+                      <tbody id="cloud"></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modau-menu" class="modau-container">
+    <div class="modau">
+      <button class="fechar">X</button>
+      <h3 id="titulo_caixa">Ações</h3>
+      <form method="post" id="FormMain" name="FormMain"></form>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="https://kit.fontawesome.com/88ea2c002f.js" crossorigin="anonymous"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
+  <script src="../js/estilo/bootstrap.min.js"></script>
+  <script src="../js/estilo/matrix.js"></script>
+  <!-- Saudação ao Usuário -->
+  <script src="../js/estilo/nomes.js"></script>
+  <!-- Cloud -->
+  <script type="module" src="../js/cloud/form.js"></script>
+  <script type="module" src="../js/cloud/index.js"></script>
+  <script type="module" src="../js/cloud/menu.js"></script>
+
+
+</body>
+
+</html>
