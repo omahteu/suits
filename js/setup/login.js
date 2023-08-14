@@ -21,7 +21,6 @@ function autenticacao(dados){
 $(document).on("click", "#acessar", function(e) {
     e.preventDefault()
     clientes($("#usuario").val(), $("#senha").val())
-    //jsoon()
 })
 
 
@@ -34,9 +33,9 @@ async function clientes(usuario, senha) {
         let val_pri = rs["dados"].filter(x => x.usuario == usuario && x.senha == senha)
         if (val_pri.length > 0) {
             if (val_pri[0]["tipo"] == "on") {
-                alert("pode passar")
+                autenticacao(val_pri)
             } else {
-                alert("Acesso Bloqueado. \nEntre em contato com a Fortal Connect.")
+                alert("#03: Acesso Bloqueado. \nEntre em contato com a Fortal Connect.")
             }
         } else {
             usuarios(usuario, senha)
@@ -45,15 +44,19 @@ async function clientes(usuario, senha) {
 }
 
 async function usuarios(usuario, senha) {
-    const rq = await fetch(`${url}suits/php/login/login.php`)
-    const rs = await rq.json()
-    if (rs["status"]) {
-        let val_sec = rs["dados"].filter(x => x.usuarioUsuario == usuario && x.senhaUsuario == senha)
-        if (val_sec.length > 0) {
-            jsoon(val_sec)
-        } else {
-            alert("Login / Senha Incorretos")
+    try {
+        const rq = await fetch(`${url}suits/php/login/login.php`)
+        const rs = await rq.json()
+        if (rs["status"]) {
+            let val_sec = rs["dados"].filter(x => x.usuarioUsuario == usuario && x.senhaUsuario == senha)
+            if (val_sec.length > 0) {
+                jsoon(val_sec)
+            } else {
+                alert("#02: Login/Senha Inválidos")
+            }
         }
+    } catch (error) {
+        alert("#01: Login/Senha Inválidos.")
     }
 }
 
@@ -63,6 +66,6 @@ async function jsoon(dados) {
     if (rs["tipo"] == "on") {
         autenticacao(dados)
     } else {
-        alert("Acesso Bloqueado. \nEntre em contato com a Fortal Connect.")
+        alert("#04: Acesso Bloqueado. \nEntre em contato com a Fortal Connect.")
     }
 }

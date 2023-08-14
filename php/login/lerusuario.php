@@ -1,6 +1,6 @@
 <?php
 include "../cnxExterna.php";
-$query = "SELECT id, usuario, senha, tipo FROM clientes";
+$query = "SELECT id, usuario, senha, tipo, tipoUsuario FROM clientes";
 $resultado = $conn->query($query);
 if ($resultado->num_rows > 0) {
     while($row = $resultado->fetch_assoc()) {
@@ -8,7 +8,8 @@ if ($resultado->num_rows > 0) {
             'id' => $row["id"],
             'usuario' => $row["usuario"],
             'senha' => $row["senha"],
-            'tipo' => $row["tipo"]
+            'tipo' => $row["tipo"],
+            'tipoUsuario' => $row["tipoUsuario"]
         ];
         $data = array(
             "usuario" => $row["usuario"],
