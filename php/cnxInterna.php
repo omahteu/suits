@@ -1,5 +1,7 @@
 <?php
-$servidor = "192.168.11.10";
+
+include "../urlbase.php";
+$servidor = $url;
 $usuario = "admin";
 $senha = "Tiadm123@";
 $dbname = "palace";
