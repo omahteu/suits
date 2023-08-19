@@ -1,7 +1,7 @@
 <?php
 
-include "../urlbase.php";
-$servidor = $url;
+@include_once "../urlbase.php";
+@$servidor = $hosti;
 $usuario = "admin";
 $senha = "Tiadm123@";
 $dbname = "palace";
