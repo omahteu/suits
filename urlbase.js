@@ -1,1 +1,1 @@
-export var url = "http://192.168.11.13/"
+export var url = "http://10.0.0.110/"
