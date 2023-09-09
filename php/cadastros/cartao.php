@@ -1,7 +1,7 @@
 <?php
 include "../cnxInterna.php";
 include "../../urlbase.php";
-$rota = "$urlBase/suits/html/cadastro.html";
+$rota = "$url/suits/html/cadastro.html";
 $tipo = $_POST["tipo"];
 $bandeira = $_POST["bandeira"];
 $porcentagem = $_POST["porcentagem"];
@@ -17,7 +17,7 @@ if ($tipo == "1") {
         $execval = $stmt->execute();
         $stmt->close();
         $conn->close();
-        header("Location: http://192.168.11.8/suits/html/cadastro.html");
+        header("Location: $rota");
         exit;
     }
 } else {

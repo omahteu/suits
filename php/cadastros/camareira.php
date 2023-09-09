@@ -1,7 +1,7 @@
 <?php
 include "../cnxInterna.php";
 include "../../urlbase.php";
-$rota = "$urlBase/suits/html/cadastro.html";
+$rota = "$url/suits/html/cadastro.html";
 $nome = $_POST["nomeCamareira"];
 $codigo = $_POST["codigoCamareira"];
 $query = "INSERT INTO camareira(nome, codigo) values(?, ?)";

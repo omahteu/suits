@@ -1,7 +1,7 @@
 <?php
 include "../cnxInterna.php";
 include "../../urlbase.php";
-$rota = "$urlBase/suits/html/estoque.html";
+$rota = "$url/suits/html/estoque.html";
 $data = $_POST["dataAgora"];
 $nome = $_POST["nome"];
 $codigo = $_POST["codigoProduto"];

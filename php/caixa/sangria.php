@@ -1,7 +1,7 @@
 <?php
 include "../cnxInterna.php";
 include "../../urlbase.php";
-$rota = "$urlBase/suits/html/caixa2.html";
+$rota = "$url/suits/html/caixa2.html";
 $id = "1";
 $data = $_POST["data_atual"];
 $hora = $_POST["hora_atual"];

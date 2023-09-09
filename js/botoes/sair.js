@@ -2,7 +2,7 @@ $(document).on("click", "#btn_off", () => {
     let status = localStorage.getItem("usuarioLogado")
     if (status == "admin"){
         localStorage.clear()
-        location.href = "../index.html"
+        location.href = "../suits/index.html"
     } else if (status == "caixa"){
         location.href = "../html/caixa.html"
     }

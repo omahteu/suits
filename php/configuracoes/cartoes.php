@@ -2,7 +2,7 @@
 
 include "../cnxInterna.php";
 include "../../urlbase.php";
-$rota = "$urlBase/suits/html/configuracoes.html";
+$rota = "$url/suits/html/configuracoes.html";
 $id = $_POST["idCartao"];
 $tipo = $_POST["tipo"];
 $taxa = $_POST["nova_taxa"];

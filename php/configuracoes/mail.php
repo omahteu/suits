@@ -1,7 +1,7 @@
 <?php
 include "../cnxInterna.php";
 include "../../urlbase.php";
-$rota = "$urlBase/suits/html/configuracoes.html";
+$rota = "$url/suits/html/configuracoes.html";
 $id = "1";
 $usuario = $_POST["usuarioEmail"];
 $senha = $_POST["senhaEmail"];

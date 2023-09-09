@@ -1,7 +1,7 @@
 <?php
 include "../cnxInterna.php";
 include "../../urlbase.php";
-$rota = "$urlBase/suits/html/configuracoes.html";
+$rota = "$url/suits/html/configuracoes.html";
 $id = "1";
 $permanencia = $_POST["permanenciaPernoite"];
 $inicio = $_POST["inicioPernoite"];
