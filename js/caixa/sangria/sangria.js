@@ -1,13 +1,11 @@
 import { data_atual } from "../../geradores/data.js"
 import { hora_atual_segundos } from "../../geradores/hora.js"
 import { inicioMenu } from "../../setup/menu.js"
+import {RAIZ} from "../../raiz.js"
 
-$(window).on("load", function () {
-    sangria()
-})
 
-async function sangria() {
-    const rq = await fetch("http://192.168.11.10/suits/php/caixa/show/teto.php")
+export async function sangria() {
+    const rq = await fetch(`http://${RAIZ}/suits/php/caixa/show/teto.php`)
     const rs = await rq.json()
     if (rs["status"]) {
         setTimeout(() => {
@@ -23,11 +21,11 @@ async function sangria() {
                     fm.action = "../php/caixa/sangria.php"
                     $(fm).append(
                         `
-                            <input type="text" name="data_atual" value="${data_atual()}">
-                            <input type="text" name="hora_atual" value="${hora_atual_segundos()}">
-                            <input type="text" name="nome_usuario" value="${nome}">
-                            <input type="text" name="saldo_atual" value="${saldo}">
-                            <input type="text" name="valor_sangrado" id="valor_sangrado" placeholder="Valor" required>
+                            <input type="text" name="data_atual" value="${data_atual()}" readonly>
+                            <input type="text" name="hora_atual" value="${hora_atual_segundos()}" readonly>
+                            <input type="text" name="nome_usuario" value="${nome}" readonly>
+                            <input type="text" name="saldo_atual" value="${saldo}" readonly>
+                            <input type="text" name="valor_sangrado" id="valor_sangrado" placeholder="Valor Sangrado" required>
                             <button type="submit" class="btn btn-primary">Retirar</button>
                         `
                     )

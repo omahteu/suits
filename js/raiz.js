@@ -1,0 +1,1 @@
+export var RAIZ = window.location.host
