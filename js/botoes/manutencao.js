@@ -4,7 +4,9 @@ import manutencao from "../tags/manutencao.js"
 import {index} from "../tags/particao.js"
 
 import {fimMenu} from "../setup/menu.js"
-import {registraLimiteManutencao} from "../suites/tarefas/registros/manutencao.js"
+// import {registraLimiteManutencao} from "../suites/tarefas/registros/manutencao.js"
+
+import { limited } from "../suites/tarefas/registros/limites.js"
 
 
 $(document).on("click", ".manutencao", function () {
@@ -13,14 +15,14 @@ $(document).on("click", ".manutencao", function () {
 
     localStorage.setItem("motivo", motivo)
 
-
     if (motivo != null) {
 
         if (motivo.length > 0) {
 
             setTimeout(() => { manutencao(suite) }, 1)
 
-            setTimeout(() => { registraLimiteManutencao(suite, "l", "luz") }, 200);
+            // setTimeout(() => { registraLimiteManutencao(suite, "l", "luz") }, 200);
+            setTimeout(() => { limited(`http://${RAIZ}/suits/php/suites/limitemanutencao.php`, `manutencaoTempo`, suite, "l", "luz") }, 200)
     
             setTimeout(() => { index(suite, "manutencao") }, 300)
     

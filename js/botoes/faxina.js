@@ -1,4 +1,4 @@
-import registraLimite from "../suites/tarefas/registros/faxina.js"
+// import registraLimite from "../suites/tarefas/registros/faxina.js"
 
 // import ligar_luz from "../automacao/ligar.js"
 
@@ -8,6 +8,10 @@ import faxina from "../tags/faxina.js"
 import {index} from "../tags/particao.js"
 
 import {fimMenu} from "../setup/menu.js"
+
+import { limited } from "../suites/tarefas/registros/limites.js"
+
+import { RAIZ } from "../raiz.js"
 
 
 $(document).on("click", ".faxina", function () {
@@ -20,7 +24,8 @@ $(document).on("click", ".faxina", function () {
         // setTimeout ( () => {ligar_luz(suite)
         //             localStorage.setItem("luz", "ligada")               }, 100)
         
-        setTimeout(() => { registraLimite(suite, "b", "faxina") }, 200)
+        //setTimeout(() => { registraLimite(suite, "b", "faxina") }, 200)
+        setTimeout(() => { limited(`http://${RAIZ}/suits/php/suites/limitemanutencao.php`, `faxinaTempo`, suite, "b", "faxina") }, 200)
 
         setTimeout(() => { index(suite, "faxina") }, 300)
 

@@ -1,7 +1,9 @@
-import link from "../../setup/index.js"
+import {RAIZ} from "../../raiz.js"
 
 export async function buscaSuites() {
-    const rq = await fetch(link[17])
+    const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/suites.php`)
     const rs = await rq.json()
-    sessionStorage.setItem("dados_suites", JSON.stringify(rs))
+    if (rs["status"]) {
+        sessionStorage.setItem("dados_suites", JSON.stringify(rs["dados"]))
+    }
 }

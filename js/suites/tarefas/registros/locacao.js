@@ -11,3 +11,4 @@ export default function registraLimiteTroca(suite, modo, tipo) {
         salvar(link[34], dados, false, "", false, "")
     })
 }
+

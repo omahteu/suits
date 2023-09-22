@@ -1,20 +1,20 @@
 <?php
-include "../conexao.php";
+include "../../cnxInterna.php";
+include "../../../urlbase.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $hora = $_POST["hora"];
-    $valor = $_POST["valor"];
     $suite = $_POST["suite"];
+    $valor = $_POST["valor"];
     $tipo = $_POST["tipo"];
 
-    $query = "insert into infos(cliente, hora, valor, suite, tipo) values(?, ?, ?, ?, ?)";
+    $query = "INSERT INTO cofre(suite, valor, tipo) values(?, ?, ?)";
 
     if ($conn->connect_error) {
         echo "$conn->connect_error";
         die("Connection Failed : " . $conn->connect_error);
     } else {
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("ssss", $hora, $valor, $suite, $tipo);
+        $stmt->bind_param("sss", $suite, $valor, $tipo);
         $execval = $stmt->execute();
         $stmt->close();
         $conn->close();

@@ -1,7 +1,9 @@
-import link from "../../setup/index.js"
+import {RAIZ} from "../../raiz.js"
 
 export async function buscaPrecos() {
-    const rq = await fetch(link[21])
+    const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/precos.php`)
     const rs = await rq.json()
-    sessionStorage.setItem("tabela_precos", JSON.stringify(rs))
+    if (rs["status"]) {
+        sessionStorage.setItem("tabela_precos", JSON.stringify(rs["dados"]))
+    }
 }

@@ -1,6 +1,6 @@
-import { hora_atual } from "../geradores/hora.js"
+// import { hora_atual } from "../geradores/hora.js"
 import { valoresIniciais } from "../quartos/calculos/inicial.js"
-import link from "../setup/index.js"
+// import link from "../setup/index.js"
 
 export default function locado(q) {
     // Colorindo o card

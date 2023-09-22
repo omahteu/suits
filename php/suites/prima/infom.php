@@ -1,5 +1,6 @@
 <?php
-include "../conexao.php";
+include "../../cnxInterna.php";
+include "../../../urlbase.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hora = $_POST["hora"];
@@ -7,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $suite = $_POST["suite"];
     $tipo = $_POST["tipo"];
 
-    $query = "insert into infos(cliente, hora, valor, suite, tipo) values(?, ?, ?, ?, ?)";
+    $query = "INSERT INTO infos(hora, valor, suite, tipo) values(?, ?, ?, ?)";
 
     if ($conn->connect_error) {
         echo "$conn->connect_error";
