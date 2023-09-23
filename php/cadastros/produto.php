@@ -15,7 +15,7 @@ if ($conn->connect_error) {
     die("Connection Failed : " . $conn->connect_error);
 } else {
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("ssss", $suite, $placa, $rele, $estado);
+    $stmt->bind_param("ssssss", $codigo, $descricao, $valorunitario, $quantidade, $categoria, $data);
     $execval = $stmt->execute();
     $stmt->close();
     $conn->close();

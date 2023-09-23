@@ -33,7 +33,7 @@ export default function expandir (dataAgora) {
 
         `<div class="control-group">`+
             `<div class="controls">`+
-                `<input type="text" name="valorUnitarioProduto" id="valorUnitarioProduto" value="" readonly>`+
+                `<input type="text" name="valorUnitarioProduto" id="valorUnitarioProduto" value="">`+
             `</div>`+
         `</div>`+
 
