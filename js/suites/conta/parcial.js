@@ -1,4 +1,4 @@
-import link from "../../setup/index.js"
+import {RAIZ} from "../../raiz.js"
 
 $(document).on('click', '[class="card"]', function () {
 	let r1 = $(this)
@@ -7,14 +7,29 @@ $(document).on('click', '[class="card"]', function () {
 	let suite = r3.text()
     setTimeout(() => {
         let consumo = parseFloat($("#consumo_painel").text())
-        $.get(link[36], l => {
-            let filtroValores = l.filter(x => x.suite == suite)
-            let sum = 0
-            filtroValores.forEach(f => {
-                sum += parseFloat(f.valor)
-            });
-            let total = sum + consumo
-            $("#parcial_painel").text(total.toFixed(2))
-        })
+        calculo(suite, consumo)
+        // $.get(link[36], l => {
+        //     let filtroValores = l.filter(x => x.suite == suite)
+        //     let sum = 0
+        //     filtroValores.forEach(f => {
+        //         sum += parseFloat(f.valor)
+        //     });
+        //     let total = sum + consumo
+        //     $("#parcial_painel").text(total.toFixed(2))
+        // })
     }, 1000);
 })
+
+async function calculo(suite, consumo) {
+    const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/cofre.php`)
+    const rs = await rq.json()
+    if (rs["status"]) {
+        let filtroValores = rs["dados"].filter(x => x.suite == suite)
+        let sum = 0
+        filtroValores.forEach(f => {
+            sum += parseFloat(f.valor)
+        });
+        let total = sum + consumo
+        $("#parcial_painel").text(total.toFixed(2))
+    }
+}

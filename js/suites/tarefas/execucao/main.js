@@ -1,7 +1,7 @@
-import desligar_luz from "../../../automacao/desligar.js"
-import atualizarTarefa from "../../../quartos/estrutural/tarefa.js"
+import {desligar_luz} from "../../../automacao/desligar.js"
+import {atualizarTarefa} from "../../../quartos/estrutural/tarefa.js"
 
-export default function executor_tarefas(sistema, agora, id, tag) {
+export function executor_tarefas(sistema, agora, id, tag) {
     var hora1 = moment(sistema, 'HH:mm')
     var hora2 = moment(agora, 'HH:mm')
 

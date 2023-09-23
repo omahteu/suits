@@ -1,4 +1,4 @@
-import link from "../setup/index.js"
+// import link from "../setup/index.js"
 import { hora_atual_segundos } from "../geradores/hora.js"
 import { play } from "../setup/start_relogios.js"
 import receber from "../quartos/auxiliares/funcao4.js"

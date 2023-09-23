@@ -1,5 +1,6 @@
 import { registroProdutos } from "../../../armazem/registros/produtos.js"
 import receber from "../../../quartos/auxiliares/funcao4.js"
+import {RAIZ} from "../../../raiz.js"
 
 $(document).on("click", "#registrar_produto", function() {
 	let infos = receber("offs")
@@ -15,7 +16,7 @@ $(document).on("click", "#registrar_produto", function() {
 				$.ajax({
 					type: 'POST',
 					dataType: 'json',
-					url: "http://localhost/Suites/php/suites/comanda.php",
+					url: `http://${RAIZ}/suits/php/suites/comanda.php`,
 					async: true,
 					data: dadosphp
 				});

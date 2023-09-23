@@ -1,4 +1,5 @@
 import link from "../../setup/index.js"
+import {RAIZ} from "../../raiz.js"
 
 export function leituraProdutos(){
 	$.get(link[5], (retorno) => {
@@ -50,12 +51,15 @@ export function leituraProdutosPlus(identificador){
 }
 
 
-export function ll(suite = "0") {
-	$.get(link[5], e => {
+export async function ll(suite = "0") {
+
+	const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/comanda.php`)
+	const rs = await rq.json()
+	if (rs["status"]) {
 		var comanda = document.getElementById('listaProdutosComprados');
 		comanda.innerHTML = '';
 		try {
-			var dados = e.filter(l => l.suite == suite)
+			var dados = rs["dados"].filter(l => l.suite == suite)
 			dados.forEach( (i) => {
 				comanda.innerHTML += `
 					<tr>
@@ -70,5 +74,28 @@ export function ll(suite = "0") {
 		} catch (error) {
 			sessionStorage.setItem("produtos.js", `[LOGS] | ${error}`)
 		}
-	})
+	}
+
+
+
+	// $.get(link[5], e => {
+	// 	var comanda = document.getElementById('listaProdutosComprados');
+	// 	comanda.innerHTML = '';
+	// 	try {
+	// 		var dados = e.filter(l => l.suite == suite)
+	// 		dados.forEach( (i) => {
+	// 			comanda.innerHTML += `
+	// 				<tr>
+	// 					<td>${i.descricao}</td>
+	// 					<td>${i.quantidade}</td>
+	// 					<td>${i.valor_unitario}</td>
+	// 					<td>${i.valor_total}</td>
+	// 					<td><button type="button" id="remocaoProduto" name="${i.id}" class="btn btn-danger">Remover</button></td>
+	// 				</tr>
+	// 			`
+	// 		})
+	// 	} catch (error) {
+	// 		sessionStorage.setItem("produtos.js", `[LOGS] | ${error}`)
+	// 	}
+	// })
 }

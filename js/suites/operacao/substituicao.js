@@ -22,6 +22,8 @@ import locado from "../../tags/locacao.js"
 import aguardando from "../../tags/aguardo.js"
 import desfazer from "../../tags/desfazer.js"
 
+import {RAIZ} from "../../raiz.js"
+
 
 
 $(document).on("click", "#substituir", function () {
@@ -89,30 +91,41 @@ function finalizando(suite) {
     }, 700)
 }
 
-function trocaComanda(antigo, novo) {
-    $.get(link[5], e => {
-        let dados = e.filter(item => item.suite === antigo)
-        dados.forEach(el => {
-            var id = el.id
-            alterar(`${link[5]}${id}/`, {suite: novo}, false, "", false, "")
-        })
-    })
-}
+async function trocaComanda(antigo, novo) {
 
-function trocaPatio(antigo, novo) {
-    $.get(link[15], e => {
-        let dados = e.filter(item => item.suite === antigo)
-        dados.forEach(e => {
-            var id = e.id
-            alterar(`${link[15]}${id}/`, {suite: novo}, false, "", false, "")
-        })
-    })
-}
-
-async function trocaCofre(suite, nsuite) {
-    const rq = await fetch(link[36])
+    const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/comanda.php`)
     const rs = await rq.json()
-    let cofres = rs.filter(x => x.suite == suite)
-    let id = cofres[0].id
-    alterar(`${link[36]}${id}/`, {suite: nsuite}, false, "", false, "")
+    if (rs["status"]) {
+        let dados = rs["dados"].filter(item => item.suite === antigo)
+        dados.forEach(el => {
+            var dados = 'antigo=' + el.id + '&novo=' + novo
+            alterar(`http://${RAIZ}/suits/php/suites/editarcomanda.php`, dados, 'comanda', false, "", false, "")
+        })
+    }
+}
+
+async function trocaPatio(antigo, novo) {
+
+    const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/patio.php`)
+    const rs = await rq.json()
+    if (rs["status"]) {
+        let dados = rs["dados"].filter(item => item.suite === antigo)
+        dados.forEach(e => {
+            var dados = 'antigo=' + el.id + '&novo=' + novo
+            alterar(`http://${RAIZ}/suits/php/suites/editarpatio.php`, dados, 'patio', false, "", false, "")
+        })
+    }
+}
+
+async function trocaCofre(suite, novo) {
+    const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/cofre.php`)
+    const rs = await rq.json()
+    if (rs["status"]) {
+        let dados = rs["dados"].filter(x => x.suite == suite)
+        dados.forEach(e => {
+            var dados = 'antigo=' + e.id + '&novo=' + novo
+            alterar(`http://${RAIZ}/suits/php/suites/editarcofre.php`, dados, false, "", false, "")
+        });
+    }
+
 }

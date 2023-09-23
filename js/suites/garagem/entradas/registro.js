@@ -1,5 +1,6 @@
 import { registroVeiculos } from "../../../armazem/registros/veiculos.js"
 import receber from "../../../quartos/auxiliares/funcao4.js"
+import {RAIZ} from "../../../raiz.js"
 
 $(document).on("click", "#registrar_veiculo", function() {
 	let infos = receber("offs")
@@ -15,7 +16,7 @@ $(document).on("click", "#registrar_veiculo", function() {
 				$.ajax({
 					type: 'POST',
 					dataType: 'json',
-					url: "http://localhost/Suites/php/suites/patio.php",
+					url: `http://${RAIZ}/suits/php/suites/patio.php`,
 					async: true,
 					data: dadosphp
 				});
