@@ -4,10 +4,10 @@ include "../../urlbase.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $antigo = $_POST["antigo"];
-    $novo = $_POST["bovo"];
+    $novo = $_POST["novo"];
 
 
-    $sql = "UPDATE cofre SET suite='$novo' WHERE suite='$antigo'";
+    $sql = "UPDATE cofre SET valor='$novo' WHERE suite='$antigo'";
 
     // if ($conn->connect_error) {
     //     echo "$conn->connect_error";

@@ -24,20 +24,80 @@ function atualizaValores(suite) {
     if (modo_cobranca == "hora") {
       let funil = alugados.filter(x => x.suite == suite)
       let iniciado = funil[0].hora
-      let previsto = moment(iniciado, "HH:mm:ss");
-      previsto.add(1, 'hours');
-      
-      const momentoAtual = moment(iniciado, "HH:mm:ss");
-      const momentoLimite = moment(previsto, "HH:mm:ss");
-      const horarioJaPassou = momentoAtual.isAfter(momentoLimite)
-      const diferencaEmHoras = momentoLimite.diff(momentoAtual, 'hours');
+      const horarioRegistrado = moment(iniciado, 'HH:mm:ss');
 
-      if (horarioJaPassou && diferencaEmHoras[0] < 24) {
-        console.log('substituir');
+      let funil_suites = suites.filter(o => o.numeroSuite == funil[0].suite)
+      let funil_precos = precos.filter(u => u.codigo == funil_suites[0].codigoSuite)
+
+      
+
+      function verificarHoraPassada() {
+        const horaAtual = moment();
+        const diferencaEmHoras = horaAtual.diff(horarioRegistrado, 'hours')
+
+
+
+        if (diferencaEmHoras >= 0 && diferencaEmHoras < 2) {
+          alterarValor(suite, funil_precos[0].vh1)
+        } else if (diferencaEmHoras >= 2 && diferencaEmHoras < 3) {
+          alterarValor(suite, funil_precos[0].vh2)
+        } else if(diferencaEmHoras >= 3 && diferencaEmHoras < 4) {
+          alterarValor(suite, funil_precos[0].vh3)
+        } else if (diferencaEmHoras >= 4 && diferencaEmHoras < 5) {
+          alterarValor(suite, funil_precos[0].vh4)
+        } else if (diferencaEmHoras >= 5 && diferencaEmHoras < 6) {
+          alterarValor(suite, funil_precos[0].vh5)
+        } else if (diferencaEmHoras >= 6 && diferencaEmHoras < 7) {
+          alterarValor(suite, funil_precos[0].vh6)
+        } else if (diferencaEmHoras >= 7 && diferencaEmHoras < 8) {
+          alterarValor(suite, parseFloat(parseInt(funil_precos[0].vh6) + 10).toFixed(2))
+        } else if (diferencaEmHoras >= 8 && diferencaEmHoras < 9) {
+          console.log('Já se passou 8 hora desde o horário registrado.');
+        }
       }
+
+      const intervaloDeVerificacao = 1000
+      setInterval(verificarHoraPassada, intervaloDeVerificacao);
+
     } else if (modo_cobranca == "fixa") {
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     var loc = se_alugado_dados[0].horas_locacaoSuite // Quantidade de Horas Locada da Suíte
     //var modo_cobranca = se_alugado_dados[0].cobrancaSuite
@@ -73,7 +133,7 @@ function atualizaValores(suite) {
         6: parseFloat(precos[0].vh6)
       }
 
-      console.log(passado)
+      //console.log(passado)
   
       if (passado[0] >= loc && passado[1] > tol) {
         //console.log(valores[passado[0]])
