@@ -1,4 +1,5 @@
 import link from "../../setup/index.js"
+import { RAIZ } from "../../raiz.js"
 
 export async function leituraVeiculos(){
 
@@ -84,7 +85,7 @@ export async function vv(suite = "0") {
 	// })
 
 
-	const rq = await fetch(`http://${RAIZ}/suits/php/suites/show;patio.php`)
+	const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/patio.php`)
 	const rs = await rq.json()
 	if (rs["status"]) {
 		var patio = document.getElementById('listaveiculosguardados');

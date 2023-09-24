@@ -7,7 +7,7 @@ $(window).on("load", function () {
     setTimeout(() => {
         let offs = receber("offs")
         offs.forEach(e => {
-            let inicio = e.datahora
+            let inicio = e.hora
             let tipo = e.tipo
             let suite = e.suite
             if (tipo != "aguardando") {
