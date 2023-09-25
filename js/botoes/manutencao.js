@@ -1,4 +1,4 @@
-import { play } from "../setup/start_relogios.js"
+ import { play } from "../setup/start_relogios.js"
 
 import manutencao from "../tags/manutencao.js"
 import {index} from "../tags/particao.js"

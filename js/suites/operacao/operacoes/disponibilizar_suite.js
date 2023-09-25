@@ -1,4 +1,4 @@
-import desligar_luz from "../../../automacao/desligar.js"
+// import desligar_luz from "../../../automacao/desligar.js"
 import ultima_limpeza from "../../../botoes/limpar.js"
 import envia_dados_manutencao from "../../../caixa/manutencao.js"
 import { data_atual } from "../../../geradores/data.js"
@@ -32,12 +32,12 @@ export default function suite_fica_disponivel(suite, usuario, tempo) {
         setTimeout(() => { ultima_limpeza(suite) }, 200)
 
         // Apagando a Luz
-        if (verificaoLuz == "ligada") {
-            setTimeout(() => {
-                desligar_luz(suite)
-                localStorage.setItem("luz", "desligada")
-            }, 300)
-        }
+        // if (verificaoLuz == "ligada") {
+        //     setTimeout(() => {
+        //         desligar_luz(suite)
+        //         localStorage.setItem("luz", "desligada")
+        //     }, 300)
+        // }
 
         // Remoção do Registro de Locação
         setTimeout(() => { encerrar_tarefas(suite) }, 400)
