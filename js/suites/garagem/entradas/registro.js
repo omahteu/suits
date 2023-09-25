@@ -17,7 +17,7 @@ $(document).on("click", "#registrar_veiculo", function() {
 				xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 				xhr.onreadystatechange = function () {
 					if (xhr.readyState === 4 && xhr.status === 200) {
-						alert("Veículo Registrado!")
+						alert("VeÃ­culo Registrado!")
 						document.getElementById("formCadastros").reset()
 					}
 				};
