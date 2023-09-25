@@ -9,7 +9,7 @@ export default async function ultima_limpeza(suite) {
     localStorage.removeItem("quarto")
     let onze = receber("offs")
     var dados = onze.filter(quartos => quartos.suite == suite)
-    let einfos = 'tabela' + 'infos' + 'coluna' + 'suite' + 'valor' + dados[0].suite
+    let einfos = 'tabela=' + 'infos' + '&coluna=' + 'suite' + '&valor=' + dados[0].suite
     apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, einfos)
     const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/comanda.php`)
     const rs = await rq.json()
@@ -17,7 +17,7 @@ export default async function ultima_limpeza(suite) {
         rs["dados"].forEach(e => {
             var dados = e.filter(quartos => quartos.quarto == suite)
             dados.forEach(i => {
-                let ecomand = 'tabela' + 'comanda' + 'coluna' + 'suite' + 'valor' + i.suite
+                let ecomand = 'tabela=' + 'comanda' + '&coluna=' + 'suite' + '&valor=' + i.suite
                 apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, ecomand)
             });
         });

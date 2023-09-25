@@ -7,17 +7,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $data = $_POST["data"];
     $hora = $_POST["hora"];
     $suite = $_POST["suite"];
-    $duracao = $_POST["duracao"];
+    $tempo = $_POST["tempo"];
     $camareira = $_POST["camareira"];
 
-    $query = "INSERT INTO faxina(caixa, data, hora, suite, duracao, camareira) values(?, ?, ?, ?, ?, ?)";
+    $query = "INSERT INTO faxina(caixa, data, hora, suite, tempo, camareira) values(?, ?, ?, ?, ?, ?)";
 
     if ($conn->connect_error) {
         echo "$conn->connect_error";
         die("Connection Failed : " . $conn->connect_error);
     } else {
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("ssssss", $caixa, $data, $hora, $suite, $duracao, $camareira);
+        $stmt->bind_param("ssssss", $caixa, $data, $hora, $suite, $tempo, $camareira);
         $execval = $stmt->execute();
         $stmt->close();
         $conn->close();

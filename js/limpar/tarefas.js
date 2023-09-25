@@ -8,9 +8,8 @@ export default async function encerrar_tarefas(suite) {
     if (rs["dados"]) {
         let dados = rs["dados"].filter(e => e.suite == suite)
         dados.forEach(i => {
-            var dados = 'tabela' + 'tarefa' + '&coluna=' + 'suite' + '&valor=' + suite
+            var dados = 'tabela=' + 'tarefa' + '&coluna=' + 'suite' + '&valor=' + i.suite
             apagar(`http://${RAIZ}/suits/php/suites/excluirtarefa.php`, dados)
         });
     }
-
 }

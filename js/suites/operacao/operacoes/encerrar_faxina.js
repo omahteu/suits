@@ -1,4 +1,4 @@
-import link from "../../../setup/index.js"
+// import link from "../../../setup/index.js"
 import { data_atual } from "../../../geradores/data.js"
 import { hora_atual } from "../../../geradores/hora.js"
 import {RAIZ} from "../../../raiz.js"

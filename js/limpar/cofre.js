@@ -8,7 +8,7 @@ export default async function fechar_cofre(suite) {
     if (rs["dados"]) {
         let dados = rs["dados"].filter(e => e.suite == suite)
         dados.forEach(i => {
-            let dados = 'tabela' + 'cofre' + 'coluna' + 'suite' + 'valor' + i.suite
+            let dados = 'tabela=' + 'cofre' + '&coluna=' + 'suite' + '&valor=' + i.suite
             apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, dados)
         });
     }
