@@ -61,21 +61,27 @@ function iniciando(antigo, suite, hora, minuto, segundo) {
     }, 500)
     setTimeout(() => {
         var card = JSON.parse(sessionStorage.getItem("ficha"))
-        var ficha = {
-            datahora: card.datahora,
-            valor: card.valor,
-            suite: suite,
-            tipo: "locado"
-        }
-        $.post(link[11], ficha, () => { sessionStorage.removeItem("ficha") })
+        var ficha = 'hora=': card.datahora, '&valor=': card.valor, '&suite=': suite, '&tipo=': "locado"
+        // $.post(link[11], ficha, () => {  })
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", `http://${RAIZ}/suits/php/suites/informacoes.php`, true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log(xhr.responseText);
+                sessionStorage.removeItem("ficha")
+            }
+        };
+        xhr.send(ficha);
     }, 700)
 }
 
 function finalizando(suite) {
     let flags = tick[`${suite}`]
     stop[suite]()
-    setTimeout(() => { desfazer(suite, flags[0], flags[1], flags[2]) }, 200)
-    setTimeout(() => { aguardando(suite, flags[0], flags[1], flags[2]) }, 300)
+    setTimeout(() => { desfazer(suite) }, 200)
+    setTimeout(() => { aguardando(suite) }, 300)
     setTimeout(() => {
         let base = receber("offs")
         var dados = base.filter(item => item.suite === suite)
@@ -86,13 +92,13 @@ function finalizando(suite) {
     setTimeout(() => {
         var card = JSON.parse(sessionStorage.getItem("fichas"))
         var id = card.id
-        alterar(`${link[11]}${id}/`, {tipo: "aguardando"}, false, "", false, "")
+        let ficha2 = 'tipo=' + 'aguardando' + '&id=' + id
+        alterar(`http://${RAIZ}/suits/php/suites/editarinfos.php`, ficha2, false, "", false, "")
         sessionStorage.removeItem("fichas")
     }, 700)
 }
 
 async function trocaComanda(antigo, novo) {
-
     const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/comanda.php`)
     const rs = await rq.json()
     if (rs["status"]) {
@@ -105,7 +111,6 @@ async function trocaComanda(antigo, novo) {
 }
 
 async function trocaPatio(antigo, novo) {
-
     const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/patio.php`)
     const rs = await rq.json()
     if (rs["status"]) {
@@ -127,5 +132,4 @@ async function trocaCofre(suite, novo) {
             alterar(`http://${RAIZ}/suits/php/suites/editarcofre.php`, dados, false, "", false, "")
         });
     }
-
 }
