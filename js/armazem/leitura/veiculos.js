@@ -92,6 +92,7 @@ export async function vv(suite = "0") {
 		patio.innerHTML = '';
 		try {
 			var dados = rs["dados"].filter(l => l.suite == suite)
+			console.log(dados)
 			dados.forEach( (i) => {
 				patio.innerHTML += `
 					<tr>
