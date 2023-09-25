@@ -1,4 +1,4 @@
-import { registroVeiculos } from "../../../armazem/registros/veiculos.js"
+// import { registroVeiculos } from "../../../armazem/registros/veiculos.js"
 import receber from "../../../quartos/auxiliares/funcao4.js"
 import {RAIZ} from "../../../raiz.js"
 
@@ -10,16 +10,18 @@ $(document).on("click", "#registrar_veiculo", function() {
 	try {
 		let tipo = busca[0].tipo
 		if(tipos.includes(tipo)){
-			registroVeiculos()
 			setTimeout(() => {
 				let dadosphp = $("#formCadastros").serialize()
-				$.ajax({
-					type: 'POST',
-					dataType: 'json',
-					url: `http://${RAIZ}/suits/php/suites/patio.php`,
-					async: true,
-					data: dadosphp
-				});
+				var xhr = new XMLHttpRequest();		
+				xhr.open("POST", `http://${RAIZ}/suits/php/suites/patio.php`, true);
+				xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+				xhr.onreadystatechange = function () {
+					if (xhr.readyState === 4 && xhr.status === 200) {
+						alert("Produto adicionado!")
+						document.getElementById("formCadastros").reset()
+					}
+				};
+				xhr.send(dadosphp);
 			}, 1500);
 		}
 	} catch (error) {

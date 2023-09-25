@@ -15,4 +15,6 @@ if ($conn->connect_error) {
     $execval = $stmt->execute();
     $stmt->close();
     $conn->close();
+    echo 'sucesso';
+    exit;
 }
