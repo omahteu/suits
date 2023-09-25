@@ -11,6 +11,7 @@ $(document).on('click', '#context', function () {
 
     inicioMenu("modau-menu")
     let fm = document.forms[3]
+
     if (filtro.length == 0) {
         $(fm).html(
             `
@@ -49,6 +50,7 @@ $(document).on('click', '#context', function () {
 
             case "manutencao":
                 let man = taf.filter(l => l.suite == num)
+                console.log(man)
                 if (man[0].modo == "l") {
                     $(fm).html(
                         `
