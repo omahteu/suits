@@ -1,5 +1,5 @@
 <?php
-include "../conexao.php";
+include "../cnxInterna.php";
 
 $suite = $_POST["suiteE"];
 $placa = $_POST["placa"];
