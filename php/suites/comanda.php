@@ -1,6 +1,6 @@
 <?php
 
-include "../conexao.php";
+include "../cnxInterna.php";
 
 $suite = $_POST["suiteE"];
 $descricao = $_POST["descricao"];
@@ -9,7 +9,7 @@ $vt = $_POST["valor_total"];
 $vu = $_POST["valor_unitario"];
 $hora = $_POST["hora"];
 $vs = $_POST["vs"];
-$query = "insert into comanda(suite, descricao, quantidade, vt, vu, hora, vs) values(?, ?, ?, ?, ?, ?, ?)";
+$query = "insert into comanda(suite, descricao, quantidade, valor_total, valor_unitario, hora, valor_suite) values(?, ?, ?, ?, ?, ?, ?)";
 
 if ($conn->connect_error) {
     echo "$conn->connect_error";
@@ -20,4 +20,6 @@ if ($conn->connect_error) {
     $execval = $stmt->execute();
     $stmt->close();
     $conn->close();
+    echo "sucesso";
+    exit;
 }

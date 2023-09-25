@@ -53,7 +53,6 @@ $(document).on("click", ".inferior", function () {
     let status = $(this).val()
     let suite = $("#quarto_painel").text()
     reacao(status, suite)
-
 })
 
 function reacao(status, suite) {
@@ -62,8 +61,6 @@ function reacao(status, suite) {
     let s = $(`#segundo${suite}`).text()
     let tempo = `${h}:${m}:${s}`
     let usuario = String($("#saudacao_usuario").text()).split(",")[1].trim()
-
- 
 
     if (status == acao[0]) {
         suite_fica_disponivel(suite, usuario, tempo)

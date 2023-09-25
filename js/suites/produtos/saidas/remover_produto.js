@@ -4,15 +4,15 @@ import apagar from "../../../olivia/apaga.js"
 import { RAIZ } from "../../../raiz.js"
 
 $(document).on("click", "#remocaoProduto", function () {
-    let suite = $(this).attr("name")
+    let id = $(this).attr("name")
     let motivo = prompt('Motivo da retirada do produto:')
-    var chave = ''
     if (motivo == null) {
         alert('Produto não excluido!\nÉ necessário o motivo da exclusão do produto!')
     } else if (motivo.length == 0) {
         alert('Produto não excluido!\nÉ necessário o motivo da exclusão do produto!')
     } else {
-        apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, 'comanda', 'id', chave)
+        let dados = 'tabela=' + 'comanda' + '&coluna=' + 'id' + '&valor=' + id
+        apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, dados)
         ll(suite)
     }
 })
