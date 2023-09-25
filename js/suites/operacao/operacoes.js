@@ -38,7 +38,7 @@ import { acao } from "../../setup/box.js"
 // import camareiras from "../tags/camareira.js"
 
 import suite_fica_disponivel from "./operacoes/disponibilizar_suite.js"
-// import comecar_faxina from "./operacoes/iniciar_faxina.js"
+import comecar_faxina from "./operacoes/iniciar_faxina.js"
 // import comecar_limpeza from "./operacoes/iniciar_limpeza.js"
 // import trocando_suite from "./operacoes/trocar_suite.js"
 // import encerrando_suite from "./operacoes/encerrar.js"
