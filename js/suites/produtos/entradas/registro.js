@@ -1,6 +1,7 @@
 // import { registroProdutos } from "../../../armazem/registros/produtos.js"
 import receber from "../../../quartos/auxiliares/funcao4.js"
 import {RAIZ} from "../../../raiz.js"
+import { ll } from "../../../armazem/leitura/produtos.js"
 
 $(document).on("click", "#registrar_produto", function() {
 	let infos = receber("offs")
@@ -19,6 +20,7 @@ $(document).on("click", "#registrar_produto", function() {
 					if (xhr.readyState === 4 && xhr.status === 200) {
 						alert("Produto adicionado!")
 						document.getElementById("formCadastros").reset()
+						ll(suite)
 					}
 				};
 				xhr.send(dadosphp);
