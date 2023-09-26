@@ -84,12 +84,12 @@ function atualizaValores(suite) {
       if (diferencaEmHoras > limiteDeHoras || (diferencaEmHoras === limiteDeHoras && diferencaEmMinutos >= limiteDeMinutos)) {
         const valorDuplicado = valorInicial * 2
         valorInicial = valorDuplicado;
-        console.log('Valor atualizado:', valorInicial.toFixed(2));
+        //console.log('Valor atualizado:', valorInicial.toFixed(2));
       }
 
       localStorage.setItem('limite', limiteDeHoras += limiteDeHoras)
 
-      console.log(limiteDeHoras)
+      //console.log(limiteDeHoras)
 
     }
 

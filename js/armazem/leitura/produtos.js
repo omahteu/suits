@@ -52,7 +52,6 @@ export function leituraProdutosPlus(identificador){
 
 
 export async function ll(suite = "0") {
-
 	const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/comanda.php`)
 	const rs = await rq.json()
 	if (rs["status"]) {
@@ -60,6 +59,7 @@ export async function ll(suite = "0") {
 		comanda.innerHTML = '';
 		try {
 			var dados = rs["dados"].filter(l => l.suite == suite)
+			console.log(dados)
 			dados.forEach( (i) => {
 				comanda.innerHTML += `
 					<tr>
@@ -74,6 +74,9 @@ export async function ll(suite = "0") {
 		} catch (error) {
 			sessionStorage.setItem("produtos.js", `[LOGS] | ${error}`)
 		}
+	} else {
+		var comanda = document.getElementById('listaProdutosComprados');
+		comanda.innerHTML = '';
 	}
 
 

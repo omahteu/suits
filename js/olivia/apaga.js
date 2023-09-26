@@ -8,7 +8,7 @@ export default function apagar(url, dados){
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // A resposta do PHP pode ser manipulada aqui (se necessário)
-            console.log(xhr.responseText);
+            //console.log(xhr.responseText);
         }
     };
 
