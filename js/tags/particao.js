@@ -9,7 +9,7 @@ export function index(suite, tipo) {
     switch (tipo) {
         case "locado":
             var valor = sessionStorage.getItem("valorInicialSuite")
-            var dados = 'hora=' + hora_atual_segundos() + '&valor=' + '0' + '&suite=' + suite + '&tipo=' + tipo
+            var dados = 'hora=' + hora_atual_segundos() + '&valor=' + valor + '&suite=' + suite + '&tipo=' + tipo
             let cofre = 'suite=' + suite + '&valor=' + valor + '&tipo=' + tipo
             salvar(`http://${RAIZ}/suits/php/suites/prima/infom.php`, dados, false, "", false, "")
             //salvar(`http://${RAIZ}/suits/php/suites/informacoes.php`, dados, false, '', false, '')

@@ -11,7 +11,6 @@ export default function Suitesdisponiveis() {
     $("#quartos_disponiveis").empty()
     suite.forEach(il => {
         if (suites.includes(il.numeroSuite) == false) {
-            console.log(il)
             $("#quartos_disponiveis").append(`<option>${il.numeroSuite}</option>`)
         }
     });

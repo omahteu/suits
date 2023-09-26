@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tempo = $_POST["tempo"];
    
 
-    $query = "INSERT INTO faxina(caixa, data, hora, suite, motivo, tempo) values(?, ?, ?, ?, ?, ?)";
+    $query = "INSERT INTO manutencao(caixa, data, hora, suite, motivo, tempo) values(?, ?, ?, ?, ?, ?)";
 
     if ($conn->connect_error) {
         echo "$conn->connect_error";

@@ -1,9 +1,14 @@
 import receber from "../quartos/auxiliares/funcao4.js"
 import { hora_atual_segundos } from "../geradores/hora.js";
 
-$(window).on("load", function () {
+// $(window).on("load", function () {
+//     busca_e_exibe_quartos()
+// })
+
+setTimeout(() => {
     busca_e_exibe_quartos()
-})
+    
+}, 1500);
 
 async function busca_e_exibe_quartos() {
     let base = receber("dados_suites")

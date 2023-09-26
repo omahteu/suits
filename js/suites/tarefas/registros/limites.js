@@ -39,14 +39,12 @@ export async function limited(url, tt, suite, modo, tipo) {
         data.setMinutes(data.getMinutes() + parseInt(tempo))
 
         var xhr = new XMLHttpRequest();
-        //var url = `http://${RAIZ}/suits/php/suites/limitetroca.php`;
 
         xhr.open("POST", url, true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
-                // A resposta do PHP pode ser manipulada aqui (se necessário)
                 console.log(xhr.responseText);
             }
         };

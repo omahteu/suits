@@ -8,6 +8,8 @@ import {fimMenu} from "../setup/menu.js"
 
 import { limited } from "../suites/tarefas/registros/limites.js"
 
+import { RAIZ } from "../raiz.js"
+
 
 $(document).on("click", ".manutencao", function () {
     const suite = $('#quarto_painel').text()

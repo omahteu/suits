@@ -1,7 +1,7 @@
 import registraLimiteTroca from "../../suites/tarefas/registros/locacao.js"
 
-import ligar_luz from "../../automacao/ligar.js"
-import desligar_luz from "../../automacao/desligar.js"
+// import ligar_luz from "../../automacao/ligar.js"
+// import desligar_luz from "../../automacao/desligar.js"
 
 import tempo_pausado from "../../quartos/ajax/post/decorrido.js"
 import { registra_troca } from "../../quartos/ajax/post/troca.js"
@@ -12,9 +12,9 @@ import encerrar_tarefas from "../../limpar/tarefas.js"
 
 import receber from "../../quartos/auxiliares/funcao4.js"
 
-import { tick } from "../../setup/box.js"
-import link from "../../setup/index.js"
-import { fimModalTroca } from "../../setup/troca.js"
+// import { tick } from "../../setup/box.js"
+// import link from "../../setup/index.js"
+import {fimMenu} from "../../setup/menu.js"
 import { play } from "../../setup/start_relogios.js"
 import { stop } from "../../setup/stop_relogios.js"
 
@@ -38,39 +38,39 @@ $(document).on("click", "#substituir", function () {
     trocaCofre(suite, novo)
     setTimeout(() => { registra_troca(usuario, suite, novo) }, 100)
     setTimeout(() => { tempo_pausado(hora, minuto, segundo, suite) }, 100)
-    setTimeout(() => {desligar_luz(suite)}, 500)
+    // setTimeout(() => {desligar_luz(suite)}, 500)
     setTimeout(() => {registraLimiteTroca(novo, "a", "troca")}, 600)
     setTimeout(() => {encerrar_tarefas(suite)}, 700)
     setTimeout(() => { iniciando(suite, novo, hora, minuto, segundo) }, 1000)
     setTimeout(() => { finalizando(suite) }, 1500)
-    setTimeout(() => {ligar_luz(novo)}, 2000)
+    // setTimeout(() => {ligar_luz(novo)}, 2000)
 })
 
 function iniciando(antigo, suite, hora, minuto, segundo) {
     var p = [hora, minuto, segundo]
     setTimeout(() => { locado(suite) }, 200)
     setTimeout(() => { play[suite](suite, p[0], p[1], p[2]) }, 300)
-    setTimeout(() => { fimModalTroca() }, 400)
+    setTimeout(() => { fimMenu() }, 400)
     setTimeout(() => {
         let base = receber("offs")
         var dados = base.filter(item => item.suite === antigo)
         dados.forEach(e => {
             sessionStorage.setItem("ficha", JSON.stringify(e))
+            console.log(`criando ficha | ${e}`)
         })
 
     }, 500)
     setTimeout(() => {
         var card = JSON.parse(sessionStorage.getItem("ficha"))
-        var ficha = 'hora=': card.datahora, '&valor=': card.valor, '&suite=': suite, '&tipo=': "locado"
-        // $.post(link[11], ficha, () => {  })
-
+        var ficha = 'hora='+ card.hora+ '&valor='+ card.valor+ '&suite='+ suite+ '&tipo='+ "locado"
+        console.log(`ficha | ${ficha}`)
         var xhr = new XMLHttpRequest();
         xhr.open("POST", `http://${RAIZ}/suits/php/suites/informacoes.php`, true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 console.log(xhr.responseText);
-                sessionStorage.removeItem("ficha")
+                //sessionStorage.removeItem("ficha")
             }
         };
         xhr.send(ficha);
@@ -78,7 +78,7 @@ function iniciando(antigo, suite, hora, minuto, segundo) {
 }
 
 function finalizando(suite) {
-    let flags = tick[`${suite}`]
+    // let flags = tick[`${suite}`]
     stop[suite]()
     setTimeout(() => { desfazer(suite) }, 200)
     setTimeout(() => { aguardando(suite) }, 300)
@@ -116,7 +116,7 @@ async function trocaPatio(antigo, novo) {
     if (rs["status"]) {
         let dados = rs["dados"].filter(item => item.suite === antigo)
         dados.forEach(e => {
-            var dados = 'antigo=' + el.id + '&novo=' + novo
+            var dados = 'antigo=' + e.id + '&novo=' + novo
             alterar(`http://${RAIZ}/suits/php/suites/editarpatio.php`, dados, 'patio', false, "", false, "")
         })
     }

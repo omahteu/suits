@@ -50,7 +50,6 @@ $(document).on('click', '#context', function () {
 
             case "manutencao":
                 let man = taf.filter(l => l.suite == num)
-                console.log(man)
                 if (man[0].modo == "l") {
                     $(fm).html(
                         `

@@ -15,7 +15,7 @@ export default function suite_fica_disponivel(suite, usuario, tempo) {
     // Variáveis
     let base = receber("offs")
     let tipo = base.filter(t => t.suite == suite)
-    let verificaoLuz = localStorage.getItem("luz")
+    //let verificaoLuz = localStorage.getItem("luz")
 
     // Confirmação
     if (confirm(`Disponibilizar a Suíte ${suite}?`)) {
