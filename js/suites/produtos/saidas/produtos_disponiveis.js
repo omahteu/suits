@@ -27,9 +27,15 @@ async function disponivel(){
             $("#descricao").val(filtroCard[0].descricao)
             $("#valor_unitario").val(`R$ ${filtroCard[0].valorunitario}`)
             $(document).on("keyup", "#quantidade", function(){
-                var qtd = $(this).val()
-                var total = parseFloat(filtroCard[0].valorunitario) * parseInt(qtd)
-                $("#valor_total").val(`R$ ${total}`)
+                let opu = $(this).val()
+                if (opu == "" || opu == 0) {
+                    $("#valor_total").val(`R$ 0.00`)
+                } else {
+                    var qtd = $(this).val()
+                    var total = parseFloat(filtroCard[0].valorunitario) * parseInt(qtd)
+                    $("#valor_total").val(`R$ ${total}`)
+                }
+
             })
         })
     }
@@ -39,15 +45,37 @@ function produtoCodigo() {
     $('#codigo_produto').keypress((event) => {
         var keycode = (event.keyCode ? event.keyCode : event.which);
         if (keycode == '13') {
-            $.get(link[16], (e) => {
-                $("#descricao").val(e[0].descricao)
-                $("#valor_unitario").val(`R$ ${e[0].valorunitari}`)
-                $('#quantidade').keyup(() => {
-                    var qtd = $(this).val()
-                    var total = parseFloat(e[0]['valorunitario']) * Number(qtd)
-                    $("#valor_total").val(`R$ ${parseFloat(total).toFixed(2)}`)
-                });
-            })
+
+
+
+            popi()
+
+
+            // $.get(link[16], (e) => {
+            //     $("#descricao").val(e[0].descricao)
+            //     $("#valor_unitario").val(`R$ ${e[0].valorunitari}`)
+            //     $('#quantidade').keyup(() => {
+            //         var qtd = $(this).val()
+            //         var total = parseFloat(e[0]['valorunitario']) * Number(qtd)
+            //         $("#valor_total").val(`R$ ${parseFloat(total).toFixed(2)}`)
+            //     });
+            // })
         }
     })
+}
+
+async function popi() {
+    const rq = await fetch(``)
+    const rs = await rq.json()
+    if (rs["status"]) {
+        rs["dados"].forEach(e => {
+            $("#descricao").val(e[0].descricao)
+            $("#valor_unitario").val(`R$ ${e[0].valorunitari}`)
+            $('#quantidade').keyup(() => {
+                var qtd = $(this).val()
+                var total = parseFloat(e[0]['valorunitario']) * Number(qtd)
+                $("#valor_total").val(`R$ ${parseFloat(total).toFixed(2)}`)
+            });
+        });
+    }
 }
