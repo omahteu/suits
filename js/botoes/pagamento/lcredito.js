@@ -1,9 +1,20 @@
-import link from "../../setup/index.js"
+// import link from "../../setup/index.js"
+import {RAIZ} from "../../raiz.js"
 
-export default function exibeCredito() {
-    $.get(link[4], e => {
-        e.forEach(el => {
-            $('#modo_pagamento').append(`<option value="${el.porcentagem}" >Crédito ${el.bandeira} - ${el.porcentagem}%</option>`)
+var band = {
+    1: 'American Express',
+    2: 'Elo',
+    3: 'Hipercard',
+    4: 'Mastercard',
+    5: 'Visa'
+}
+
+export default async function exibeCredito() {
+    const rq = await fetch(`http://${RAIZ}/suits/php/configuracoes/show/credito.php`)
+    const rs = await rq.json()
+    if (rs["status"]) {
+        rs["dados"].forEach(el => {
+            $('#modo_pagamento').append(`<option value="${el.porcentagem}" >Crédito ${band[el.bandeira]} - ${el.porcentagem}%</option>`)
         });
-    })
+    }
 }

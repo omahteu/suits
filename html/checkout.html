@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>Suits | Pagamento</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" type="image/png" href="../imagens/favicon-removebg-preview.png">
+  <link rel="shortcut icon" type="image/png" href="../imagens/motel (1).png">
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/matrix-style.css">
   <link rel="stylesheet" href="../css/matrix-media.css">
@@ -49,7 +49,7 @@
                   <li>
                     <a data-toggle="tab" href="#detalhes">Detalhes</a>
                   </li>
-                  <li>
+                  <li id="aba_produtos">
                     <a data-toggle="tab" href="#produtos">Produtos</a>
                   </li>
                   <li id="aba_desistencia">
@@ -94,6 +94,7 @@
                             <select id="modo_pagamento">
                               <option value="" hidden>Método de Pagamento</option>
                               <option value="dinheiro">Dinheiro</option>
+                              <option value="pix">PIX</option>
                             </select>
                             <select id="numero_parcelas">
                               <option value="0" hidden>Parcelas</option>
@@ -145,14 +146,14 @@
                         <!--Campo Código-->
                         <div class="control-group"> 
                           <div class="controls"> 
-                            <input type="text" id="codigo_produto" placeholder="Código"> 
+                            <input type="text" name="codigo_produto" id="codigo_produto" placeholder="Código"> 
                           </div>
                         </div>
 
                         <!--Campo Produto-->
                         <div class="control-group"> 
                           <div class="controls"> 
-                            <select name="" id="lista_produto">
+                            <select name="lista_produto" id="lista_produto">
                               <option value="" hidden>Produto</option>
                             </select>
                           </div>
@@ -161,28 +162,28 @@
                         <!--Campo Quantidade-->
                         <div class="control-group"> 
                           <div class="controls"> 
-                            <input type="text" id="quantidade_produto" placeholder="Quantidade"> 
+                            <input type="text" name="quantidade" id="quantidade" placeholder="Quantidade"> 
                           </div>
                         </div>
 
                         <!--Campo Descrição-->
                         <div class="control-group"> 
                           <div class="controls"> 
-                            <input type="text" id="descricao_produto" placeholder="Descrição" disabled> 
+                            <input type="text" name="descricao" id="descricao" placeholder="Descrição" readonly> 
                           </div>
                         </div>
 
                         <!--Campo Valor Unitário-->
                         <div class="control-group"> 
                           <div class="controls"> 
-                            <input type="text" id="valor_unitario_produto" placeholder="Valor Unitário" disabled> 
+                            <input type="text" name="valor_unitario" id="valor_unitario" placeholder="Valor Unitário" readonly> 
                           </div>
                         </div>
 
                         <!--Campo Total-->
                         <div class="control-group"> 
                           <div class="controls"> 
-                            <input type="text" id="total_produto" placeholder="Total" disabled> 
+                            <input type="text" name="valor_total" id="valor_total" placeholder="Total" readonly> 
                           </div>
                         </div>
 
@@ -313,28 +314,30 @@
   </div>
 </body>
   <script src="../js/jquery.js"></script>
-  <script src="../js/estilo/shortcut.js"></script>
-  <script src="../js/estilo/funcoesGlobal.js"></script>
-  <script src="../js/estilo/datatables.min.js"></script>
+  <!-- <script src="../js/estilo/shortcut.js"></script> -->
+  <!-- <script src="../js/estilo/funcoesGlobal.js"></script> -->
+  <!-- <script src="../js/estilo/datatables.min.js"></script> -->
   <script src="../js/estilo/sweetalert.min.js"></script>
   <script src="../js/estilo/bootstrap.min.js"></script>
   <script src="../js/estilo/matrix.js"></script>
   <script src="https://kit.fontawesome.com/88ea2c002f.js" crossorigin="anonymous"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/moment.min.js"></script>
 
+  <script src="../js/estilo/nomes.js"></script>
   <script src="../js/setup/sitePath.js"></script>
+
   <script type="module" src="../js/relatorios/getExibeCamareira.js"></script>  
+  <script type="module" src="../js/armazem/armazemCheckout.js"></script>
+  <script type="module" src="../js/checkout/produtos.js"></script>
 
   
-  
-  <script type="module" src="../js/armazem/armazemCheckout.js"></script>
-  <script src="../js/relatorios/getProduto.js"></script>
+  <!-- <script src="../js/relatorios/getProduto.js"></script> -->
   <script type="module" src="../js/setup/desistencia.js"></script>
-  <script src="../js/estilo/nomes.js"></script>
+
 
   <script type="module" src="../js/contadores/auditoria.js"></script>
 
-  <script type="module" src="../qwertyu.js"></script>
+ 
 
   <script type="module" src="../js/checkout/index.js"></script>
 

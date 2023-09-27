@@ -23,7 +23,7 @@ $(document).on("click", "#registrar_produto", function() {
 						ll(suite)
 					}
 				};
-				xhr.send(dadosphp);
+				xhr.send(dadosphp)
 			}, 1500);
 		}
 	} catch (error) {

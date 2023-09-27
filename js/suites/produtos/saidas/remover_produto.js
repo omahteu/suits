@@ -13,7 +13,6 @@ $(document).on("click", "#remocaoProduto", function () {
         alert('Produto não excluido!\nÉ necessário o motivo da exclusão do produto!')
     } else {
         let dados = 'tabela=' + 'comanda' + '&coluna=' + 'id' + '&valor=' + id
-        console.log(dados, suite)
         apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, dados)
         ll(suite)
     }

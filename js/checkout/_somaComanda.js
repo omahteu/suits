@@ -1,13 +1,16 @@
-import link from "../setup/index.js"
+// import link from "../setup/index.js"
+import { RAIZ } from "../raiz.js"
 
 export async function somaComanda(suite) {
 	let total = 0
-	const rq = await fetch(link[5])
+	const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/comanda.php`)
 	const rs = await rq.json()
-	let ficha = rs.filter(i => i.suite == suite)
-	ficha.forEach(el => {
-		const valores = el.valor_total
-		total += parseFloat(valores)
-	})
-	$("#valorItens").text(parseFloat(total).toFixed(2))
+	if (rs["status"]) {
+		let ficha = rs["dados"].filter(i => i.suite == suite)
+		ficha.forEach(el => {
+			const valores = el.valor_total
+			total += parseFloat(valores)
+		})
+		$("#valorItens").text(parseFloat(total).toFixed(2))
+	}
 }

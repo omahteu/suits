@@ -1,11 +1,21 @@
-import link from "../setup/index.js"
+// import link from "../setup/index.js"
+import { RAIZ } from "../raiz.js";
 
-export default function adicionais(suite, id_quarto, id_permanencia) {
+export default async function adicionais(suite, id_quarto, id_permanencia) {
 	setTimeout(() => {
 		let quarto = $(`#${id_quarto}`).text()
 		let valor = 0
-		$.get(link[36], e => {
-			let ficha = e.filter(i => i.suite == suite)
+		add(suite, id_permanencia, quarto, valor)
+	}, 1000);
+}
+
+
+async function add(suite, id_permanencia, quarto, valor) {
+	const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/cofre.php`)
+	const rs = await rq.json()
+	if (rs["status"]) {
+		rs["dados"].forEach(e => {
+			let ficha = rs["dados"].filter(i => i.suite == suite)
 			if (ficha.length == 0) {
 				$(`#${id_permanencia}`).text("0.00")
 			} else {
@@ -15,6 +25,6 @@ export default function adicionais(suite, id_quarto, id_permanencia) {
 				let adicionado = parseFloat(valor) - parseFloat(quarto)
 				$(`#${id_permanencia}`).text(parseFloat(adicionado).toFixed(2))
 			}
-		})
-	}, 1000);
+		});
+	}
 }
