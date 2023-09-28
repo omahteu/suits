@@ -883,9 +883,10 @@
 }
 
 .revisao {
-    background: greenyellow;
+    background: whitesmoke;
     color: #000;
-    border: 2px solid greenyellow;
+    border: 2px solid whitesmoke;
+    border-bottom: 2px;
     border-radius: 10%;
     width: 80px;
     height: 40px;
