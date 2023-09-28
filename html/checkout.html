@@ -46,7 +46,7 @@
                   <li class="active">
                     <a data-toggle="tab" href="#opcoes">Opções de Pagamento</a>
                   </li>
-                  <li>
+                  <li id="listap">
                     <a data-toggle="tab" href="#detalhes">Detalhes</a>
                   </li>
                   <li id="aba_produtos">
@@ -93,7 +93,7 @@
                           <form id="bandeiras_cartoes">
                             <select id="modo_pagamento">
                               <option value="" hidden>Método de Pagamento</option>
-                              <option value="dinheiro">Dinheiro</option>
+                              <option value="dinheiro" selected>Dinheiro</option>
                               <option value="pix">PIX</option>
                             </select>
                             <select id="numero_parcelas">
@@ -142,48 +142,62 @@
                           <input type="text" id="pessoasProduto" placeholder="Pessoas"> 
                         </div>
                       </div>-->
-                      <form id="produtos_checkout">
-                        <!--Campo Código-->
-                        <div class="control-group"> 
-                          <div class="controls"> 
-                            <input type="text" name="codigo_produto" id="codigo_produto" placeholder="Código"> 
+                      <form id="produtos_checkout" method="post">
+
+                        <!--Código-->
+                        <div class="control-group">
+                          <div class="controls" id="campo_produtos">
+                            <input type="text" name="codigo_produto" id="codigo_produto" placeholder="Código">
                           </div>
                         </div>
 
-                        <!--Campo Produto-->
-                        <div class="control-group"> 
-                          <div class="controls"> 
-                            <select name="lista_produto" id="lista_produto">
-                              <option value="" hidden>Produto</option>
+                        <!--Produtos-->
+                        <div class="control-group">
+                          <div class="controls" id="campo_produtos">
+                            <select name="checkbox_produto" id="checkbox_produto">
+                              <option hidden>Produto</option>
                             </select>
                           </div>
                         </div>
 
-                        <!--Campo Quantidade-->
-                        <div class="control-group"> 
-                          <div class="controls"> 
-                            <input type="text" name="quantidade" id="quantidade" placeholder="Quantidade"> 
+                        <!--Quantidade-->
+                        <div class="control-group">
+                          <div class="controls" id="campo_produtos">
+                            <input type="text" name="quantidade" id="quantidade" placeholder="Quantidade">
                           </div>
                         </div>
 
-                        <!--Campo Descrição-->
-                        <div class="control-group"> 
-                          <div class="controls"> 
-                            <input type="text" name="descricao" id="descricao" placeholder="Descrição" readonly> 
+                        <!--Descrição-->
+                        <div class="control-group">
+                          <div class="controls" id="campo_produtos">
+                            <input type="text" name="descricao" id="descricao" placeholder="Descrição" readonly>
                           </div>
                         </div>
 
-                        <!--Campo Valor Unitário-->
-                        <div class="control-group"> 
-                          <div class="controls"> 
-                            <input type="text" name="valor_unitario" id="valor_unitario" placeholder="Valor Unitário" readonly> 
+                        <!--Valor Unitário-->
+                        <div class="control-group">
+                          <div class="controls" id="campo_produtos">
+                            <input type="text" name="valor_unitario" id="valor_unitario" placeholder="Valor Unitário"
+                              readonly>
                           </div>
                         </div>
 
-                        <!--Campo Total-->
-                        <div class="control-group"> 
-                          <div class="controls"> 
-                            <input type="text" name="valor_total" id="valor_total" placeholder="Total" readonly> 
+                        <!--Valor Total-->
+                        <div class="control-group">
+                          <div class="controls" id="campo_produtos">
+                            <input type="text" name="valor_total" id="valor_total" placeholder="Valor Total" readonly>
+                          </div>
+                        </div>
+
+                        <div class="control-group" hidden>
+                          <div class="controls" id="campo_produtos">
+                            <input type="text" name="hora" id="hora" value="">
+                          </div>
+                        </div>
+
+                        <div class="control-group" hidden>
+                          <div class="controls" id="campo_produtos">
+                            <input type="text" name="vs" id="vs" value="">
                           </div>
                         </div>
 
@@ -191,13 +205,13 @@
                         <div class="form-actions">
                           <div class="span8">
                             <div class="span9"> 
-                              <button type="button" class="button btn btn-primary" id="adicionar_produto"> 
+                              <button type="button" class="button btn btn-primary" id="registrar_produto"> 
                                 <span class="button__icon">
                                   <i class="fa-solid fa-floppy-disk"></i>
                                 </span>
                                 <span class="button__text2">Cadastrar</span>
                               </button>
-                              <button type="button" class="button btn btn-danger" id=""> 
+                              <button type="reset" class="button btn btn-danger" id=""> 
                                 <span class="button__icon">
                                   <i class="fa-solid fa-xmark"></i>
                                 </span>
@@ -326,16 +340,28 @@
   <script src="../js/estilo/nomes.js"></script>
   <script src="../js/setup/sitePath.js"></script>
 
-  <script type="module" src="../js/relatorios/getExibeCamareira.js"></script>  
-  <script type="module" src="../js/armazem/armazemCheckout.js"></script>
-  <script type="module" src="../js/checkout/produtos.js"></script>
+  <script type="module" src="../js/relatorios/getExibeCamareira.js"></script>
+  <!-- <script type="module" src="../js/armazem/armazemCheckout.js"></script>
+  <script type="module" src="../js/checkout/produtos.js"></script> -->
+  <!-- Produtos -->
+  <!-- <script type="module" src="../js/suites/produtos/entradas/registro.js"></script>
+  <script type="module" src="../js/suites/produtos/saidas/consumo_suites.js"></script>
+  <script type="module" src="../js/suites/produtos/saidas/calculo_consumo.js"></script> -->
+  <!-- <script type="module" src="../js/suites/produtos/saidas/produtos_disponiveis.js"></script> -->
+  <!-- <script type="module" src="../js/suites/produtos/saidas/remover_produto.js"></script> -->
+
+  <script type="module" src="../js/checkout/produtos/__init__.js"></script>
+  <script type="module" src="../js/checkout/produtos/registrar.js"></script>
+  <script type="module" src="../js/checkout/produtos/lista.js"></script>
+  <script type="module" src="../js/checkout/produtos/excluir.js"></script>
+
 
   
   <!-- <script src="../js/relatorios/getProduto.js"></script> -->
   <script type="module" src="../js/setup/desistencia.js"></script>
 
 
-  <script type="module" src="../js/contadores/auditoria.js"></script>
+  <!-- <script type="module" src="../js/contadores/auditoria.js"></script> -->
 
  
 

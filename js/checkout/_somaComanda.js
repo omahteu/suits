@@ -9,7 +9,7 @@ export async function somaComanda(suite) {
 		let ficha = rs["dados"].filter(i => i.suite == suite)
 		ficha.forEach(el => {
 			const valores = el.valor_total
-			total += parseFloat(valores)
+			total += parseFloat(valores.slice(3))
 		})
 		$("#valorItens").text(parseFloat(total).toFixed(2))
 	}

@@ -2,7 +2,7 @@ import { recupera_permanencia } from "../quartos/ajax/get/permanencia.js"
 // import atualizaValores from "../quartos/calculos/porHora.js"
 import { comanda } from "./_comanda.js"
 import { somaComanda } from "./_somaComanda.js"
-// import quarto from "./_quarto.js"
+import {vsuite} from "./_quarto.js"
 import adicionais from "./_adicionais.js"
 import { subtotal } from "./_subtotal.js"
 import { desconto } from "./_desconto.js"
@@ -13,7 +13,7 @@ $(document).ready(function () {
     var suite = JSON.parse(localStorage.getItem('last'))
     comanda(suite)
     somaComanda(suite)
-    // quarto(suite, "valorQuarto")
+    vsuite()
     recupera_permanencia(suite)
     // atualizaValores(suite)
     subtotal()
