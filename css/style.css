@@ -882,6 +882,17 @@
     font-size: 15px;
 }
 
+.revisao {
+    background: greenyellow;
+    color: #000;
+    border: 2px solid greenyellow;
+    border-radius: 10%;
+    width: 80px;
+    height: 40px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
 #botao_inferior_um, 
 #botao_inferior_dois, 
 #botao_inferior_tres, 
