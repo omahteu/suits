@@ -95,8 +95,8 @@ $(document).on('click', '#context', function () {
                 break
 
             case "revisao":
-                let man = taf.filter(l => l.suite == num)
-                if (man[0].modo == "l") {
+                let mans = taf.filter(l => l.suite == num)
+                if (mans[0].modo == "l") {
                     $(fm).html(
                         `
                         <input type="button" id="acoes1" class="btn btn-warning inferior" name="" data-toggle="" value="Disponibilizar Quarto">
