@@ -94,6 +94,26 @@ $(document).on('click', '#context', function () {
                 )
                 break
 
+            case "revisao":
+                let man = taf.filter(l => l.suite == num)
+                if (man[0].modo == "l") {
+                    $(fm).html(
+                        `
+                        <input type="button" id="acoes1" class="btn btn-warning inferior" name="" data-toggle="" value="Disponibilizar Quarto">
+                        <input type="button" id="acoes2" class="btn btn-warning inferior" name="" data-toggle="" value="Iniciar Faxina">
+                        <input type="button" id="acoes3" class="btn btn-warning inferior" name="" data-toggle="" value="Ligar Luz">
+                        `
+                    )
+                } else {
+                    $(fm).html(
+                        `
+                        <input type="button" id="acoes1" class="btn btn-warning inferior" name="" data-toggle="" value="Disponibilizar Quarto">
+                        <input type="button" id="acoes2" class="btn btn-warning inferior" name="" data-toggle="" value="Iniciar Faxina">
+                        `
+                    )
+                }
+                break
+
             default:
                 break;
         }
