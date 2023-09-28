@@ -1,4 +1,4 @@
-export default function limpeza(q, x, y, z) {
+export default function limpeza(q) {
     $(`.cardBox .card:nth-child(${q})`).css({
         "background": "#FFFF00"
     })

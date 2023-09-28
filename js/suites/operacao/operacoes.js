@@ -39,15 +39,17 @@ import { acao } from "../../setup/box.js"
 
 import suite_fica_disponivel from "./operacoes/disponibilizar_suite.js"
 import comecar_faxina from "./operacoes/iniciar_faxina.js"
-// import comecar_limpeza from "./operacoes/iniciar_limpeza.js"
+import comecar_limpeza from "./operacoes/iniciar_limpeza.js"
 import trocando_suite from "./operacoes/trocar_suite.js"
 import encerrando_suite from "./operacoes/encerrar.js"
-// import encerrando_limpeza from "./operacoes/encerrar_limpeza.js"
-// import encerrando_registro from "./operacoes/encerrar_registro.js"
+import encerrando_limpeza from "./operacoes/encerrar_limpeza.js"
+import encerrando_registro from "./operacoes/encerrar_registro.js"
 
 
 import encerrando_faxina from "./operacoes/encerrar_faxina.js"
 import encerrando_registro2 from "./operacoes/encerrar_registro2.js"
+
+import { RAIZ } from "../../raiz.js"
 
 $(document).on("click", ".inferior", function () {
     let status = $(this).val()
@@ -91,5 +93,7 @@ function reacao(status, suite) {
         encerrando_faxina(suite, usuario, tempo)
     } else if (status == acao[10]) {
         encerrando_registro2(suite)
+    } else if (status == "Finalizar") {
+        window.location.href = `http://${RAIZ}/suits/html/checkout.html`
     }
 }

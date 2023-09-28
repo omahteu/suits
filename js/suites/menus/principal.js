@@ -18,6 +18,7 @@ $(document).on('click', '#context', function () {
                 <button type="button" class="btn manutencao">Manutenção</button>
                 <button type="button" class="btn locado">Locação</button>
                 <button type="button" class="btn faxina">Faxina</button>
+                <button type="button" class="btn revisao">Revisão</button>
             `
         )
     } else {
@@ -80,6 +81,7 @@ $(document).on('click', '#context', function () {
                 $(fm).html(
                     `
                         <input type="button" id="acoes1" class="btn btn-warning inferior" value="Iniciar Limpeza">
+                        <input type="button" id="acoes2" class="btn btn-warning inferior" value="Finalizar">
                     `
                 )
                 break

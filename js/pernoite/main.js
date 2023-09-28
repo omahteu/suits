@@ -7,6 +7,7 @@ import receber from "../quartos/auxiliares/funcao4.js"
 import alterar from "../olivia/altera.js"
 import { play } from "../setup/start_relogios.js"
 import { clean } from "../setup/clean_relogios.js"
+import {RAIZ} from "../raiz.js"
 
 setInterval(() => {
     comecando_pernoite()

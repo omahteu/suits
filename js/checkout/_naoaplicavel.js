@@ -6,15 +6,10 @@ export function naoAplicavel() {
 		}
 	})
 	$(document).on("click", "#nao_aplicavel", function () {
-		let camareira = $("#selecionaCamareira :selected").text()
-		if (camareira == "Camareira") {
-			alert("selecione camareira")
-		} else {
-			$(this).css("background", "black")
-			$(this).attr("disabled", "true")
-			$("#aplicar_desconto").attr("disabled", "true")
-			$("#aplicar_desconto").css("background", "black")
-			$("#valor_desconto").attr("disabled", "true")
-		}
+		$(this).css("background", "black")
+		$(this).attr("disabled", "true")
+		$("#aplicar_desconto").attr("disabled", "true")
+		$("#aplicar_desconto").css("background", "black")
+		$("#valor_desconto").attr("disabled", "true")
 	})
 }

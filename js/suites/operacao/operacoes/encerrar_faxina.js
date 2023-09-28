@@ -20,11 +20,6 @@ export default async function encerrando_faxina(suite, usuario, tempo) {
             $("#selecionar_camareira").append(`<option>${i.nome}</option>`)
         });
     }
-    // $.get(link[3], e => {
-    //     e.forEach(i => {
-    //         $("#selecionar_camareira").append(`<option>${i.nome}</option>`)
-    //     });
-    // })
     setTimeout(() => {
         var dados = {caixa: usuario, data: data_atual(), hora: hora_atual(), suite: suite, tempo: tempo, camareira: ""}
         localStorage.setItem("faxina", JSON.stringify(dados))

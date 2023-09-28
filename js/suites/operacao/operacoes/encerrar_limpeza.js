@@ -1,9 +1,10 @@
 import { data_atual } from "../../../geradores/data.js"
 import { hora_atual } from "../../../geradores/hora.js"
-import link from "../../../setup/index.js"
+// import link from "../../../setup/index.js"
+import { RAIZ } from "../../../raiz.js"
 
 
-export default function encerrando_limpeza(suite, usuario, tempo) {
+export default async function encerrando_limpeza(suite, usuario, tempo) {
     if (confirm(`Encerrar limpeza da Suíte ${suite}?`) == true) {
         let fm = document.forms[3]
         $(fm).html(
@@ -17,11 +18,13 @@ export default function encerrando_limpeza(suite, usuario, tempo) {
         $("#acoes1").css({
             "margin-top": "-10px"
         })
-        $.get(link[3], e => {
-            e.forEach(i => {
+        const rq = await fetch(`http://${RAIZ}/suits/php/relatorios/camareiras.php`)
+        const rs = await rq.json()
+        if (rs["status"]) {
+            rs["dados"].forEach(i => {
                 $("#selecionar_camareira").append(`<option>${i.nome}</option>`)
             });
-        })
+        }
         setTimeout(() => {
             var dados = {caixa: usuario, data: data_atual(), hora: hora_atual(), suite: suite, tempo: tempo, camareira: ""}
             localStorage.setItem("limpeza", JSON.stringify(dados))
