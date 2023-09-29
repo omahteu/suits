@@ -1,6 +1,6 @@
 export default function pernoite(q, x, y, z) {
     $(`.cardBox .card:nth-child(${q})`).css({
-        "background": "#8B008B"
+        "background": "#EE82EE"
     })
     // $(`[name=${q}]`).css('display', 'none')
     // $("#acoes1").css('display', 'inline-block')
