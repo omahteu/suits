@@ -11,7 +11,7 @@ import {fimMenu} from "../setup/menu.js"
 import { RAIZ } from "../raiz.js"
 
 
-$(document).on("click", ".manutencao", function () {
+$(document).on("click", ".revisao", function () {
     const suite = $('#quarto_painel').text()
     const motivo = prompt("Motivo da Manutenção")
 

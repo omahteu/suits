@@ -91,8 +91,7 @@ async function comecando_pernoite() {
     
                         // Tratamento
                         let resta = s.split(":")
-    
-                        console.log(resta)
+
     
                         if (resta[0] <= -1) {
                             if (resta[1] * -1 > tlrnc - 60) {

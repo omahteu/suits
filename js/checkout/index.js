@@ -10,7 +10,7 @@ import { naoAplicavel } from "./_naoaplicavel.js"
 import { total } from "./_total.js"
 
 $(document).ready(function () {
-    var suite = JSON.parse(localStorage.getItem('last'))
+    var suite = localStorage.getItem('last')
     comanda(suite)
     somaComanda(suite)
     vsuite()

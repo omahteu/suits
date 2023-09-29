@@ -2,6 +2,7 @@
 // import link from "../../../setup/index.js"
 import apagar from "../../olivia/apaga.js"
 import { RAIZ } from "../../raiz.js"
+import {somaComanda} from "../_somaComanda.js"
 
 $(document).on("click", "#remocaoProduto", function () {
     let suite = localStorage.getItem('last')
@@ -15,6 +16,7 @@ $(document).on("click", "#remocaoProduto", function () {
         let dados = 'tabela=' + 'comanda' + '&coluna=' + 'id' + '&valor=' + id
         apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, dados)
         lli(suite)
+		somaComanda(suite)
     }
 })
 

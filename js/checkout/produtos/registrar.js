@@ -3,6 +3,7 @@ import receber from "../../quartos/auxiliares/funcao4.js"
 import {RAIZ} from "../../raiz.js"
 import { ll } from "../../armazem/leitura/produtos.js"
 import {hora_atual_segundos} from "../../geradores/hora.js"
+import {somaComanda} from "../_somaComanda.js"
 
 $(document).on("click", "#registrar_produto", function() {
 	let infos = receber("offs")
@@ -22,6 +23,7 @@ $(document).on("click", "#registrar_produto", function() {
 						alert("Produto adicionado!")
 						document.getElementById("produtos_checkout").reset()
 						ll(suite)
+						somaComanda(suite)
 					}
 				};
 				xhr.send(dados)

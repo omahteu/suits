@@ -102,9 +102,9 @@ async function trocaComanda(antigo, novo) {
     const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/comanda.php`)
     const rs = await rq.json()
     if (rs["status"]) {
-        let dados = rs["dados"].filter(item => item.suite === antigo)
-        dados.forEach(el => {
-            var dados = 'antigo=' + el.id + '&novo=' + novo
+        let dados = rs["dados"].filter(item => item.suite == antigo)
+        dados.forEach(e => {
+            var dados = 'antigo=' + e.id + '&novo=' + novo
             alterar(`http://${RAIZ}/suits/php/suites/editarcomanda.php`, dados, 'comanda', false, "", false, "")
         })
     }
