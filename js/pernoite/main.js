@@ -52,7 +52,9 @@ async function comecando_pernoite() {
     
                         if (horaPassada >= permanencia) {
                             if (minutoPassado > tlrnc) {
-                                ativar(ele.id, ele.suite, hora_atual_segundos(), ele.valor, fich2[0].pernoite)
+                                console.log(ficha[0].codigoSuite)
+                               
+                                ativar(ele.suite, hora_atual_segundos(), ele.valor, fich2[0].pernoite)
                             }
                         }
                     } else if (ele.tipo == "pernoite") {
@@ -122,7 +124,7 @@ async function comecando_pernoite() {
     }
 }
 
-function ativar(id, suite, hora, valor, valorpernoite) {
+function ativar(suite, hora, valor, valorpernoite) {
     pernoite(suite)
     var dados = 'hora='+ hora+ '&valor='+ valor+ '&suite='+ suite+ '&tipo='+ "pernoite"
     alterar(`http://${RAIZ}/suits/php/suites/informacoes.php`, dados)

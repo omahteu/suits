@@ -8,9 +8,11 @@ import { subtotal } from "./_subtotal.js"
 import { desconto } from "./_desconto.js"
 import { naoAplicavel } from "./_naoaplicavel.js"
 import { total } from "./_total.js"
+import {defa} from "./_defaultpag.js"
 
 $(document).ready(function () {
     var suite = localStorage.getItem('last')
+    defa()
     comanda(suite)
     somaComanda(suite)
     vsuite()
