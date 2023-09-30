@@ -1,8 +1,8 @@
 // Imports listados por ordem alfabética das pastas
 // import { registraLimiteManutencao, registraLimiteDesistencia, registraLimiteLimpeza } from "../../qwertyu.js"
 
-// import desligar_luz from "../automacao/desligar.js"
-// import ligar_luz from "../automacao/ligar.js"
+import desligar_luz from "../../automacao/desligar.js"
+import ligar_luz from "../../automacao/ligar.js"
 
 // import ultima_limpeza from "../botoes/limpar.js"
 
@@ -51,6 +51,8 @@ import encerrando_registro2 from "./operacoes/encerrar_registro2.js"
 
 import { RAIZ } from "../../raiz.js"
 
+import salvar from "../../olivia/salva.js"
+
 $(document).on("click", ".inferior", function () {
     let status = $(this).val()
     let suite = $("#quarto_painel").text()
@@ -79,16 +81,21 @@ function reacao(status, suite) {
     } else if (status == acao[6]) {
         encerrando_registro(suite)
     } else if (status == acao[7]) {
-        // $("#acoes3").val("Ligar Luz")
-        // desligar_luz(suite)
-        // localStorage.setItem("status_botao", "desligado")
-        // localStorage.setItem("luz", "desligada")
+        $("#acoes3").val('Ligar Luz')
+        setTimeout(() => {
+            desligar_luz(suite)
+            var vai = 'tabela=' + 'acoes' + '&coluna=' + 'suite' + '&valor=' + suite
+            apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, vai)
+            localStorage.setItem(`*${suite}`, 'off')
+        }, 650)
     } else if (status == acao[8]) {
-        // registraLimiteManutencao(suite, "a", "manutencao")
-        // $("#acoes").val("Apagar Luz")
-        // ligar_luz(suite)
-        // localStorage.setItem("status_botao", "ligado")
-        // localStorage.setItem("luz", "ligada")
+        $("#acoes3").val('Apagar Luz')
+        setTimeout(() => {
+            ligar_luz(suite)
+            let vai = 'suite=' + suite + '&situacao=' + 'on'
+            salvar(`http://${RAIZ}/suits/php/suites/sacoes.php`, vai)
+            localStorage.setItem(`*${suite}`, 'on')
+        }, 500);
     } else if (status == acao[9]) {
         encerrando_faxina(suite, usuario, tempo)
     } else if (status == acao[10]) {

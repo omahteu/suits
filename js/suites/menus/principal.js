@@ -10,7 +10,7 @@ $(document).on('click', '#context', function () {
     let taf = receber("tarefas")
 
     inicioMenu("modau-menu")
-    let fm = document.forms[3]
+    let fm = document.forms[2]
 
     if (filtro.length == 0) {
         $(fm).html(
@@ -52,13 +52,27 @@ $(document).on('click', '#context', function () {
             case "manutencao":
                 let man = taf.filter(l => l.suite == num)
                 if (man[0].modo == "l") {
-                    $(fm).html(
-                        `
-                        <input type="button" id="acoes1" class="btn btn-warning inferior" name="" data-toggle="" value="Disponibilizar Quarto">
-                        <input type="button" id="acoes2" class="btn btn-warning inferior" name="" data-toggle="" value="Iniciar Faxina">
-                        <input type="button" id="acoes3" class="btn btn-warning inferior" name="" data-toggle="" value="Ligar Luz">
-                        `
-                    )
+                    let situa = localStorage.getItem(`*${num}`)
+                    if (situa == 'on' || situa == "") {
+                        //$("#acoes3").val('Apagar Luz')
+                        $(fm).html(
+                            `
+                            <input type="button" id="acoes1" class="btn btn-warning inferior" name="" data-toggle="" value="Disponibilizar Quarto">
+                            <input type="button" id="acoes2" class="btn btn-warning inferior" name="" data-toggle="" value="Iniciar Faxina">
+                            <input type="button" id="acoes3" class="btn btn-warning inferior" name="" data-toggle="" value="Apagar Luz">
+                            `
+                        )
+                    } else {
+                       //$("#acoes3").val('Ligar Luz')
+                        $(fm).html(
+                            `
+                            <input type="button" id="acoes1" class="btn btn-warning inferior" name="" data-toggle="" value="Disponibilizar Quarto">
+                            <input type="button" id="acoes2" class="btn btn-warning inferior" name="" data-toggle="" value="Iniciar Faxina">
+                            <input type="button" id="acoes3" class="btn btn-warning inferior" name="" data-toggle="" value="Ligar Luz">
+                            `
+                        )
+                    }
+
                 } else {
                     $(fm).html(
                         `

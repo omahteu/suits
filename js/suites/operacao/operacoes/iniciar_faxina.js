@@ -1,4 +1,4 @@
-// import ligar_luz from "../../../automacao/ligar.js"
+import ligar_luz from "../../../automacao/ligar.js"
 import envia_dados_manutencao from "../../../caixa/manutencao.js"
 import { data_atual } from "../../../geradores/data.js"
 import { hora_atual } from "../../../geradores/hora.js"
@@ -9,6 +9,8 @@ import { stop } from "../../../setup/stop_relogios.js"
 import { clean } from "../../../setup/clean_relogios.js"
 import faxina from "../../../tags/faxina.js"
 import receber from "../../../quartos/auxiliares/funcao4.js"
+import salvar from "../../../olivia/salva.js"
+import { RAIZ } from "../../../raiz.js"
 
 export default function comecar_faxina(suite, usuario, tempo) {
 
@@ -22,10 +24,11 @@ export default function comecar_faxina(suite, usuario, tempo) {
             stop[suite]()
             clean[suite](suite)
             play[suite](suite, "0", "0", "0")
-            // setTimeout(() => {
-            //     ligar_luz(suite)
-            //     localStorage.setItem("luz", "ligada")
-            // }, 500)
+            setTimeout(() => {
+                ligar_luz(suite)
+                let vai = 'suite=' + suite + '&situacao=' + 'on'
+                salvar(`http://${RAIZ}/suits/php/suites/sacoes.php`, vai)
+            }, 100);
             setTimeout(() => { atualiza_status_e_reinicia(suite, "faxina"), 100 })
             setTimeout(() => { faxina(suite) }, 200)
             setTimeout(() => { fimMenu() }, 300)
@@ -33,10 +36,11 @@ export default function comecar_faxina(suite, usuario, tempo) {
             stop[suite]()
             clean[suite](suite)
             play[suite](suite, "0", "0", "0")
-            // setTimeout(() => {
-            //     ligar_luz(suite)
-            //     localStorage.setItem("luz", "ligada")
-            // }, 500)
+            setTimeout(() => {
+                ligar_luz(suite)
+                let vai = 'suite=' + suite + '&situacao=' + 'on'
+                salvar(`http://${RAIZ}/suits/php/suites/sacoes.php`, vai)
+            }, 100);
             setTimeout(() => { atualiza_status_e_reinicia(suite, "faxina"), 100 })
             setTimeout(() => { faxina(suite) }, 200)
             setTimeout(() => { fimMenu() }, 300)

@@ -34,11 +34,14 @@ export default function suite_fica_disponivel(suite, usuario, tempo) {
         setTimeout(() => { ultima_limpeza(suite) }, 200)
 
         // Apagando a Luz
-        setTimeout(() => {
-            desligar_luz(suite)
-            var vai = 'tabela=' + 'acoes' + '&coluna=' + 'suite' + '&valor=' + suite
-            apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, vai)
-        }, 650)
+        if (tipo[0].tipo != "manutencao") {
+            setTimeout(() => {
+                desligar_luz(suite)
+                var vai = 'tabela=' + 'acoes' + '&coluna=' + 'suite' + '&valor=' + suite
+                apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, vai)
+            }, 650)
+        }
+
 
         // Remoção do Registro de Locação
         setTimeout(() => { encerrar_tarefas(suite) }, 400)
