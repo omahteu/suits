@@ -33,6 +33,11 @@ export function index(suite, tipo) {
             //envia_informacoes(datahora, "", suite, tipo)
             break
 
+        case "revisao":
+            var dados = 'hora=' + hora_atual_segundos() + '&valor=' + '0' + '&suite=' + suite + '&tipo=' + tipo
+            salvar(`http://${RAIZ}/suits/php/suites/prima/infom.php`, dados, false, "", false, "")
+            break
+
         default:
             break;
     }

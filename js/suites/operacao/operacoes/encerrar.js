@@ -6,6 +6,7 @@ import { stop } from "../../../setup/stop_relogios.js"
 import aguardando from "../../../tags/aguardo.js"
 import desfazer from "../../../tags/desfazer.js"
 import { fimMenu } from "../../../setup/menu.js"
+import ag_pagamento from "../../../tags/apagamento.js"
 
 export default function encerrando_suite(h, m, s, suite) {
 
@@ -25,9 +26,9 @@ export default function encerrando_suite(h, m, s, suite) {
 
         setTimeout(() => { fimMenu() }, 500)
 
-        setTimeout(() => { aguardando(suite) }, 600)
+        setTimeout(() => { ag_pagamento(suite) }, 600)
 
-        setTimeout(() => { atualiza_status(suite, "aguardando"), 700 })
+        setTimeout(() => { atualiza_status(suite, "apagamento"), 700 })
 
         setTimeout(() => { window.open('../html/checkout.html', '_blank') }, 800)
     }

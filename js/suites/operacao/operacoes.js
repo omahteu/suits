@@ -94,6 +94,6 @@ function reacao(status, suite) {
     } else if (status == acao[10]) {
         encerrando_registro2(suite)
     } else if (status == "Finalizar") {
-        window.location.href = `http://${RAIZ}/suits/html/checkout.html`
+        encerrando_suite(h, m, s, suite)
     }
 }

@@ -6,14 +6,14 @@ import {index} from "../tags/particao.js"
 import {fimMenu} from "../setup/menu.js"
 // import {registraLimiteManutencao} from "../suites/tarefas/registros/manutencao.js"
 
-// import { limited } from "../suites/tarefas/registros/limites.js"
+import { limited } from "../suites/tarefas/registros/limites.js"
 
 import { RAIZ } from "../raiz.js"
 
 
 $(document).on("click", ".revisao", function () {
     const suite = $('#quarto_painel').text()
-    const motivo = prompt("Motivo da Manutenção")
+    const motivo = prompt("Motivo da Revisão")
 
     localStorage.setItem("motivo", motivo)
 
@@ -21,9 +21,9 @@ $(document).on("click", ".revisao", function () {
 
         if (motivo.length > 0) {
 
-            setTimeout(() => { manutencao(suite) }, 1)
+            setTimeout(() => { revisao(suite) }, 1)
 
-            // setTimeout(() => { limited(`http://${RAIZ}/suits/php/suites/limitemanutencao.php`, `manutencaoTempo`, suite, "l", "luz") }, 200)
+            setTimeout(() => { limited(`http://${RAIZ}/suits/php/suites/limitemanutencao.php`, `manutencaoTempo`, suite, "l", "luz") }, 200)
     
             setTimeout(() => { index(suite, "revisao") }, 300)
     
