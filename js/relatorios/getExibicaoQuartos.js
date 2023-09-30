@@ -44,7 +44,7 @@ $(document).on('click', '[class="card"]', function () {
     $("#quarto_painel").text(passo4)
     $("#suiteE").attr("value", passo4)
 	$("#hora").attr("value", hora_atual_segundos())
-	$("#vs").attr("value", $("#vq_painel").text())
+	//$("#vs").attr("value", $("#vq_painel").text())
     // var fm = document.forms['botoes']
     // var el = fm.elements
     // el[0].setAttribute("name", passo4)

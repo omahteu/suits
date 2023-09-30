@@ -8,7 +8,11 @@ $(document).on('click', '[class="card"]', function () {
     let base = receber("offs")
     let ficha = base.filter(i => i.suite == suite)
     try {
-        $("#vq_painel").text(parseFloat(ficha[0].valor).toFixed(2))
+        if (ficha.length != 0) {
+            $("#vq_painel").text(parseFloat(ficha[0].valor).toFixed(2))
+        } else {
+            $("#vq_painel").text(parseFloat('0.00'))
+        }
     } catch (error) {
         sessionStorage.setItem('_quarto.js', `[LOGS] | ${error}`)
     }

@@ -59,7 +59,6 @@ export async function ll(suite = "0") {
 		comanda.innerHTML = '';
 		try {
 			var dados = rs["dados"].filter(l => l.suite == suite)
-			console.log(dados)
 			dados.forEach( (i) => {
 				comanda.innerHTML += `
 					<tr>
