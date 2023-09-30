@@ -1,4 +1,4 @@
-// import desligar_luz from "../../../automacao/desligar.js"
+import desligar_luz from "../../../automacao/desligar.js"
 import ultima_limpeza from "../../../botoes/limpar.js"
 import envia_dados_manutencao from "../../../caixa/manutencao.js"
 import { data_atual } from "../../../geradores/data.js"
@@ -9,6 +9,8 @@ import { stop } from "../../../setup/stop_relogios.js"
 import { clean } from "../../../setup/clean_relogios.js"
 import desfazer from "../../../tags/desfazer.js"
 import receber from "../../../quartos/auxiliares/funcao4.js"
+import apagar from "../../../olivia/apaga.js"
+import { RAIZ } from "../../../raiz.js"
 
 
 export default function suite_fica_disponivel(suite, usuario, tempo) {
@@ -32,12 +34,11 @@ export default function suite_fica_disponivel(suite, usuario, tempo) {
         setTimeout(() => { ultima_limpeza(suite) }, 200)
 
         // Apagando a Luz
-        // if (verificaoLuz == "ligada") {
-        //     setTimeout(() => {
-        //         desligar_luz(suite)
-        //         localStorage.setItem("luz", "desligada")
-        //     }, 300)
-        // }
+        setTimeout(() => {
+            desligar_luz(suite)
+            var vai = 'tabela=' + 'acoes' + '&coluna=' + 'suite' + '&valor=' + suite
+            apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, vai)
+        }, 650)
 
         // Remoção do Registro de Locação
         setTimeout(() => { encerrar_tarefas(suite) }, 400)

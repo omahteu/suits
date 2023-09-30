@@ -13,6 +13,8 @@ import { limited } from "../suites/tarefas/registros/limites.js"
 
 import { RAIZ } from "../raiz.js"
 
+import salvar from "../olivia/salva.js"
+
 
 $(document).on("click", ".faxina", function () {
     const suite = $('#quarto_painel').text()
@@ -20,11 +22,13 @@ $(document).on("click", ".faxina", function () {
     if (confirm(`Iniciar Faxina na Suíte ${suite}?`) == true) {
 
         setTimeout(() => { faxina(suite) }, 1)
+
+        setTimeout(() => {
+            ligar_luz(suite)
+            let vai = 'suite=' + suite + '&situacao=' + 'on'
+            salvar(`http://${RAIZ}/suits/php/suites/sacoes.php`, vai)
+        }, 100);
         
-        // setTimeout ( () => {ligar_luz(suite)
-        //             localStorage.setItem("luz", "ligada")               }, 100)
-        
-        //setTimeout(() => { registraLimite(suite, "b", "faxina") }, 200)
         setTimeout(() => { limited(`http://${RAIZ}/suits/php/suites/limitemanutencao.php`, `faxinaTempo`, suite, "b", "faxina") }, 200)
 
         setTimeout(() => { index(suite, "faxina") }, 300)

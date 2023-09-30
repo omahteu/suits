@@ -1,4 +1,4 @@
-import {desligar_luz} from "../../../automacao/desligar.js"
+import desligar_luz from "../../../automacao/desligar.js"
 import {atualizarTarefa} from "../../../quartos/estrutural/tarefa.js"
 
 export function executor_tarefas(sistema, agora, id, tag) {

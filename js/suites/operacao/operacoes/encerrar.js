@@ -3,7 +3,7 @@ import registraLimiteDesistencia from "../../tarefas/registros/desistencia.js"
 import tempo_pausado from "../../../quartos/ajax/post/decorrido.js"
 import atualiza_status from "../../../setup/atualiza.js"
 import { stop } from "../../../setup/stop_relogios.js"
-import aguardando from "../../../tags/aguardo.js"
+// import aguardando from "../../../tags/aguardo.js"
 import desfazer from "../../../tags/desfazer.js"
 import { fimMenu } from "../../../setup/menu.js"
 import ag_pagamento from "../../../tags/apagamento.js"
@@ -14,22 +14,25 @@ export default function encerrando_suite(h, m, s, suite) {
     if (confirm(`Encerrar a Suíte ${suite}?`)) {
 
         localStorage.setItem("last", suite)
-        //desligar_luz(suite)
 
-        setTimeout(() => { registraLimiteDesistencia(suite, "a", "desistencia") }, 100)
+        // setTimeout(() => {
+        //     desligar_luz(suite)
+        // }, 2000);
 
-        setTimeout(() => { tempo_pausado(h, m, s, suite) }, 200)
+        setTimeout(() => { registraLimiteDesistencia(suite, "a", "desistencia") }, 200)
 
-        setTimeout(() => { stop[suite]() }, 300);
+        setTimeout(() => { tempo_pausado(h, m, s, suite) }, 300)
 
-        setTimeout(() => { desfazer(suite) }, 400)
+        setTimeout(() => { stop[suite]() }, 400);
 
-        setTimeout(() => { fimMenu() }, 500)
+        setTimeout(() => { desfazer(suite) }, 500)
 
-        setTimeout(() => { ag_pagamento(suite) }, 600)
+        setTimeout(() => { fimMenu() }, 600)
 
-        setTimeout(() => { atualiza_status(suite, "apagamento"), 700 })
+        setTimeout(() => { ag_pagamento(suite) }, 700)
 
-        setTimeout(() => { window.open('../html/checkout.html', '_blank') }, 800)
+        setTimeout(() => { atualiza_status(suite, "apagamento"), 800 })
+
+        setTimeout(() => { window.open('../html/checkout.html', '_blank') }, 1000)
     }
 }
