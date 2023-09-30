@@ -1,6 +1,6 @@
 // import registraLimite from "../suites/tarefas/registros/faxina.js"
 
-// import ligar_luz from "../automacao/ligar.js"
+import ligar_luz from "../automacao/ligar.js"
 
 import { play } from "../setup/start_relogios.js"
 
