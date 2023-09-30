@@ -60,12 +60,15 @@ export async function ll(suite = "0") {
 		try {
 			var dados = rs["dados"].filter(l => l.suite == suite)
 			dados.forEach( (i) => {
+				var vt = String(i.valor_total)
+				var vt2 = vt.match(/\D+|\d+/g)
+				console.log(vt2)
 				comanda.innerHTML += `
 					<tr>
 						<td>${i.descricao}</td>
 						<td>${i.quantidade}</td>
 						<td>${i.valor_unitario}</td>
-						<td>${i.valor_total}</td>
+						<td>R$${parseFloat(vt2[1]).toFixed(2)}</td>
 						<td><button type="button" id="remocaoProduto" name="${i.id}" class="btn btn-danger">Remover</button></td>
 					</tr>
 				`
