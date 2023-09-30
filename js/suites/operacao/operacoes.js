@@ -52,6 +52,7 @@ import encerrando_registro2 from "./operacoes/encerrar_registro2.js"
 import { RAIZ } from "../../raiz.js"
 
 import salvar from "../../olivia/salva.js"
+import apagar from "../../olivia/apaga.js"
 
 $(document).on("click", ".inferior", function () {
     let status = $(this).val()
