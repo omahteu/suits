@@ -56,7 +56,7 @@ function iniciando(antigo, suite, hora, minuto, segundo) {
         var dados = base.filter(item => item.suite === antigo)
         dados.forEach(e => {
             sessionStorage.setItem("ficha", JSON.stringify(e))
-            console.log(`criando ficha | ${e}`)
+            //console.log(`criando ficha | ${e}`)
         })
 
     }, 500)
@@ -69,7 +69,7 @@ function iniciando(antigo, suite, hora, minuto, segundo) {
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
-                console.log(xhr.responseText);
+                //console.log(xhr.responseText);
                 //sessionStorage.removeItem("ficha")
             }
         };

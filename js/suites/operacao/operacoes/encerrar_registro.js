@@ -41,4 +41,26 @@ export default function encerrando_registro(suite) {
     setTimeout(() => { fechar_cofre(suite) }, 800)
 
     setTimeout(() => { encerrar_tarefas(suite) }, 900)
+
+    setTimeout(() => {
+        //let ant = $("#quarto_painel").text()
+        $("#vq_painel").text("0.00")
+        // let base = JSON.parse(sessionStorage.getItem('offs'))
+        // console.log(base)
+        // let ficha = base.filter(i => i.suite == suite)
+        // try {
+        //     ficha.forEach(i => {
+        //         if (i.suite != suite) {
+        //             $("#vq_painel").text("0.00")
+        //         } else {
+        //             $("#vq_painel").text(parseFloat(ficha[0].valor).toFixed(2))
+        //         }
+        //     });
+        // } catch (error) {
+        //     sessionStorage.setItem('_quarto.js', `[LOGS] | ${error}`)
+        // }
+    }, 1000);
+
+   
+
 }

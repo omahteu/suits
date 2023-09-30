@@ -30,7 +30,7 @@ export default function alterar(url, dados, tabela,  alerta = false, alerta_mens
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // A resposta do PHP pode ser manipulada aqui (se necessário)
-            console.log(xhr.responseText);
+            //console.log(xhr.responseText);
 
             alerta == true ? alert(mensagem) : ""
             recarregar == true ? location.reload() : ""

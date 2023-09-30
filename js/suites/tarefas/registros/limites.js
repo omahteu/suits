@@ -45,7 +45,7 @@ export async function limited(url, tt, suite, modo, tipo) {
 
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
-                console.log(xhr.responseText);
+                //console.log(xhr.responseText);
             }
         };
 

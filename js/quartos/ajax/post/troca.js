@@ -14,7 +14,7 @@ export async function registra_troca(caixa, antigo, novo){
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // A resposta do PHP pode ser manipulada aqui (se necessário)
-            console.log(xhr.responseText);
+            //console.log(xhr.responseText);
 
 
         }

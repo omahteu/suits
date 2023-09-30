@@ -14,12 +14,10 @@ export default async function ultima_limpeza(suite) {
     const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/comanda.php`)
     const rs = await rq.json()
     if (rs["status"]) {
-        rs["dados"].forEach(e => {
-            var dados = e.filter(quartos => quartos.quarto == suite)
-            dados.forEach(i => {
-                let ecomand = 'tabela=' + 'comanda' + '&coluna=' + 'suite' + '&valor=' + i.suite
-                apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, ecomand)
-            });
+        var dados = rs["dados"].filter(q => q.suite == suite)
+        dados.forEach(i => {
+            let ecomand = 'tabela=' + 'comanda' + '&coluna=' + 'suite' + '&valor=' + i.suite
+            apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, ecomand)
         });
     }
     // $.get(link[5], (e) => {

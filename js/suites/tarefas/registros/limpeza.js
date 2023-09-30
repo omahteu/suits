@@ -1,6 +1,7 @@
 import link from "../../../setup/index.js"
 import salvar from "../../../olivia/salva.js"
 import formatarData from "../../../geradores/data_formatada.js"
+import {RAIZ} from "../../../raiz.js"
 
 
 export default async function registraLimiteLimpeza(suite, modo, tipo) {
@@ -8,7 +9,8 @@ export default async function registraLimiteLimpeza(suite, modo, tipo) {
     const rs = await rq.json()
     if (rs["status"]) {
         rs["dados"].forEach(e => {
-            const tempoLimpeza = e[0].limpezaTempo
+            console.log(e)
+            const tempoLimpeza = e.limpezaTempo
             const data = new Date()
             data.setMinutes(data.getMinutes() + parseInt(tempoLimpeza))
             let dados = 'suite='+ suite+ '&modo='+ modo+ '&tipo='+ tipo+ '&horario='+ String(formatarData(data))
