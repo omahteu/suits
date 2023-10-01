@@ -5,15 +5,23 @@ import {url} from "../../urlbase.js"
 $(document).on("click", "#BuscaInfoProduto", function(){
     expandir(data_atual())
     let codigo_pesquisado = $("#codigoProduto").val()
+    let listacodigo = $("#lista_produtos :selected").val()
     var dd = $(this)[0].children[1]
     $(dd).text("Salvar")
     $("#acao_movimentacao").css("display", "inline")
     $("#quantidadeProduto").css("display", "inline")
     $("#SalvarMovimentoEstoque").css("display", "inline")
     setTimeout(() => {
-        return_produtos(codigo_pesquisado)
-        $("#lll").html("")
-        $(".button__text2").text("Salvar")
+
+        if (codigo_pesquisado == "") {
+            return_produtos(listacodigo)
+            $("#lll").html("")
+            $(".button__text2").text("Salvar")
+        } else {
+            return_produtos(codigo_pesquisado)
+            $("#lll").html("")
+            $(".button__text2").text("Salvar")
+        }
     }, 50);
 })
 

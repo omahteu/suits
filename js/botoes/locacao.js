@@ -23,8 +23,11 @@ $(document).on("click", ".locado", function () {
 
         setTimeout(() => { locado(suite) }, 1)
 
-        // setTimeout ( () => {ligar_luz(suite)
-        //                 localStorage.setItem("luz", "ligada")       }, 100)
+        setTimeout(() => {
+            ligar_luz(suite)
+            let vai = 'suite=' + suite + '&situacao=' + 'on'
+            salvar(`http://${RAIZ}/suits/php/suites/sacoes.php`, vai)
+        }, 100);
 
         setTimeout(() => { limited(`http://${RAIZ}/suits/php/suites/limitemanutencao.php`, `trocaTempo`, suite, "a", "troca") }, 200)
 

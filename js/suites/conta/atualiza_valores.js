@@ -30,8 +30,6 @@ function atualizaValores(suite) {
       let funil_suites = suites.filter(o => o.numeroSuite == funil[0].suite)
       let funil_precos = precos.filter(u => u.codigo == funil_suites[0].codigoSuite)
 
-      
-
       function verificarHoraPassada() {
         const horaAtual = moment();
         const diferencaEmHoras = horaAtual.diff(horarioRegistrado, 'hours')

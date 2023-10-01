@@ -15,10 +15,6 @@ export default function encerrando_suite(h, m, s, suite) {
 
         localStorage.setItem("last", suite)
 
-        // setTimeout(() => {
-        //     desligar_luz(suite)
-        // }, 2000);
-
         setTimeout(() => { registraLimiteDesistencia(suite, "a", "desistencia") }, 200)
 
         setTimeout(() => { tempo_pausado(h, m, s, suite) }, 300)

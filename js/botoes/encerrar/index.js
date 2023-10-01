@@ -6,6 +6,8 @@ import aguardando from "../../tags/aguardo.js"
 // import notas from "../../checkout/nota.js"
 import alterar from "../../olivia/altera.js"
 import {RAIZ} from "../../raiz.js"
+import desligar_luz from "../../automacao/desligar.js"
+import apagar from "../../olivia/apaga.js"
 
 $(document).on("click", "#encerrar", function () {
     //notas()
@@ -20,12 +22,11 @@ $(document).on("click", "#encerrar", function () {
         setTimeout(() => { registrar_pagamento() }, 300)
         setTimeout(() => { registrando() }, 500)
         setTimeout(() => { ocupacao() }, 800)
-        /*
         setTimeout(() => {
-            let id = localStorage.getItem("last")
-            desligar_luz(id)
-            localStorage.setItem("luz", "desligada")
-        }, 400)*/
+            desligar_luz(suite)
+            var vai = 'tabela=' + 'acoes' + '&coluna=' + 'suite' + '&valor=' + suite
+            apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, vai)
+        }, 650)
         setTimeout(() => { limpando() }, 900)
         setTimeout(() => { window.close() }, 1000)
     } else {

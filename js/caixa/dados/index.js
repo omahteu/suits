@@ -1,7 +1,10 @@
 import link from "../../setup/index.js";
+import {RAIZ} from "../../raiz.js"
 
 export async function _dados() {
-    const rq = await fetch(link[33])
+    const rq = await fetch(`http://${RAIZ}/suits/php/caixa/show/pagamentos.php`)
     const rs = await rq.json()
-    sessionStorage.setItem("pagamentos", JSON.stringify(rs))
+    if (rs['status']) {
+        sessionStorage.setItem("pagamentos", JSON.stringify(rs['dados']))
+    }
 }

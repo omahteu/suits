@@ -5,6 +5,8 @@ import { RAIZ } from "../../raiz.js"
 
 export async function alterarValor(suitex, valorx) {
 
+    console.log('ewr')
+
     const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/cofre.php`)
     const rs = await rq.json()
     if (rs["dados"]) {

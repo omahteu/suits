@@ -132,6 +132,9 @@
                   <li>
                     <a data-toggle="tab" href="#credito">Crédito</a>
                   </li>
+                  <li>
+                    <a data-toggle="tab" href="#afcaixa">Abertura / Fechamento</a>
+                  </li>
                 </ul>
 
                 <div class="widget-content nopadding tab-content">
@@ -200,6 +203,38 @@
                     </table>
                   </div>
 
+
+                  
+                  <!--CRÉDITO-->
+                  <div id="afcaixa" class="tab-pane fade">
+
+                    <form action="" class="form-horizontal">
+
+                      <!--Usuário-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" id="usuario" placeholder="Usuário" disabled>
+                        </div>
+                      </div>
+
+                      <!--Botões-->
+                      <div class="form-actions">
+                        <div class="span8">
+                          <div class="span9">
+                            <button type="button" class="button btn btn-danger" id="fecharCaixa">
+                              <span class="button__icon">
+                                <i class="fa-solid fa-xmark"></i>
+                              </span>
+                              <span class="button__text2">Encerrar Caixa</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+
+   
+                  </div>
+
                 </div>
               </div>
             </div>
@@ -232,6 +267,8 @@
   <!-- <script type="module" src="../js/caixa/sangria/sangria.js"></script> -->
   <!-- Máscara Valor Sangria -->
   <!-- <script src="../js/caixa/sangria/mascara.js"></script> -->
+
+  <script type="module" src="../js/caixa/fechamento/index.js"></script>
 </body>
 
 </html>
