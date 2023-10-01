@@ -37,24 +37,25 @@ function atualizaValores(suite) {
         const horaAtual = moment();
         const diferencaEmHoras = horaAtual.diff(horarioRegistrado, 'hours')
 
-        if (diferencaEmHoras >= 0 && diferencaEmHoras < 2) {
+        if (diferencaEmHoras >= 0 && diferencaEmHoras < 1) {
           alterarValor(suite, funil_precos[0].vh1)
-        } else if (diferencaEmHoras >= 2 && diferencaEmHoras < 3) {
+        } else if (diferencaEmHoras >= 1 && diferencaEmHoras < 2) {
           alterarValor(suite, funil_precos[0].vh2)
-        } else if(diferencaEmHoras >= 3 && diferencaEmHoras < 4) {
+        } else if(diferencaEmHoras >= 2 && diferencaEmHoras < 3) {
           alterarValor(suite, funil_precos[0].vh3)
-        } else if (diferencaEmHoras >= 4 && diferencaEmHoras < 5) {
+        } else if (diferencaEmHoras >= 3 && diferencaEmHoras < 4) {
           alterarValor(suite, funil_precos[0].vh4)
-        } else if (diferencaEmHoras >= 5 && diferencaEmHoras < 6) {
+        } else if (diferencaEmHoras >= 4 && diferencaEmHoras < 5) {
           alterarValor(suite, funil_precos[0].vh5)
-        } else if (diferencaEmHoras >= 6 && diferencaEmHoras < 7) {
+        } else if (diferencaEmHoras >= 5 && diferencaEmHoras < 6) {
           alterarValor(suite, funil_precos[0].vh6)
-        } else if (diferencaEmHoras >= 7 && diferencaEmHoras < 8) {
+        } else if (diferencaEmHoras >= 6 && diferencaEmHoras < 7) {
           alterarValor(suite, parseFloat(parseInt(funil_precos[0].vh6) + 10).toFixed(2))
         } else if (diferencaEmHoras >= 8 && diferencaEmHoras < 9) {
           console.log('Já se passou 8 hora desde o horário registrado.');
         }
       }
+
       setTimeout(() => {
         verificarHoraPassada()
       }, 1000);
@@ -62,7 +63,6 @@ function atualizaValores(suite) {
     } else if (modo_cobranca == "fixa") {
 
       let funil = alugados.filter(x => x.suite == suite)
-
       let iniciado = funil[0].hora
       let horarioDeEntrada = moment(iniciado, 'HH:mm:ss');
 
@@ -79,6 +79,9 @@ function atualizaValores(suite) {
       const horaAtual = moment();
       const diferencaEmHoras = horaAtual.diff(horarioDeEntrada, 'hours');
       const diferencaEmMinutos = horaAtual.diff(horarioDeEntrada, 'minutes')
+
+      console.log(diferencaEmHoras)
+      console.log(diferencaEmMinutos)
 
       if (diferencaEmHoras > limiteDeHoras || (diferencaEmHoras === limiteDeHoras && diferencaEmMinutos >= limiteDeMinutos)) {
         const valorDuplicado = valorInicial * 2

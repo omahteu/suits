@@ -57,10 +57,12 @@ import apagar from "../../olivia/apaga.js"
 $(document).on("click", ".inferior", function () {
     let status = $(this).val()
     let suite = $("#quarto_painel").text()
+
     reacao(status, suite)
 })
 
 function reacao(status, suite) {
+    console.log('wer')
     let h = $(`#hora${suite}`).text()
     let m = $(`#minuto${suite}`).text()
     let s = $(`#segundo${suite}`).text()
@@ -98,6 +100,7 @@ function reacao(status, suite) {
             localStorage.setItem(`*${suite}`, 'on')
         }, 500);
     } else if (status == acao[9]) {
+        console.log('dsfdsg')
         encerrando_faxina(suite, usuario, tempo)
     } else if (status == acao[10]) {
         encerrando_registro2(suite)

@@ -4,7 +4,7 @@ import { hora_atual } from "../../../geradores/hora.js"
 import {RAIZ} from "../../../raiz.js"
 
 export default async function encerrando_faxina(suite, usuario, tempo) {
-    let fm = document.forms[3]
+    let fm = document.forms[2]
     $(fm).html(
         `
             <select id="selecionar_camareira">

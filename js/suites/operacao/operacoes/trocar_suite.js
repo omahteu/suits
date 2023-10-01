@@ -1,7 +1,7 @@
 import Suitesdisponiveis from "../../../relatorios/quartosDisponiveis.js"
 
 export default function trocando_suite() {
-    let fm = document.forms[3]
+    let fm = document.forms[2]
     $(fm).html(
         `
             <input type="text" id="quarto_antigo" value="" disabled>
