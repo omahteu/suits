@@ -7,8 +7,8 @@ import _permissoes from "./permissoes/index.js"
 import {_dados} from "./dados/index.js"
 
 $(document).ready(function () {
-    // var nomeUsuario = localStorage.getItem('nome')
-    // $("#usuario").val(nomeUsuario)
+    var nomeUsuario = localStorage.getItem('nome')
+    $("#usuario").val(nomeUsuario)
     _dados()
     _abertura()
     _home()

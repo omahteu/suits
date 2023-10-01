@@ -27,7 +27,7 @@ async function clientes(usuario, senha) {
 // Geração de Credenciais
 function autenticacao(dados){
     dados.forEach(e => {
-        console.log(e)
+        console.log(e.usuarioUsuario)
         if(e.tipoUsuario === 'admin'){
             localStorage.setItem('usuarioLogado', 'admin')
             localStorage.setItem('nome', e.usuario)

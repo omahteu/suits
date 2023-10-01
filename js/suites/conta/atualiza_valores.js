@@ -12,6 +12,7 @@ $(document).on('click', '[class="card"]', function () {
 
 function atualizaValores(suite) {
   try {
+
     var alugados = receber("offs")
     var suites = receber("dados_suites")
     var precos = receber("tabela_precos")
@@ -20,9 +21,10 @@ function atualizaValores(suite) {
     var se_alugado_dados = suites.filter(e => e.numeroSuite == suite)
 
     var modo_cobranca = se_alugado_dados[0].cobrancaSuite
-
     
     if (modo_cobranca == "hora") {
+      
+      
       let funil = alugados.filter(x => x.suite == suite)
       let iniciado = funil[0].hora
       const horarioRegistrado = moment(iniciado, 'HH:mm:ss');
@@ -30,11 +32,10 @@ function atualizaValores(suite) {
       let funil_suites = suites.filter(o => o.numeroSuite == funil[0].suite)
       let funil_precos = precos.filter(u => u.codigo == funil_suites[0].codigoSuite)
 
+
       function verificarHoraPassada() {
         const horaAtual = moment();
         const diferencaEmHoras = horaAtual.diff(horarioRegistrado, 'hours')
-
-
 
         if (diferencaEmHoras >= 0 && diferencaEmHoras < 2) {
           alterarValor(suite, funil_precos[0].vh1)
@@ -54,9 +55,9 @@ function atualizaValores(suite) {
           console.log('Já se passou 8 hora desde o horário registrado.');
         }
       }
-
-      const intervaloDeVerificacao = 1000
-      setInterval(verificarHoraPassada, intervaloDeVerificacao);
+      setTimeout(() => {
+        verificarHoraPassada()
+      }, 1000);
 
     } else if (modo_cobranca == "fixa") {
 

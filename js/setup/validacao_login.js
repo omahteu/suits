@@ -1,19 +1,6 @@
-
-
-// $(document).ready(function() {
-//     var usuarioLogado = localStorage.getItem('usuarioLogado');
-//     if (!usuarioLogado) {
-//         window.location = "../suits/index.html"
-//     } else {
-//         window.location = "./html/home.html"
-//     }
-// })
-document.addEventListener("DOMContentLoaded", function() {
-    // Seu código JavaScript aqui
+$(window).on("load", function() {
     var usuarioLogado = localStorage.getItem('usuarioLogado');
-    if (!usuarioLogado) {
-        window.location = "../suits/index.html"
-    } else {
-    //     window.location = "./html/home.html"
+    if (usuarioLogado) {
+        window.location = "./html/home.html"
     }
-});
+})
