@@ -18,6 +18,5 @@ async function calculo(suite) {
 			sum += parseFloat(el.valor_total.replace(/[^\d.-]/g, ''))
 		})
 		$("#consumo_painel").text(sum.toFixed(2))
-		console.log(filtroComanda)
 	}
 }

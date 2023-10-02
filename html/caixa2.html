@@ -132,12 +132,12 @@
                   <li>
                     <a data-toggle="tab" href="#credito">Crédito</a>
                   </li>
-                  <li>
+                  <li id="abfeca">
                     <a data-toggle="tab" href="#afcaixa">Abertura / Fechamento</a>
                   </li>
                 </ul>
 
-                <div class="widget-content nopadding tab-content">
+                <div class="widget-content nopadding tab-content" id="abasq">
 
                   <!--CAIXA-->
                   <div id="caixa" class="tab-pane fade">
@@ -203,21 +203,14 @@
                     </table>
                   </div>
 
-
-                  
                   <!--CAIXA-->
                   <div id="afcaixa" class="tab-pane fade">
-
-                    <form action="" class="form-horizontal">
-
-                      <!--Usuário-->
+                    <div class="form-horizontal">
                       <div class="control-group">
                         <div class="controls">
                           <input type="text" id="usuario" placeholder="Usuário" disabled>
                         </div>
                       </div>
-
-                      <!--Botões-->
                       <div class="form-actions">
                         <div class="span8">
                           <div class="span9">
@@ -230,11 +223,8 @@
                           </div>
                         </div>
                       </div>
-                    </form>
-
-   
+                    </div>
                   </div>
-
                 </div>
               </div>
             </div>
@@ -261,14 +251,21 @@
   <script src="../js/estilo/nomes.js"></script>
   <!-- Listar Pagamentos -->
   <script type="module" src="../js/caixa/__init.__.js"></script>
-  <!-- <script type="module" src="../js/caixa/pagamentos/pagamentos.js"></script>
-  <script type="module" src="../js/caixa/pagamentos/saldo.js"></script> -->
+  <script type="module" src="../js/caixa/pagamentos/pagamentos.js"></script>
+  <script type="module" src="../js/caixa/pagamentos/saldo.js"></script>
   <!-- Sangria -->
-  <!-- <script type="module" src="../js/caixa/sangria/sangria.js"></script> -->
+  <script type="module" src="../js/caixa/sangria/sangria.js"></script>
   <!-- Máscara Valor Sangria -->
-  <!-- <script src="../js/caixa/sangria/mascara.js"></script> -->
+  <script src="../js/caixa/sangria/mascara.js"></script>
 
   <script type="module" src="../js/caixa/fechamento/index.js"></script>
+  <script type="module" src="../js/setup/validacao.js"></script>
+
+  <script>
+    var nomeUsuario = localStorage.getItem('nome')
+    $("#usuario").val(nomeUsuario)
+  </script>
+
 </body>
 
 </html>

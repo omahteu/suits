@@ -11,6 +11,7 @@ $(document).on("click", "#BuscaInfoProduto", function(){
     $("#acao_movimentacao").css("display", "inline")
     $("#quantidadeProduto").css("display", "inline")
     $("#SalvarMovimentoEstoque").css("display", "inline")
+    $("#lista_produtos").css("display", "none")
     setTimeout(() => {
 
         if (codigo_pesquisado == "") {

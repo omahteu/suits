@@ -41,16 +41,21 @@ $(document).on('click', '[class="card"]', function () {
     var passo2 = $(passo[0].children[0])
     var passo3 = $(passo2[0].children[1])
     var passo4 = passo3.text()
+    var cor = $(passo[0]).css("background-color")
     $("#quarto_painel").text(passo4)
     $("#suiteE").attr("value", passo4)
 	$("#hora").attr("value", hora_atual_segundos())
-	//$("#vs").attr("value", $("#vq_painel").text())
-    // var fm = document.forms['botoes']
-    // var el = fm.elements
-    // el[0].setAttribute("name", passo4)
-    // el[1].setAttribute("name", passo4)
-    // el[2].setAttribute("name", passo4)
-    // el[3].setAttribute("data-toggle", passo4)
-    // el[4].setAttribute("data-toggle", passo4)
-    // el[5].setAttribute("data-toggle", passo4)
+    console.log(cor)
+    if (cor == 'rgb(255, 255, 255)' || cor == 'rgb(255, 255, 0)') {
+        setTimeout(() => {
+            $("#vh_painel").text('0')
+            $("#vq_painel").text('0')
+            $("#consumo_painel").text('0')
+            $("#parcial_painel").text('0')
+            var tab = document.getElementById('listaProdutosComprados')
+            tab.innerHTML = ''
+            var pat = document.getElementById('listaveiculosguardados')
+            pat.innerHTML = ''
+        }, 1100);
+    }
 })

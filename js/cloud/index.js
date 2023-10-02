@@ -1,11 +1,15 @@
+import {RAIZ} from "../raiz.js"
+
+
 $(window).on("load", function() {
     autos()
 })
 
 async function autos() {
-    const rq = await fetch("http://192.168.11.10/suits/php/configuracoes/show/automacoes.php")
+    const rq = await fetch(`http://${RAIZ}/suits/php/configuracoes/show/automacoes.php`)
     const rs = await rq.json()
     if (rs["status"]) {
+        console.log(rs['dados'])
         let tabs = document.getElementById("cloud")
         tabs.innerHTML = ""
         rs["dados"].forEach(e => {

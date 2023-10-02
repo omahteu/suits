@@ -92,8 +92,6 @@ $(document).on('click', '#context', function () {
                 break
 
             case "aguardando":
-                //console.log(filtro)
-                //if (filtro[0].tipo == "aguardando")
                 $(fm).html(
                     `
                         <input type="button" id="acoes1" class="btn btn-warning inferior" value="Iniciar Limpeza">
