@@ -1,7 +1,7 @@
-import {produtos} from "./carregando.js"
-import { operantis } from "./operacao.js"
+import { produtos } from "./carregando.js";
+import { operantis } from "./operacao.js";
 
-$(window).on("load", function() {
-    produtos()
-    operantis()
-})
+$(window).on("load", function () {
+    produtos();
+    operantis();
+});
