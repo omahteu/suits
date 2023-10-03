@@ -5,7 +5,6 @@ export async function operantis(){
     const rs = await rq.json()
     if (rs["status"]) {
         $(document).on("change", "#checkbox_produto", function(){
-            console.log('dfds')
             var unid = $("#checkbox_produto :selected").text()
             let filtroCard = rs["dados"].filter(i => i.descricao == unid)
             $("#descricao").val(filtroCard[0].descricao)

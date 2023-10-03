@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $antigo = $_POST["antigo"];
     $novo = $_POST["novo"];
 
-    $sql = "UPDATE cofre SET valor='$novo' WHERE suite='$antigo'";
+    $sql = "UPDATE cofre SET suite='$novo' WHERE id='$antigo'";
 
     if ($conn->query($sql) === TRUE) {
         $stmt->close();

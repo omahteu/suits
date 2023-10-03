@@ -11,4 +11,4 @@ setInterval(() => {
     buscaLocacoes()
     buscaSuites()
     tarefas()
-}, 1000);
+}, 500);

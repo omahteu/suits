@@ -15,12 +15,12 @@ $(document).on("click", "#remocaoProduto", function () {
     } else {
         let dados = 'tabela=' + 'comanda' + '&coluna=' + 'id' + '&valor=' + id
         apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, dados)
-        lli(suite)
+        evb(suite)
 		somaComanda(suite)
     }
 })
 
-async function lli(suite) {
+async function evb(suite) {
 	const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/comanda.php`)
 	const rs = await rq.json()
 	if (rs["status"]) {
@@ -43,7 +43,9 @@ async function lli(suite) {
 			sessionStorage.setItem("produtos.js", `[LOGS] | ${error}`)
 		}
 	} else {
-		var comanda = document.getElementById('listaProdutosComprados');
+		var comanda = document.getElementById('comanda');
 		comanda.innerHTML = '';
 	}
 }
+
+

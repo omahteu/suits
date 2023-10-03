@@ -6,10 +6,11 @@ $(document).on('click', '[class="card"]', function () {
 	let r3 = $(r2[0].children[1])
 	let suite = r3.text()
     setTimeout(() => {
-		let quarto = $("#vq_painel").text()
-		let valor = 0
-		calculo(suite, quarto, valor)
+
 	}, 500);
+	let quarto = $("#vq_painel").text()
+	let valor = 0
+	calculo(suite, quarto, valor)
 })
 
 async function calculo(suite, quarto,  valor) {
@@ -21,6 +22,7 @@ async function calculo(suite, quarto,  valor) {
 			valor += parseFloat(el.valor)
 		});
 		let adicionado = parseFloat(valor) - parseFloat(quarto)
+		
 		$("#vh_painel").text(parseFloat(adicionado).toFixed(2))
 	}
 }

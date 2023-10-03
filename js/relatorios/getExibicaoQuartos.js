@@ -45,7 +45,6 @@ $(document).on('click', '[class="card"]', function () {
     $("#quarto_painel").text(passo4)
     $("#suiteE").attr("value", passo4)
 	$("#hora").attr("value", hora_atual_segundos())
-    console.log(cor)
     if (cor == 'rgb(255, 255, 255)' || cor == 'rgb(255, 255, 0)') {
         setTimeout(() => {
             $("#vh_painel").text('0')
@@ -56,6 +55,6 @@ $(document).on('click', '[class="card"]', function () {
             tab.innerHTML = ''
             var pat = document.getElementById('listaveiculosguardados')
             pat.innerHTML = ''
-        }, 1100);
+        }, 1000);
     }
 })
