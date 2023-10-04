@@ -20,10 +20,4 @@ export default async function ultima_limpeza(suite) {
             apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, ecomand)
         });
     }
-    // $.get(link[5], (e) => {
-    //     var dados = e.filter(quartos => quartos.quarto == suite)
-    //     dados.forEach(e => {
-    //         apagar(`${link[5]}${e.id}/`)
-    //     });
-    // })
 }

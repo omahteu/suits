@@ -2,7 +2,7 @@ import {fimMenu} from "../setup/menu.js"
 
 // import registraLimiteTroca from "../suites/tarefas/registros/locacao.js"
 
-// import ligar_luz from "../automacao/ligar.js"
+import ligar_luz from "../automacao/ligar.js"
 
 
 // import link from "../setup/index.js"
