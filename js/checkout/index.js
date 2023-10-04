@@ -7,7 +7,7 @@ import adicionais from "./_adicionais.js";
 import { subtotal } from "./_subtotal.js";
 import { desconto } from "./_desconto.js";
 import { naoAplicavel } from "./_naoaplicavel.js";
-import { total } from "./_total.js";
+import { total2 } from "./_total.js";
 import { defa } from "./_defaultpag.js";
 
 $(document).ready(function () {
@@ -22,5 +22,10 @@ $(document).ready(function () {
     adicionais(suite, "valorQuarto", "valor_addPermanencia");
     desconto();
     naoAplicavel();
-    total();
+
 });
+
+
+setTimeout(() => {
+    total2();
+}, 1500);
