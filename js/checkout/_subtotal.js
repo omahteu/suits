@@ -5,5 +5,6 @@ export function subtotal() {
     let adicional = parseFloat($("#valor_addPermanencia").text());
     let subTotal = quarto + comanda + adicional;
     $("#valor_subtotal").text(subTotal.toFixed(2));
+    localStorage.getItem('vsubtotal', subTotal.toFixed(2))
   }, 1000);
 }

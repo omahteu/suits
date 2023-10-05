@@ -1,6 +1,6 @@
 import { recupera_permanencia } from "../quartos/ajax/get/permanencia.js";
 // import atualizaValores from "../quartos/calculos/porHora.js"
-import { comanda } from "./_comanda.js";
+// import { comanda } from "./_comanda.js";
 import { somaComanda } from "./_somaComanda.js";
 import { vsuite } from "./_quarto.js";
 import adicionais from "./_adicionais.js";
@@ -13,7 +13,7 @@ import { defa } from "./_defaultpag.js";
 $(document).ready(function () {
     var suite = localStorage.getItem("last");
     defa();
-    comanda(suite);
+    // comanda(suite);
     somaComanda(suite);
     vsuite();
     recupera_permanencia(suite);
@@ -26,6 +26,7 @@ $(document).ready(function () {
 });
 
 
-setTimeout(() => {
-    total2();
-}, 1500);
+
+setInterval(() => {
+    total2()
+}, 1000);

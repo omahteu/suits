@@ -10,7 +10,7 @@ $tolerancia = $_POST["toleranciaSuite"];
 $cobranca = $_POST["cobrancaSuite"];
 $excedente = $_POST["excedenteSuite"];
 $query = "insert into suite(codigoSuite, numeroSuite, nomeSuite, horas_locacaoSuite, toleranciaSuite, cobrancaSuite, excedenteSuite) values(?, ?, ?, ?, ?, ?, ?)";
-$query2 = "INSERT INTO valor (codigo, locacao, pernoite, vh1, vh2, vh3, vh4, vh5, vh6) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+$query2 = "INSERT INTO valor (codigo, locacao, pernoite, vh1, vh2, vh3, vh4, vh5, vh6) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $a2 = '0';
 $a3 = '0';

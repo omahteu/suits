@@ -2,10 +2,10 @@ import { RAIZ } from "../../raiz.js";
 
 $(document).on("click", "#listap", function () {
     var suite = localStorage.getItem("last");
-    lli(suite);
+    comanda(suite);
 });
 
-async function lli(suite) {
+async function comanda(suite) {
     const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/comanda.php`);
     const rs = await rq.json();
     if (rs["status"]) {

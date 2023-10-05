@@ -20,14 +20,18 @@ $(document).on("click", "#remocaoProduto", function () {
     } else {
         let dados = "tabela=" + "comanda" + "&coluna=" + "id" + "&valor=" + id;
         apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, dados);
-        setTimeout(() => {
-            evb(suite);
-            somaComanda(suite);
-            subtotal()
-            setTimeout(() => {
-                total()
-            }, 1500);
-        }, 500);
+        evb(suite);
+        // setTimeout(() => {
+        //     evb(suite);
+        //     somaComanda(suite);
+        //     setTimeout(() => {
+        //         subtotal()
+        //     }, 1000);
+            
+        //     setTimeout(() => {
+        //         total()
+        //     }, 1500);
+        // }, 500);
     }
 });
 

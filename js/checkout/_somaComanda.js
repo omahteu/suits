@@ -12,5 +12,6 @@ export async function somaComanda(suite) {
       total += parseFloat(valores.slice(3));
     });
     $("#valorItens").text(parseFloat(total).toFixed(2));
+    localStorage.setItem('vcomanda', parseFloat(total).toFixed(2))
   }
 }

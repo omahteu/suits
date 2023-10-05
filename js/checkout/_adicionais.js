@@ -23,6 +23,7 @@ async function add(suite, id_permanencia, quarto, valor) {
         });
         let adicionado = parseFloat(valor) - parseFloat(quarto);
         $(`#${id_permanencia}`).text(parseFloat(adicionado).toFixed(2));
+        localStorage.getItem('vadicional', parseFloat(adicionado).toFixed(2))
       }
     });
   }

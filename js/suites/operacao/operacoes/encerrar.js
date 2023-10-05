@@ -1,4 +1,4 @@
-// import desligar_luz from "../../../automacao/desligar.js"
+import desligar_luz from "../../../automacao/desligar.js"
 import registraLimiteDesistencia from "../../tarefas/registros/desistencia.js"
 import tempo_pausado from "../../../quartos/ajax/post/decorrido.js"
 import atualiza_status from "../../../setup/atualiza.js"
@@ -24,6 +24,12 @@ export default function encerrando_suite(h, m, s, suite) {
         setTimeout(() => { desfazer(suite) }, 500)
 
         setTimeout(() => { fimMenu() }, 600)
+
+        setTimeout(() => {
+            desligar_luz(suite)
+            var vai = 'tabela=' + 'acoes' + '&coluna=' + 'suite' + '&valor=' + suite
+            apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, vai)
+        }, 650)
 
         setTimeout(() => { ag_pagamento(suite) }, 700)
 
