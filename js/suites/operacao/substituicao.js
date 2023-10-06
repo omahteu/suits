@@ -38,12 +38,12 @@ $(document).on("click", "#substituir", function () {
     trocaCofre(suite, novo)
     setTimeout(() => { registra_troca(usuario, suite, novo) }, 100)
     setTimeout(() => { tempo_pausado(hora, minuto, segundo, suite) }, 100)
-    // setTimeout(() => {desligar_luz(suite)}, 500)
+    setTimeout(() => {desligar_luz(suite)}, 500)
     setTimeout(() => {registraLimiteTroca(novo, "a", "troca")}, 600)
     setTimeout(() => {encerrar_tarefas(suite)}, 700)
     setTimeout(() => { iniciando(suite, novo, hora, minuto, segundo) }, 1000)
     setTimeout(() => { finalizando(suite) }, 1500)
-    // setTimeout(() => {ligar_luz(novo)}, 2000)
+    setTimeout(() => {ligar_luz(novo)}, 2000)
 })
 
 function iniciando(antigo, suite, hora, minuto, segundo) {
