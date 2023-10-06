@@ -55,7 +55,7 @@ $(document).on("click", "#registrar_produto", function () {
     }
 });
 
-export async function hgf(suite = "0") {
+export async function hgf(suite) {
     const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/comanda.php`);
     const rs = await rq.json();
     if (rs["status"]) {
@@ -111,4 +111,3 @@ function total() {
         }
     }
 }
-

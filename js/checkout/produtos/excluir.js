@@ -20,18 +20,13 @@ $(document).on("click", "#remocaoProduto", function () {
     } else {
         let dados = "tabela=" + "comanda" + "&coluna=" + "id" + "&valor=" + id;
         apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, dados);
-        evb(suite);
-        // setTimeout(() => {
-        //     evb(suite);
-        //     somaComanda(suite);
-        //     setTimeout(() => {
-        //         subtotal()
-        //     }, 1000);
-            
-        //     setTimeout(() => {
-        //         total()
-        //     }, 1500);
-        // }, 500);
+        alert("Produto excluído com sucesso!")
+        evb(suite)
+        somaComanda(suite)
+        subtotal()
+        setTimeout(() => {
+            total()
+        }, 1500);
     }
 });
 
@@ -42,7 +37,8 @@ async function evb(suite) {
         var comanda = document.getElementById("comanda");
         comanda.innerHTML = "";
         try {
-            var dados = rs["dados"].filter((l) => l.suite == suite);
+            var dados = rs["dados"].filter(o => o.suite == suite);
+            console.log(dados)
             dados.forEach((i) => {
                 comanda.innerHTML += `
 					<tr>
@@ -58,8 +54,8 @@ async function evb(suite) {
             sessionStorage.setItem("produtos.js", `[LOGS] | ${error}`);
         }
     } else {
-        var comanda = document.getElementById("comanda");
-        comanda.innerHTML = "";
+        var comandaz = document.getElementById("comanda");
+        comandaz.innerHTML = "";
     }
 }
 

@@ -28,7 +28,7 @@ async function comanda(suite) {
             sessionStorage.setItem("produtos.js", `[LOGS] | ${error}`);
         }
     } else {
-        var comanda = document.getElementById("listaProdutosComprados");
-        comanda.innerHTML = "";
+        var comandax = document.getElementById("comanda");
+        comandax.innerHTML = "";
     }
 }
