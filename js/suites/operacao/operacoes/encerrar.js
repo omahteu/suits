@@ -25,11 +25,11 @@ export default function encerrando_suite(h, m, s, suite) {
 
         setTimeout(() => { fimMenu() }, 600)
 
-        setTimeout(() => {
-            desligar_luz(suite)
-            var vai = 'tabela=' + 'acoes' + '&coluna=' + 'suite' + '&valor=' + suite
-            apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, vai)
-        }, 650)
+        // setTimeout(() => {
+        //     desligar_luz(suite)
+        //     var vai = 'tabela=' + 'acoes' + '&coluna=' + 'suite' + '&valor=' + suite
+        //     apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, vai)
+        // }, 650)
 
         setTimeout(() => { ag_pagamento(suite) }, 700)
 

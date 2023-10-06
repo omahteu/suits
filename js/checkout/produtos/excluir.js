@@ -1,5 +1,3 @@
-// import { ll } from "../../../armazem/leitura/produtos.js"
-// import link from "../../../setup/index.js"
 import apagar from "../../olivia/apaga.js";
 import { RAIZ } from "../../raiz.js";
 import { somaComanda } from "../_somaComanda.js";
@@ -58,7 +56,6 @@ async function evb(suite) {
         comandaz.innerHTML = "";
     }
 }
-
 
 function total() {
     let forma = $("#modo_pagamento :selected").val();

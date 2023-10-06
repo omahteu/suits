@@ -36,9 +36,9 @@ $(document).on("click", "#encerrar", function () {
         setTimeout(() => {
             limpando();
         }, 900);
-        setTimeout(() => {
-            window.close();
-        }, 1000);
+        // setTimeout(() => {
+        //     window.close();
+        // }, 1000);
     } else {
         alert("Selecione uma Camareira");
     }

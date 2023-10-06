@@ -4,7 +4,7 @@ import {fimMenu} from "../setup/menu.js"
 
 import ligar_luz from "../automacao/ligar.js"
 
-
+import salvar from "../olivia/salva.js"
 // import link from "../setup/index.js"
 import { play } from "../setup/start_relogios.js"
 

@@ -1,4 +1,3 @@
-// import link from "../setup/index.js"
 import { RAIZ } from "../raiz.js";
 
 export async function somaComanda(suite) {
