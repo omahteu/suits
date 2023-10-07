@@ -26,13 +26,13 @@ export function atualizarTarefa(id, modo) {
     var xhr = new XMLHttpRequest();
     // var url = url;
 
-    xhr.open("POST", `http://${RAIZ}/suits/php/suites/show/tarefas.php`, true);
+    xhr.open("POST", `http://${RAIZ}/suits/php/suites/editartarefas.php`, true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // A resposta do PHP pode ser manipulada aqui (se necessário)
-            //console.log(xhr.responseText);
+            console.log(xhr.responseText);
 
             // alerta == true ? alert(mensagem) : ""
             // recarregar == true ? location.reload() : ""
