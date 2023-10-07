@@ -12,7 +12,7 @@ import receber from "../../../quartos/auxiliares/funcao4.js";
 import apagar from "../../../olivia/apaga.js";
 import { RAIZ } from "../../../raiz.js";
 
-export default function suite_fica_disponivel(suite, usuario, tempo) {
+export default async function suite_fica_disponivel(suite, usuario, tempo) {
     // Variáveis
     let base = receber("offs");
     let tipo = base.filter((t) => t.suite == suite);
@@ -20,6 +20,7 @@ export default function suite_fica_disponivel(suite, usuario, tempo) {
 
     // Confirmação
     if (confirm(`Disponibilizar a Suíte ${suite}?`)) {
+
         // Fim da Manutenção
         setTimeout(() => {
             if (tipo[0].tipo == "manutencao") {

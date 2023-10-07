@@ -112,13 +112,13 @@ $(document).on('click', '#context', function () {
                 if (mans[0].modo == "l") {
                     $(fm).html(
                         `
-                        <input type="button" id="acoes1" class="btn btn-warning inferior" name="" data-toggle="" value="Disponibilizar Quarto">
+                        <input type="button" id="acoes1" class="btn btn-warning inferior" name="" data-toggle="" value="Encerrar revisão">
                         `
                     )
                 } else {
                     $(fm).html(
                         `
-                        <input type="button" id="acoes1" class="btn btn-warning inferior" name="" data-toggle="" value="Disponibilizar Quarto">
+                        <input type="button" id="acoes1" class="btn btn-warning inferior" name="" data-toggle="" value="Encerrar revisão">
                         `
                     )
                 }

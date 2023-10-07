@@ -18,7 +18,7 @@ $(document).on("click", ".revisao", function () {
     const suite = $('#quarto_painel').text()
     const motivo = prompt("Motivo da Revisão")
 
-    localStorage.setItem("motivo", motivo)
+    localStorage.setItem("motivo_revisao", motivo)
 
     if (motivo != null) {
 

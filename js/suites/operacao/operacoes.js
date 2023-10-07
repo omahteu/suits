@@ -10,6 +10,7 @@ import encerrando_limpeza from "./operacoes/encerrar_limpeza.js";
 import encerrando_registro from "./operacoes/encerrar_registro.js";
 import encerrando_faxina from "./operacoes/encerrar_faxina.js";
 import encerrando_registro2 from "./operacoes/encerrar_registro2.js";
+import erevisao from "./operacoes/encerrar_revisoes.js"
 import { RAIZ } from "../../raiz.js";
 import salvar from "../../olivia/salva.js";
 import apagar from "../../olivia/apaga.js";
@@ -21,7 +22,6 @@ $(document).on("click", ".inferior", function () {
 });
 
 function reacao(status, suite) {
-    console.log("wer");
     let h = $(`#hora${suite}`).text();
     let m = $(`#minuto${suite}`).text();
     let s = $(`#segundo${suite}`).text();
@@ -66,5 +66,7 @@ function reacao(status, suite) {
         encerrando_registro2(suite);
     } else if (status == "Finalizar") {
         encerrando_suite(h, m, s, suite);
+    } else if (status == 'Encerrar revisão') {
+        erevisao(suite, usuario)
     }
 }

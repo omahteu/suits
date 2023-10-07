@@ -9,20 +9,45 @@ import desfazer from "../../../tags/desfazer.js"
 import { fimMenu } from "../../../setup/menu.js"
 import apagar from "../../../olivia/apaga.js"
 import { RAIZ } from "../../../raiz.js"
+import envia_dados_revisao from "../../../caixa/revisao.js"
 
 
 export default function encerrando_registro(suite) {
+
+    let base = JSON.parse(sessionStorage.getItem('offs'))
+    let tipo = base.filter((t) => t.suite == suite);
+    let motivo = localStorage.getItem('motivo_revisao')
 
     alert('Camareira Selecionada')
 
     stop[suite]()
     clean[suite](suite)
 
-    setTimeout(() => {
-        var re = JSON.parse(localStorage.getItem("limpeza"))
-        var ca = $("#selecionar_camareira :checked").text()
-        envia_dados_limpeza(re.caixa, re.data, re.hora, re.suite, re.tempo, ca)
-    }, 100)
+
+    if (tipo[0].tipo == 'revisao') {
+        setTimeout(() => {
+            var re = JSON.parse(localStorage.getItem("revisao"))
+            var ca = $("#selecionar_camareira :checked").text()
+            envia_dados_revisao(re.caixa, re.data, re.hora, re.suite, ca, motivo)
+        }, 100)
+    } else {
+        setTimeout(() => {
+            var re = JSON.parse(localStorage.getItem("limpeza"))
+            var ca = $("#selecionar_camareira :checked").text()
+            envia_dados_limpeza(re.caixa, re.data, re.hora, re.suite, re.tempo, ca)
+        }, 100)
+    }
+
+    // alert('Camareira Selecionada')
+
+    // stop[suite]()
+    // clean[suite](suite)
+
+    // setTimeout(() => {
+    //     var re = JSON.parse(localStorage.getItem("limpeza"))
+    //     var ca = $("#selecionar_camareira :checked").text()
+    //     envia_dados_limpeza(re.caixa, re.data, re.hora, re.suite, re.tempo, ca)
+    // }, 100)
 
     setTimeout(() => { desfazer(suite) }, 200)
 
@@ -37,6 +62,7 @@ export default function encerrando_registro(suite) {
     setTimeout(() => { ultima_limpeza(suite) }, 500)
 
     setTimeout(() => { localStorage.removeItem("limpeza") }, 600)
+    setTimeout(() => { localStorage.removeItem("revisao") }, 600)
 
     setTimeout(() => { localStorage.removeItem(`_${suite}`) }, 700)
 
