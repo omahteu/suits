@@ -17,6 +17,7 @@ async function monitoramento() {
             switch (e.tipo) {
                 case "faxina":
                     if (e.modo != "bt") {
+                       
                         executor_tarefas(
                             String(e.horario),
                             String(hora_atual()),
