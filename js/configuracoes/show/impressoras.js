@@ -14,6 +14,6 @@ async function impressoras(marca) {
         $("#parcial").val(filtro[0].parcial)
         $("#horizontais").val(filtro[0].horizontais)
         $("#verticais").val(filtro[0].verticais)
-        $("#fonte").val(filtro[0].verticais)
+        $("#fonte").val(filtro[0].fonte)
     }
 }
