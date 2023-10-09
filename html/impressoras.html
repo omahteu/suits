@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Suits | Configurações</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/png" href="../imagens/motel (1).png">
+
+  <!-- JQuery -->
+  <script src="../js/jquery.js"></script>
+  <!-- Responsividade -->
+  <script src="../js/responsividade/home.js"></script>
+  <!-- Preloader -->
+  <script>
+    $(window).on('load', function () {
+      $('#preloader .inner').fadeOut();
+      $('#preloader').delay(100).fadeOut('slow');
+      $('body').delay(100).css({ 'overflow': 'visible' });
+    })
+  </script>
+
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/matrix-style.css">
+  <link rel="stylesheet" href="../css/matrix-media.css">
+  <link rel="stylesheet" href="../css/camareiras.css">
+  <link rel="stylesheet" href="../css/menu.css">
+</head>
+
+<body onload="layout()">
+
+  <!--MENU MOBILE-->
+  <nav id="sidebar">
+    <div id="newlog">
+      <div class="icon2">
+        <img src="../imagens/motel (1).png">
+      </div>
+      <div class="title1">
+        <h2>Suits</h2>
+      </div>
+    </div>
+    <a href="#" class="visible-phone">
+      <div class="mode">
+        <div class="moon-menu">
+          <iconify-icon icon="mdi:microsoft-xbox-controller-menu" width="40" height="40"
+            flip="horizontal"></iconify-icon>
+        </div>
+      </div>
+    </a>
+    <div class="menu-bar">
+      <div class="menu">
+        <ul class="menu-links" style="position: relative;">
+          <li>
+            <a data-toggle="tab" href="#automacao">
+              <span class="title nav-title">Automação</span>
+            </a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#cartao" id="aba_cartoes">
+              <span class="title"> Cartão</span>
+            </a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#email" id="aba_mail">
+              <span class="title">Email</span>
+            </a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#ig" id="aba_ig">
+              <span class="title">Informações Gerais</span>
+            </a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#impressoras" id="aba_impressoras">
+              <span class="title">Impressoras</span>
+            </a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#pernoite" id="aba_pernoite">
+              <span class="title">Pernoite</span>
+            </a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#tempo" id="aba_tempo">
+              <span class="title">Tempo</span>
+            </a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#teto" id="aba_teto">
+              <span class="title">&#8291; Teto</span>
+            </a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#valor" id="aba_valor">
+              <span class="title">&#8291; Valor</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="content">
+    <!--start-top-serch-->
+    <div id="content-header">
+      <!-- New Bem-vindos -->
+      <div class="bemv">
+        <h5 id="saudacao_usuario"></h5>
+      </div>
+      <div id="breadcrumb">
+        <a href="./home.html" class="tip-bottom"> Início</a>
+        <a href="" class="current tip-bottom"> Impressoras </a>
+      </div>
+    </div>
+    <div class="container-flu">
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="row-fluid" style="margin-top:0">
+            <div class="span12">
+              <div class="widget-box">
+                <div class="widget-title" style="margin: -20px 0 0">
+                  <span class="icon">
+                    <i class="fas fa-wrench"></i>
+                  </span>
+                  <h5>Impressoras</h5>
+                </div>
+                <!--MENU DESKTOP-->
+                <ul class="nav nav-tabs" id="desktop">
+                  <li>
+                    <a data-toggle="tab" href="#emuso" id="aba_emuso">Em Uso</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#impressoras" id="aba_impressoras">Impressoras</a>
+                  </li>
+                </ul>
+
+                <div class="widget-content nopadding tab-content">
+
+                  <!-- Impressora em uso -->
+                  <div id="emuso" class="tab-pane fade">
+
+                    <form action="../php/suites/editarimpressora.php" method="post" class="form-horizontal" id="">
+
+                      <!-- Impressora em uso -->
+                      <div class="control-group">
+                        <div class="controls">
+                          <select name="impressoras_existentes" id="impressoras_existentes">
+                            <option value="" hidden>Selecione a Impressora</option>
+                            <option value="b">Bematech</option>
+                            <option value="d">Daruma</option>
+                            <option value="e">Elgin</option>
+                            <option value="g">Goldentec</option>
+                            <option value="t">Tanca</option>
+                          </select>
+                          <span>Impressora</span>
+                        </div>
+                      </div>
+
+                      <!--Botões-->
+                      <div class="form-actions sumir">
+                        <div class="span8">
+                          <div class="span9">
+                            <button type="submit" class="button btn btn-primary">
+                              <span class="button__icon">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                              </span>
+                              <span class="button__text2">Atualizar</span>
+                            </button>
+                            <button type="reset" class="button btn btn-danger">
+                              <span class="button__icon">
+                                <i class="fa-solid fa-xmark"></i>
+                              </span>
+                              <span class="button__text2">Limpar</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+
+                  </div>
+                  <!-- Impressora em uso -->
+
+                  <!-- Impressoras -->
+                  <div id="impressoras" class="tab-pane fade">
+
+                    <form action="../php/configuracoes/impressora.php" method="post" class="form-horizontal">
+                      <!-- ID (Oculto) -->
+                      <div class="control-group" hidden>
+                        <div class="controls">
+                          <input type="text" name="id" id="id" placeholder="">
+                        </div>
+                      </div>
+
+                      <!-- Marcas -->
+                      <div class="control-group">
+                        <div class="controls">
+                          <select name="impressora" id="impressora">
+                            <option value="" hidden>Marca Impressora</option>
+                            <option value="e">Elgin</option>
+                            <option value="b">Bematech</option>
+                            <option value="t">Tanca</option>
+                            <option value="g">Goldentec</option>
+                            <option value="d">Daruma</option>
+                          </select>
+                          <span>Marca Impressora</span>
+                        </div>
+                      </div>
+
+                      <!--Parcial-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <select name="parcial" id="parcial">
+                            <option value="" hidden>Imprimir parcial</option>
+                            <option value="s">Sim</option>
+                            <option value="n">Não</option>
+                          </select>
+                          <span>Imprimir Parcial</span>
+                        </div>
+                      </div>
+
+                      <!-- Margens Horizontais -->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="horizontais" id="horizontais" placeholder="Margens Horizontais">
+                          <span>Margens Horizontais</span>
+                        </div>
+                      </div>
+
+                      <!-- Margens Verticais -->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="verticais" id="verticais" placeholder="Margens Verticais">
+                          <span>Margens Verticais</span>
+                        </div>
+                      </div>
+
+                      <!-- Fonte -->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" name="fonte" id="fonte" placeholder="Fonte">
+                          <span>Fonte</span>
+                        </div>
+                      </div>
+
+                      <!--Botões-->
+                      <div class="form-actions sumir">
+                        <div class="span8">
+                          <div class="span9">
+                            <button type="submit" class="button btn btn-primary">
+                              <span class="button__icon">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                              </span>
+                              <span class="button__text2">Atualizar</span>
+                            </button>
+                            <button type="reset" class="button btn btn-danger">
+                              <span class="button__icon">
+                                <i class="fa-solid fa-xmark"></i>
+                              </span>
+                              <span class="button__text2">Limpar</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+
+                  </div>
+                  <!-- Impressoras -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="modau-menu" class="modau-container">
+    <div class="modau">
+      <button class="fechar">X</button>
+      <h3 id="titulo_caixa">Ações</h3>
+      <form method="post" id="FormMain" name="FormMain"></form>
+    </div>
+  </div>
+</body>
+
+<!-- JS -->
+<script src="../js/estilo/bootstrap.min.js"></script>
+<script src="../js/estilo/matrix.js"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
+<script src="https://kit.fontawesome.com/88ea2c002f.js" crossorigin="anonymous"></script>
+<!-- Saudação ao Usuário -->
+<script src="../js/estilo/nomes.js"></script>
+<!-- Histórico -->
+<!-- <script src="../js/setup/sitePath.js"></script> -->
+<!-- Verificação de Login -->
+<!-- <script src="../js/setup/validacao_login.js"></script> -->
+
+
+<!-- <script type="module" src="../js/quartos/estrutural/inicializando.js"></script> -->
+
+<!-- <script type="module" src="../js/contadores/auditoria.js"></script> -->
+
+<!-- <script src="../js/home/validacoes/permissao.js"></script> -->
+<!-- Máscara Moeda -->
+
+
+<!-- Configurações | Show -->
+<script type="module" src="../js/configuracoes/show/impressoras.js"></script>
+<script type="module" src="./mmm.js"></script>
+
+
+</html>

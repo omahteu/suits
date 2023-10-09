@@ -1,6 +1,6 @@
-import {RAIZ} from "../../raiz.js"
+import { RAIZ } from "../../raiz.js"
 
-$(document).on('change', '#impressora', function() {
+$(document).on('change', '#impressora', function () {
     let marca = $(this).val()
     impressoras(marca)
 })
