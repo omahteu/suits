@@ -21,7 +21,7 @@ if ($conn->connect_error) {
 $sql = "UPDATE ig SET socialIg='$social', fantasiaIg='$fantasia', cnpjIg='$cnpj', cidadeIg='$cidade', enderecoIg='$endereco', numeroIg='$numero', bairroIg='$bairro', telefoneIg='$telefone', telefone2Ig='$telefone2', telefone3Ig='$telefone3' WHERE id='$id'";
 
 if ($conn->query($sql) === TRUE) {
-  header("Location: $rota");
+  echo "<script>alert('IGs atualizados!'); window.location.href = '$rota';</script>";
   exit;
 } else {
   echo "Error updating record: " . $conn->error;

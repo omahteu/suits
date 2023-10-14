@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 $sql = "UPDATE automacao SET suite='$suite', placa='$placa', rele='$rele' WHERE id='$id'";
 
 if ($conn->query($sql) === TRUE) {
-    header("Location: $rota");
+    echo "<script>alert('Automação atualizada!'); window.location.href = '$rota';</script>";
     exit;
 } else {
     echo "Error updating record: " . $conn->error;

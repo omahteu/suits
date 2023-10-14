@@ -17,6 +17,6 @@ if ($conn->connect_error) {
     $execval = $stmt->execute();
     $stmt->close();
     $conn->close();
-    header("Location: $rota");
+    echo "<script>alert('Automação cadastrada!'); window.location.href = '$rota';</script>";
     exit;
 }

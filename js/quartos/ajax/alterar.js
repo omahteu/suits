@@ -2,8 +2,10 @@
 // import { data_atual } from "../../geradores/data.js"
 // import { hora_atual } from "../../geradores/hora.js"
 import { RAIZ } from "../../raiz.js"
+// import alterar from "../../olivia/altera.js"
 
 export async function alterarValor(suitex, valorx) {
+    //console.log(`ENTRANDO | ${suitex} - ${valorx}`)
     const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/cofre.php`)
     const rs = await rq.json()
     if (rs["dados"]) {
@@ -11,7 +13,9 @@ export async function alterarValor(suitex, valorx) {
             let filtroSuite = rs["dados"].filter(i => i.suite == suitex)
             let tipo = filtroSuite[0].tipo
             let condicaoDois = tipo == "locado"
-            if (condicaoDois && filtroSuite[0].valor != valorx) {
+            // var atualpaid = (parseInt(valorx) + parseInt(filtroSuite[0].valor))
+            //console.log(`COFRE | ${filtroSuite[0].valor}`)
+            if (condicaoDois) {
                 $.ajax({
                     url: `http://${RAIZ}/suits/php/suites/editarcofre.php`,
                     type: "POST",
@@ -20,11 +24,15 @@ export async function alterarValor(suitex, valorx) {
                         antigo: suitex,
                         novo: valorx,
                     },
-                    success: () => { console.log(mensagem) }
+                    success: (data) => { console.log(data) }
                 })
+                // let dados = 'antigo=' + suitex + '&novo=' + novovalor
+                // alterar(`http://${RAIZ}/suits/php/suites/editarcofre.php`, dados)
             }
         } catch (error) {
             sessionStorage.setItem("alterar.js", `[LOGS] | ${error}`)
         }
+    } else {
+        console.log('aaaaaaaaaaaaaaaaaaaaa')
     }
 }

@@ -17,7 +17,7 @@ if ($tipo == "1") {
         $execval = $stmt->execute();
         $stmt->close();
         $conn->close();
-        header("Location: $rota");
+        echo "<script>alert('Cartão cadastrada!'); window.location.href = '$rota';</script>";
         exit;
     }
 } else {
@@ -31,7 +31,7 @@ if ($tipo == "1") {
         $execval = $stmt->execute();
         $stmt->close();
         $conn->close();
-        header("Location: $rota");
+        echo "<script>alert('Cartão cadastrada!'); window.location.href = '$rota';</script>";
         exit;
     }
 }

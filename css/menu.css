@@ -17,8 +17,8 @@
 
 .modau {
     background: rgba(51, 54, 73, 0.5);
-    width: 21%;
-
+    width: 37%;
+    border-radius: 5px;
     padding: 20px;
     border: 5px solid #FFF68F;
     box-shadow: 0 0 0 10px #FFF68F;
@@ -53,4 +53,8 @@
     cursor: pointer;
     font-size: 20px;
     font-weight: bold;
+}
+
+#titulo_caixa {
+    color: whitesmoke;
 }

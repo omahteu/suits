@@ -19,7 +19,7 @@ if ($conn->connect_error) {
   $sql = "UPDATE valor SET locacao='$locacao', pernoite='$pernoite', vh1='$vh1', vh2='$vh2', vh3='$vh3', vh4='$vh4', vh5='$vh5', vh6='$vh6' WHERE codigo='$codigo'";
   
   if ($conn->query($sql) === TRUE) {
-    header("Location: $rota");
+    echo "<script>alert('Valores atualizados!'); window.location.href = '$rota';</script>";
     exit;
   } else {
     echo "Error updating record: " . $conn->error;

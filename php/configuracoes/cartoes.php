@@ -18,7 +18,7 @@ if ($tipo == "c") {
 }
 
 if ($conn->query($sql) === TRUE) {
-    header("Location: $rota");
+    echo "<script>alert('Cartão atualizado!'); window.location.href = '$rota';</script>";
     exit;
 } else {
     echo "Error updating record: " . $conn->error;

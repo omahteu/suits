@@ -853,44 +853,52 @@
     background: #FF0000;
     color: #000;
     border: 2px solid #FF0000;
-    border-radius: 10%;
-    width: 80px;
+    border-radius: 5%;
+    width: 8em;
     height: 40px;
     font-weight: bold;
     font-size: 15px;
+    margin-right: 0.2em;
 }
 
 .manutencao {
     background: #A9A9A9;
     color: #000;
     border: 2px solid #A9A9A9;
-    border-radius: 10%;
-    width: 110px;
+    border-radius: 5%;
+    width: 8em;
     height: 40px;
     font-weight: bold;
     font-size: 15px;
+    margin-right: 0.2em;
+}
+
+.manutencao:hover, .locado:hover, .faxina:hover, .revisao:hover {
+    background-color: whitesmoke;
 }
 
 .faxina {
     background: #FFE4C4;
     color: #000;
     border: 2px solid #FFE4C4;
-    border-radius: 10%;
-    width: 80px;
+    border-radius: 5%;
+    width: 8em;
     height: 40px;
     font-weight: bold;
     font-size: 15px;
+    margin-right: 0.2em;
 }
 
 .revisao {
     background: #A020F0;
     color: #000;
     border: 2px solid #A020F0;
-    border-radius: 10%;
-    width: 80px;
+    border-radius: 5%;
+    width: 8em;
     height: 40px;
     font-weight: bold;
     font-size: 15px;
+    margin-right: 0.2em;
 }
 
 #botao_inferior_um, 

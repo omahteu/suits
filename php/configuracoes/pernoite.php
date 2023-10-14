@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 $sql = "UPDATE pernoite SET permanenciaPernoite='$permanencia', inicioPernoite='$inicio', fimPernoite='$fim', tipoPernoite='$tipo' WHERE id='$id'";
 
 if ($conn->query($sql) === TRUE) {
-  header("Location: $rota");
+  echo "<script>alert('Pernoite atualizada!'); window.location.href = '$rota';</script>";
   exit;
 } else {
   echo "Error updating record: " . $conn->error;

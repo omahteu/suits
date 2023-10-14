@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 $sql = "UPDATE tempo SET $tipo='$quantidade' WHERE id='$id'";
 
 if ($conn->query($sql) === TRUE) {
-  header("Location: $rota");
+  echo "<script>alert('Tempo atualizado!'); window.location.href = '$rota';</script>";
   exit;
 } else {
   echo "Error updating record: " . $conn->error;

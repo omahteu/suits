@@ -19,7 +19,7 @@ if ($conn->connect_error) {
 $sql = "UPDATE emeil SET usuarioEmail='$usuario', senhaEmail='$senha', smtpEmail='$smtp', portaEmail='$porta', 	timeoutEmail='$timeouti', email_destino='$email_destino', email_contabilidade='$email_contabilidade', autenticacaoEmail='$autenticacao' WHERE id='$id'";
 
 if ($conn->query($sql) === TRUE) {
-  header("Location: $rota");
+  echo "<script>alert('Email atualizado!'); window.location.href = '$rota';</script>";
   exit;
 } else {
   echo "Error updating record: " . $conn->error;

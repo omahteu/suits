@@ -2,7 +2,7 @@
 include "../cnxInterna.php";
 include "../../urlbase.php";
 include "../../urlbase.php";
-$rota = "$url/suits/html/configuracoes.html";
+$rota = "$url/suits/html/impressoras.html";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = '1';
