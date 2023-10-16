@@ -1,7 +1,5 @@
 import apagar from "../../olivia/apaga.js"
 
-import link from "../../setup/index.js"
-
 import { RAIZ } from "../../raiz.js"
 
 export default async function limpando() {

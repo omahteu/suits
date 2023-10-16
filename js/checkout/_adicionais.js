@@ -14,7 +14,7 @@ async function add(suite, id_permanencia, quarto, valor) {
   const rs = await rq.json();
   if (rs["status"]) {
     rs["dados"].forEach((e) => {
-      let ficha = rs["dados"].filter((i) => i.suite == suite);
+      let ficha = rs["dados"].filter((i) => i.suite == suite)
       if (ficha.length == 0) {
         $(`#${id_permanencia}`).text("0.00");
       } else {
@@ -23,8 +23,10 @@ async function add(suite, id_permanencia, quarto, valor) {
         });
         let adicionado = parseFloat(valor) - parseFloat(quarto);
         $(`#${id_permanencia}`).text(parseFloat(adicionado).toFixed(2));
-        localStorage.getItem('vadicional', parseFloat(adicionado).toFixed(2))
+        sessionStorage.setItem('vadicional', `${parseFloat(adicionado).toFixed(2)}`)
       }
     });
+  } else {
+    sessionStorage.setItem('vadicional', '0.00')
   }
 }

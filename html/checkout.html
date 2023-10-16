@@ -1,656 +1,407 @@
 <!DOCTYPE html>
 
 <html lang="pt-br">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>Suits | Pagamento</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-            rel="shortcut icon"
-            type="image/png"
-            href="../imagens/motel (1).png"
-        />
-        <link rel="stylesheet" href="../css/bootstrap.min.css" />
-        <link rel="stylesheet" href="../css/matrix-style.css" />
-        <link rel="stylesheet" href="../css/matrix-media.css" />
-        <link rel="stylesheet" href="../css/campo.css" />
-        <link rel="stylesheet" href="../css/menu.css" />
-    </head>
 
-    <body>
-        <div id="content">
-            <!--start-top-serch-->
-            <div id="content-header">
-                <!-- New Bem-vindos -->
-                <div class="bemv">
-                    <h5 id="saudacao_usuario"></h5>
-                </div>
-                <div id="breadcrumb">
-                    <a id="home" class="tip-bottom"> Início</a>
-                    <a href="./quartos.html" class="current tip-bottom">
-                        Quartos</a
-                    >
-                    <a href="" class="current tip-bottom"> Pagamento</a>
-                </div>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Suits | Pagamento</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="../imagens/motel (1).png" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/matrix-style.css" />
+    <link rel="stylesheet" href="../css/matrix-media.css" />
+    <link rel="stylesheet" href="../css/campo.css" />
+    <link rel="stylesheet" href="../css/menu.css" />
+</head>
+
+<body>
+    <div id="content">
+        <!--start-top-serch-->
+        <div id="content-header">
+            <!-- New Bem-vindos -->
+            <div class="bemv">
+                <h5 id="saudacao_usuario"></h5>
             </div>
-            <div class="container-flu">
-                <div class="row-fluid">
-                    <div class="span12">
-                        <div class="row-fluid" style="margin-top: 0">
-                            <!-- Caixa de Impressão de Relatórios-->
-                            <div class="span8">
-                                <div class="widget-box">
-                                    <div class="widget-title">
-                                        <span class="icon">
-                                            <i class="fas fa-users"></i>
-                                        </span>
-                                        <h5>Encerramento</h5>
-                                    </div>
+            <div id="breadcrumb">
+                <a id="home" class="tip-bottom"> Início</a>
+                <a href="./quartos.html" class="current tip-bottom">
+                    Quartos</a>
+                <a href="" class="current tip-bottom"> Pagamento</a>
+            </div>
+        </div>
+        <div class="container-flu">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="row-fluid" style="margin-top: 0">
+                        <!-- Caixa de Impressão de Relatórios-->
+                        <div class="span8">
+                            <div class="widget-box">
+                                <div class="widget-title">
+                                    <span class="icon">
+                                        <i class="fas fa-users"></i>
+                                    </span>
+                                    <h5>Encerramento</h5>
+                                </div>
 
-                                    <ul class="nav nav-tabs">
-                                        <li class="active">
-                                            <a data-toggle="tab" href="#opcoes"
-                                                >Opções de Pagamento</a
-                                            >
-                                        </li>
-                                        <li id="listap">
-                                            <a
-                                                data-toggle="tab"
-                                                href="#detalhes"
-                                                >Detalhes</a
-                                            >
-                                        </li>
-                                        <li id="aba_produtos">
-                                            <a
-                                                data-toggle="tab"
-                                                href="#produtos"
-                                                >Produtos</a
-                                            >
-                                        </li>
-                                        <li id="aba_desistencia">
-                                            <a data-toggle="tab" href="#desisto"
-                                                >Desistência</a
-                                            >
-                                        </li>
-                                    </ul>
+                                <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a data-toggle="tab" href="#opcoes">Opções de Pagamento</a>
+                                    </li>
+                                    <li id="listap">
+                                        <a data-toggle="tab" href="#detalhes">Detalhes</a>
+                                    </li>
+                                    <li id="aba_produtos">
+                                        <a data-toggle="tab" href="#produtos">Produtos</a>
+                                    </li>
+                                    <li id="aba_desistencia">
+                                        <a data-toggle="tab" href="#desisto">Desistência</a>
+                                    </li>
+                                </ul>
 
-                                    <form
-                                        action=""
-                                        id="formConfigurar"
-                                        method="post"
-                                        class="form-horizontal"
-                                    >
-                                        <div
-                                            class="widget-content nopadding tab-content"
-                                        >
-                                            <!---->
-                                            <div
-                                                id="opcoes"
-                                                class="tab-pane fade in active"
-                                            >
-                                                <!--Camareira-->
-                                                <div class="control-group">
-                                                    <div class="controls">
-                                                        <select
-                                                            id="selecionaCamareira"
-                                                        >
-                                                            <option
-                                                                value=""
-                                                                hidden
-                                                            >
-                                                                Camareira
+                                <form action="" id="formConfigurar" method="post" class="form-horizontal">
+                                    <div class="widget-content nopadding tab-content">
+                                        <!---->
+                                        <div id="opcoes" class="tab-pane fade in active">
+                                            <!--Camareira-->
+                                            <div class="control-group">
+                                                <div class="controls">
+                                                    <select id="selecionaCamareira">
+                                                        <option value="" hidden>
+                                                            Camareira
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <!--Porcentagem-->
+                                            <div class="control-group">
+                                                <div class="controls">
+                                                    <select id="modo_desconto">
+                                                        <option value="" hidden>
+                                                            Modo
+                                                        </option>
+                                                        <option value="valor">
+                                                            Valor
+                                                        </option>
+                                                        <option value="porcento">
+                                                            Percentual
+                                                        </option>
+                                                    </select>
+                                                    <input type="text" id="valor_desconto" placeholder="Desconto" />
+                                                    <button type="button" class="btn btn-primary" id="aplicar_desconto">
+                                                        Aplicar
+                                                    </button>
+                                                    <button type="button" class="btn btn-warning" id="nao_aplicavel">
+                                                        Não Aplicável
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <!--Pagamento-->
+                                            <div class="control-group">
+                                                <div class="controls">
+                                                    <form id="bandeiras_cartoes">
+                                                        <select id="modo_pagamento">
+                                                            <option value="" hidden>
+                                                                Método de
+                                                                Pagamento
+                                                            </option>
+                                                            <option value="dinheiro" selected>
+                                                                Dinheiro
+                                                            </option>
+                                                            <option value="pix">
+                                                                PIX
                                                             </option>
                                                         </select>
-                                                    </div>
-                                                </div>
-
-                                                <!--Porcentagem-->
-                                                <div class="control-group">
-                                                    <div class="controls">
-                                                        <select
-                                                            id="modo_desconto"
-                                                        >
-                                                            <option
-                                                                value=""
-                                                                hidden
-                                                            >
-                                                                Modo
+                                                        <select id="numero_parcelas">
+                                                            <option value="0" hidden>
+                                                                Parcelas
                                                             </option>
-                                                            <option
-                                                                value="valor"
-                                                            >
-                                                                Valor
+                                                            <option value="1">
+                                                                1
                                                             </option>
-                                                            <option
-                                                                value="porcento"
-                                                            >
-                                                                Percentual
+                                                            <option value="2">
+                                                                2
+                                                            </option>
+                                                            <option value="3">
+                                                                3
+                                                            </option>
+                                                            <option value="4">
+                                                                4
+                                                            </option>
+                                                            <option value="5">
+                                                                5
+                                                            </option>
+                                                            <option value="6">
+                                                                6
+                                                            </option>
+                                                            <option value="7">
+                                                                7
+                                                            </option>
+                                                            <option value="8">
+                                                                8
+                                                            </option>
+                                                            <option value="9">
+                                                                9
+                                                            </option>
+                                                            <option value="10">
+                                                                10
+                                                            </option>
+                                                            <option value="11">
+                                                                11
+                                                            </option>
+                                                            <option value="12">
+                                                                12
                                                             </option>
                                                         </select>
-                                                        <input
-                                                            type="text"
-                                                            id="valor_desconto"
-                                                            placeholder="Desconto"
-                                                        />
-                                                        <button
-                                                            type="button"
-                                                            class="btn btn-primary"
-                                                            id="aplicar_desconto"
-                                                        >
-                                                            Aplicar
-                                                        </button>
-                                                        <button
-                                                            type="button"
-                                                            class="btn btn-warning"
-                                                            id="nao_aplicavel"
-                                                        >
-                                                            Não Aplicável
-                                                        </button>
-                                                    </div>
-                                                </div>
-
-                                                <!--Pagamento-->
-                                                <div class="control-group">
-                                                    <div class="controls">
-                                                        <form
-                                                            id="bandeiras_cartoes"
-                                                        >
-                                                            <select
-                                                                id="modo_pagamento"
-                                                            >
-                                                                <option
-                                                                    value=""
-                                                                    hidden
-                                                                >
-                                                                    Método de
-                                                                    Pagamento
-                                                                </option>
-                                                                <option
-                                                                    value="dinheiro"
-                                                                    selected
-                                                                >
-                                                                    Dinheiro
-                                                                </option>
-                                                                <option
-                                                                    value="pix"
-                                                                >
-                                                                    PIX
-                                                                </option>
-                                                            </select>
-                                                            <select
-                                                                id="numero_parcelas"
-                                                            >
-                                                                <option
-                                                                    value="0"
-                                                                    hidden
-                                                                >
-                                                                    Parcelas
-                                                                </option>
-                                                                <option
-                                                                    value="1"
-                                                                >
-                                                                    1
-                                                                </option>
-                                                                <option
-                                                                    value="2"
-                                                                >
-                                                                    2
-                                                                </option>
-                                                                <option
-                                                                    value="3"
-                                                                >
-                                                                    3
-                                                                </option>
-                                                                <option
-                                                                    value="4"
-                                                                >
-                                                                    4
-                                                                </option>
-                                                                <option
-                                                                    value="5"
-                                                                >
-                                                                    5
-                                                                </option>
-                                                                <option
-                                                                    value="6"
-                                                                >
-                                                                    6
-                                                                </option>
-                                                                <option
-                                                                    value="7"
-                                                                >
-                                                                    7
-                                                                </option>
-                                                                <option
-                                                                    value="8"
-                                                                >
-                                                                    8
-                                                                </option>
-                                                                <option
-                                                                    value="9"
-                                                                >
-                                                                    9
-                                                                </option>
-                                                                <option
-                                                                    value="10"
-                                                                >
-                                                                    10
-                                                                </option>
-                                                                <option
-                                                                    value="11"
-                                                                >
-                                                                    11
-                                                                </option>
-                                                                <option
-                                                                    value="12"
-                                                                >
-                                                                    12
-                                                                </option>
-                                                            </select>
-                                                            <!-- <button
+                                                        <!-- <button
                                                                 type="button"
                                                                 class="btn btn-primary"
                                                                 id="confirma_parcelas"
                                                             >
                                                                 Selecionar
                                                             </button> -->
-                                                        </form>
-                                                    </div>
+                                                    </form>
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            <!---->
-                                            <div
-                                                id="detalhes"
-                                                class="tab-pane fade"
-                                            >
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Descrição</th>
-                                                            <th>Quantidade</th>
-                                                            <th>
-                                                                Valor Unitário
-                                                            </th>
-                                                            <th>Valor Total</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="comanda"></tbody>
-                                                </table>
-                                            </div>
+                                        <!---->
+                                        <div id="detalhes" class="tab-pane fade">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Descrição</th>
+                                                        <th>Quantidade</th>
+                                                        <th>
+                                                            Valor Unitário
+                                                        </th>
+                                                        <th>Valor Total</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="comanda"></tbody>
+                                            </table>
+                                        </div>
 
-                                            <!---->
-                                            <div
-                                                id="produtos"
-                                                class="tab-pane fade"
-                                            >
-                                                <!--Campo Pessoas
+                                        <!---->
+                                        <div id="produtos" class="tab-pane fade">
+                                            <!--Campo Pessoas
                       <div class="control-group"> 
                         <div class="controls"> 
                           <input type="text" id="pessoasProduto" placeholder="Pessoas"> 
                         </div>
                       </div>-->
-                                                <form
-                                                    id="produtos_checkout"
-                                                    method="post"
-                                                >
-                                                    <!--Código-->
-                                                    <div class="control-group">
-                                                        <div
-                                                            class="controls"
-                                                            id="campo_produtos"
-                                                        >
-                                                            <input
-                                                                type="text"
-                                                                name="codigo_produto"
-                                                                id="codigo_produto"
-                                                                placeholder="Código"
-                                                            />
-                                                        </div>
-                                                    </div>
-
-                                                    <!--Produtos-->
-                                                    <div class="control-group">
-                                                        <div
-                                                            class="controls"
-                                                            id="campo_produtos"
-                                                        >
-                                                            <select
-                                                                name="checkbox_produto"
-                                                                id="checkbox_produto"
-                                                            >
-                                                                <option hidden>
-                                                                    Produto
-                                                                </option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-
-                                                    <!--Quantidade-->
-                                                    <div class="control-group">
-                                                        <div
-                                                            class="controls"
-                                                            id="campo_produtos"
-                                                        >
-                                                            <input
-                                                                type="text"
-                                                                name="quantidade"
-                                                                id="quantidade"
-                                                                placeholder="Quantidade"
-                                                            />
-                                                        </div>
-                                                    </div>
-
-                                                    <!--Descrição-->
-                                                    <div class="control-group">
-                                                        <div
-                                                            class="controls"
-                                                            id="campo_produtos"
-                                                        >
-                                                            <input
-                                                                type="text"
-                                                                name="descricao"
-                                                                id="descricao"
-                                                                placeholder="Descrição"
-                                                                readonly
-                                                            />
-                                                        </div>
-                                                    </div>
-
-                                                    <!--Valor Unitário-->
-                                                    <div class="control-group">
-                                                        <div
-                                                            class="controls"
-                                                            id="campo_produtos"
-                                                        >
-                                                            <input
-                                                                type="text"
-                                                                name="valor_unitario"
-                                                                id="valor_unitario"
-                                                                placeholder="Valor Unitário"
-                                                                readonly
-                                                            />
-                                                        </div>
-                                                    </div>
-
-                                                    <!--Valor Total-->
-                                                    <div class="control-group">
-                                                        <div
-                                                            class="controls"
-                                                            id="campo_produtos"
-                                                        >
-                                                            <input
-                                                                type="text"
-                                                                name="valor_total"
-                                                                id="valor_total"
-                                                                placeholder="Valor Total"
-                                                                readonly
-                                                            />
-                                                        </div>
-                                                    </div>
-
-                                                    <div
-                                                        class="control-group"
-                                                        hidden
-                                                    >
-                                                        <div
-                                                            class="controls"
-                                                            id="campo_produtos"
-                                                        >
-                                                            <input
-                                                                type="text"
-                                                                name="hora"
-                                                                id="hora"
-                                                                value=""
-                                                            />
-                                                        </div>
-                                                    </div>
-
-                                                    <div
-                                                        class="control-group"
-                                                        hidden
-                                                    >
-                                                        <div
-                                                            class="controls"
-                                                            id="campo_produtos"
-                                                        >
-                                                            <input
-                                                                type="text"
-                                                                name="vs"
-                                                                id="vs"
-                                                                value=""
-                                                            />
-                                                        </div>
-                                                    </div>
-
-                                                    <!--Botões-->
-                                                    <div class="form-actions">
-                                                        <div class="span8">
-                                                            <div class="span9">
-                                                                <button
-                                                                    type="button"
-                                                                    class="button btn btn-primary"
-                                                                    id="registrar_produto"
-                                                                >
-                                                                    <span
-                                                                        class="button__icon"
-                                                                    >
-                                                                        <i
-                                                                            class="fa-solid fa-floppy-disk"
-                                                                        ></i>
-                                                                    </span>
-                                                                    <span
-                                                                        class="button__text2"
-                                                                        >Cadastrar</span
-                                                                    >
-                                                                </button>
-                                                                <button
-                                                                    type="reset"
-                                                                    class="button btn btn-danger"
-                                                                    id=""
-                                                                >
-                                                                    <span
-                                                                        class="button__icon"
-                                                                    >
-                                                                        <i
-                                                                            class="fa-solid fa-xmark"
-                                                                        ></i>
-                                                                    </span>
-                                                                    <span
-                                                                        class="button__text2"
-                                                                        >Limpar</span
-                                                                    >
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-
-                                            <div
-                                                id="desisto"
-                                                class="tab-pane fade"
-                                            >
-                                                <!--Motivo-->
+                                            <form id="produtos_checkout" method="post">
+                                                <!--Código-->
                                                 <div class="control-group">
-                                                    <div class="controls">
-                                                        <input
-                                                            type="text"
-                                                            id="mmotivo_desistencia"
-                                                            placeholder="Motivo da Desistência"
-                                                            required
-                                                        />
-                                                        <button
-                                                            type="button"
-                                                            class="btn btn-primary"
-                                                            id="aceitar_desistencia"
-                                                        >
-                                                            OK
-                                                        </button>
+                                                    <div class="controls" id="campo_produtos">
+                                                        <input type="text" name="codigo_produto" id="codigo_produto"
+                                                            placeholder="Código" />
                                                     </div>
+                                                </div>
+
+                                                <!--Produtos-->
+                                                <div class="control-group">
+                                                    <div class="controls" id="campo_produtos">
+                                                        <select name="checkbox_produto" id="checkbox_produto">
+                                                            <option hidden>
+                                                                Produto
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <!--Quantidade-->
+                                                <div class="control-group">
+                                                    <div class="controls" id="campo_produtos">
+                                                        <input type="text" name="quantidade" id="quantidade"
+                                                            placeholder="Quantidade" />
+                                                    </div>
+                                                </div>
+
+                                                <!--Descrição-->
+                                                <div class="control-group">
+                                                    <div class="controls" id="campo_produtos">
+                                                        <input type="text" name="descricao" id="descricao"
+                                                            placeholder="Descrição" readonly />
+                                                    </div>
+                                                </div>
+
+                                                <!--Valor Unitário-->
+                                                <div class="control-group">
+                                                    <div class="controls" id="campo_produtos">
+                                                        <input type="text" name="valor_unitario" id="valor_unitario"
+                                                            placeholder="Valor Unitário" readonly />
+                                                    </div>
+                                                </div>
+
+                                                <!--Valor Total-->
+                                                <div class="control-group">
+                                                    <div class="controls" id="campo_produtos">
+                                                        <input type="text" name="valor_total" id="valor_total"
+                                                            placeholder="Valor Total" readonly />
+                                                    </div>
+                                                </div>
+
+                                                <div class="control-group" hidden>
+                                                    <div class="controls" id="campo_produtos">
+                                                        <input type="text" name="hora" id="hora" value="" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="control-group" hidden>
+                                                    <div class="controls" id="campo_produtos">
+                                                        <input type="text" name="vs" id="vs" value="" />
+                                                    </div>
+                                                </div>
+
+                                                <!--Botões-->
+                                                <div class="form-actions">
+                                                    <div class="span8">
+                                                        <div class="span9">
+                                                            <button type="button" class="button btn btn-primary"
+                                                                id="registrar_produto">
+                                                                <span class="button__icon">
+                                                                    <i class="fa-solid fa-floppy-disk"></i>
+                                                                </span>
+                                                                <span class="button__text2">Cadastrar</span>
+                                                            </button>
+                                                            <button type="reset" class="button btn btn-danger" id="">
+                                                                <span class="button__icon">
+                                                                    <i class="fa-solid fa-xmark"></i>
+                                                                </span>
+                                                                <span class="button__text2">Limpar</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                        <div id="desisto" class="tab-pane fade">
+                                            <!--Motivo-->
+                                            <div class="control-group">
+                                                <div class="controls">
+                                                    <input type="text" id="mmotivo_desistencia"
+                                                        placeholder="Motivo da Desistência" required />
+                                                    <button type="button" class="btn btn-primary"
+                                                        id="aceitar_desistencia">
+                                                        OK
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                </form>
                             </div>
+                        </div>
 
-                            <!--Painel Lateral-->
-                            <div class="span4">
-                                <div class="widget-box">
-                                    <div class="widget-title">
-                                        <span class="icon">
-                                            <i class="fas fa-users"></i>
-                                        </span>
-                                        <h5>Fatura</h5>
-                                    </div>
-                                    <div class="widget-content">
-                                        <table class="table">
-                                            <tbody>
-                                                <tr>
-                                                    <th>Descrição</th>
-                                                    <th>Valor</th>
-                                                </tr>
-                                                <!--Quarto-->
-                                                <tr>
-                                                    <td>Quarto</td>
-                                                    <td>
-                                                        R$
-                                                        <span id="valorQuarto"
-                                                            >0</span
-                                                        >
-                                                    </td>
-                                                </tr>
-                                                <!--Permanência-->
-                                                <tr>
-                                                    <td>Permanência</td>
-                                                    <td id="tempoPermanencia">
-                                                        0
-                                                    </td>
-                                                </tr>
-                                                <!--Adicional Permanência-->
-                                                <tr>
-                                                    <td>Add Permanência</td>
-                                                    <td>
-                                                        R$
-                                                        <span
-                                                            id="valor_addPermanencia"
-                                                            >0</span
-                                                        >
-                                                    </td>
-                                                </tr>
-                                                <!--Itens-->
-                                                <tr>
-                                                    <td>Itens</td>
-                                                    <td>
-                                                        R$
-                                                        <span id="valorItens"
-                                                            >0</span
-                                                        >
-                                                    </td>
-                                                </tr>
-                                                <!--Desconnto-->
-                                                <tr>
-                                                    <td>Desconto</td>
-                                                    <td>
-                                                        <span id="valorDesconto"
-                                                            >0</span
-                                                        >
-                                                    </td>
-                                                </tr>
-                                                <!--SubTotal-->
-                                                <tr>
-                                                    <td>Subtotal</td>
-                                                    <td>
-                                                        R$
-                                                        <span
-                                                            id="valor_subtotal"
-                                                            >0</span
-                                                        >
-                                                    </td>
-                                                </tr>
-                                                <!--Parcelas-->
-                                                <tr>
-                                                    <td>Parcelas</td>
-                                                    <td>
-                                                        <span id="nparcelas"
-                                                            >0</span
-                                                        >x de R$
-                                                        <span
-                                                            id="valor_parcelas"
-                                                            >0</span
-                                                        >
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Total</td>
-                                                    <td>
-                                                        R$
-                                                        <span id="totalGeral"
-                                                            >0</span
-                                                        >
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <button
-                                                            type="button"
-                                                            id="calcular"
-                                                            class="btn"
-                                                        >
-                                                            Calcular
-                                                        </button>
-                                                    </td>
-                                                    <td>
-                                                        <input
-                                                            type="text"
-                                                            id="recebido"
-                                                            placeholder="Recebido"
-                                                        />
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>
-                                                        <button
-                                                            type="button"
-                                                            class="button btn btn-success"
-                                                            id="encerrar"
-                                                        >
-                                                            <span
-                                                                class="button__icon"
-                                                            >
-                                                                <i
-                                                                    class="fa-solid fa-check"
-                                                                ></i>
-                                                            </span>
-                                                            <span
-                                                                class="button__text2"
-                                                                >Finalizar</span
-                                                            >
-                                                        </button>
-                                                        <button
-                                                            type="button"
-                                                            class="button btn btn-danger"
-                                                            id="cancel"
-                                                        >
-                                                            <span
-                                                                class="button__icon"
-                                                            >
-                                                                <i
-                                                                    class="fa-solid fa-close"
-                                                                ></i>
-                                                            </span>
-                                                            <span
-                                                                class="button__text2"
-                                                                >Cancelar</span
-                                                            >
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                        <!--Painel Lateral-->
+                        <div class="span4">
+                            <div class="widget-box">
+                                <div class="widget-title">
+                                    <span class="icon">
+                                        <i class="fas fa-users"></i>
+                                    </span>
+                                    <h5>Fatura</h5>
+                                </div>
+                                <div class="widget-content">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <th>Descrição</th>
+                                                <th>Valor</th>
+                                            </tr>
+                                            <!--Quarto-->
+                                            <tr>
+                                                <td>Quarto</td>
+                                                <td>
+                                                    R$
+                                                    <span id="valorQuarto">0</span>
+                                                </td>
+                                            </tr>
+                                            <!--Permanência-->
+                                            <tr>
+                                                <td>Permanência</td>
+                                                <td id="tempoPermanencia">
+                                                    0
+                                                </td>
+                                            </tr>
+                                            <!--Adicional Permanência-->
+                                            <tr>
+                                                <td>Add Permanência</td>
+                                                <td>
+                                                    R$
+                                                    <span id="valor_addPermanencia">0</span>
+                                                </td>
+                                            </tr>
+                                            <!--Itens-->
+                                            <tr>
+                                                <td>Itens</td>
+                                                <td>
+                                                    R$
+                                                    <span id="valorItens">0</span>
+                                                </td>
+                                            </tr>
+                                            <!--Desconnto-->
+                                            <tr>
+                                                <td>Desconto</td>
+                                                <td>
+                                                    <span id="valorDesconto">0</span>
+                                                </td>
+                                            </tr>
+                                            <!--SubTotal-->
+                                            <tr>
+                                                <td>Subtotal</td>
+                                                <td>
+                                                    R$
+                                                    <span id="valor_subtotal">0</span>
+                                                </td>
+                                            </tr>
+                                            <!--Parcelas-->
+                                            <tr>
+                                                <td>Parcelas</td>
+                                                <td>
+                                                    <span id="nparcelas">0</span>x de R$
+                                                    <span id="valor_parcelas">0</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Total</td>
+                                                <td>
+                                                    R$
+                                                    <span id="totalGeral">0</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <button type="button" id="calcular" class="btn">
+                                                        Calcular
+                                                    </button>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="recebido" placeholder="Recebido" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    <button type="button" class="button btn btn-success" id="encerrar">
+                                                        <span class="button__icon">
+                                                            <i class="fa-solid fa-check"></i>
+                                                        </span>
+                                                        <span class="button__text2">Finalizar</span>
+                                                    </button>
+                                                    <button type="button" class="button btn btn-danger" id="cancel">
+                                                        <span class="button__icon">
+                                                            <i class="fa-solid fa-close"></i>
+                                                        </span>
+                                                        <span class="button__text2">Cancelar</span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -658,59 +409,61 @@
                 </div>
             </div>
         </div>
-        <span id="last" style="visibility: hidden"></span>
-        <div id="modau-menu" class="modau-container">
-            <div class="modau">
-                <button class="fechar">X</button>
-                <h3 id="titulo_caixa">Menu</h3>
-                <form id="FormMain" name="FormMain"></form>
-            </div>
+    </div>
+    <span id="last" style="visibility: hidden"></span>
+    <div id="modau-menu" class="modau-container">
+        <div class="modau">
+            <button class="fechar">X</button>
+            <h3 id="titulo_caixa">Menu</h3>
+            <form id="FormMain" name="FormMain"></form>
         </div>
-    </body>
-    <script src="../js/jquery.js"></script>
-    <script src="../js/estilo/sweetalert.min.js"></script>
-    <script src="../js/estilo/bootstrap.min.js"></script>
-    <script src="../js/estilo/matrix.js"></script>
-    <script
-        src="https://kit.fontawesome.com/88ea2c002f.js"
-        crossorigin="anonymous"
-    ></script>
-    <script
-        type="text/javascript"
-        src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/moment.min.js"
-    ></script>
-    <script src="../js/estilo/nomes.js"></script>
-    <script src="../js/setup/sitePath.js"></script>
+    </div>
+</body>
+<script src="../js/jquery.js"></script>
+<script src="../js/estilo/sweetalert.min.js"></script>
+<script src="../js/estilo/bootstrap.min.js"></script>
+<script src="../js/estilo/matrix.js"></script>
+<script src="https://kit.fontawesome.com/88ea2c002f.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/moment.min.js"></script>
+<script src="../js/estilo/nomes.js"></script>
+<script src="../js/setup/sitePath.js"></script>
 
-    <script type="module" src="../js/checkout/produtos/__init__.js"></script>
-    <script type="module" src="../js/checkout/produtos/registrar.js"></script>
-    <script type="module" src="../js/checkout/produtos/lista.js"></script>
-    <script type="module" src="../js/checkout/produtos/excluir.js"></script>
+<!-- Produtos -->
+<script type="module" src="../js/checkout/produtos/__init__.js"></script>
+<script type="module" src="../js/checkout/produtos/registrar.js"></script>
+<script type="module" src="../js/checkout/produtos/lista.js"></script>
+<script type="module" src="../js/checkout/produtos/excluir.js"></script>
 
-    <script type="module" src="../js/checkout/voltar.js"></script>
+<!-- Desistência -->
+<script type="module" src="../js/checkout/desistencia.js"></script>
+<!-- <script type="module" src="../js/setup/desistencia.js"></script> -->
 
-    <!-- <script src="../js/relatorios/getProduto.js"></script> -->
-    <script type="module" src="../js/setup/desistencia.js"></script>
 
-    <!-- <script type="module" src="../js/contadores/auditoria.js"></script> -->
+<script type="module" src="../js/checkout/voltar.js"></script>
 
-    <script type="module" src="../js/checkout/index.js"></script>
+<!-- <script src="../js/relatorios/getProduto.js"></script> -->
 
-    <script type="module" src="../js/botoes/encerrar/index.js"></script>
 
-    <script type="module" src="../js/botoes/pagamento/index.js"></script>
+<!-- <script type="module" src="../js/contadores/auditoria.js"></script> -->
 
-    <script type="module" src="../js/botoes/nota.js"></script>
+<script type="module" src="../js/checkout/index.js"></script>
 
-    <script src="../js/setup/coletor.js"></script>
+<script type="module" src="../js/botoes/encerrar/index.js"></script>
 
-    <script type="module" src="../js/checkout/cancelar.js"></script>
+<script type="module" src="../js/botoes/pagamento/index.js"></script>
 
-    <script type="module" src="../js/checkout/calculo.js"></script>
+<script type="module" src="../js/botoes/nota.js"></script>
 
-    <!-- <script type="module" src="../js/checkout/soma.js"></script> -->
+<script src="../js/setup/coletor.js"></script>
 
-    <script type="module" src="../js/checkout/controledesconto.js"></script>
-    <script type="module" src="../js/checkout/controlecamareira.js"></script>
-    <script type="module" src="../js/checkout/controlepagamento.js"></script>
+<script type="module" src="../js/checkout/cancelar.js"></script>
+
+<script type="module" src="../js/checkout/calculo.js"></script>
+
+<script type="module" src="../js/checkout/soma.js"></script>
+
+<script type="module" src="../js/checkout/controledesconto.js"></script>
+<script type="module" src="../js/checkout/controlecamareira.js"></script>
+<script type="module" src="../js/checkout/controlepagamento.js"></script>
+
 </html>
