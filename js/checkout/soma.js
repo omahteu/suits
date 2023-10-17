@@ -8,5 +8,5 @@ setInterval(() => {
     let adicional = receber('vadicional')
     // let total = receber('vtotal')
     var totalgeral = parseFloat(suite) + parseFloat(adicional) + parseFloat(comanda)
-    $("#totalGeral").text(totalgeral)
+    $("#totalGeral").text(parseFloat(totalgeral).toFixed(2))
 }, 1000);
