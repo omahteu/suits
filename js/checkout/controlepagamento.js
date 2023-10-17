@@ -7,15 +7,13 @@ $(document).on("change", "#modo_pagamento", function() {
 
     switch (forma.slice(0, 7)) {
         case 'Crédito':
-            console.log('credito')
             $("#numero_parcelas").val("1")
             $("#numero_parcelas").css('display', 'inline')
             credito(forma, $("#numero_parcelas").val())
             break;
 
         case 'Débito ':
-            console.log('debito')
-            // debito(forma)
+            debito(forma)
             break
 
         default:
