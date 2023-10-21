@@ -4,5 +4,4 @@ $(document).on("click", "#calcular", function () {
     $("#recebido").val(`TROCO DE R$ ${recebido - parseFloat(total)}`);
     $("#recebido").attr("readonly", true);
     $(this).attr("disabled", true);
-    console.log(recebido, total);
 });

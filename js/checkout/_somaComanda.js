@@ -11,9 +11,9 @@ export async function somaComanda(suite) {
       total += parseFloat(valores.slice(3));
     });
     $("#valorItens").text(parseFloat(total).toFixed(2));
-    sessionStorage.setItem('vcomanda', parseFloat(total).toFixed(2))
+    sessionStorage.setItem('totalComanda', parseFloat(total).toFixed(2))
   } else {
     $("#valorItens").text('0.00');
-    sessionStorage.setItem('vcomanda', '0.00')
+    sessionStorage.setItem('totalComanda', '0.00')
   }
 }

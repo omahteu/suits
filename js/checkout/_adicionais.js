@@ -22,9 +22,9 @@ async function add(suite, id_permanencia, quarto, valor) {
       });
       let adicionado = parseFloat(valor) - parseFloat(quarto);
       $(`#${id_permanencia}`).text(parseFloat(adicionado).toFixed(2));
-      sessionStorage.setItem('vadicional', `${parseFloat(adicionado).toFixed(2)}`)
+      sessionStorage.setItem('totalAdicional', `${parseFloat(adicionado).toFixed(2)}`)
     }
   } else {
-    sessionStorage.setItem('vadicional', '0.00')
+    sessionStorage.setItem('totalAdicional', '0.00')
   }
 }

@@ -3,5 +3,5 @@ export function vsuite() {
   let dados = JSON.parse(sessionStorage.getItem("offs"));
   let filtr = dados.filter((x) => (x.suite = suite));
   $("#valorQuarto").text(filtr[0].valor);
-  sessionStorage.setItem('vsuite', parseFloat(filtr[0].valor).toFixed(2))
+  sessionStorage.setItem('totalSuite', parseFloat(filtr[0].valor).toFixed(2))
 }
