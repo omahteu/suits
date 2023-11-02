@@ -1,4 +1,4 @@
-$(document).ready(function () {
+export default function saudacao() {
     let hoje = new Date();
     let hora = hoje.getHours();
     let nome = localStorage.getItem("nome");
@@ -9,4 +9,4 @@ $(document).ready(function () {
     } else {
         $("#saudacao_usuario").text(`Boa Noite, ${nome}`);
     }
-});
+}

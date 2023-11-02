@@ -3,9 +3,9 @@
 import { RAIZ } from "../../raiz.js";
 // import { ll } from "../../armazem/leitura/produtos.js"
 import { hora_atual_segundos } from "../../geradores/hora.js";
-import { somaComanda } from "../_somaComanda.js";
+import somaComanda from "../_somaComanda.js";
 // import { total } from "../_total.js";
-import { subtotal } from "../_subtotal.js";
+import subtotal from "../_subtotal.js";
 
 $(document).on("click", "#registrar_produto", function () {
     let suite = localStorage.getItem("last");
@@ -85,7 +85,6 @@ export async function hgf(suite) {
         comanda.innerHTML = "";
     }
 }
-
 
 function total() {
     let forma = $("#modo_pagamento :selected").val();

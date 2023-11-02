@@ -1,10 +1,7 @@
-import { RAIZ } from "../raiz.js";
+import { RAIZ } from "../../raiz.js";
 
-$(document).ready(function () {
-    nomes_camareiras();
-});
 
-async function nomes_camareiras() {
+export default async function nomes_camareiras() {
     const rq = await fetch(
         `http://${RAIZ}/suits/php/relatorios/camareiras.php`
     );

@@ -88,11 +88,8 @@
                                                         </option>
                                                     </select>
                                                     <input type="text" id="valor_desconto" placeholder="Desconto" />
-                                                    <button type="button" class="btn btn-primary" id="aplicar_desconto">
-                                                        Aplicar
-                                                    </button>
-                                                    <button type="button" class="btn btn-warning" id="nao_aplicavel">
-                                                        Não Aplicável
+                                                    <button type="reset" class="btn btn-danger" id="limpar_desconto">
+                                                        Limpar
                                                     </button>
                                                 </div>
                                             </div>
@@ -421,8 +418,15 @@
 <script src="../js/estilo/matrix.js"></script>
 <script src="https://kit.fontawesome.com/88ea2c002f.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/moment.min.js"></script>
-<script src="../js/estilo/nomes.js"></script>
-<script src="../js/setup/sitePath.js"></script>
+<script type="module" src="../js/checkout/__init__.js"></script>
+
+<!-- Pagamento -->
+<script src="../js/checkout/pagamento/limpardesconto.js"></script>
+<script src="../js/checkout/pagamento/calculo.js"></script>
+<script src="../js/checkout/pagamento/soma.js"></script>
+<script type="module" src="../js/checkout/pagamento/__init__.js"></script>
+<script type="module" src="../js/checkout/pagamento/controledesconto.js"></script>
+<script type="module" src="../js/checkout/pagamento/controlepagamento.js"></script>
 
 <!-- Produtos -->
 <script type="module" src="../js/checkout/produtos/__init__.js"></script>
@@ -442,11 +446,9 @@
 
 <!-- <script type="module" src="../js/contadores/auditoria.js"></script> -->
 
-<script type="module" src="../js/checkout/index.js"></script>
 
 <script type="module" src="../js/botoes/encerrar/index.js"></script>
 
-<script type="module" src="../js/botoes/pagamento/index.js"></script>
 
 <script type="module" src="../js/botoes/nota.js"></script>
 
@@ -454,12 +456,5 @@
 
 <script type="module" src="../js/checkout/cancelar.js"></script>
 
-<script type="module" src="../js/checkout/calculo.js"></script>
-
-<script type="module" src="../js/checkout/soma.js"></script>
-
-<script type="module" src="../js/checkout/controledesconto.js"></script>
-<script type="module" src="../js/checkout/controlecamareira.js"></script>
-<script type="module" src="../js/checkout/controlepagamento.js"></script>
 
 </html>

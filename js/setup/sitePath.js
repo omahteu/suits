@@ -1,4 +1,4 @@
-$(document).ready(function () {
+export default function fluxo() {
     setTimeout(() => {
         let i1 = localStorage.getItem("usuarioLogado");
         let i2 = localStorage.getItem("caixa");
@@ -23,4 +23,4 @@ $(document).ready(function () {
             $("#fecharCaixa").css("display", "none");
         }
     }, 500);
-});
+}

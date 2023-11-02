@@ -1,10 +1,10 @@
-export function subtotal() {
+export default function subtotal() {
   setTimeout(() => {
     let quarto = parseFloat($("#valorQuarto").text());
     let comanda = parseFloat($("#valorItens").text());
     let adicional = parseFloat($("#valor_addPermanencia").text());
     let subTotal = quarto + comanda + adicional;
     $("#valor_subtotal").text(subTotal.toFixed(2));
-    localStorage.getItem('vsubtotal', subTotal.toFixed(2))
+    localStorage.getItem('vst', subTotal.toFixed(2))
   }, 1000);
 }

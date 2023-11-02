@@ -1,8 +1,7 @@
-// import link from "../../../setup/index.js"
 import { hora_atual_segundos } from "../../../geradores/hora.js";
 import receber from "../../auxiliares/funcao4.js";
 
-export function recupera_permanencia(suite) {
+export default function recupera_permanencia(suite) {
   let base = receber("offs");
   var dados = base.filter((e) => e.suite == suite);
   dados.forEach((e) => {

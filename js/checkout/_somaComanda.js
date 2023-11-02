@@ -1,6 +1,6 @@
 import { RAIZ } from "../raiz.js";
 
-export async function somaComanda(suite) {
+export default async function somaComanda(suite) {
   let total = 0;
   const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/comanda.php`);
   const rs = await rq.json();
@@ -11,9 +11,9 @@ export async function somaComanda(suite) {
       total += parseFloat(valores.slice(3));
     });
     $("#valorItens").text(parseFloat(total).toFixed(2));
-    sessionStorage.setItem('totalComanda', parseFloat(total).toFixed(2))
+    localStorage.setItem('vc', parseFloat(total).toFixed(2))
   } else {
     $("#valorItens").text('0.00');
-    sessionStorage.setItem('totalComanda', '0.00')
+    localStorage.setItem('vc', '0')
   }
 }

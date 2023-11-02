@@ -1,7 +1,7 @@
 import apagar from "../../olivia/apaga.js";
 import { RAIZ } from "../../raiz.js";
-import { somaComanda } from "../_somaComanda.js";
-import { subtotal } from "../_subtotal.js";
+import somaComanda from "../_somaComanda.js";
+import subtotal from "../_subtotal.js";
 
 $(document).on("click", "#remocaoProduto", function () {
     let suite = localStorage.getItem("last");

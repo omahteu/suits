@@ -1,4 +1,3 @@
-// import link from "../setup/index.js"
 import { RAIZ } from "../raiz.js";
 
 export default async function adicionais(suite, id_quarto, id_permanencia) {
@@ -22,9 +21,10 @@ async function add(suite, id_permanencia, quarto, valor) {
       });
       let adicionado = parseFloat(valor) - parseFloat(quarto);
       $(`#${id_permanencia}`).text(parseFloat(adicionado).toFixed(2));
-      sessionStorage.setItem('totalAdicional', `${parseFloat(adicionado).toFixed(2)}`)
+      localStorage.setItem('va', `${parseFloat(adicionado).toFixed(2)}`)
     }
   } else {
-    sessionStorage.setItem('totalAdicional', '0.00')
+    $("#valor_addPermanencia").text('0.00');
+    localStorage.setItem('va', '0')
   }
 }
