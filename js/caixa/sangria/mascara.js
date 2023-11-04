@@ -9,5 +9,7 @@ function formatarMoeda(e) {
 
 setTimeout(() => {
     const input = document.getElementById("valor_sangrado");
-    input.addEventListener("keyup", formatarMoeda);
+    if (input) {
+        input.addEventListener("keyup", formatarMoeda);
+    }
 }, 1500);

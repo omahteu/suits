@@ -20,7 +20,8 @@ export async function todos_pagamentos() {
 }
 
 function dinheiro(e) {
-    let real = e.filter(i => i.forma == "1")
+    let usuario = localStorage.getItem('nome')
+    let real = e.filter(i => i.forma == "Dinheiro" && i.usuario == usuario)
     let tabs = document.getElementById("lista_dinheiro")
     tabs.innerHTML = ""
     real.forEach(i => {
@@ -35,7 +36,7 @@ function dinheiro(e) {
 }
 
 function pix(e) {
-    let pixs = e.filter(i => i.forma == "2")
+    let pixs = e.filter(i => i.forma == "PIX")
     let tabs = document.getElementById("lista_pix")
     tabs.innerHTML = ""
     pixs.forEach(i => {
