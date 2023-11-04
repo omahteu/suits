@@ -14,7 +14,8 @@ async function disponivel(){
             var estoque = item.quantidade
             var permis = localStorage.getItem("prod")
             if (permis == "nao") {
-                if (estoque.length != 0) {
+                console.log(estoque)
+                if (estoque.length < 1) {
                     $('#checkbox_produto').append(`<option>${item.descricao}</option>`)
                 }
             } else if (permis == "sim") {
