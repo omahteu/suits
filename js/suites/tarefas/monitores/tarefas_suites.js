@@ -58,7 +58,7 @@ async function monitoramento() {
 
                 case "desistencia":
                     if (e.modo != "dt") {
-                        executor_tarefas(String(e.horario), String(hora_atual()), e.id, "dt");
+                        executor_tarefas(String(e.horario), String(hora_atual()), e.id, "dt", e.suite);
                     }
                     break
 

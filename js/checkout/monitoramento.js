@@ -4,6 +4,8 @@ setInterval(() => {
     let buscaSuite = tarefasAtivas.filter(x => x.suite === suite && x.modo === "dt");
 
 
-    console.log(buscaSuite)
+    if (buscaSuite.length != 0) {
+        $("#aba_desistencia").hide();
+    }
 
 }, 1000);
