@@ -1,4 +1,3 @@
-// import { registroProdutos } from "../../../armazem/registros/produtos.js"
 import receber from "../../../quartos/auxiliares/funcao4.js"
 import {RAIZ} from "../../../raiz.js"
 import { ll } from "../../../armazem/leitura/produtos.js"
@@ -25,7 +24,7 @@ $(document).on("click", "#registrar_produto", function() {
 					}
 				};
 				xhr.send(dadosphp)
-			}, 1500);
+			}, 500);
 		}
 	} catch (error) {
 		alert('Selecione um Quarto!')
@@ -37,11 +36,13 @@ async function calculo(suite) {
 	const rs = await rq.json()
 	if (rs["status"]) {
 		let filtroComanda = rs["dados"].filter(i => i.suite == suite)
+		let valorSuite = $("#vq_painel").text()
 		let sum = 0
 		filtroComanda.forEach(el => {
 			sum += parseFloat(el.valor_total.replace(/[^\d.-]/g, ''))
 		})
+		let subTotal = sum + parseFloat(valorSuite)
 		$("#consumo_painel").text(sum.toFixed(2))
-		console.log(filtroComanda)
+		$("#parcial_painel").text(subTotal.toFixed(2))
 	}
 }

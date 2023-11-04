@@ -1,13 +1,11 @@
 import debito from "../../botoes/pagamento/debito.js"
-import credito from "../../botoes/pagamento/credito.js"
 
 $(document).on("change", "#modo_pagamento", function() {
     let forma = $(this).find("option:selected").text()
     switch (forma.slice(0, 7)) {
         case 'Crédito':
-            $("#numero_parcelas").val("1")
+            $("#numero_parcelas").val("0")
             $("#numero_parcelas").css('display', 'inline')
-            credito(forma, $("#numero_parcelas").val())
             break;
 
         case 'Débito ':
@@ -26,12 +24,10 @@ $(document).on("change", "#numero_parcelas", function() {
     let subtotal = parseFloat($("#valor_subtotal").text())
     let decimal = parseFloat(tarifa) / 100
     let acrescentado = subtotal * decimal
-    let addParcela = acrescentado * parcelas
-    let subtotalAcrescido = subtotal + addParcela
-    let valorTarifado = subtotalAcrescido / parcelas
+    let subTotalTarifado = acrescentado + subtotal
+    let subTotalTarifadoParcelado = subTotalTarifado / parcelas
     $("#nparcelas").text(parcelas)
-    $("#valor_parcelas").text(valorTarifado.toFixed(2))
-    $("#confirma_parcelas").css("background", "black").attr("disabled", "true")
+    $("#valor_parcelas").text(parseFloat(subTotalTarifadoParcelado).toFixed(2))
     $("#modo_pagamento").attr("disabled", "true")
-    // localStorage.setItem('vsuite', subtotalAcrescido.toFixed(2))
+    localStorage.setItem('vpr', acrescentado)
 })

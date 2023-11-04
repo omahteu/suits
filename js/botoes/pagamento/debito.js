@@ -3,14 +3,10 @@ export default function debito(tarifa) {
     let subtotal = parseFloat($("#valor_subtotal").text())
     let decimal = parseFloat(tarifa) / 100
     let acrescentado = subtotal * decimal
-    let addParcela = acrescentado * 1
-    let subtotalAcrescido = subtotal + addParcela
-    let valorTarifado = subtotalAcrescido / 1
+    let subTotalTarifado = acrescentado + subtotal
+    let subTotalTarifadoParcelado = subTotalTarifado / 1
     $("#nparcelas").text("1")
-    $("#valor_parcelas").text(valorTarifado.toFixed(2))
-    //$("#totalGeral").text(subtotalAcrescido.toFixed(2))
-    $("#confirma_parcelas").css("background", "black").attr("disabled", "true")
-    //$("#numero_parcelas").attr("disabled", "true")
+    $("#valor_parcelas").text(parseFloat(subTotalTarifadoParcelado).toFixed(2))
     $("#modo_pagamento").attr("disabled", "true")
-    sessionStorage.setItem('vsuite', subtotalAcrescido.toFixed(2))
+    localStorage.setItem('vpr', acrescentado)
 }

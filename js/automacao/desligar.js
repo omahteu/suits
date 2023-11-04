@@ -3,7 +3,6 @@ export default async function desligar_luz(suite) {
     const rq = await fetch(`http://${RAIZ}/suits/php/configuracoes/show/automacoes.php`)
     const rs = await rq.json()
     if (rs["status"]) {
-        console.log(rs['dados'])
         var dados = rs["dados"].filter(e => e.suite == suite)
         var url = `http://${dados[0].placa}/?${dados[0].rele}d*`
         $.ajax({ url: url});

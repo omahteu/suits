@@ -11,7 +11,7 @@ export async function produtos(){
                 if (estoque.length != 0) {
                     $('#checkbox_produto').append(`<option>${item.descricao}</option>`)
                 }
-            } else if (permis == "sim") {
+            } else if (permis == "sim" || permis == null) {
                 $('#checkbox_produto').append(`<option>${item.descricao}</option>`)
             }
         });

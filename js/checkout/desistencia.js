@@ -1,12 +1,12 @@
 import { data_atual } from "../geradores/data.js";
 import { hora_atual } from "../geradores/hora.js";
-// import link from "./index.js";
 import salvar from "../olivia/salva.js";
 import apagar from "../olivia/apaga.js";
 import { RAIZ } from "../raiz.js";
 import alterar from "../olivia/altera.js";
 import ocupacao from "../botoes/encerrar/ocupacao.js";
 import limpando from "../botoes/encerrar/limpar.js";
+import registraMotivoExclusao from "../suites/operacao/remocao.js"
 
 $("#aceitar_desistencia").click(function () {
     var suite = localStorage.getItem("last");
@@ -50,6 +50,7 @@ function desistir() {
     if (motivo == "") {
         alert("campo vazio");
     } else {
+        registraMotivoExclusao("Desistência", motivo)
         texto.push(motivo);
         let usuario = $("#usuario_sistema").text();
         let quarto = localStorage.getItem("quarto");
@@ -57,29 +58,8 @@ function desistir() {
         let dataAtual = data_atual();
         let codigo_ocupacao = gera_codigo();
         localStorage.setItem(`codigo${quarto}`, codigo_ocupacao);
-        let dados =
-            "usuario=" +
-            usuario +
-            "&data=" +
-            dataAtual +
-            "&codigo=" +
-            codigo_ocupacao +
-            "&suite=" +
-            quarto +
-            "&entrada=" +
-            box[0].tempo +
-            "&saida=" +
-            hora_atual() +
-            "&total=" +
-            "0";
-        salvar(
-            `http://${RAIZ}/suits/php/suites/ocupacao.php`,
-            dados,
-            false,
-            "",
-            false,
-            ""
-        );
+        let dados ="usuario=" + usuario + "&data=" + dataAtual + "&codigo=" + codigo_ocupacao + "&suite=" + quarto + "&entrada=" + box[0].tempo + "&saida=" + hora_atual() + "&total=" + "0"
+        salvar(`http://${RAIZ}/suits/php/suites/ocupacao.php`, dados, false, "", false, "");
     }
 }
 

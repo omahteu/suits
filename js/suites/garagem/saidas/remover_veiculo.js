@@ -1,7 +1,7 @@
 import { vv } from "../../../armazem/leitura/veiculos.js"
-// import link from "../../../setup/index.js"
 import apagar from "../../../olivia/apaga.js"
 import {RAIZ} from "../../../raiz.js"
+import registraMotivoExclusao from "../../operacao/remocao.js"
 
 $(document).on("click", "#remocaoVeiculo", function(){
     let suite = $("#quarto_painel").text()
@@ -12,6 +12,7 @@ $(document).on("click", "#remocaoVeiculo", function(){
     } else if (motivo.length == 0) {
         alert('Veículo não retirado!\nÉ necessário o motivo da eretirada do veículo!')
     } else {
+        registraMotivoExclusao("Remoção de Veículo", motivo)
         let dados = 'tabela=' + 'patio' + '&coluna=' + 'id' + '&valor=' + id
         apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, dados)
         vv(suite)
