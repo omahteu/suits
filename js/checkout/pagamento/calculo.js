@@ -1,7 +1,9 @@
 $(document).on("click", "#calcular", function () {
     var recebido = parseFloat($("#recebido").val()).toFixed(2);
     var total = $("#totalGeral").text();
-    $("#recebido").val(`TROCO DE R$ ${recebido - parseFloat(total)}`);
+    let troco = recebido - parseFloat(total)
+    $("#recebido").val(`TROCO DE R$ ${troco}`);
     $("#recebido").attr("readonly", true);
     $(this).attr("disabled", true);
+    localStorage.setItem('troco', troco)
 });
