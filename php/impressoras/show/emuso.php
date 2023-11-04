@@ -1,12 +1,12 @@
 <?php
 include "../../cnxInterna.php";
-$query = "SELECT id, emuso FROM mimpressora";
+$query = "SELECT id, parcial FROM impressora";
 $resultado = $conn->query($query);
 if ($resultado->num_rows > 0) {
     while($row = $resultado->fetch_assoc()) {
         $dados[] = [
             'id' => $row["id"],
-            'emuso' => $row["emuso"]
+            'parcial' => $row["parcial"]
         ];
     }
     $retorna = ['status' => true, 'dados' => $dados];

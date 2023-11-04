@@ -5,7 +5,8 @@ import suite_fica_disponivel from "./operacoes/disponibilizar_suite.js";
 import comecar_faxina from "./operacoes/iniciar_faxina.js";
 import comecar_limpeza from "./operacoes/iniciar_limpeza.js";
 import trocando_suite from "./operacoes/trocar_suite.js";
-import encerrando_suite from "./operacoes/encerrar.js";
+import {encerrando_suite} from "./operacoes/encerrar.js";
+import {encerrando_suitex} from "./operacoes/encerrar.js";
 import encerrando_limpeza from "./operacoes/encerrar_limpeza.js";
 import encerrando_registro from "./operacoes/encerrar_registro.js";
 import encerrando_faxina from "./operacoes/encerrar_faxina.js";
@@ -65,7 +66,7 @@ function reacao(status, suite) {
     } else if (status == acao[10]) {
         encerrando_registro2(suite);
     } else if (status == "Finalizar") {
-        encerrando_suite(h, m, s, suite);
+        encerrando_suitex(h, m, s, suite);
     } else if (status == 'Encerrar revisão') {
         erevisao(suite, usuario)
     }

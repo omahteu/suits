@@ -5,12 +5,14 @@ $(window).on("load", function () {
 })
 
 async function listaOcupacoes() {
+    let usuario = localStorage.getItem('nome')
     const rq = await fetch(`http://${RAIZ}/suits/php/home/exibe_ocupacoes.php`)
     const rt = await rq.json()
     if (rt["status"]) {
+        let ocupacoesUsuario = rt['dados'].filter(x => x.usuario == usuario)
         var ocupacoes = document.getElementById('tabelaHomeOcupacoes')
         ocupacoes.innerHTML = ''
-        rt['dados'].forEach(e => {
+        ocupacoesUsuario.forEach(e => {
             ocupacoes.innerHTML += '<tr>' +
                 `<td>${e.data}</td>` +
                 `<td>${e.codigo}</td>` +
