@@ -1,4 +1,3 @@
-// import link from "../../../setup/index.js"
 import {RAIZ} from "../../../raiz.js"
 
 $(document).ready(function () {
@@ -14,7 +13,7 @@ async function disponivel(){
             var estoque = item.quantidade
             var permis = localStorage.getItem("prod")
             if (permis == "nao") {
-                if (estoque.length < 1) {
+                if (estoque > 0) {
                     $('#checkbox_produto').append(`<option>${item.descricao}</option>`)
                 }
             } else if (permis == "sim") {
