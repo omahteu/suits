@@ -28,3 +28,13 @@ $(document).on("click", "#imprimir_parcial", function() {
     salvar(`http://${RAIZ}/suits/php/suites/impressao.php`, dados)
 
 })
+
+$(window).on("load", async function() {
+    const rq = await fetch(`http://${RAIZ}/suits/php/impressoras/show/emuso.php`)
+    const rs = await rq.json()
+    if (rs['dados']) {
+        if (rs['dados'][0].parcial == 'n') {
+            $("#li3").hide()
+        }
+    }
+})
