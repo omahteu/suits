@@ -12,7 +12,6 @@ import { hora_atual_segundos } from "../../geradores/hora.js";
 
 $(document).on("click", "#encerrar", function () {
     //notas()
-
     var cm = $("#selecionaCamareira :selected").text();
     if (cm.trim() != "Camareira") {
         impressao()
