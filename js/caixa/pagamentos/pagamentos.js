@@ -41,11 +41,11 @@ function pix(e) {
     tabs.innerHTML = ""
     pixs.forEach(i => {
         tabs.innerHTML += `
-        <tr>
-            <td>${i.valor}</td>
-            <td>${i.data}</td>
-            <td>${i.usuario}</td>
-        </tr>
+            <tr>
+                <td>${i.valor}</td>
+                <td>${i.data}</td>
+                <td>${i.usuario}</td>
+            </tr>
         `
     });
 }

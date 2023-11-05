@@ -1,16 +1,45 @@
 import {RAIZ} from "../../raiz.js"
+import { data_atual } from "../../geradores/data.js"
 
 export async function saldo() {
-    const rq = await fetch(`http://${RAIZ}/suits/php/caixa/show/receita.php`)
+    let soma = 0
+    let usuario = localStorage.getItem('nome')
+    let fundo = localStorage.getItem("fundo")
+    const rq = await fetch(`http://${RAIZ}/suits/php/caixa/show/pagamentos.php`)
     const rs = await rq.json()
     if (rs["status"]) {
-        const valor = parseFloat(rs["dados"][0].caixa)
-        let tab = document.getElementById("tab_saldo")
-        tab.innerHTML = ""
-        tab.innerHTML += `
-            <tr>
-                <td id="saldo_caixa">${valor.toFixed(2)}</td>
-            </tr>
-        `
+        setTimeout(() => {
+            let pagamentosUsuarios = rs["dados"].filter(zin => zin.usuario = usuario)
+            pagamentosUsuarios.forEach(item => {
+                if (item.data == String(data_atual())) {
+                    const valores = item.valor;
+                    soma += parseFloat(valores);
+                }
+            });
+            let totalCaixa = parseFloat(soma) + parseFloat(fundo)
+            buscaSangrias(totalCaixa)
+        }, 1000);
+    }
+}
+
+async function buscaSangrias(valor) {
+    let usuario = localStorage.getItem("nome")
+    let soma = 0
+    const rq = await fetch(`http://${RAIZ}/suits/php/relatorios/sangrias.php`)
+    const rs = await rq.json()
+    if (rs["dados"]) {
+        let sangriasRealizadas = rs["dados"].filter(zin => zin.usuario = usuario)
+        sangriasRealizadas.forEach(item => {
+            if (item.dia == String(data_atual())) {
+                const valores = item.valor;
+                soma += parseFloat(valores);
+            }
+        });
+        let saldoAtualizado = parseFloat(valor) - parseFloat(soma)
+        $("#tab_saldo").html(
+            `
+                <tr><td id="saldo_caixa">${saldoAtualizado.toFixed(2)}</td></tr>
+            `
+        )
     }
 }
