@@ -61,7 +61,6 @@ function reacao(status, suite) {
             localStorage.setItem(`*${suite}`, "on");
         }, 500);
     } else if (status == acao[9]) {
-        console.log("dsfdsg");
         encerrando_faxina(suite, usuario, tempo);
     } else if (status == acao[10]) {
         encerrando_registro2(suite);

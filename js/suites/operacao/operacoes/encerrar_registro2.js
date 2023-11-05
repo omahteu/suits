@@ -44,4 +44,8 @@ export default function encerrando_registro2(suite) {
     setTimeout(() => { fechar_cofre(suite) }, 800)
 
     setTimeout(() => { encerrar_tarefas(suite) }, 900)
+
+    setTimeout(() => {
+        location.reload()
+    }, 1000);
 }
