@@ -30,4 +30,11 @@ export default async function limpando() {
     localStorage.removeItem("last")
     localStorage.removeItem(`troca${suite}`)
     localStorage.removeItem(`codigo${suite}`)
+
+    localStorage.removeItem(`vs`)
+    localStorage.removeItem(`vst`)
+    localStorage.removeItem(`permanencia`)
+    localStorage.removeItem(`vc`)
+    localStorage.removeItem(`va`)
+    localStorage.removeItem(`troco`)
 }

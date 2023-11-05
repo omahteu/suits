@@ -33,7 +33,7 @@ $(window).on("load", async function() {
     const rq = await fetch(`http://${RAIZ}/suits/php/impressoras/show/emuso.php`)
     const rs = await rq.json()
     if (rs['dados']) {
-        if (rs['dados'][0].parcial == 'n') {
+        if (rs['dados'][0].parcial == 's') {
             $("#li3").hide()
         }
     }

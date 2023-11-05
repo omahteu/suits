@@ -36,6 +36,15 @@ async function buscaSangrias(valor) {
             }
         });
         let saldoAtualizado = parseFloat(valor) - parseFloat(soma)
+        console.log(saldoAtualizado)
+        $("#tab_saldo").html(
+            `
+                <tr><td id="saldo_caixa">${saldoAtualizado.toFixed(2)}</td></tr>
+            `
+        )
+    } else {
+        let saldoAtualizado = parseFloat(valor) - parseFloat(0)
+        console.log(saldoAtualizado)
         $("#tab_saldo").html(
             `
                 <tr><td id="saldo_caixa">${saldoAtualizado.toFixed(2)}</td></tr>
