@@ -8,20 +8,16 @@ import receber from "../../quartos/auxiliares/funcao4.js"
 import ag_pagamento from "../../tags/apagamento.js"
 import revisao from "../../tags/revisao.js"
 
-
-$(window).on("load", function () {
-	setTimeout(() => {
-		let base = receber("offs")
-		base.forEach(e => {
-			try {
-				restoreStatus(e.suite, e.tipo)
-			} catch (jqXHR) {
-				sessionStorage.setItem("viewquartos.js", `LOGS | ${jqXHR}`)
-			}
-		});
-	}, 2000)
-})
-
+setInterval(() => {
+	let base = receber("offs")
+	base.forEach(e => {
+		try {
+			restoreStatus(e.suite, e.tipo)
+		} catch (jqXHR) {
+			sessionStorage.setItem("viewquartos.js", `LOGS | ${jqXHR}`)
+		}
+	});
+}, 1000);
 
 function restoreStatus(suite, tipo) {
 	try {
