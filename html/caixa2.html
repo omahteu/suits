@@ -132,6 +132,9 @@
                   <li>
                     <a data-toggle="tab" href="#credito">Crédito</a>
                   </li>
+                  <li>
+                    <a data-toggle="tab" href="#fundo">Fundo Caixa</a>
+                  </li>
                   <li id="abfeca">
                     <a data-toggle="tab" href="#afcaixa">Abertura / Fechamento</a>
                   </li>
@@ -203,6 +206,17 @@
                     </table>
                   </div>
 
+                  <!-- Fundo Caixa -->
+                  <div id="fundo" class="tab-pane fade">
+                    <table class="table table-bordered  dataTable no-footer" role="grid">
+                      <thead>
+                        <tr role="row">
+                          <th>Fundo</th>
+                      </thead>
+                      <tbody id="fundoCaixa"></tbody>
+                    </table>
+                  </div>
+
                   <!--CAIXA-->
                   <div id="afcaixa" class="tab-pane fade">
                     <div class="form-horizontal">
@@ -255,6 +269,7 @@
   <!-- Listar Pagamentos -->
   <script type="module" src="../js/caixa/__init.__.js"></script>
   <script type="module" src="../js/caixa/sangria/sangria.js"></script>
+  <script src="../js/caixa/fundo/valor.js"></script>
 
   <!-- Máscara Valor Sangria -->
   <script src="../js/caixa/sangria/mascara.js"></script>
