@@ -17,16 +17,16 @@ export async function saldo() {
             setTimeout(() => {
                 let pagamentosUsuarios = rs["dados"].filter(zin => zin.usuario == usuario && zin.data == hoje)
                 pagamentosUsuarios.forEach(item => {
-                    if (item.data == String(data_atual())) {
-                        const valores = item.valor;
-                        soma += parseFloat(valores);
-                    }
+
+                    const valores = item.valor;
+                    soma += parseFloat(valores);
+
                 });
                 let totalCaixa = parseFloat(soma) + parseFloat(fundo)
                 $("#tab_saldo").html(
                     `
                         <tr>
-                            <td id="saldo_caixa">${saldoAtualizado.toFixed(2)}</td>
+                            <td id="saldo_caixa">${totalCaixa.toFixed(2)}</td>
                             <td>${parseFloat(dinheiro).toFixed(2)}</td>
                             <td>${parseFloat(pix).toFixed(2)}</td>
                             <td>${parseFloat(credito).toFixed(2)}</td>
