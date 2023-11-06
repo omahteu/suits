@@ -9,6 +9,7 @@ import {RAIZ} from "../../raiz.js"
 
 
 export async function todos_pagamentos() {
+    let soma = 0
     const rq = await fetch(`http://${RAIZ}/suits/php/caixa/show/pagamentos.php`)
     const rs = await rq.json()
     if (rs["status"]) {
@@ -51,7 +52,7 @@ function pix(e) {
 }
 
 function debito(e) {
-    var debito = e.filter(i => i.forma == "3")
+    var debito = e.filter(i => i.forma == "Débito Mastercard - ")
     let tab = document.getElementById("tab_debito")
     tab.innerHTML = ""
     debito.forEach(i => {
@@ -67,7 +68,7 @@ function debito(e) {
 }
 
 function credito(e) {
-    var credito = e.filter(i => i.forma == "4")
+    var credito = e.filter(i => i.forma == "Crédito Mastercard -")
     let tab = document.getElementById("tab_credito")
     tab.innerHTML = ""
     credito.forEach(i => {
