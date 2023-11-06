@@ -26,7 +26,7 @@ async function buscaSangrias(valor) {
     let dinheiro = localStorage.getItem('dinheiro') == null ? '0' : localStorage.getItem('dinheiro')
     let pix = localStorage.getItem('pix') == null ? '0' : localStorage.getItem('pix')
     let credito = localStorage.getItem('credito') == null ? '0' : localStorage.getItem('credito')
-    let debito = localStorage.getItem('debito') == null ? '0' : localStorage.getItem('debito')
+    let debito = localStorage.getItem('debito') == null ? '0' : localStorage.getItem('credito')
 
     let usuario = localStorage.getItem("nome")
     let soma = 0
@@ -41,7 +41,6 @@ async function buscaSangrias(valor) {
             }
         });
         let saldoAtualizado = parseFloat(valor) - parseFloat(soma)
-        console.log(saldoAtualizado)
         $("#tab_saldo").html(
             `
                 <tr>

@@ -56,6 +56,7 @@ function pix(e) {
         const valores = i.valor;
         soma += parseFloat(valores);
     });
+    console.log(soma)
     localStorage.setItem("pix", soma)
 }
 
