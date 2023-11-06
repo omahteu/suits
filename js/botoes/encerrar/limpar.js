@@ -37,4 +37,5 @@ export default async function limpando() {
     localStorage.removeItem(`vc`)
     localStorage.removeItem(`va`)
     localStorage.removeItem(`troco`)
+    localStorage.removeItem(`vpr`)
 }
