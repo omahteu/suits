@@ -7,24 +7,29 @@ $(document).on("click", "#registrar_produto", function() {
 	let suite = $("#quarto_painel").text()
 	let busca = infos.filter(o => o.suite == suite)
 	var tipos = ['locado', 'pernoite']
+	let quantidade = $("#quantidade").val()
 	try {
 		let tipo = busca[0].tipo
 		if(tipos.includes(tipo)){
-			setTimeout(() => {
-				let dadosphp = $("#formCadastros").serialize()
-				var xhr = new XMLHttpRequest();		
-				xhr.open("POST", `http://${RAIZ}/suits/php/suites/comanda.php`, true);
-				xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-				xhr.onreadystatechange = function () {
-					if (xhr.readyState === 4 && xhr.status === 200) {
-						alert("Produto adicionado!")
-						document.getElementById("formCadastros").reset()
-						ll(suite)
-						calculo(suite)
-					}
-				};
-				xhr.send(dadosphp)
-			}, 500);
+			if (quantidade){
+				setTimeout(() => {
+					let dadosphp = $("#formCadastros").serialize()
+					var xhr = new XMLHttpRequest();		
+					xhr.open("POST", `http://${RAIZ}/suits/php/suites/comanda.php`, true);
+					xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+					xhr.onreadystatechange = function () {
+						if (xhr.readyState === 4 && xhr.status === 200) {
+							alert("Produto adicionado!")
+							document.getElementById("formCadastros").reset()
+							ll(suite)
+							calculo(suite)
+						}
+					};
+					xhr.send(dadosphp)
+				}, 500);
+			} else {
+				alert("Insira a quantidade do produto! ")
+			}
 		}
 	} catch (error) {
 		alert('Selecione um Quarto!')
