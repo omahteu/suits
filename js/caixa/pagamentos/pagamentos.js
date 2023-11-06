@@ -9,7 +9,6 @@ import {RAIZ} from "../../raiz.js"
 
 
 export async function todos_pagamentos() {
-    let soma = 0
     const rq = await fetch(`http://${RAIZ}/suits/php/caixa/show/pagamentos.php`)
     const rs = await rq.json()
     if (rs["status"]) {
@@ -21,11 +20,13 @@ export async function todos_pagamentos() {
 }
 
 function dinheiro(e) {
+    let soma = 0
     let usuario = localStorage.getItem('nome')
     let real = e.filter(i => i.forma == "Dinheiro" && i.usuario == usuario)
     let tabs = document.getElementById("lista_dinheiro")
     tabs.innerHTML = ""
     real.forEach(i => {
+
         tabs.innerHTML += `
             <tr>
                 <td>${i.valor}</td>
@@ -33,10 +34,14 @@ function dinheiro(e) {
                 <td>${i.usuario}</td>
             </tr>
         `
+        const valores = i.valor;
+        soma += parseFloat(valores);
     });
+    localStorage.setItem("dinheiro", soma)
 }
 
 function pix(e) {
+    let soma = 0
     let pixs = e.filter(i => i.forma == "PIX")
     let tabs = document.getElementById("lista_pix")
     tabs.innerHTML = ""
@@ -48,10 +53,14 @@ function pix(e) {
                 <td>${i.usuario}</td>
             </tr>
         `
+        const valores = i.valor;
+        soma += parseFloat(valores);
     });
+    localStorage.setItem("pix", soma)
 }
 
 function debito(e) {
+    let soma = 0
     var debito = e.filter(i => i.forma == "Débito Mastercard - ")
     let tab = document.getElementById("tab_debito")
     tab.innerHTML = ""
@@ -64,10 +73,14 @@ function debito(e) {
                 <td>${i.usuario}</td>
             </tr>
         `
+        const valores = i.valor;
+        soma += parseFloat(valores);
     })
+    localStorage.setItem("debito", soma)
 }
 
 function credito(e) {
+    let soma = 0
     var credito = e.filter(i => i.forma == "Crédito Mastercard -")
     let tab = document.getElementById("tab_credito")
     tab.innerHTML = ""
@@ -81,5 +94,8 @@ function credito(e) {
                 <td>${i.usuario}</td>
             </tr>
         `
+        const valores = i.valor;
+        soma += parseFloat(valores);
     })
+    localStorage.setItem("credito", soma)
 }

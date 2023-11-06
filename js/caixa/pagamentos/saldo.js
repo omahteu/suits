@@ -23,6 +23,11 @@ export async function saldo() {
 }
 
 async function buscaSangrias(valor) {
+    let dinheiro = localStorage.getItem('dinheiro')
+    let pix = localStorage.getItem('pix')
+    let credito = localStorage.getItem('credito')
+    let debito = localStorage.getItem('debito')
+
     let usuario = localStorage.getItem("nome")
     let soma = 0
     const rq = await fetch(`http://${RAIZ}/suits/php/relatorios/sangrias.php`)
@@ -39,15 +44,26 @@ async function buscaSangrias(valor) {
         console.log(saldoAtualizado)
         $("#tab_saldo").html(
             `
-                <tr><td id="saldo_caixa">${saldoAtualizado.toFixed(2)}</td></tr>
+                <tr>
+                    <td id="saldo_caixa">${saldoAtualizado.toFixed(2)}</td>
+                    <td>${parseFloat(dinheiro).toFixed(2)}</td>
+                    <td>${parseFloat(pix).toFixed(2)}</td>
+                    <td>${parseFloat(credito).toFixed(2)}</td>
+                    <td>${parseFloat(debito).toFixed(2)}</td>
+                </tr>
             `
         )
     } else {
         let saldoAtualizado = parseFloat(valor) - parseFloat(0)
-        console.log(saldoAtualizado)
         $("#tab_saldo").html(
             `
-                <tr><td id="saldo_caixa">${saldoAtualizado.toFixed(2)}</td></tr>
+                <tr>
+                    <td id="saldo_caixa">${saldoAtualizado.toFixed(2)}</td>
+                    <td>${parseFloat(dinheiro).toFixed(2)}</td>
+                    <td>${parseFloat(pix).toFixed(2)}</td>
+                    <td>${parseFloat(credito).toFixed(2)}</td>
+                    <td>${parseFloat(debito).toFixed(2)}</td>
+                </tr>
             `
         )
     }
