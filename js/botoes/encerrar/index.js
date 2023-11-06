@@ -2,7 +2,7 @@ import registrar_pagamento from "./pagamento.js";
 import registrando from "./produto.js";
 import ocupacao from "./ocupacao.js";
 import limpando from "./limpar.js";
-import notas from "../../checkout/nota.js"
+// import notas from "../../checkout/nota.js"
 import alterar from "../../olivia/altera.js";
 import { RAIZ } from "../../raiz.js";
 import desligar_luz from "../../automacao/desligar.js";
@@ -27,7 +27,7 @@ $(document).on("click", "#encerrar", function () {
             apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, vai);
         }, 650);
         setTimeout(() => {limpando();}, 900);
-        setTimeout(() => {window.close();}, 1000);
+        setTimeout(() => {window.close();}, 1500);
     } else {
         alert("Selecione uma Camareira");
     }
