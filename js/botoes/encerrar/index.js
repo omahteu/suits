@@ -15,19 +15,27 @@ $(document).on("click", "#encerrar", function () {
     var cm = $("#selecionaCamareira :selected").text();
     if (cm.trim() != "Camareira") {
         // impressao()
-        var suite = localStorage.getItem("last");
-        var dados = "suite=" + suite + "&tipo=" + "aguardando";
-        alterar(`http://${RAIZ}/suits/php/suites/editarinfosq.php`, dados);
-        setTimeout(() => {registrar_pagamento();}, 300);
-        setTimeout(() => {registrando();}, 500);
-        setTimeout(() => {ocupacao();}, 800);
-        setTimeout(() => {
-            desligar_luz(suite);
-            var vai = "tabela=" + "acoes" + "&coluna=" + "suite" + "&valor=" + suite;
-            apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, vai);
-        }, 650);
-        setTimeout(() => {limpando();}, 900);
-        setTimeout(() => {window.close();}, 1500);
+        let metodo_pagamento = $("#modo_pagamento :selected").text()
+        let parcelas = $("#numero_parcelas").val()
+    
+        if (metodo_pagamento == "Crédito Mastercard - 4%" && parcelas == '0') {
+            alert("Selecione o Número de Parcelas")
+        } else {
+            var suite = localStorage.getItem("last");
+            var dados = "suite=" + suite + "&tipo=" + "aguardando";
+            alterar(`http://${RAIZ}/suits/php/suites/editarinfosq.php`, dados);
+            setTimeout(() => {registrar_pagamento();}, 300);
+            setTimeout(() => {registrando();}, 500);
+            setTimeout(() => {ocupacao();}, 800);
+            setTimeout(() => {
+                desligar_luz(suite);
+                var vai = "tabela=" + "acoes" + "&coluna=" + "suite" + "&valor=" + suite;
+                apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, vai);
+            }, 650);
+            setTimeout(() => {limpando();}, 900);
+            setTimeout(() => {window.close();}, 1500);
+        }
+
     } else {
         alert("Selecione uma Camareira");
     }
