@@ -7,14 +7,14 @@ import alterar from "../../olivia/altera.js";
 import { RAIZ } from "../../raiz.js";
 import desligar_luz from "../../automacao/desligar.js";
 import apagar from "../../olivia/apaga.js";
-import salvar from "../../olivia/salva.js";
-import { hora_atual_segundos } from "../../geradores/hora.js";
+// import salvar from "../../olivia/salva.js";
+// import { hora_atual_segundos } from "../../geradores/hora.js";
 
 $(document).on("click", "#encerrar", function () {
     //notas()
     var cm = $("#selecionaCamareira :selected").text();
     if (cm.trim() != "Camareira") {
-        impressao()
+        // impressao()
         var suite = localStorage.getItem("last");
         var dados = "suite=" + suite + "&tipo=" + "aguardando";
         alterar(`http://${RAIZ}/suits/php/suites/editarinfosq.php`, dados);
@@ -34,24 +34,24 @@ $(document).on("click", "#encerrar", function () {
 });
 
 
-async function impressao() {
-    const rq = await fetch(`http://${RAIZ}/suits/php/impressoras/show/emuso.php`)
-    const rs = await rq.json()
-    if (rs['dados']) {
-        if (rs['dados'][0].parcial == 'n') {
-            let base = JSON.parse(sessionStorage.getItem('offs'))
-            let suite = localStorage.getItem('last')
-            let fsuits = base.filter(z => z.suite == suite)
-            let inicio = fsuits[0].hora
-            let fim = hora_atual_segundos()
-            let tempo = $("#tempoPermanencia").text()
-            let vsuite = localStorage.getItem('vs')
-            let consumo = localStorage.getItem('vc')
-            let add = localStorage.getItem('va')
-            let total = $("#totalGeral").text()
-            let receber = localStorage.getItem('troco')
-            let dados = 'suite=' + suite + '&inicio=' + inicio + '&fim=' + fim + '&tempo=' + tempo + '&tipo=' + 'Locacao' + '&vsuite=' + vsuite + '&vconsumo=' + parseFloat(consumo).toFixed(2) + '&vadd=' + parseFloat(add).toFixed(2) + '&total=' + total + '&receber=' + parseFloat(receber).toFixed(2)
-            salvar(`http://${RAIZ}/suits/php/suites/impressao.php`, dados)
-        }
-    }
-}
+// async function impressao() {
+//     const rq = await fetch(`http://${RAIZ}/suits/php/impressoras/show/emuso.php`)
+//     const rs = await rq.json()
+//     if (rs['dados']) {
+//         if (rs['dados'][0].parcial == 'n') {
+//             let base = JSON.parse(sessionStorage.getItem('offs'))
+//             let suite = localStorage.getItem('last')
+//             let fsuits = base.filter(z => z.suite == suite)
+//             let inicio = fsuits[0].hora
+//             let fim = hora_atual_segundos()
+//             let tempo = $("#tempoPermanencia").text()
+//             let vsuite = localStorage.getItem('vs')
+//             let consumo = localStorage.getItem('vc')
+//             let add = localStorage.getItem('va')
+//             let total = $("#totalGeral").text()
+//             let receber = localStorage.getItem('troco')
+//             let dados = 'suite=' + suite + '&inicio=' + inicio + '&fim=' + fim + '&tempo=' + tempo + '&tipo=' + 'Locacao' + '&vsuite=' + vsuite + '&vconsumo=' + parseFloat(consumo).toFixed(2) + '&vadd=' + parseFloat(add).toFixed(2) + '&total=' + total + '&receber=' + parseFloat(receber).toFixed(2)
+//             salvar(`http://${RAIZ}/suits/php/suites/impressao.php`, dados)
+//         }
+//     }
+// }
