@@ -15,23 +15,13 @@ async function monitoramento() {
                 case "faxina":
                     if (e.modo != "bt") {
                        
-                        executor_tarefas(
-                            String(e.horario),
-                            String(hora_atual()),
-                            e.id,
-                            "bt"
-                        );
+                        executor_tarefas(String(e.horario), String(hora_atual()), e.id, "bt");
                     }
                     break;
 
                 case "limpeza":
                     if (e.modo != "bt") {
-                        executor_tarefas(
-                            String(e.horario),
-                            String(hora_atual()),
-                            e.id,
-                            "bt"
-                        );
+                        executor_tarefas(String(e.horario), String(hora_atual()), e.id, "bt");
                     }
                     break;
 
