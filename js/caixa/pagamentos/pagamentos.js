@@ -42,7 +42,8 @@ function dinheiro(e) {
 
 function pix(e) {
     let soma = 0
-    let pixs = e.filter(i => i.forma == "PIX")
+    let usuario = localStorage.getItem('nome')
+    let pixs = e.filter(i => i.forma == "PIX" && i.usuario == usuario)
     let tabs = document.getElementById("lista_pix")
     tabs.innerHTML = ""
     pixs.forEach(i => {
@@ -62,7 +63,8 @@ function pix(e) {
 
 function debito(e) {
     let soma = 0
-    var debito = e.filter(i => i.forma == "Débito Mastercard - ")
+    let usuario = localStorage.getItem('nome')
+    var debito = e.filter(i => i.forma == "Débito Mastercard - " && i.usuario == usuario)
     let tab = document.getElementById("tab_debito")
     tab.innerHTML = ""
     debito.forEach(i => {
@@ -82,7 +84,8 @@ function debito(e) {
 
 function credito(e) {
     let soma = 0
-    var credito = e.filter(i => i.forma == "Crédito Mastercard -")
+    let usuario = localStorage.getItem('nome')
+    var credito = e.filter(i => i.forma == "Crédito Mastercard -" && i.usuario == usuario)
     let tab = document.getElementById("tab_credito")
     tab.innerHTML = ""
     credito.forEach(i => {
