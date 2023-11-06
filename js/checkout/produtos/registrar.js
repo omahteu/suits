@@ -9,47 +9,32 @@ import subtotal from "../_subtotal.js";
 
 $(document).on("click", "#registrar_produto", function () {
     let suite = localStorage.getItem("last");
+    let quantidade = $("#quantidade").val()
     try {
-        setTimeout(() => {
-            let dados =
-                "suite=" +
-                suite +
-                "&descricao=" +
-                $("#descricao").val() +
-                "&quantidade=" +
-                $("#quantidade").val() +
-                "&valor_total=" +
-                $("#valor_total").val() +
-                "&valor_unitario=" +
-                $("#valor_unitario").val() +
-                "&hora=" +
-                hora_atual_segundos() +
-                "&valor_suite=" +
-                "0";
-            var xhr = new XMLHttpRequest();
-            xhr.open(
-                "POST",
-                `http://${RAIZ}/suits/php/suites/comandaC.php`,
-                true
-            );
-            xhr.setRequestHeader(
-                "Content-Type",
-                "application/x-www-form-urlencoded"
-            );
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    alert("Produto adicionado!");
-                    document.getElementById("produtos_checkout").reset();
-                    hgf(suite);
-                    somaComanda(suite);
-                    subtotal()
-                    setTimeout(() => {
-                        total()
-                    }, 1500);
-                }
-            };
-            xhr.send(dados);
-        }, 1000);
+        if (quantidade) {
+            setTimeout(() => {
+                let dados = "suite=" + suite + "&descricao=" + $("#descricao").val() + "&quantidade=" + $("#quantidade").val() + "&valor_total=" + $("#valor_total").val() + "&valor_unitario=" + $("#valor_unitario").val() + "&hora=" + hora_atual_segundos() + "&valor_suite=" + "0";
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", `http://${RAIZ}/suits/php/suites/comandaC.php`, true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        alert("Produto adicionado!");
+                        document.getElementById("produtos_checkout").reset();
+                        hgf(suite);
+                        somaComanda(suite);
+                        subtotal()
+                        setTimeout(() => {
+                            total()
+                        }, 1500);
+                    }
+                };
+                xhr.send(dados);
+            }, 1000);
+        } else {
+            alert("Selecione a quantidade do produto!")
+        }
+
     } catch (error) {
         alert("Selecione um Quarto!");
     }
