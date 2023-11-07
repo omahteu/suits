@@ -11,6 +11,6 @@ export default function recupera_permanencia(suite) {
     var z2 = moment.duration(z1);
     var z3 = Math.floor(z2.asHours()) + moment.utc(z1).format(":mm:ss");
     $("#tempoPermanencia").text(z3);
-    localStorage.setItem('permanencia', z3)
+    localStorage.setItem(`permanencia${suite}`, z3)
   });
 }

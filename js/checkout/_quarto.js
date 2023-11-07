@@ -3,5 +3,5 @@ export default function vsuite() {
   let dados = JSON.parse(sessionStorage.getItem("offs"));
   let filtr = dados.filter((x) => (x.suite = suite));
   $("#valorQuarto").text(filtr[0].valor);
-  localStorage.setItem('vs', parseFloat(filtr[0].valor).toFixed(2))
+  localStorage.setItem(`vs${suite}`, parseFloat(filtr[0].valor).toFixed(2))
 }

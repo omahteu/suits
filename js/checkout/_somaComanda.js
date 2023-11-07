@@ -11,9 +11,9 @@ export default async function somaComanda(suite) {
       total += parseFloat(valores.slice(3));
     });
     $("#valorItens").text(parseFloat(total).toFixed(2));
-    localStorage.setItem('vc', parseFloat(total).toFixed(2))
+    localStorage.setItem(`vc${suite}`, parseFloat(total).toFixed(2))
   } else {
     $("#valorItens").text('0.00');
-    localStorage.setItem('vc', '0')
+    localStorage.setItem(`vc${suite}`, '0')
   }
 }

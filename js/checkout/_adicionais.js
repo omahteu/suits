@@ -21,10 +21,10 @@ async function add(suite, id_permanencia, quarto, valor) {
       });
       let adicionado = parseFloat(valor) - parseFloat(quarto);
       $(`#${id_permanencia}`).text(parseFloat(adicionado).toFixed(2));
-      localStorage.setItem('va', `${parseFloat(adicionado).toFixed(2)}`)
+      localStorage.setItem(`va${suite}`, `${parseFloat(adicionado).toFixed(2)}`)
     }
   } else {
     $("#valor_addPermanencia").text('0.00');
-    localStorage.setItem('va', '0')
+    localStorage.setItem(`va${suite}`, '0')
   }
 }

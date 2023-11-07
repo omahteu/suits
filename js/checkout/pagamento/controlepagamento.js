@@ -18,6 +18,7 @@ $(document).on("change", "#modo_pagamento", function() {
 })
 
 $(document).on("change", "#numero_parcelas", function() {
+    var suite = $("#suiteEncerrando").text()
     let parcelas = $(this).find("option:selected").text()
     let pagam = $("#modo_pagamento").find("option:selected").text()
     var tarifa = pagam.match(/\d/);
@@ -29,5 +30,5 @@ $(document).on("change", "#numero_parcelas", function() {
     $("#nparcelas").text(parcelas)
     $("#valor_parcelas").text(parseFloat(subTotalTarifadoParcelado).toFixed(2))
     $("#modo_pagamento").attr("disabled", "true")
-    localStorage.setItem('vpr', acrescentado)
+    localStorage.setItem(`vpr${suite}`, acrescentado)
 })

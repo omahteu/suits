@@ -13,11 +13,12 @@ $(window).on("load", function() {
     exibeDebito()
 
     setTimeout(() => {
-        var suite = localStorage.getItem("last");
+        // var suite = localStorage.getItem("last");
+        var suite = $("#suiteEncerrando").text()
         somaComanda(suite)
         recupera_permanencia(suite)
         adicionais(suite, "valorQuarto", "valor_addPermanencia")
         vsuite()
         subtotal()
-    }, 500);
+    }, 1000);
 })

@@ -1,4 +1,5 @@
 export default function debito(tarifa) {
+    var suite = $("#suiteEncerrando").text()
     var tarifa = tarifa.match(/\d/);
     let subtotal = parseFloat($("#valor_subtotal").text())
     let decimal = parseFloat(tarifa) / 100
@@ -8,5 +9,5 @@ export default function debito(tarifa) {
     $("#nparcelas").text("1")
     $("#valor_parcelas").text(parseFloat(subTotalTarifadoParcelado).toFixed(2))
     $("#modo_pagamento").attr("disabled", "true")
-    localStorage.setItem('vpr', acrescentado)
+    localStorage.setItem(`vpr${suite}`, acrescentado)
 }
