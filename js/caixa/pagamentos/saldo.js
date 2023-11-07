@@ -10,7 +10,7 @@ export async function saldo() {
 
         const dataAtual = moment();
         const dataOntem = dataAtual.subtract(1, 'days');
-        let ontem = dataOntem.format('YYYY-MM-DD')
+        let ontem = dataOntem.format('DD/MM/YYYY');
 
 
         let soma = 0
