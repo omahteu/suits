@@ -36,10 +36,6 @@ function atualizaValores(suite) {
         const diferencaSegundos = horaAtual.diff(horarioRegistrado, 'seconds');
         const minutos = Math.floor((diferencaSegundos % 3600) / 60);
 
-        console.log(diferencaEmHoras)
-        console.log(diferencaSegundos)
-        console.log(minutos)
-
         if (diferencaEmHoras > 0 && diferencaEmHoras <= 1 && minutos > tolerancia) {
           alterarValor(suite, funil_precos[0].vh2)
         } else if (diferencaEmHoras > 1 && diferencaEmHoras <= 2 && minutos > tolerancia) {
