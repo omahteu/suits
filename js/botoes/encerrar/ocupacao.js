@@ -7,11 +7,13 @@ import salvar from "../../olivia/salva.js"
 import { RAIZ } from "../../raiz.js"
 
 export default function ocupacao() {
-    let quarto = localStorage.getItem("last")
+    let suite = $("#suiteEncerrando").text()
     var box = JSON.parse(sessionStorage.getItem("offs"))
     let codigo_ocupacao = gera_id(5)
-    let entrada = box[0].hora
-    localStorage.setItem(`codigo${quarto}`, codigo_ocupacao)
-    let caixa = 'usuario=' + localStorage.getItem("nome") + '&data=' + data_atual() + '&codigo=' + codigo_ocupacao + '&suite=' + quarto + '&entrada=' + entrada + '&saida=' + hora_atual_segundos() + '&total=' + $("#totalGeral").text()
+    let dadosOCupacao = box.filter(x => x.suite == suite)
+    let entrada = dadosOCupacao[0].hora
+    localStorage.setItem(`codigo${suite}`, codigo_ocupacao)
+    let caixa = 'usuario=' + localStorage.getItem("nome") + '&data=' + data_atual() + '&codigo=' + codigo_ocupacao + '&suite=' + suite + '&entrada=' + entrada + '&saida=' + hora_atual_segundos() + '&total=' + $("#totalGeral").text()
+    console.log(caixa)
     salvar(`http://${RAIZ}/suits/php/suites/ocupacao.php`, caixa)
 }
