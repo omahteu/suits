@@ -26,36 +26,31 @@ function atualizaValores(suite) {
     if (modo_cobranca == "hora") {
       let funil = alugados.filter(x => x.suite == suite)
       let iniciado = funil[0].hora
+      const horarioRegistrado = moment(iniciado, 'HH:mm:ss');
       let funil_suites = suites.filter(o => o.numeroSuite == funil[0].suite)
       let funil_precos = precos.filter(u => u.codigo == funil_suites[0].codigoSuite)
       function verificarHoraPassada() {
         const horaAtual = moment();
-        const horaInicial = moment(String(iniciado), 'HH:mm:ss');
+        const diferencaEmHoras = horaAtual.diff(horarioRegistrado, 'hours')
 
-        if (horaAtual.isBefore(horaInicial)) {
-            horaAtual.add(1, 'day');
-        }
+        const diferencaSegundos = horaAtual.diff(horarioRegistrado, 'seconds');
+        const minutos = Math.floor((diferencaSegundos % 3600) / 60);
 
-        const diferenca = moment.duration(horaAtual.diff(horaInicial));
-
-        const horasDiferenca = diferenca.hours();
-        const minutosDiferenca = diferenca.minutes();
-
-        if (horasDiferenca > 0 && horasDiferenca <= 1 && minutosDiferenca > tolerancia) {
+        if (diferencaEmHoras > 0 && diferencaEmHoras <= 1 && minutos > tolerancia) {
           alterarValor(suite, funil_precos[0].vh2)
-        } else if (horasDiferenca > 1 && horasDiferenca <= 2 && minutosDiferenca > tolerancia) {
+        } else if (diferencaEmHoras > 1 && diferencaEmHoras <= 2 && minutos > tolerancia) {
           alterarValor(suite, funil_precos[0].vh3)
-        } else if(horasDiferenca > 2 && horasDiferenca <= 3 && minutosDiferenca > tolerancia) {
+        } else if(diferencaEmHoras > 2 && diferencaEmHoras <= 3 && minutos > tolerancia) {
           alterarValor(suite, funil_precos[0].vh4)
-        } else if (horasDiferenca > 3 && horasDiferenca <= 4 && minutosDiferenca > tolerancia) {
+        } else if (diferencaEmHoras > 3 && diferencaEmHoras <= 4 && minutos > tolerancia) {
           alterarValor(suite, funil_precos[0].vh5)
-        } else if (horasDiferenca > 4 && horasDiferenca <= 5 && minutosDiferenca > tolerancia) {
+        } else if (diferencaEmHoras > 4 && diferencaEmHoras <= 5 && minutos > tolerancia) {
           alterarValor(suite, funil_precos[0].vh6)
-        } else if (horasDiferenca > 5 && horasDiferenca <= 6 && minutosDiferenca > tolerancia) {
+        } else if (diferencaEmHoras > 5 && diferencaEmHoras <= 6 && minutos > tolerancia) {
           alterarValor(suite, parseFloat(parseInt(funil_precos[0].vh6) + 10).toFixed(2))
-        } else if (horasDiferenca > 6 && horasDiferenca <= 7 && minutosDiferenca > tolerancia) {
+        } else if (diferencaEmHoras > 6 && diferencaEmHoras <= 7 && minutos > tolerancia) {
           alterarValor(suite, parseFloat(parseInt(funil_precos[0].vh6) + 20).toFixed(2))
-        } else if (horasDiferenca > 7 && minutosDiferenca > tolerancia) {
+        } else if (diferencaEmHoras > 7 && diferencaEmHoras <= 8 && minutos > tolerancia) {
           comecando_pernoite()
         }
       }
