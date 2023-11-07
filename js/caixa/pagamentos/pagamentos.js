@@ -6,6 +6,7 @@
 // 4 | Crédito
 
 import {RAIZ} from "../../raiz.js"
+import {data_atual} from "../../geradores/data.js"
 
 
 export async function todos_pagamentos() {
@@ -22,7 +23,7 @@ export async function todos_pagamentos() {
 function dinheiro(e) {
     let soma = 0
     let usuario = localStorage.getItem('nome')
-    let real = e.filter(i => i.forma == "Dinheiro" && i.usuario == usuario)
+    let real = e.filter(i => i.forma == "Dinheiro" && i.usuario == usuario && i.data == String(data_atual()))
     let tabs = document.getElementById("lista_dinheiro")
     tabs.innerHTML = ""
     real.forEach(i => {
@@ -42,7 +43,7 @@ function dinheiro(e) {
 function pix(e) {
     let soma = 0
     let usuario = localStorage.getItem('nome')
-    let pixs = e.filter(i => i.forma == "PIX" && i.usuario == usuario)
+    let pixs = e.filter(i => i.forma == "PIX" && i.usuario == usuario && i.data == String(data_atual()))
     let tabs = document.getElementById("lista_pix")
     tabs.innerHTML = ""
     pixs.forEach(i => {
@@ -62,7 +63,7 @@ function pix(e) {
 function debito(e) {
     let soma = 0
     let usuario = localStorage.getItem('nome')
-    var debito = e.filter(i => i.forma == "Débito Mastercard - " && i.usuario == usuario)
+    var debito = e.filter(i => i.forma == "Débito Mastercard - " && i.usuario == usuario && i.data == String(data_atual()))
     let tab = document.getElementById("tab_debito")
     tab.innerHTML = ""
     debito.forEach(i => {
@@ -83,7 +84,7 @@ function debito(e) {
 function credito(e) {
     let soma = 0
     let usuario = localStorage.getItem('nome')
-    var credito = e.filter(i => i.forma == "Crédito Mastercard -" && i.usuario == usuario)
+    var credito = e.filter(i => i.forma == "Crédito Mastercard -" && i.usuario == usuario && i.data == String(data_atual()))
     let tab = document.getElementById("tab_credito")
     tab.innerHTML = ""
     credito.forEach(i => {
