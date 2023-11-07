@@ -8,7 +8,7 @@ export async function saldo() {
         let credito = localStorage.getItem('credito') == null ? '0' : localStorage.getItem('credito')
         let debito = localStorage.getItem('debito') == null ? '0' : localStorage.getItem('credito')
 
-
+        const dataAtual = moment();
         const dataOntem = dataAtual.subtract(1, 'days');
         let ontem = dataOntem.format('YYYY-MM-DD')
 
