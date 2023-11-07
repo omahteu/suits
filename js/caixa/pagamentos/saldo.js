@@ -21,8 +21,17 @@ export async function saldo() {
         const rs = await rq.json()
         if (rs["status"]) {
             setTimeout(() => {
-                let pagamentosUsuarios = rs["dados"].filter(zin => zin.usuario === usuario && (zin.data === hoje || zin.data === ontem));
-                pagamentosUsuarios.forEach(item => {
+                let pagamentosUsuariosHoje = rs["dados"].filter(zin => zin.usuario === usuario && zin.data === hoje)
+                let pagamentosUsuariosOntem = rs["dados"].filter(zin => zin.usuario === usuario && zin.data === ontem)
+
+                pagamentosUsuariosOntem.forEach(item => {
+
+                    const valores = item.valor;
+                    soma += parseFloat(valores);
+
+                });
+
+                pagamentosUsuariosHoje.forEach(item => {
 
                     const valores = item.valor;
                     soma += parseFloat(valores);
