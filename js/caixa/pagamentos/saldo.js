@@ -7,6 +7,12 @@ export async function saldo() {
         let pix = localStorage.getItem('pix') == null ? '0' : localStorage.getItem('pix')
         let credito = localStorage.getItem('credito') == null ? '0' : localStorage.getItem('credito')
         let debito = localStorage.getItem('debito') == null ? '0' : localStorage.getItem('credito')
+
+
+        const dataOntem = dataAtual.subtract(1, 'days');
+        let ontem = dataOntem.format('YYYY-MM-DD')
+
+
         let soma = 0
         let usuario = localStorage.getItem('nome')
         let fundo = localStorage.getItem("fundo")
@@ -15,7 +21,7 @@ export async function saldo() {
         const rs = await rq.json()
         if (rs["status"]) {
             setTimeout(() => {
-                let pagamentosUsuarios = rs["dados"].filter(zin => zin.usuario == usuario && zin.data == hoje)
+                let pagamentosUsuarios = rs["dados"].filter(zin => zin.usuario === usuario && (zin.data === hoje || zin.data === ontem));
                 pagamentosUsuarios.forEach(item => {
 
                     const valores = item.valor;

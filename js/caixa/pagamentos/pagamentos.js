@@ -26,7 +26,6 @@ function dinheiro(e) {
     let tabs = document.getElementById("lista_dinheiro")
     tabs.innerHTML = ""
     real.forEach(i => {
-
         tabs.innerHTML += `
             <tr>
                 <td>${i.valor}</td>
