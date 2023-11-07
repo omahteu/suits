@@ -24,12 +24,12 @@ export async function saldo() {
                 let pagamentosUsuariosHoje = rs["dados"].filter(zin => zin.usuario === usuario && zin.data === hoje)
                 let pagamentosUsuariosOntem = rs["dados"].filter(zin => zin.usuario === usuario && zin.data === ontem)
 
-                pagamentosUsuariosOntem.forEach(item => {
+                // pagamentosUsuariosOntem.forEach(item => {
 
-                    const valores = item.valor;
-                    soma += parseFloat(valores);
+                //     const valores = item.valor;
+                //     soma += parseFloat(valores);
 
-                });
+                // });
 
                 pagamentosUsuariosHoje.forEach(item => {
 
