@@ -8,6 +8,6 @@ export default function subtotal() {
     let acrescimo = localStorage.getItem(`vpr${suitex}`) == null ? '0' : localStorage.getItem(`vpr${suitex}`)
     var subtotal = parseFloat(suite) + parseFloat(adicional) + parseFloat(comanda) + parseFloat(acrescimo) - parseFloat(desconto)
     $("#valor_subtotal").text(parseFloat(subtotal).toFixed(2))
-    localStorage.setItem(`vst${suite}`, subtotal.toFixed(2))
+    localStorage.setItem(`vst${suitex}`, subtotal.toFixed(2))
   }, 800);
 }
