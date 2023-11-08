@@ -18,11 +18,11 @@ async function impressao() {
             let inicio = fsuits[0].hora
             let fim = hora_atual_segundos()
             let tempo = $("#tempoPermanencia").text()
-            let vsuite = localStorage.getItem(`vs${suite}`)
-            let consumo = localStorage.getItem(`vc${suite}`)
-            let add = localStorage.getItem(`va${suite}`)
+            let vsuite = localStorage.getItem(`vs${suite}`) == null ? '0' : localStorage.getItem(`vs${suite}`)
+            let consumo = localStorage.getItem(`vc${suite}`) == null ? '0' : localStorage.getItem(`vc${suite}`)
+            let add = localStorage.getItem(`va${suite}`) == null ? "0" : localStorage.getItem(`va${suite}`) 
             let total = $("#totalGeral").text()
-            let receber = localStorage.getItem('troco')
+            let receber = localStorage.getItem('troco') == null ? "0" : localStorage.getItem('troco')
             let dados = 'suite=' + suite + '&inicio=' + inicio + '&fim=' + fim + '&tempo=' + tempo + '&tipo=' + 'Locacao' + '&vsuite=' + vsuite + '&vconsumo=' + parseFloat(consumo).toFixed(2) + '&vadd=' + parseFloat(add).toFixed(2) + '&total=' + total + '&receber=' + parseFloat(receber).toFixed(2)
             salvar(`http://${RAIZ}/suits/php/suites/impressao.php`, dados)
         }
