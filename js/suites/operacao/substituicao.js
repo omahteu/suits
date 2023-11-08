@@ -128,7 +128,7 @@ async function trocaCofre(suite, novo) {
     if (rs["status"]) {
         let dados = rs["dados"].filter(x => x.suite == suite)
         dados.forEach(e => {
-            var dados = 'antigo=' + e.id + '&novo=' + novo
+            var dados = 'antigo=' + suite + '&novo=' + novo
             alterar(`http://${RAIZ}/suits/php/suites/editarcofre.php`, dados, false, "", false, "")
         });
     }
