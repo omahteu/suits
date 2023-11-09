@@ -13,8 +13,8 @@ async function monitoramento() {
         rs["dados"].forEach((e) => {
             switch (e.tipo) {
                 case "faxina":
-                    if (e.modo != "bt") {
-                        executor_tarefas(String(e.horario), e.id, "bt");
+                    if (e.modo != "ft") {
+                        executor_tarefas(String(e.horario), e.id, "ft", e.suite);
                     }
                     break;
 

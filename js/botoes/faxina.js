@@ -16,7 +16,7 @@ $(document).on("click", ".faxina", function () {
             let vai = 'suite=' + suite + '&situacao=' + 'on'
             salvar(`http://${RAIZ}/suits/php/suites/sacoes.php`, vai)
         }, 100);
-        setTimeout(() => { limited(`http://${RAIZ}/suits/php/suites/limitemanutencao.php`, `faxinaTempo`, suite, "b", "faxina") }, 200)
+        setTimeout(() => { limited(`http://${RAIZ}/suits/php/suites/limitemanutencao.php`, `faxinaTempo`, suite, "f", "faxina") }, 200)
         setTimeout(() => { index(suite, "faxina") }, 300)
         setTimeout(() => { fimMenu() }, 400)
         setTimeout(() => { play[suite](suite, "0", "0", "0") }, 500)
