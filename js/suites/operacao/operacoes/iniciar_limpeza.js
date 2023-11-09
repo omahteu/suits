@@ -7,34 +7,31 @@ import { clean } from "../../../setup/clean_relogios.js";
 import limpeza from "../../../tags/limpeza.js";
 import salvar from "../../../olivia/salva.js";
 import { RAIZ } from "../../../raiz.js";
+import { limited } from "../suites/tarefas/registros/limites.js"
+import {limited} from "../"
 
 export default function comecar_limpeza(suite) {
     if (confirm(`Iniciar limpeza na Suíte ${suite}?`)) {
         localStorage.removeItem(`troca${suite}`);
-
-        clean[suite](suite);
-        play[suite](suite, "0", "0", "0");
-
-        setTimeout(() => {
-            registraLimiteLimpeza(suite, "b", "limpeza");
-        }, 100);
+        setTimeout(() => { limpeza(suite); }, 1);
 
         setTimeout(() => {
             ligar_luz(suite);
             let vai = "suite=" + suite + "&situacao=" + "on";
             salvar(`http://${RAIZ}/suits/php/suites/sacoes.php`, vai);
         }, 100);
+        setTimeout(() => { limited(`http://${RAIZ}/suits/php/suites/limitemanutencao.php`, `limpezaTempo`, suite, "l", "limpeza") }, 200)
+        setTimeout(() => { registraLimiteLimpeza(suite, "", "limpeza"); }, 100);
+        setTimeout(() => { index(suite, "limpeza") }, 300)
+        setTimeout(() => { fimMenu(); }, 500);
+
+        setTimeout(() => { limpeza(suite); }, 300);
+
+        setTimeout(() => { atualiza_status_e_reinicia(suite, "limpeza"), 400; });
 
         setTimeout(() => {
-            limpeza(suite);
-        }, 300);
-
-        setTimeout(() => {
-            atualiza_status_e_reinicia(suite, "limpeza"), 400;
-        });
-
-        setTimeout(() => {
-            fimMenu();
-        }, 500);
+            clean[suite](suite);
+            play[suite](suite, "0", "0", "0");
+        }, 600);
     }
 }
