@@ -1,17 +1,18 @@
 import { inicioMenu } from "../../setup/menu.js"
 import receber from "../../quartos/auxiliares/funcao4.js"
+import { RAIZ } from "../../raiz.js"
 
 $(document).on('click', '#context', function () {
     let contexto = $(this)[0].offsetParent
     let contexto_num = $(contexto)[0].children[0].children[1]
-    let num = $(contexto_num).text()
+    let suite = $(contexto_num).text()
     let book = receber("offs")
-    let filtro = book.filter(t => t.suite == num)
-    let taf = receber("tarefas")
+    let filtro = book.filter(t => t.suite == suite)
+    var taf = receber("tarefas")
 
     inicioMenu("modau-menu")
     let fm = document.forms[2]
-
+    
     if (filtro.length == 0) {
         $(fm).html(
             `
@@ -22,10 +23,18 @@ $(document).on('click', '#context', function () {
             `
         )
     } else {
+
+        var minhaManutencao = localStorage.getItem(`manu${suite}`)
+
+        if (minhaManutencao) {
+            menuManutencao(suite)
+        }
+
         switch (filtro[0].tipo) {
+
             case "locado":
-                let iss = taf.filter(o => o.suite == num)
-                if (iss[0].modo == "a"){
+                let iss = taf.filter(o => o.suite == suite)
+                if (iss[0].modo == "a") {
                     $(fm).html(
                         `
                             <input type="button" id="acoes1" class="btn btn-warning inferior" value="Encerrar">
@@ -48,40 +57,6 @@ $(document).on('click', '#context', function () {
                     `
                 )
                 break
-
-            case "manutencao":
-                let man = taf.filter(l => l.suite == num)
-                if (man[0].modo == "l") {
-                    let situa = localStorage.getItem(`*${num}`)
-                    if (situa == 'on' || situa == "") {
-                        //$("#acoes3").val('Apagar Luz')
-                        $(fm).html(
-                            `
-                            <input type="button" id="acoes1" class="btn btn-warning inferior" name="" data-toggle="" value="Disponibilizar Quarto">
-                            <input type="button" id="acoes2" class="btn btn-warning inferior" name="" data-toggle="" value="Iniciar Faxina">
-                            <input type="button" id="acoes3" class="btn btn-warning inferior" name="" data-toggle="" value="Apagar Luz">
-                            `
-                        )
-                    } else {
-                       //$("#acoes3").val('Ligar Luz')
-                        $(fm).html(
-                            `
-                            <input type="button" id="acoes1" class="btn btn-warning inferior" name="" data-toggle="" value="Disponibilizar Quarto">
-                            <input type="button" id="acoes2" class="btn btn-warning inferior" name="" data-toggle="" value="Iniciar Faxina">
-                            <input type="button" id="acoes3" class="btn btn-warning inferior" name="" data-toggle="" value="Ligar Luz">
-                            `
-                        )
-                    }
-
-                } else {
-                    $(fm).html(
-                        `
-                        <input type="button" id="acoes1" class="btn btn-warning inferior" name="" data-toggle="" value="Disponibilizar Quarto">
-                        <input type="button" id="acoes2" class="btn btn-warning inferior" name="" data-toggle="" value="Iniciar Faxina">
-                        `
-                    )
-                }
-                break;
 
             case "pernoite":
                 $(fm).html(
@@ -108,7 +83,7 @@ $(document).on('click', '#context', function () {
                 break
 
             case "revisao":
-                let mans = taf.filter(l => l.suite == num)
+                let mans = taf.filter(l => l.suite == suite)
                 if (mans[0].modo == "l") {
                     $(fm).html(
                         `
@@ -136,4 +111,33 @@ $(document).on('click', '#context', function () {
                 break;
         }
     }
+
+    
 })
+
+async function menuManutencao(suite) {
+    const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/acoes.php`)
+    const rs = await rq.json()
+    if (rs["status"]) {
+        inicioMenu("modau-menu")
+        let fm = document.forms[2]
+        let minhaSituacao = rs["dados"].filter(i => i.suite = suite)
+        if (minhaSituacao[0].situacao == "off") {
+            $(fm).html(
+                `
+                <input type="button" id="acoes1" class="btn btn-warning inferior" name="" data-toggle="" value="Disponibilizar Quarto">
+                <input type="button" id="acoes2" class="btn btn-warning inferior" name="" data-toggle="" value="Iniciar Faxina">
+                <input type="button" id="acoes3" class="btn btn-warning inferior" name="" data-toggle="" value="Ligar Luz">
+                `
+            )
+        } else {
+            $(fm).html(
+                `
+                <input type="button" id="acoes1" class="btn btn-warning inferior" name="" data-toggle="" value="Disponibilizar Quarto">
+                <input type="button" id="acoes2" class="btn btn-warning inferior" name="" data-toggle="" value="Iniciar Faxina">
+                <input type="button" id="acoes3" class="btn btn-warning inferior" name="" data-toggle="" value="Apagar Luz">
+                `
+            )
+        }
+    }
+}

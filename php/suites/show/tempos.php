@@ -1,6 +1,6 @@
 <?php
 include "../../cnxInterna.php";
-$query = "SELECT id, desistenciaTempo, faxinaTempo, limpezaTempo, manutencaoTempo, trocaTempo FROM tempo";
+$query = "SELECT id, desistenciaTempo, faxinaTempo, limpezaTempo, manutencaoTempo, trocaTempo, revisaoTempo FROM tempo";
 $resultado = $conn->query($query);
 if ($resultado->num_rows > 0) {
     while($row = $resultado->fetch_assoc()) {
@@ -10,7 +10,8 @@ if ($resultado->num_rows > 0) {
             'faxinaTempo' => $row["faxinaTempo"],
             'limpezaTempo' => $row["limpezaTempo"],
             'manutencaoTempo' => $row["manutencaoTempo"],
-            'trocaTempo' => $row["trocaTempo"]
+            'trocaTempo' => $row["trocaTempo"],
+            'revisaoTempo' => $row["revisaoTempo"]
         ];
     }
     $retorna = ['status' => true, 'dados' => $dados];

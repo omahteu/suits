@@ -14,8 +14,7 @@ async function monitoramento() {
             switch (e.tipo) {
                 case "faxina":
                     if (e.modo != "bt") {
-                       
-                        executor_tarefas(String(e.horario), String(hora_atual()), e.id, "bt");
+                        executor_tarefas(String(e.horario), e.id, "bt");
                     }
                     break;
 
@@ -27,12 +26,7 @@ async function monitoramento() {
 
                 case "luz":
                     if (e.modo != "lt") {
-                        executor_tarefas(
-                            String(e.horario),
-                            String(hora_atual()),
-                            e.id,
-                            "lt"
-                        );
+                        executor_tarefas(String(e.horario), String(hora_atual()), e.id, "lt");
                     }
                     break;
 
@@ -49,6 +43,12 @@ async function monitoramento() {
                 case "desistencia":
                     if (e.modo != "dt") {
                         executor_tarefas(String(e.horario), String(hora_atual()), e.id, "dt", e.suite);
+                    }
+                    break
+                
+                case "revisao":
+                    if (e.modo != "rt") {
+                        executor_tarefas(String(e.horario), e.id, "rt", e.suite);
                     }
                     break
 

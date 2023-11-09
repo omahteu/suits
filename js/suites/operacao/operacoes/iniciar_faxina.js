@@ -19,6 +19,7 @@ export default function comecar_faxina(suite, usuario, tempo) {
     if (confirm(`Iniciar faxina na Suíte ${suite}?`)) {
         if (tipo[0].tipo == "manutencao") {
             var razao = localStorage.getItem("motivo");
+            localStorage.removeItem(`manu${suite}`)
             envia_dados_manutencao(
                 usuario,
                 data_atual(),

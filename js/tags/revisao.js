@@ -1,6 +1,5 @@
-export default function revisao(q) {
-    // Colorindo o card
-    $(`.cardBox .card:nth-child(${q})`).css({
+export default function revisao(suite) {
+    $(`.cardBox .card:nth-child(${suite})`).css({
         "background": "#A020F0"
     })
 }

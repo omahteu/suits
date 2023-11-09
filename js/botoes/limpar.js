@@ -7,6 +7,7 @@ export default async function ultima_limpeza(suite) {
     localStorage.removeItem("dadosQuarto")
     localStorage.removeItem(`codigo${suite}`)
     localStorage.removeItem("quarto")
+    localStorage.removeItem(`manu${suite}`)
     let onze = receber("offs")
     var dados = onze.filter(quartos => quartos.suite == suite)
     let einfos = 'tabela=' + 'infos' + '&coluna=' + 'suite' + '&valor=' + dados[0].suite
