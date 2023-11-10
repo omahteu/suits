@@ -8,9 +8,15 @@ export function executor_tarefas(sistema, id, tag, suite) {
     if (now.isBefore(haum)) {
 
     } else {
-        setTimeout(() => {
-            atualizarTarefa(id, tag)
-            desligar_luz(suite)
-        }, 1000)
+        if (tag == "tt") {
+            setTimeout(() => {
+                atualizarTarefa(id, tag)
+            }, 1000)
+        } else {
+            setTimeout(() => {
+                atualizarTarefa(id, tag)
+                desligar_luz(suite)
+            }, 1000)
+        }
     }
 }
