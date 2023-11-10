@@ -34,7 +34,7 @@ $(document).on('click', '#context', function () {
 
             case "locado":
                 let iss = taf.filter(o => o.suite == suite)
-                if (iss[0].modo == "a") {
+                if (iss[0].modo == "t") {
                     $(fm).html(
                         `
                             <input type="button" id="acoes1" class="btn btn-warning inferior" value="Encerrar">
@@ -84,7 +84,7 @@ $(document).on('click', '#context', function () {
 
             case "revisao":
                 let mans = taf.filter(l => l.suite == suite)
-                if (mans[0].modo == "l") {
+                if (mans[0].modo == "r") {
                     $(fm).html(
                         `
                         <input type="button" id="acoes1" class="btn btn-warning inferior" name="" data-toggle="" value="Encerrar revisão">

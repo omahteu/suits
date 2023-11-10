@@ -8,15 +8,6 @@ $(document).on('click', '[class="card"]', function () {
     setTimeout(() => {
         let consumo = parseFloat($("#consumo_painel").text())
         calculo(suite, consumo)
-        // $.get(link[36], l => {
-        //     let filtroValores = l.filter(x => x.suite == suite)
-        //     let sum = 0
-        //     filtroValores.forEach(f => {
-        //         sum += parseFloat(f.valor)
-        //     });
-        //     let total = sum + consumo
-        //     $("#parcial_painel").text(total.toFixed(2))
-        // })
     }, 1000);
 })
 

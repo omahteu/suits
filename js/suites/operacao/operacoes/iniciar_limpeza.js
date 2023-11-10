@@ -1,5 +1,4 @@
 import { fimMenu } from "../../../setup/menu.js";
-import registraLimiteLimpeza from "../../tarefas/registros/limpeza.js";
 import ligar_luz from "../../../automacao/ligar.js";
 import atualiza_status_e_reinicia from "../../../setup/atualiza2.js";
 import { play } from "../../../setup/start_relogios.js";
@@ -7,7 +6,7 @@ import { clean } from "../../../setup/clean_relogios.js";
 import limpeza from "../../../tags/limpeza.js";
 import salvar from "../../../olivia/salva.js";
 import { RAIZ } from "../../../raiz.js";
-// import { limited } from "../suites/tarefas/registros/limites.js"
+import { limited } from "../../../suites/tarefas/registros/limites.js"
 
 export default function comecar_limpeza(suite) {
     if (confirm(`Iniciar limpeza na Suíte ${suite}?`)) {
@@ -19,8 +18,7 @@ export default function comecar_limpeza(suite) {
             let vai = "suite=" + suite + "&situacao=" + "on";
             salvar(`http://${RAIZ}/suits/php/suites/sacoes.php`, vai);
         }, 100);
-        //setTimeout(() => { limited(`http://${RAIZ}/suits/php/suites/limitemanutencao.php`, `limpezaTempo`, suite, "l", "limpeza") }, 200)
-        setTimeout(() => { registraLimiteLimpeza(suite, "", "limpeza"); }, 100);
+        setTimeout(() => { limited(`http://${RAIZ}/suits/php/suites/limitemanutencao.php`, `limpezaTempo`, suite, "l", "limpeza") }, 200)
         setTimeout(() => { index(suite, "limpeza") }, 300)
         setTimeout(() => { fimMenu(); }, 500);
 

@@ -4,7 +4,7 @@ import { RAIZ } from "../../../raiz.js";
 
 setInterval(() => {
     monitoramento();
-}, 1000);
+}, 1500);
 
 async function monitoramento() {
     const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/tarefas.php`);
@@ -19,20 +19,14 @@ async function monitoramento() {
                     break;
 
                 case "limpeza":
-                    if (e.modo != "bt") {
-                        executor_tarefas(String(e.horario), String(hora_atual()), e.id, "bt");
-                    }
-                    break;
-
-                case "luz":
                     if (e.modo != "lt") {
-                        executor_tarefas(String(e.horario), String(hora_atual()), e.id, "lt");
+                        executor_tarefas(String(e.horario), e.id, "lt", e.suite);
                     }
                     break;
 
                 case "troca":
-                    if (e.modo != "at") {
-                        executor_tarefas(String(e.horario), String(hora_atual()), e.id, "at");
+                    if (e.modo != "tt") {
+                        executor_tarefas(String(e.horario), e.id, "tt", e.suite);
                     }
                     break;
 
@@ -55,6 +49,6 @@ async function monitoramento() {
                 default:
                     break;
             }
-        });
+        })
     }
 }

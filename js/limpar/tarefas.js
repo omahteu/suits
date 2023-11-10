@@ -1,4 +1,3 @@
-// import link from "../setup/index.js"
 import apagar from "../olivia/apaga.js"
 import { RAIZ } from "../raiz.js"
 

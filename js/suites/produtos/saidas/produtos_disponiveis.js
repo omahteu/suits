@@ -1,9 +1,16 @@
 import {RAIZ} from "../../../raiz.js"
 
 $(document).ready(function () {
-    produtoCodigo()
     disponivel()
 })
+
+$(document).on('keydown', "#codigo_produto", function (e) {
+    if (e.which === 9) {
+        let codigoProduto = $(this).val()
+        popi(codigoProduto)
+        $("#checkbox_produto").hide()
+    }
+});
 
 async function disponivel(){
     const rq = await fetch(`http://${RAIZ}/suits/php/estoque/show/produtos.php`)
@@ -40,41 +47,19 @@ async function disponivel(){
     }
 }
 
-function produtoCodigo() {
-    $('#codigo_produto').keypress((event) => {
-        var keycode = (event.keyCode ? event.keyCode : event.which);
-        if (keycode == '13') {
-
-
-
-            popi()
-
-
-            // $.get(link[16], (e) => {
-            //     $("#descricao").val(e[0].descricao)
-            //     $("#valor_unitario").val(`R$ ${e[0].valorunitari}`)
-            //     $('#quantidade').keyup(() => {
-            //         var qtd = $(this).val()
-            //         var total = parseFloat(e[0]['valorunitario']) * Number(qtd)
-            //         $("#valor_total").val(`R$ ${parseFloat(total).toFixed(2)}`)
-            //     });
-            // })
-        }
-    })
-}
-
-async function popi() {
-    const rq = await fetch(``)
+async function popi(codigoProduto) {
+    const rq = await fetch(`http://${RAIZ}/suits/php/estoque/show/produtos.php`)
     const rs = await rq.json()
     if (rs["status"]) {
-        rs["dados"].forEach(e => {
-            $("#descricao").val(e[0].descricao)
-            $("#valor_unitario").val(`R$ ${e[0].valorunitari}`)
-            $('#quantidade').keyup(() => {
-                var qtd = $(this).val()
-                var total = parseFloat(e[0]['valorunitario']) * Number(qtd)
-                $("#valor_total").val(`R$ ${parseFloat(total).toFixed(2)}`)
-            });
+        let buscandoProduto = rs["dados"].filter(x => x.codigo == codigoProduto)
+        $("#descricao").val(buscandoProduto[0].descricao)
+        $("#valor_unitario").val(`R$ ${buscandoProduto[0].valorunitario}`)
+        $("#valor_total").val(`R$ 0.00`)
+        $(document).on("keyup", "#quantidade", function() {
+            var qtd = $(this).val()
+            console.log(qtd)
+            var total = parseFloat(buscandoProduto[0]['valorunitario']) * Number(qtd)
+            $("#valor_total").val(`R$ ${parseFloat(total).toFixed(2)}`)
         });
     }
 }

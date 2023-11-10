@@ -5,7 +5,7 @@ include "../../urlbase.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $antigo = $_POST["antigo"];
     $novo = $_POST["novo"];
-    $sql = "UPDATE comanda SET suite='$novo' WHERE id='$antigo'";
+    $sql = "UPDATE comanda SET suite='$novo' WHERE suite='$antigo'";
     if ($conn->query($sql) === TRUE) {
         $stmt->close();
         $conn->close();

@@ -1,17 +1,3 @@
-export var acao = [
-	"Disponibilizar Quarto",	// 0
-	"Iniciar Faxina",			// 1
-	"Iniciar Limpeza",			// 2
-	"Trocar Suíte",				// 3
-	"Encerrar",					// 4
-	"Encerrar Limpeza",			// 5
-	"OK",						// 6
-	"Apagar Luz",				// 7
-	"Ligar Luz",				// 8
-	"Encerrar Faxina",			// 9
-	"Selecionar"				// 10
-]
-
 export function rg(){
 	var size = 3
 	var randomized = Math.ceil(Math.random() * Math.pow(10,size))

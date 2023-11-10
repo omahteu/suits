@@ -16,7 +16,7 @@ $(document).on("click", ".locado", function () {
             let vai = 'suite=' + suite + '&situacao=' + 'on'
             salvar(`http://${RAIZ}/suits/php/suites/sacoes.php`, vai)
         }, 50);
-        setTimeout(() => { limited(`http://${RAIZ}/suits/php/suites/limitemanutencao.php`, `trocaTempo`, suite, "a", "troca") }, 150)
+        setTimeout(() => { limited(`http://${RAIZ}/suits/php/suites/limitemanutencao.php`, `trocaTempo`, suite, "t", "troca") }, 150)
         setTimeout(() => { index(suite, "locado") }, 300)
         setTimeout(() => { fimMenu() }, 400)
         setTimeout(() => { play[suite](suite, "0", "0", "0") }, 500)

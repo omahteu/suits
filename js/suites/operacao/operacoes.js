@@ -1,6 +1,5 @@
 import desligar_luz from "../../automacao/desligar.js";
 import ligar_luz from "../../automacao/ligar.js";
-import { acao } from "../../setup/box.js";
 import suite_fica_disponivel from "./operacoes/disponibilizar_suite.js";
 import comecar_faxina from "./operacoes/iniciar_faxina.js";
 import comecar_limpeza from "./operacoes/iniciar_limpeza.js";
@@ -29,21 +28,21 @@ function reacao(status, suite) {
     let tempo = `${h}:${m}:${s}`;
     let usuario = String($("#saudacao_usuario").text()).split(",")[1].trim();
 
-    if (status == acao[0]) {
+    if (status == "Disponibilizar Quarto") {
         suite_fica_disponivel(suite, usuario, tempo);
-    } else if (status == acao[1]) {
+    } else if (status == "Iniciar Faxina") {
         comecar_faxina(suite, usuario, tempo);
-    } else if (status == acao[2]) {
+    } else if (status == "Iniciar Limpeza") {
         comecar_limpeza(suite);
-    } else if (status == acao[3]) {
+    } else if (status == "Trocar Suíte") {
         trocando_suite();
-    } else if (status == acao[4]) {
+    } else if (status == "Encerrar") {
         encerrando_suite(h, m, s, suite);
-    } else if (status == acao[5]) {
+    } else if (status == "Encerrar Limpeza") {
         encerrando_limpeza(suite, usuario, tempo);
-    } else if (status == acao[6]) {
+    } else if (status == "OK") {
         encerrando_registro(suite);
-    } else if (status == acao[7]) {
+    } else if (status == "Apagar Luz") {
         $("#acoes3").val("Ligar Luz");
         setTimeout(() => {
             desligar_luz(suite);
@@ -52,7 +51,7 @@ function reacao(status, suite) {
             apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, vai);
             localStorage.setItem(`*${suite}`, "off");
         }, 650);
-    } else if (status == acao[8]) {
+    } else if (status == "Ligar Luz") {
         $("#acoes3").val("Apagar Luz");
         setTimeout(() => {
             ligar_luz(suite);
@@ -60,9 +59,9 @@ function reacao(status, suite) {
             salvar(`http://${RAIZ}/suits/php/suites/sacoes.php`, vai);
             localStorage.setItem(`*${suite}`, "on");
         }, 500);
-    } else if (status == acao[9]) {
+    } else if (status == "Encerrar Faxina") {
         encerrando_faxina(suite, usuario, tempo);
-    } else if (status == acao[10]) {
+    } else if (status == "Selecionar") {
         encerrando_registro2(suite);
     } else if (status == "Finalizar") {
         encerrando_suitex(h, m, s, suite);
