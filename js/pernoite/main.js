@@ -1,8 +1,5 @@
-// import link from "../setup/index.js"
 import { hora_atual_segundos } from "../geradores/hora.js";
-// import pernoite from "../tags/pernoite.js"
 import locado from "../tags/locacao.js";
-// import { insereValor } from "./ajax/inserir.js"
 import receber from "../quartos/auxiliares/funcao4.js";
 import alterar from "../olivia/altera.js";
 import { play } from "../setup/start_relogios.js";
@@ -11,7 +8,7 @@ import { RAIZ } from "../raiz.js";
 import apagar from "../olivia/altera.js";
 
 $(document).on("click", '[class="card"]', function () {
-    comecando_pernoite();
+    // comecando_pernoite();
 });
 
 async function comecando_pernoite() {

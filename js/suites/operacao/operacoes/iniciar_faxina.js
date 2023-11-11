@@ -12,7 +12,7 @@ import receber from "../../../quartos/auxiliares/funcao4.js";
 import salvar from "../../../olivia/salva.js";
 import { RAIZ } from "../../../raiz.js";
 
-export default function comecar_faxina(suite, usuario, tempo) {
+export default function comecandoFaxina(suite, usuario, tempo) {
     let base = receber("offs");
     let tipo = base.filter((t) => t.suite == suite);
 
@@ -20,14 +20,7 @@ export default function comecar_faxina(suite, usuario, tempo) {
         if (tipo[0].tipo == "manutencao") {
             var razao = localStorage.getItem("motivo");
             localStorage.removeItem(`manu${suite}`)
-            envia_dados_manutencao(
-                usuario,
-                data_atual(),
-                hora_atual(),
-                suite,
-                razao,
-                tempo
-            );
+            envia_dados_manutencao(usuario, data_atual(), hora_atual(), suite, razao, tempo);
             stop[suite]();
             clean[suite](suite);
             play[suite](suite, "0", "0", "0");

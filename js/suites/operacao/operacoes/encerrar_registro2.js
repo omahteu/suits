@@ -10,9 +10,7 @@ import { fimMenu } from "../../../setup/menu.js"
 import apagar from "../../../olivia/apaga.js"
 import { RAIZ } from "../../../raiz.js"
 
-
-
-export default function encerrando_registro2(suite) {
+export default function encerrandoFaxina(suite) {
 
     alert('Camareira Selecionada')
 

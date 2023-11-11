@@ -1,6 +1,6 @@
 import Suitesdisponiveis from "../../../relatorios/quartosDisponiveis.js"
 
-export default function trocando_suite() {
+export default function modalTrocandoSuite() {
     let fm = document.forms[2]
     $(fm).html(
         `

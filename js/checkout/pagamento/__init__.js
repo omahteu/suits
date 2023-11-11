@@ -13,7 +13,6 @@ $(window).on("load", function() {
     exibeDebito()
 
     setTimeout(() => {
-        // var suite = localStorage.getItem("last");
         var suite = $("#suiteEncerrando").text()
         somaComanda(suite)
         recupera_permanencia(suite)

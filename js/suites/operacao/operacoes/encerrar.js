@@ -6,7 +6,7 @@ import desfazer from "../../../tags/desfazer.js"
 import { fimMenu } from "../../../setup/menu.js"
 import ag_pagamento from "../../../tags/apagamento.js"
 
-export function encerrando_suite(h, m, s, suite) {
+export function encerrandoSuite(h, m, s, suite) {
     if (confirm(`Encerrar a Suíte ${suite}?`)) {
         localStorage.setItem("last", suite)
         setTimeout(() => { registraLimiteDesistencia(suite, "d", "desistencia") }, 100)
@@ -20,7 +20,7 @@ export function encerrando_suite(h, m, s, suite) {
     }
 }
 
-export function encerrando_suitex(h, m, s, suite) {
+export function encerrandoSuiteEsperandoPagamento(h, m, s, suite) {
     if (confirm(`Encerrar a Suíte ${suite}?`)) {
         localStorage.setItem("last", suite)
         setTimeout(() => { tempo_pausado(h, m, s, suite) }, 300)

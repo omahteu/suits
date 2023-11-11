@@ -12,11 +12,10 @@ import receber from "../../../quartos/auxiliares/funcao4.js";
 import apagar from "../../../olivia/apaga.js";
 import { RAIZ } from "../../../raiz.js";
 
-export default async function suite_fica_disponivel(suite, usuario, tempo) {
+export default async function disponibizandoSuite(suite, usuario, tempo) {
     // Variáveis
     let base = receber("offs");
     let tipo = base.filter((t) => t.suite == suite);
-    //let verificaoLuz = localStorage.getItem("luz")
 
     // Confirmação
     if (confirm(`Disponibilizar a Suíte ${suite}?`)) {
@@ -46,13 +45,7 @@ export default async function suite_fica_disponivel(suite, usuario, tempo) {
         if (tipo[0].tipo != "manutencao") {
             setTimeout(() => {
                 desligar_luz(suite);
-                var vai =
-                    "tabela=" +
-                    "acoes" +
-                    "&coluna=" +
-                    "suite" +
-                    "&valor=" +
-                    suite;
+                var vai = "tabela=" + "acoes" + "&coluna=" + "suite" + "&valor=" + suite;
                 apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, vai);
             }, 650);
         }

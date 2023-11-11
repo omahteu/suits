@@ -7,8 +7,9 @@ import limpeza from "../../../tags/limpeza.js";
 import salvar from "../../../olivia/salva.js";
 import { RAIZ } from "../../../raiz.js";
 import { limited } from "../../../suites/tarefas/registros/limites.js"
+import {index} from "../../../tags/particao.js"
 
-export default function comecar_limpeza(suite) {
+export default function comecandoLimpeza(suite) {
     if (confirm(`Iniciar limpeza na Suíte ${suite}?`)) {
         localStorage.removeItem(`troca${suite}`);
         setTimeout(() => { limpeza(suite); }, 1);

@@ -1,9 +1,8 @@
-// import link from "../../../setup/index.js"
 import { data_atual } from "../../../geradores/data.js"
 import { hora_atual } from "../../../geradores/hora.js"
 import {RAIZ} from "../../../raiz.js"
 
-export default async function encerrando_faxina(suite, usuario, tempo) {
+export default async function modalEncerrandoFaxina(suite, usuario, tempo) {
     let fm = document.forms[2]
     $(fm).html(
         `

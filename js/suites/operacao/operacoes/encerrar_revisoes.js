@@ -3,7 +3,7 @@ import { hora_atual } from "../../../geradores/hora.js";
 import { RAIZ } from "../../../raiz.js";
 
 
-export default async function erevisao(suite, usuario) {
+export default async function modalEncerrandoRevisao(suite, usuario) {
     let fm = document.forms[2]
     $(fm).html(
         `

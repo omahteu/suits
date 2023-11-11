@@ -24,13 +24,13 @@ $(window).on("load", function () {
 function restoreStatus(suite, tipo) {
 	try {
 		tipo == "locado" ? locado(suite) :
-		tipo == "manutencao" ? manutencao(suite) :
-		tipo == "faxina" ? faxina(suite) :
-		tipo == "aguardando" ? aguardando(suite) :
-		tipo == "limpeza" ? limpeza(suite) :
-		tipo == "pernoite" ? pernoite(suite) : 
-		tipo == "apagamento" ? ag_pagamento(suite) : 
-		tipo == "revisao" ? revisao(suite) : ""
+			tipo == "manutencao" ? manutencao(suite) :
+				tipo == "faxina" ? faxina(suite) :
+					tipo == "aguardando" ? aguardando(suite) :
+						tipo == "limpeza" ? limpeza(suite) :
+							tipo == "pernoite" ? pernoite(suite) :
+								tipo == "apagamento" ? ag_pagamento(suite) :
+									tipo == "revisao" ? revisao(suite) : ""
 	} catch (error) {
 		sessionStorage.setItem("viewquartos.js", `[LOGS] | ${error}`)
 	}

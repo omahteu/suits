@@ -16,12 +16,18 @@ async function calculo(suite) {
 	const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/cofre.php`)
 	const rs = await rq.json()
 	if (rs["status"]) {
-		let ficha = rs["dados"].filter(i => i.suite == suite)
-		let aberto = offs.filter(z => z.suite == suite)
-		ficha.forEach(el => {
-			valor += parseFloat(el.valor)
-		});
-		let adicionado = parseFloat(valor) - parseFloat(aberto[0].valor)
-		$("#vh_painel").text(parseFloat(adicionado).toFixed(2))
+		try {
+			let ficha = rs["dados"].filter(i => i.suite == suite)
+			let aberto = offs.filter(z => z.suite == suite)
+			ficha.forEach(el => {
+				valor += parseFloat(el.valor)
+			});
+			let adicionado = parseFloat(valor) - parseFloat(aberto[0].valor)
+			$("#vh_painel").text(parseFloat(adicionado).toFixed(2))
+		} catch (error) {
+			console.log('e')
+		}
+	} else {
+		console.log('e')
 	}
 }

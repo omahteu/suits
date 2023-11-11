@@ -12,7 +12,7 @@ import { RAIZ } from "../../../raiz.js"
 import envia_dados_revisao from "../../../caixa/revisao.js"
 
 
-export default function encerrando_registro(suite) {
+export default function encerrandoCicloLocacao(suite) {
 
     let base = JSON.parse(sessionStorage.getItem('offs'))
     let tipo = base.filter((t) => t.suite == suite);

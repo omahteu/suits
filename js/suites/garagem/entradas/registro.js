@@ -1,4 +1,3 @@
-// import { registroVeiculos } from "../../../armazem/registros/veiculos.js"
 import receber from "../../../quartos/auxiliares/funcao4.js"
 import {RAIZ} from "../../../raiz.js"
 import { vv } from "../../../armazem/leitura/veiculos.js"
