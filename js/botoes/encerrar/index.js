@@ -33,7 +33,7 @@ $(document).on("click", "#encerrar", function () {
                 apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, vai);
             }, 650);
             setTimeout(() => {limpando();}, 900);
-            setTimeout(() => {window.close();}, 1500);
+            setTimeout(() => {window.close();}, 2000);
         }
 
     } else {

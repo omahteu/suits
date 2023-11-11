@@ -25,7 +25,8 @@ $(document).on("change", "#numero_parcelas", function() {
     let subtotal = parseFloat($("#valor_subtotal").text())
     let decimal = parseFloat(tarifa) / 100
     let acrescentado = subtotal * decimal
-    let subTotalTarifado = acrescentado + subtotal
+    let subTotalTarifado = Math.ceil(acrescentado + subtotal)
+    // let subTotalTarifado = acrescentado + subtotal
     let subTotalTarifadoParcelado = subTotalTarifado / parcelas
     $("#nparcelas").text(parcelas)
     $("#valor_parcelas").text(parseFloat(subTotalTarifadoParcelado).toFixed(2))

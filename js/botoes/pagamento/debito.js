@@ -4,7 +4,8 @@ export default function debito(tarifa) {
     let subtotal = parseFloat($("#valor_subtotal").text())
     let decimal = parseFloat(tarifa) / 100
     let acrescentado = subtotal * decimal
-    let subTotalTarifado = acrescentado + subtotal
+    let subTotalTarifado = Math.ceil(acrescentado + subtotal)
+    // let subTotalTarifado = acrescentado + subtotal
     let subTotalTarifadoParcelado = subTotalTarifado / 1
     $("#nparcelas").text("1")
     $("#valor_parcelas").text(parseFloat(subTotalTarifadoParcelado).toFixed(2))
