@@ -190,8 +190,16 @@ async function comecando_pernoite(suite) {
 }
 
 function ativar(suite, valorpernoite) {
+    // let ocupacoes = receber('offs')
+    // let ocupacao = ocupacoes.filter(gt => gt.suite = suite)
+
+    setTimeout(() => {
+        let card = "antigo=" + suite + "&novo=" + valorpernoite
+        salvar(`http://${RAIZ}/suits/php/suites/editarcofrep.php`, card)
+    }, 500);
+
     pernoite(suite);
-    let dados2 = "suite=" + suite + "&tipo=" + "pernoite" + "&valor=" + valorpernoite
+    let dados2 = "suite=" + suite + "&tipo=" + "pernoite"
     alterar(`http://${RAIZ}/suits/php/suites/editarinfosq.php`, dados2);
     // insereValor(suite, valorpernoite, "pernoite");
     setTimeout(() => {
@@ -199,3 +207,4 @@ function ativar(suite, valorpernoite) {
         salvar(`http://${RAIZ}/suits/php/suites/tarefas.php`, box);
     }, 1000);
 }
+
