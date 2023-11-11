@@ -6,11 +6,11 @@ $(document).on('click', '[class="card"]', function () {
 	let r3 = $(r2[0].children[1])
 	let suite = r3.text()
     setTimeout(() => {
-		calculo(suite, valor)
+		calculo(suite)
 	}, 500);
 })
 
-async function calculo(suite,  valor) {
+async function calculo(suite) {
 	let valor = 0
 	let offs = JSON.parse(sessionStorage.getItem('offs'))
 	const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/cofre.php`)

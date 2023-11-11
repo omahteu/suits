@@ -7,6 +7,8 @@ import pernoite from "../../tags/pernoite.js";
 import alterar from "../../olivia/altera.js";
 import salvar from "../../olivia/salva.js";
 
+let tiposSuites = ['manutencao', 'faxina', 'limpeza', 'revisao', 'aguardando', 'apagamento', 'locado']
+
 $(document).on("click", '[class="card"]', function () {
     var lv = $(this);
     var lv2 = $(lv[0].children[0]);
@@ -27,84 +29,36 @@ function atualizaValores(suite) {
             let funil = alugados.filter((x) => x.suite == suite);
             let iniciado = funil[0].hora;
             const horarioRegistrado = moment(iniciado, "HH:mm:ss");
-            let funil_suites = suites.filter(
-                (o) => o.numeroSuite == funil[0].suite
-            );
-            let funil_precos = precos.filter(
-                (u) => u.codigo == funil_suites[0].codigoSuite
-            );
+            let funil_suites = suites.filter((o) => o.numeroSuite == funil[0].suite);
+            let funil_precos = precos.filter((u) => u.codigo == funil_suites[0].codigoSuite);
             function verificarHoraPassada() {
                 const horaAtual = moment();
-                const diferencaEmHoras = horaAtual.diff(
-                    horarioRegistrado,
-                    "hours"
-                );
+                const diferencaEmHoras = horaAtual.diff(horarioRegistrado, "hours");
 
-                const diferencaSegundos = horaAtual.diff(
-                    horarioRegistrado,
-                    "seconds"
-                );
+                const diferencaSegundos = horaAtual.diff(horarioRegistrado, "seconds");
                 const minutos = Math.floor((diferencaSegundos % 3600) / 60);
 
-                if (
-                    diferencaEmHoras > 0 &&
-                    diferencaEmHoras <= 1 &&
-                    minutos > tolerancia
-                ) {
+                if (diferencaEmHoras > 0 && diferencaEmHoras <= 1 && minutos > tolerancia) {
                     alterarValor(suite, funil_precos[0].vh2);
-                } else if (
-                    diferencaEmHoras > 1 &&
-                    diferencaEmHoras <= 2 &&
-                    minutos > tolerancia
-                ) {
+                } else if (diferencaEmHoras > 1 && diferencaEmHoras <= 2 && minutos > tolerancia) {
                     alterarValor(suite, funil_precos[0].vh3);
-                } else if (
-                    diferencaEmHoras > 2 &&
-                    diferencaEmHoras <= 3 &&
-                    minutos > tolerancia
-                ) {
+                } else if (diferencaEmHoras > 2 && diferencaEmHoras <= 3 && minutos > tolerancia) {
                     alterarValor(suite, funil_precos[0].vh4);
-                } else if (
-                    diferencaEmHoras > 3 &&
-                    diferencaEmHoras <= 4 &&
-                    minutos > tolerancia
-                ) {
-                    alterarValor(suite, funil_precos[0].vh5);
-                } else if (
-                    diferencaEmHoras > 4 &&
-                    diferencaEmHoras <= 5 &&
-                    minutos > tolerancia
-                ) {
-                    alterarValor(suite, funil_precos[0].vh6);
-                } else if (
-                    diferencaEmHoras > 5 &&
-                    diferencaEmHoras <= 6 &&
-                    minutos > tolerancia
-                ) {
-                    alterarValor(
-                        suite,
-                        parseFloat(parseInt(funil_precos[0].vh6) + 10).toFixed(
-                            2
-                        )
-                    );
-                } else if (
-                    diferencaEmHoras > 6 &&
-                    diferencaEmHoras <= 7 &&
-                    minutos > tolerancia
-                ) {
-                    alterarValor(
-                        suite,
-                        parseFloat(parseInt(funil_precos[0].vh6) + 20).toFixed(
-                            2
-                        )
-                    );
-                } else if (
-                    diferencaEmHoras > 7 &&
-                    diferencaEmHoras <= 8 &&
-                    minutos > tolerancia
-                ) {
-                    comecando_pernoite();
-                }
+                } else if (diferencaEmHoras > 3 && diferencaEmHoras <= 4 && minutos > tolerancia) {
+                    comecando_pernoite(suite)
+                } else if (diferencaEmHoras > 4 && diferencaEmHoras <= 5 && minutos > tolerancia) {
+                    // não cobra
+                    // alterarValor(suite, funil_precos[0].vh6);
+                } else if (diferencaEmHoras > 5 && diferencaEmHoras <= 6 && minutos > tolerancia) {
+                    // não cobra
+                    // alterarValor(suite, parseFloat(parseInt(funil_precos[0].vh6) + 10).toFixed(2));
+                } else if (diferencaEmHoras > 6 && diferencaEmHoras <= 7 && minutos > tolerancia) {
+                    // + 10
+                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 10).toFixed(2));
+                } else if (diferencaEmHoras > 7 && diferencaEmHoras <= 8 && minutos > tolerancia) {
+                    // + 10
+                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 20).toFixed(2));
+                ;}
             }
             setTimeout(() => {
                 verificarHoraPassada();
@@ -191,13 +145,11 @@ function atualizaValores(suite) {
     }
 }
 
-async function comecando_pernoite() {
+async function comecando_pernoite(suite) {
     const i1 = receber("dados_suites");
     const i2 = receber("tabela_precos");
     const i3 = receber("offs");
-    const rq = await fetch(
-        `http://${RAIZ}/suits/php/configuracoes/show/pernoite.php`
-    ); // pernoite
+    const rq = await fetch(`http://${RAIZ}/suits/php/configuracoes/show/pernoite.php`); // pernoite
     const rs = await rq.json();
     if (rs["status"]) {
         rs["dados"].forEach((e) => {
@@ -205,14 +157,24 @@ async function comecando_pernoite() {
             let seAutomatica = tipo == "1";
             let seFixa = tipo == "2";
             if (seAutomatica) {
-                i3.forEach((ele) => {
-                    let ficha = i1.filter((i) => i.numeroSuite == ele.suite);
-                    if (ele.tipo != "pernoite") {
-                        let codig = ficha[0].codigoSuite;
-                        let fich2 = i2.filter((x) => x.codigo == codig);
-                        ativar(ele.suite, fich2[0].pernoite);
-                    }
-                });
+
+                let SuitePostu = i3.filter(mu => mu.suite == suite)
+
+                if (SuitePostu[0].tipo === "locado") {
+                    let ficha = i1.filter((i) => i.numeroSuite == suite);
+                    let codig = ficha[0].codigoSuite;
+                    let fich2 = i2.filter((x) => x.codigo == codig);
+                    ativar(suite, fich2[0].pernoite);
+                }
+
+                // i3.forEach((ele) => {
+                    
+                //     if (ele.tipo == "locado") {
+                        
+                        
+                        
+                //     }
+                // });
             } else if (seFixa) {
                 i3.forEach((ili) => {
                     let ficha = i1.filter((i) => i.numeroSuite == ili.suite);
@@ -229,19 +191,11 @@ async function comecando_pernoite() {
 
 function ativar(suite, valorpernoite) {
     pernoite(suite);
-    let dados2 = "suite=" + suite + "&tipo=" + "pernoite";
+    let dados2 = "suite=" + suite + "&tipo=" + "pernoite" + "&valor=" + valorpernoite
     alterar(`http://${RAIZ}/suits/php/suites/editarinfosq.php`, dados2);
-    insereValor(suite, valorpernoite, "pernoite");
+    // insereValor(suite, valorpernoite, "pernoite");
     setTimeout(() => {
-        let box =
-            "suite=" +
-            suite +
-            "&modo=" +
-            "p" +
-            "&tipo=" +
-            "per" +
-            "&horario=" +
-            hora_atual_segundos();
+        let box = "suite=" + suite + "&modo=" + "p" + "&tipo=" + "per" + "&horario=" + hora_atual_segundos();
         salvar(`http://${RAIZ}/suits/php/suites/tarefas.php`, box);
     }, 1000);
 }

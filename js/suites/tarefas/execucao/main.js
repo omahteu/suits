@@ -8,7 +8,7 @@ export function executor_tarefas(sistema, id, tag, suite) {
     if (now.isBefore(haum)) {
 
     } else {
-        if (tag == "tt") {
+        if (tag == "tt" || tag == "dt") {
             setTimeout(() => {
                 atualizarTarefa(id, tag)
             }, 1000)
