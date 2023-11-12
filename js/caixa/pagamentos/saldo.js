@@ -1,4 +1,4 @@
-import {RAIZ} from "../../raiz.js"
+import { RAIZ } from "../../raiz.js"
 import { data_atual } from "../../geradores/data.js"
 
 export async function saldo() {
@@ -6,42 +6,61 @@ export async function saldo() {
         let dinheiro = localStorage.getItem('dinheiro') == null ? '0' : localStorage.getItem('dinheiro')
         let pix = localStorage.getItem('pix') == null ? '0' : localStorage.getItem('pix')
         let credito = localStorage.getItem('credito') == null ? '0' : localStorage.getItem('credito')
-        let debito = localStorage.getItem('debito') == null ? '0' : localStorage.getItem('credito')
+        let debito = localStorage.getItem('debito') == null ? '0' : localStorage.getItem('debito')
 
         const dataAtual = moment();
         const dataOntem = dataAtual.subtract(1, 'days');
         let ontem = dataOntem.format('DD/MM/YYYY');
 
+        const limiteHora = moment("19:00:00", "HH:mm:ss");
 
         let soma = 0
         let usuario = localStorage.getItem('nome')
         let fundo = localStorage.getItem("fundo")
         let hoje = String(data_atual())
-        const rq = await fetch(`http://${RAIZ}/suits/php/caixa/show/pagamentos.php`)
+        const rq = await fetch(`http://${RAIZ}/suits/php/relatorios/ocupacoes.php`)
         const rs = await rq.json()
         if (rs["status"]) {
             setTimeout(() => {
-                let pagamentosUsuariosHoje = rs["dados"].filter(zin => zin.usuario === usuario && zin.data === hoje)
-                let pagamentosUsuariosOntem = rs["dados"].filter(zin => zin.usuario === usuario && zin.data === ontem)
+                let pagamentosUsuarios = rs["dados"].filter(
+                    zin => zin.usuario === usuario &&
+                    zin.forma == "Dinheiro" ||
+                    zin.forma == "PIX" ||
+                    zin.forma == "Débito Mastercard - 4%" ||
+                    zin.forma == "Crédito Mastercard - 4%"
+                )
 
-                pagamentosUsuariosOntem.forEach(item => {
+                pagamentosUsuarios.forEach(i => {
+                    if (
+                        moment(i.data, 'DD/MM/YYYY').isSame(moment(data_atual(), 'DD/MM/YYYY'), 'day') ||
+                        moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day')
+                    ) {
+                        if (
+                            moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day') &&
+                            moment(i.entrada, "HH:mm:ss").isAfter(moment(limiteHora, "HH:mm:ss"))
+                        ) {
+                            const valores = i.total;
+                            soma += parseFloat(valores);
+                        } else if (
+                            moment(i.data, 'DD/MM/YYYY').isSame(moment(data_atual(), 'DD/MM/YYYY'), 'day')
+                        ) {
+                            const valores = i.total;
+                            soma += parseFloat(valores);
+                        }
+                    } else if (
+                        moment(i.data, 'DD/MM/YYYY').isSame(moment(data_atual(), 'DD/MM/YYYY'), 'day')
+                    ) {
 
-                    const valores = item.valor;
-                    soma += parseFloat(valores);
-
+                    }
                 });
 
-                pagamentosUsuariosHoje.forEach(item => {
-
-                    const valores = item.valor;
-                    soma += parseFloat(valores);
-
-                });
                 let totalCaixa = parseFloat(soma) + parseFloat(fundo)
+                let totalCaixaSemFundo = totalCaixa - fundo
                 $("#tab_saldo").html(
                     `
                         <tr>
                             <td id="saldo_caixa">${totalCaixa.toFixed(2)}</td>
+                            <td id="saldo_caixa_sem_fundo">${totalCaixaSemFundo.toFixed(2)}</td>
                             <td>${parseFloat(dinheiro).toFixed(2)}</td>
                             <td>${parseFloat(pix).toFixed(2)}</td>
                             <td>${parseFloat(credito).toFixed(2)}</td>

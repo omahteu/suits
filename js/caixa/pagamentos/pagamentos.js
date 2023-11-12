@@ -5,12 +5,12 @@
 // 3 | Débito
 // 4 | Crédito
 
-import {RAIZ} from "../../raiz.js"
-import {data_atual} from "../../geradores/data.js"
+import { RAIZ } from "../../raiz.js"
+import { data_atual } from "../../geradores/data.js"
 
 
 export async function todos_pagamentos() {
-    const rq = await fetch(`http://${RAIZ}/suits/php/caixa/show/pagamentos.php`)
+    const rq = await fetch(`http://${RAIZ}/suits/php/relatorios/ocupacoes.php`)
     const rs = await rq.json()
     if (rs["status"]) {
         dinheiro(rs["dados"])
@@ -23,19 +23,61 @@ export async function todos_pagamentos() {
 function dinheiro(e) {
     let soma = 0
     let usuario = localStorage.getItem('nome')
-    let real = e.filter(i => i.forma == "Dinheiro" && i.usuario == usuario && i.data == String(data_atual()))
+
+    const dataAtual = moment();
+    const dataOntem = dataAtual.subtract(1, 'days');
+    let ontem = dataOntem.format('DD/MM/YYYY');
+
+    const limiteHora = moment("19:00:00", "HH:mm:ss");
+
+    let real = e.filter(
+        i => i.forma == "Dinheiro" &&
+            i.usuario == usuario
+    )
+
     let tabs = document.getElementById("lista_dinheiro")
     tabs.innerHTML = ""
+
     real.forEach(i => {
-        tabs.innerHTML += `
-            <tr>
-                <td>${i.valor}</td>
-                <td>${i.data}</td>
-                <td>${i.usuario}</td>
-            </tr>
-        `
-        const valores = i.valor;
-        soma += parseFloat(valores);
+        if (
+            moment(i.data, 'DD/MM/YYYY').isSame(moment(data_atual(), 'DD/MM/YYYY'), 'day') ||
+            moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day')
+        ) {
+            if (
+                moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day') &&
+                moment(i.entrada, "HH:mm:ss").isAfter(moment(limiteHora, "HH:mm:ss"))
+            ) {
+                tabs.innerHTML += `
+                <tr>
+                        <td>${i.suite}</td>
+                        <td>${i.data}</td>
+                        <td>${i.entrada}</td>
+                        <td>${i.saida}</td>
+                        <td>${i.total}</td>
+                        <td>${i.usuario}</td>
+                    </tr>
+                `
+                const valores = i.total;
+                soma += parseFloat(valores);
+            } else if (
+                moment(i.data, 'DD/MM/YYYY').isSame(moment(data_atual(), 'DD/MM/YYYY'), 'day')
+            ) {
+                tabs.innerHTML += `
+                <tr>
+                        <td>${i.suite}</td>
+                        <td>${i.data}</td>
+                        <td>${i.entrada}</td>
+                        <td>${i.saida}</td>
+                        <td>${i.total}</td>
+                        <td>${i.usuario}</td>
+                    </tr>
+                `
+                const valores = i.total;
+                soma += parseFloat(valores);
+            }
+        } else {
+            console.log('e');
+        }
     });
     localStorage.setItem("dinheiro", soma)
 }
@@ -43,19 +85,62 @@ function dinheiro(e) {
 function pix(e) {
     let soma = 0
     let usuario = localStorage.getItem('nome')
-    let pixs = e.filter(i => i.forma == "PIX" && i.usuario == usuario && i.data == String(data_atual()))
+
+    const dataAtual = moment();
+    const dataOntem = dataAtual.subtract(1, 'days');
+    let ontem = dataOntem.format('DD/MM/YYYY')
+
+    const limiteHora = moment("19:00:00", "HH:mm:ss");
+
+    let pixs = e.filter(
+        i => String(i.forma).trim() == "PIX" &&
+            i.usuario == usuario
+    )
+
     let tabs = document.getElementById("lista_pix")
     tabs.innerHTML = ""
+
     pixs.forEach(i => {
-        tabs.innerHTML += `
-            <tr>
-                <td>${i.valor}</td>
-                <td>${i.data}</td>
-                <td>${i.usuario}</td>
-            </tr>
-        `
-        const valores = i.valor;
-        soma += parseFloat(valores);
+        if (
+            moment(i.data, 'DD/MM/YYYY').isSame(moment(data_atual(), 'DD/MM/YYYY'), 'day') ||
+            moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day')
+        ) {
+
+            if (
+                moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day') &&
+                moment(i.entrada, "HH:mm:ss").isAfter(moment(limiteHora, "HH:mm:ss"))
+            ) {
+                tabs.innerHTML += `
+                <tr>
+                        <td>${i.suite}</td>
+                        <td>${i.data}</td>
+                        <td>${i.entrada}</td>
+                        <td>${i.saida}</td>
+                        <td>${i.total}</td>
+                        <td>${i.usuario}</td>
+                    </tr>
+                `
+                const valores = i.total;
+                soma += parseFloat(valores);
+            } else if (
+                moment(i.data, 'DD/MM/YYYY').isSame(moment(data_atual(), 'DD/MM/YYYY'), 'day')
+            ) {
+                tabs.innerHTML += `
+                <tr>
+                        <td>${i.suite}</td>
+                        <td>${i.data}</td>
+                        <td>${i.entrada}</td>
+                        <td>${i.saida}</td>
+                        <td>${i.total}</td>
+                        <td>${i.usuario}</td>
+                    </tr>
+                `
+                const valores = i.total;
+                soma += parseFloat(valores);
+            }
+        } else {
+            console.log(e);
+        }
     });
     localStorage.setItem("pix", soma)
 }
@@ -63,20 +148,64 @@ function pix(e) {
 function debito(e) {
     let soma = 0
     let usuario = localStorage.getItem('nome')
-    var debito = e.filter(i => i.forma == "Débito Mastercard - " && i.usuario == usuario && i.data == String(data_atual()))
+
+    const dataAtual = moment();
+    const dataOntem = dataAtual.subtract(1, 'days');
+    let ontem = dataOntem.format('DD/MM/YYYY');
+
+    const limiteHora = moment("19:00:00", "HH:mm:ss");
+
+    var debito = e.filter(
+        i => i.forma == "Débito Mastercard - 4%" &&
+            i.usuario == usuario
+    )
+
     let tab = document.getElementById("tab_debito")
     tab.innerHTML = ""
+
     debito.forEach(i => {
-        tab.innerHTML += `
-            <tr>
-                <td>${i.nota}</td>
-                <td>${parseFloat(i.valor).toFixed(2)}</td>
-                <td>${i.data}</td>
-                <td>${i.usuario}</td>
-            </tr>
-        `
-        const valores = i.valor;
-        soma += parseFloat(valores);
+
+        if (
+            moment(i.data, 'DD/MM/YYYY').isSame(moment(data_atual(), 'DD/MM/YYYY'), 'day') ||
+            moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day')
+        ) {
+
+
+            if (
+                moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day') &&
+                moment(i.entrada, "HH:mm:ss").isAfter(moment(limiteHora, "HH:mm:ss"))
+            ) {
+                tab.innerHTML += `
+                <tr>
+                        <td>${i.suite}</td>
+                        <td>${i.data}</td>
+                        <td>${i.entrada}</td>
+                        <td>${i.saida}</td>
+                        <td>${i.total}</td>
+                        <td>${i.usuario}</td>
+                    </tr>
+                `
+                const valores = i.total;
+                soma += parseFloat(valores);
+            } else if (
+                moment(i.data, 'DD/MM/YYYY').isSame(moment(data_atual(), 'DD/MM/YYYY'), 'day')
+            ) {
+                tab.innerHTML += `
+                <tr>
+                        <td>${i.suite}</td>
+                        <td>${i.data}</td>
+                        <td>${i.entrada}</td>
+                        <td>${i.saida}</td>
+                        <td>${i.total}</td>
+                        <td>${i.usuario}</td>
+                    </tr>
+                `
+                const valores = i.total;
+                soma += parseFloat(valores);
+            }
+        } else {
+            console.log('e');
+        }
     })
     localStorage.setItem("debito", soma)
 }
@@ -84,21 +213,61 @@ function debito(e) {
 function credito(e) {
     let soma = 0
     let usuario = localStorage.getItem('nome')
-    var credito = e.filter(i => i.forma == "Crédito Mastercard -" && i.usuario == usuario && i.data == String(data_atual()))
+
+    const dataAtual = moment();
+    const dataOntem = dataAtual.subtract(1, 'days');
+    let ontem = dataOntem.format('DD/MM/YYYY')
+
+    const limiteHora = moment("19:00:00", "HH:mm:ss");
+
+    var credito = e.filter(
+        q => q.forma == "Crédito Mastercard - 4%" &&
+            q.usuario == usuario
+    )
+
     let tab = document.getElementById("tab_credito")
     tab.innerHTML = ""
+
     credito.forEach(i => {
-        tab.innerHTML += `
-            <tr>
-                <td>${i.nota}</td>
-                <td>${i.valor}</td>
-                <td>${i.parcelas}</td>
-                <td>${i.data}</td>
-                <td>${i.usuario}</td>
-            </tr>
-        `
-        const valores = i.valor;
-        soma += parseFloat(valores);
+        if (
+            moment(i.data, 'DD/MM/YYYY').isSame(moment(data_atual(), 'DD/MM/YYYY'), 'day') ||
+            moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day')
+        ) {
+            if (
+                moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day') &&
+                moment(i.entrada, "HH:mm:ss").isAfter(moment(limiteHora, "HH:mm:ss"))
+            ) {
+                tab.innerHTML += `
+                <tr>
+                        <td>${i.suite}</td>
+                        <td>${i.data}</td>
+                        <td>${i.entrada}</td>
+                        <td>${i.saida}</td>
+                        <td>${i.total}</td>
+                        <td>${i.usuario}</td>
+                    </tr>
+                `
+                const valores = i.total;
+                soma += parseFloat(valores);
+            } else if (
+                moment(i.data, 'DD/MM/YYYY').isSame(moment(data_atual(), 'DD/MM/YYYY'), 'day')
+            ) {
+                tab.innerHTML += `
+                <tr>
+                        <td>${i.suite}</td>
+                        <td>${i.data}</td>
+                        <td>${i.entrada}</td>
+                        <td>${i.saida}</td>
+                        <td>${i.total}</td>
+                        <td>${i.usuario}</td>
+                    </tr>
+                `
+                const valores = i.total;
+                soma += parseFloat(valores);
+            }
+        } else {
+            console.log('e');
+        }
     })
     localStorage.setItem("credito", soma)
 }

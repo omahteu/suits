@@ -10,15 +10,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $entrada = $_POST["entrada"];
     $saida = $_POST["saida"];
     $total = $_POST["total"];
+    $forma = $_POST["forma"];
 
-    $query = "INSERT INTO ocupacao(usuario, data, codigo, suite, entrada, saida, total) values(?, ?, ?, ?, ?, ?, ?)";
+    $query = "INSERT INTO ocupacao(usuario, data, codigo, suite, entrada, saida, total, forma) values(?, ?, ?, ?, ?, ?, ?, ?)";
 
     if ($conn->connect_error) {
         echo "$conn->connect_error";
         die("Connection Failed : " . $conn->connect_error);
     } else {
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("sssssss", $usuario, $data, $codigo, $suite, $entrada, $saida, $total);
+        $stmt->bind_param("ssssssss", $usuario, $data, $codigo, $suite, $entrada, $saida, $total, $forma);
         $execval = $stmt->execute();
         $stmt->close();
         $conn->close();
