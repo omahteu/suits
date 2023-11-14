@@ -32,11 +32,32 @@ function atualizaValores(suite) {
             let funil_suites = suites.filter((o) => o.numeroSuite == funil[0].suite);
             let funil_precos = precos.filter((u) => u.codigo == funil_suites[0].codigoSuite);
             function verificarHoraPassada() {
+
                 const horaAtual = moment();
                 const diferencaEmHoras = horaAtual.diff(horarioRegistrado, "hours");
 
                 const diferencaSegundos = horaAtual.diff(horarioRegistrado, "seconds");
                 const minutos = Math.floor((diferencaSegundos % 3600) / 60);
+
+
+                
+
+                const horaInicial = moment(String(horarioRegistrado), 'HH:mm:ss');
+                if (horaAtual.isBefore(horaInicial)) {
+                    horaAtual.add(1, 'day');
+                }
+
+                const diferenca = moment.duration(horaAtual.diff(horaInicial));
+                const horasDiferenca = diferenca.hours();
+                const minutosDiferenca = diferenca.minutes();
+                const segundosDiferenca = diferenca.seconds();
+
+                console.log(horasDiferenca)
+                console.log(minutosDiferenca)
+                console.log(segundosDiferenca)
+
+
+
 
                 if (diferencaEmHoras > 0 && diferencaEmHoras <= 1 && minutos > tolerancia) {
                     alterarValor(suite, funil_precos[0].vh2);
