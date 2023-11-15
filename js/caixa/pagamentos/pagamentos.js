@@ -47,7 +47,7 @@ function dinheiro(e) {
             if (
                 moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day') &&
                 moment(i.entrada, "HH:mm:ss").isAfter(moment(limiteHora, "HH:mm:ss")) ||
-                moment(e.entrada, "HH:mm:ss").isBefore(moment(limiteorra, "HH:mm:ss"))
+                moment(i.entrada, "HH:mm:ss").isBefore(moment(limiteorra, "HH:mm:ss"))
             ) {
                 tabs.innerHTML += `
                     <tr>
@@ -112,7 +112,7 @@ function pix(e) {
             if (
                 moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day') &&
                 moment(i.entrada, "HH:mm:ss").isAfter(moment(limiteHora, "HH:mm:ss")) ||
-                moment(e.entrada, "HH:mm:ss").isBefore(moment(limiteorra, "HH:mm:ss"))
+                moment(i.entrada, "HH:mm:ss").isBefore(moment(limiteorra, "HH:mm:ss"))
             ) {
                 tabs.innerHTML += `
                 <tr>
@@ -177,7 +177,7 @@ function debito(e) {
             if (
                 moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day') &&
                 moment(i.entrada, "HH:mm:ss").isAfter(moment(limiteHora, "HH:mm:ss")) ||
-                moment(e.entrada, "HH:mm:ss").isBefore(moment(limiteorra, "HH:mm:ss"))
+                moment(i.entrada, "HH:mm:ss").isBefore(moment(limiteorra, "HH:mm:ss"))
             ) {
                 tab.innerHTML += `
                 <tr>
@@ -241,7 +241,7 @@ function credito(e) {
             if (
                 moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day') &&
                 moment(i.entrada, "HH:mm:ss").isAfter(moment(limiteHora, "HH:mm:ss")) ||
-                moment(e.entrada, "HH:mm:ss").isBefore(moment(limiteorra, "HH:mm:ss"))
+                moment(i.entrada, "HH:mm:ss").isBefore(moment(limiteorra, "HH:mm:ss"))
             ) {
                 tab.innerHTML += `
                     <tr>
