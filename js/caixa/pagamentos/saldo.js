@@ -36,9 +36,9 @@ export async function saldo() {
                         moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day')
                     ) {
                         if (
-                            moment(e.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day') &&
-                            moment(e.entrada, "HH:mm:ss").isAfter(moment(limiteHora, "HH:mm:ss")) ||
-                            moment(e.entrada, "HH:mm:ss").isBefore(moment(limiteorra, "HH:mm:ss"))
+                            moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day') &&
+                            moment(i.entrada, "HH:mm:ss").isAfter(moment(limiteHora, "HH:mm:ss")) ||
+                            moment(i.entrada, "HH:mm:ss").isBefore(moment(limiteorra, "HH:mm:ss"))
                         ) {
                             const valores = i.total;
                             soma += parseFloat(valores);
