@@ -28,7 +28,8 @@ function dinheiro(e) {
     const dataOntem = dataAtual.subtract(1, 'days');
     let ontem = dataOntem.format('DD/MM/YYYY');
 
-    const limiteHora = moment("19:00:00", "HH:mm:ss");
+    const limiteHora = moment("19:00:00", "HH:mm:ss")
+    const limiteorra = moment("07:00:00", "HH:mm:ss")
 
     let real = e.filter(
         i => i.forma == "Dinheiro" &&
@@ -45,10 +46,11 @@ function dinheiro(e) {
         ) {
             if (
                 moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day') &&
-                moment(i.entrada, "HH:mm:ss").isAfter(moment(limiteHora, "HH:mm:ss"))
+                moment(i.entrada, "HH:mm:ss").isAfter(moment(limiteHora, "HH:mm:ss")) ||
+                moment(e.entrada, "HH:mm:ss").isBefore(moment(limiteorra, "HH:mm:ss"))
             ) {
                 tabs.innerHTML += `
-                <tr>
+                    <tr>
                         <td>${i.suite}</td>
                         <td>${i.data}</td>
                         <td>${i.entrada}</td>
@@ -63,7 +65,7 @@ function dinheiro(e) {
                 moment(i.data, 'DD/MM/YYYY').isSame(moment(data_atual(), 'DD/MM/YYYY'), 'day')
             ) {
                 tabs.innerHTML += `
-                <tr>
+                    <tr>
                         <td>${i.suite}</td>
                         <td>${i.data}</td>
                         <td>${i.entrada}</td>
@@ -90,7 +92,8 @@ function pix(e) {
     const dataOntem = dataAtual.subtract(1, 'days');
     let ontem = dataOntem.format('DD/MM/YYYY')
 
-    const limiteHora = moment("19:00:00", "HH:mm:ss");
+    const limiteHora = moment("19:00:00", "HH:mm:ss")
+    const limiteorra = moment("07:00:00", "HH:mm:ss")
 
     let pixs = e.filter(
         i => String(i.forma).trim() == "PIX" &&
@@ -108,7 +111,8 @@ function pix(e) {
 
             if (
                 moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day') &&
-                moment(i.entrada, "HH:mm:ss").isAfter(moment(limiteHora, "HH:mm:ss"))
+                moment(i.entrada, "HH:mm:ss").isAfter(moment(limiteHora, "HH:mm:ss")) ||
+                moment(e.entrada, "HH:mm:ss").isBefore(moment(limiteorra, "HH:mm:ss"))
             ) {
                 tabs.innerHTML += `
                 <tr>
@@ -153,7 +157,8 @@ function debito(e) {
     const dataOntem = dataAtual.subtract(1, 'days');
     let ontem = dataOntem.format('DD/MM/YYYY');
 
-    const limiteHora = moment("19:00:00", "HH:mm:ss");
+    const limiteHora = moment("19:00:00", "HH:mm:ss")
+    const limiteorra = moment("07:00:00", "HH:mm:ss")
 
     var debito = e.filter(
         i => i.forma == "Débito Mastercard - 4%" &&
@@ -169,11 +174,10 @@ function debito(e) {
             moment(i.data, 'DD/MM/YYYY').isSame(moment(data_atual(), 'DD/MM/YYYY'), 'day') ||
             moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day')
         ) {
-
-
             if (
                 moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day') &&
-                moment(i.entrada, "HH:mm:ss").isAfter(moment(limiteHora, "HH:mm:ss"))
+                moment(i.entrada, "HH:mm:ss").isAfter(moment(limiteHora, "HH:mm:ss")) ||
+                moment(e.entrada, "HH:mm:ss").isBefore(moment(limiteorra, "HH:mm:ss"))
             ) {
                 tab.innerHTML += `
                 <tr>
@@ -218,7 +222,8 @@ function credito(e) {
     const dataOntem = dataAtual.subtract(1, 'days');
     let ontem = dataOntem.format('DD/MM/YYYY')
 
-    const limiteHora = moment("19:00:00", "HH:mm:ss");
+    const limiteHora = moment("19:00:00", "HH:mm:ss")
+    const limiteorra = moment("07:00:00", "HH:mm:ss")
 
     var credito = e.filter(
         q => q.forma == "Crédito Mastercard - 4%" &&
@@ -235,10 +240,11 @@ function credito(e) {
         ) {
             if (
                 moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day') &&
-                moment(i.entrada, "HH:mm:ss").isAfter(moment(limiteHora, "HH:mm:ss"))
+                moment(i.entrada, "HH:mm:ss").isAfter(moment(limiteHora, "HH:mm:ss")) ||
+                moment(e.entrada, "HH:mm:ss").isBefore(moment(limiteorra, "HH:mm:ss"))
             ) {
                 tab.innerHTML += `
-                <tr>
+                    <tr>
                         <td>${i.suite}</td>
                         <td>${i.data}</td>
                         <td>${i.entrada}</td>
@@ -253,7 +259,7 @@ function credito(e) {
                 moment(i.data, 'DD/MM/YYYY').isSame(moment(data_atual(), 'DD/MM/YYYY'), 'day')
             ) {
                 tab.innerHTML += `
-                <tr>
+                    <tr>
                         <td>${i.suite}</td>
                         <td>${i.data}</td>
                         <td>${i.entrada}</td>

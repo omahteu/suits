@@ -12,22 +12,22 @@ export async function saldo() {
         const dataOntem = dataAtual.subtract(1, 'days');
         let ontem = dataOntem.format('DD/MM/YYYY');
 
-        const limiteHora = moment("19:00:00", "HH:mm:ss");
+        const limiteHora = moment("19:00:00", "HH:mm:ss")
+        const limiteorra = moment("07:00:00", "HH:mm:ss")
 
         let soma = 0
         let usuario = localStorage.getItem('nome')
         let fundo = localStorage.getItem("fundo")
-        let hoje = String(data_atual())
         const rq = await fetch(`http://${RAIZ}/suits/php/relatorios/ocupacoes.php`)
         const rs = await rq.json()
         if (rs["status"]) {
             setTimeout(() => {
                 let pagamentosUsuarios = rs["dados"].filter(
                     zin => zin.usuario === usuario &&
-                    zin.forma == "Dinheiro" ||
-                    zin.forma == "PIX" ||
-                    zin.forma == "Débito Mastercard - 4%" ||
-                    zin.forma == "Crédito Mastercard - 4%"
+                        zin.forma == "Dinheiro" ||
+                        zin.forma == "PIX" ||
+                        zin.forma == "Débito Mastercard - 4%" ||
+                        zin.forma == "Crédito Mastercard - 4%"
                 )
 
                 pagamentosUsuarios.forEach(i => {
@@ -36,8 +36,9 @@ export async function saldo() {
                         moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day')
                     ) {
                         if (
-                            moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day') &&
-                            moment(i.entrada, "HH:mm:ss").isAfter(moment(limiteHora, "HH:mm:ss"))
+                            moment(e.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day') &&
+                            moment(e.entrada, "HH:mm:ss").isAfter(moment(limiteHora, "HH:mm:ss")) ||
+                            moment(e.entrada, "HH:mm:ss").isBefore(moment(limiteorra, "HH:mm:ss"))
                         ) {
                             const valores = i.total;
                             soma += parseFloat(valores);
