@@ -1,4 +1,5 @@
 import {url} from "../../urlbase.js"
+import {hora_atual_segundos} from "../geradores/hora.js"
 
 // Captura de Inputs
 $(document).on("click", "#acessar", function(e) {
@@ -38,6 +39,12 @@ function autenticacao(dados){
             localStorage.setItem('usuarioLogado', 'caixa')
             localStorage.setItem('nome', e.usuarioUsuario)
             localStorage.setItem('caixa', 'fechado')
+            let agora = hora_atual_segundos()
+            if (moment(agora, "HH:mm:ss").isAfter(moment('12:00:00', "HH:mm:ss"))) {
+                localStorage.setItem('operacao', '1')
+            } else {
+                localStorage.setItem('operacao', '2')
+            }
             $(location).attr('href', './html/caixa.html')
         }
     });
