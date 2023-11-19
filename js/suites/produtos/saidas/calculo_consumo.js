@@ -1,14 +1,14 @@
 import {RAIZ} from "../../../raiz.js"
 
-$(document).on('click', '[class="card"]', function () {
-    let r1 = $(this)
-    let r2 = $(r1[0].children[0])
-    let r3 = $(r2[0].children[1])
-    let suite = r3.text()
-	calculo(suite)
-})
+// $(document).on('click', '[class="card"]', function () {
+//     let r1 = $(this)
+//     let r2 = $(r1[0].children[0])
+//     let r3 = $(r2[0].children[1])
+//     let suite = r3.text()
+// 	calculo(suite)
+// })
 
-async function calculo(suite) {
+export default async function calculo(suite) {
 	const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/comanda.php`)
 	const rs = await rq.json()
 	if (rs["status"]) {

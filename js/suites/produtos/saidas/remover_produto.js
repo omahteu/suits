@@ -32,10 +32,10 @@ async function calculo(suite) {
 		})
         let subTotal = sum + parseFloat(valorSuite)
 		$("#consumo_painel").text(sum.toFixed(2))
-        $("#parcial_painel").text(subTotal.toFixed(2))
+        //$("#parcial_painel").text(subTotal.toFixed(2))
 	} else {
         let valorSuite = $("#vq_painel").text()
-        $("#parcial_painel").text(parseFloat(valorSuite).toFixed(2))
+        //$("#parcial_painel").text(parseFloat(valorSuite).toFixed(2))
         $("#consumo_painel").text('0.00')
     }
 }

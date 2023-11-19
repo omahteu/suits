@@ -1,4 +1,3 @@
-import { hora_atual } from "../../../geradores/hora.js";
 import { executor_tarefas } from "../execucao/main.js";
 import { RAIZ } from "../../../raiz.js";
 

@@ -20,7 +20,7 @@ $(document).on("click", ".locado", function () {
         setTimeout(() => { index(suite, "locado") }, 300)
         setTimeout(() => { fimMenu() }, 400)
         setTimeout(() => { play[suite](suite, "0", "0", "0") }, 500)
-        setTimeout(() => { calculo(suite) }, 1000);
+        //setTimeout(() => { calculo(suite) }, 1000);
     }
 })
 

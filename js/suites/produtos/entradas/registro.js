@@ -48,6 +48,6 @@ async function calculo(suite) {
 		})
 		let subTotal = sum + parseFloat(valorSuite)
 		$("#consumo_painel").text(sum.toFixed(2))
-		$("#parcial_painel").text(subTotal.toFixed(2))
+		//$("#parcial_painel").text(subTotal.toFixed(2))
 	}
 }
