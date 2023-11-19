@@ -1,9 +1,7 @@
 import { data_atual } from "../../geradores/data.js"
 import { hora_atual_segundos } from "../../geradores/hora.js"
 import { gera_id } from "../../geradores/id.js"
-
 import salvar from "../../olivia/salva.js"
-
 import { RAIZ } from "../../raiz.js"
 
 export default function ocupacao() {

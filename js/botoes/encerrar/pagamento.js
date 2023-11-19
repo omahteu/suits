@@ -1,6 +1,6 @@
 import { data_atual } from "../../geradores/data.js"
 import salvar from "../../olivia/salva.js"
-import {RAIZ} from "../../raiz.js"
+import { RAIZ } from "../../raiz.js"
 
 export default function registrar_pagamento() {
     let metodo_pagamento = $("#modo_pagamento :selected").text()
