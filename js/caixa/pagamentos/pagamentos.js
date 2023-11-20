@@ -23,7 +23,7 @@ export async function todos_pagamentos() {
 }
 
 function dinheiro(e) {
-    let soma = 0
+
     let operacao = localStorage.getItem('operacao')
 
     const dataAtual = moment();
@@ -40,11 +40,10 @@ function dinheiro(e) {
 
     operantisModus(real, operacao, ontem, limiteorra, limiteHora)
 
-    localStorage.setItem("dinheiro", soma)
 }
 
 function pix(e) {
-    let soma = 0
+
     let operacao = localStorage.getItem('operacao')
 
     const dataAtual = moment();
@@ -59,57 +58,12 @@ function pix(e) {
     let tabs = document.getElementById("lista_pix")
     tabs.innerHTML = ""
 
-    // pixs.forEach(i => {
-    //     if (
-    //         moment(i.data, 'DD/MM/YYYY').isSame(moment(data_atual(), 'DD/MM/YYYY'), 'day') ||
-    //         moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day')
-    //     ) {
-
-    //         if (
-    //             moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day') &&
-    //             moment(i.saida, "HH:mm:ss").isAfter(moment(limiteHora, "HH:mm:ss"))
-    //         ) {
-    //             tabs.innerHTML += `
-    //             <tr>
-    //                     <td>${i.suite}</td>
-    //                     <td>${i.data}</td>
-    //                     <td>${i.entrada}</td>
-    //                     <td>${i.saida}</td>
-    //                     <td>${i.total}</td>
-    //                     <td>${i.usuario}</td>
-    //                 </tr>
-    //             `
-    //             const valores = i.total;
-    //             soma += parseFloat(valores);
-    //         } else if (
-    //             moment(i.data, 'DD/MM/YYYY').isSame(moment(data_atual(), 'DD/MM/YYYY'), 'day') &&
-    //             moment(i.saida, "HH:mm:ss").isBefore(moment(limiteorra, "HH:mm:ss"))
-    //         ) {
-    //             tabs.innerHTML += `
-    //             <tr>
-    //                     <td>${i.suite}</td>
-    //                     <td>${i.data}</td>
-    //                     <td>${i.entrada}</td>
-    //                     <td>${i.saida}</td>
-    //                     <td>${i.total}</td>
-    //                     <td>${i.usuario}</td>
-    //                 </tr>
-    //             `
-    //             const valores = i.total;
-    //             soma += parseFloat(valores);
-    //         }
-    //     } else {
-    //         console.log(e);
-    //     }
-    // });
-
     operantisModusPix(pixs, operacao, ontem, limiteorra, limiteHora)
 
-    localStorage.setItem("pix", soma)
 }
 
 function debito(e) {
-    let soma = 0
+
     let operacao = localStorage.getItem('operacao')
 
     const dataAtual = moment();
@@ -126,11 +80,9 @@ function debito(e) {
 
     operantisModusDebito(debito, operacao, ontem, limiteorra, limiteHora)
 
-    localStorage.setItem("debito", soma)
 }
 
 function credito(e) {
-    let soma = 0
     let operacao = localStorage.getItem('operacao')
 
     const dataAtual = moment();
@@ -147,7 +99,6 @@ function credito(e) {
 
     operantisModusCredito(credito, operacao, ontem, limiteorra, limiteHora)
 
-    localStorage.setItem("credito", soma)
 }
 
 function operantisModus(dados, operacao, ontem, limiteorra, limiteHora) {
@@ -215,6 +166,7 @@ function operantisModus(dados, operacao, ontem, limiteorra, limiteHora) {
         }
     })
 
+    localStorage.setItem("dinheiro", soma)
 
 }
 
@@ -283,6 +235,7 @@ function operantisModusPix(dados, operacao, ontem, limiteorra, limiteHora) {
         }
     })
 
+    localStorage.setItem("pix", soma)
 
 }
 
@@ -351,6 +304,7 @@ function operantisModusDebito(dados, operacao, ontem, limiteorra, limiteHora) {
         }
     })
 
+    localStorage.setItem("debito", soma)
 
 }
 
@@ -419,5 +373,6 @@ function operantisModusCredito(dados, operacao, ontem, limiteorra, limiteHora) {
         }
     })
 
+    localStorage.setItem("credito", soma)
 
 }

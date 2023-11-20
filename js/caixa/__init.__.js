@@ -5,8 +5,11 @@ import {todos_pagamentos} from "./pagamentos/pagamentos.js"
 
 
 $(window).on("load", function () {
-    saldo()
+
     // sangria()
     todos_pagamentos()
 })
 
+setTimeout(() => {
+    saldo()
+}, 2000);
