@@ -317,7 +317,7 @@ function operantisModusDebito(dados, operacao, ontem, limiteorra, limiteHora) {
                     moment(e.data, 'DD/MM/YYYY').isSame(moment(data_atual(), 'DD/MM/YYYY'), 'day') &&
                     moment(e.saida, "HH:mm:ss").isBefore(moment(limiteorra, "HH:mm:ss"))
                 ) {
-                    tabs.innerHTML += `
+                    tab.innerHTML += `
                     <tr>
                         <td>${e.suite}</td>
                         <td>${e.data}</td>
@@ -335,7 +335,7 @@ function operantisModusDebito(dados, operacao, ontem, limiteorra, limiteHora) {
             if (
                 moment(e.data, 'DD/MM/YYYY').isSame(moment(data_atual(), 'DD/MM/YYYY'), 'day')
             ) {
-                tabs.innerHTML += `
+                tab.innerHTML += `
                     <tr>
                         <td>${e.suite}</td>
                         <td>${e.data}</td>
@@ -369,7 +369,7 @@ function operantisModusCredito(dados, operacao, ontem, limiteorra, limiteHora) {
                     moment(e.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day') &&
                     moment(e.saida, "HH:mm:ss").isAfter(moment(limiteHora, "HH:mm:ss"))
                 ) {
-                    tabs.innerHTML += `
+                    tab.innerHTML += `
                     <tr>
                         <td>${e.suite}</td>
                         <td>${e.data}</td>
@@ -385,7 +385,7 @@ function operantisModusCredito(dados, operacao, ontem, limiteorra, limiteHora) {
                     moment(e.data, 'DD/MM/YYYY').isSame(moment(data_atual(), 'DD/MM/YYYY'), 'day') &&
                     moment(e.saida, "HH:mm:ss").isBefore(moment(limiteorra, "HH:mm:ss"))
                 ) {
-                    tabs.innerHTML += `
+                    tab.innerHTML += `
                     <tr>
                         <td>${e.suite}</td>
                         <td>${e.data}</td>
