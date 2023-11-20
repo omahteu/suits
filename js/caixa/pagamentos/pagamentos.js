@@ -38,49 +38,6 @@ function dinheiro(e) {
     let tabs = document.getElementById("lista_dinheiro")
     tabs.innerHTML = ""
 
-    // real.forEach(i => {
-    //     if (
-    //         moment(i.data, 'DD/MM/YYYY').isSame(moment(data_atual(), 'DD/MM/YYYY'), 'day') ||
-    //         moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day')
-    //     ) {
-    //         if (
-    //             moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day') &&
-    //             moment(i.saida, "HH:mm:ss").isAfter(moment(limiteHora, "HH:mm:ss"))
-    //         ) {
-    //             tabs.innerHTML += `
-    //                 <tr>
-    //                     <td>${i.suite}</td>
-    //                     <td>${i.data}</td>
-    //                     <td>${i.entrada}</td>
-    //                     <td>${i.saida}</td>
-    //                     <td>${i.total}</td>
-    //                     <td>${i.usuario}</td>
-    //                 </tr>
-    //             `
-    //             const valores = i.total;
-    //             soma += parseFloat(valores);
-    //         } else if (
-    //             moment(i.data, 'DD/MM/YYYY').isSame(moment(data_atual(), 'DD/MM/YYYY'), 'day') &&
-    //             moment(i.saida, "HH:mm:ss").isBefore(moment(limiteorra, "HH:mm:ss"))
-    //         ) {
-    //             tabs.innerHTML += `
-    //                 <tr>
-    //                     <td>${i.suite}</td>
-    //                     <td>${i.data}</td>
-    //                     <td>${i.entrada}</td>
-    //                     <td>${i.saida}</td>
-    //                     <td>${i.total}</td>
-    //                     <td>${i.usuario}</td>
-    //                 </tr>
-    //             `
-    //             const valores = i.total;
-    //             soma += parseFloat(valores);
-    //         }
-    //     } else {
-    //         console.log('e');
-    //     }
-    // });
-
     operantisModus(real, operacao, ontem, limiteorra, limiteHora)
 
     localStorage.setItem("dinheiro", soma)
@@ -88,6 +45,7 @@ function dinheiro(e) {
 
 function pix(e) {
     let soma = 0
+    let operacao = localStorage.getItem('operacao')
 
     const dataAtual = moment();
     const dataOntem = dataAtual.subtract(1, 'days');
@@ -152,6 +110,7 @@ function pix(e) {
 
 function debito(e) {
     let soma = 0
+    let operacao = localStorage.getItem('operacao')
 
     const dataAtual = moment();
     const dataOntem = dataAtual.subtract(1, 'days');
@@ -165,50 +124,6 @@ function debito(e) {
     let tab = document.getElementById("tab_debito")
     tab.innerHTML = ""
 
-    // debito.forEach(i => {
-
-    //     if (
-    //         moment(i.data, 'DD/MM/YYYY').isSame(moment(data_atual(), 'DD/MM/YYYY'), 'day') ||
-    //         moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day')
-    //     ) {
-    //         if (
-    //             moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day') &&
-    //             moment(i.saida, "HH:mm:ss").isAfter(moment(limiteHora, "HH:mm:ss"))
-    //         ) {
-    //             tab.innerHTML += `
-    //             <tr>
-    //                     <td>${i.suite}</td>
-    //                     <td>${i.data}</td>
-    //                     <td>${i.entrada}</td>
-    //                     <td>${i.saida}</td>
-    //                     <td>${i.total}</td>
-    //                     <td>${i.usuario}</td>
-    //                 </tr>
-    //             `
-    //             const valores = i.total;
-    //             soma += parseFloat(valores);
-    //         } else if (
-    //             moment(i.data, 'DD/MM/YYYY').isSame(moment(data_atual(), 'DD/MM/YYYY'), 'day') &&
-    //             moment(i.saida, "HH:mm:ss").isBefore(moment(limiteorra, "HH:mm:ss"))
-    //         ) {
-    //             tab.innerHTML += `
-    //             <tr>
-    //                     <td>${i.suite}</td>
-    //                     <td>${i.data}</td>
-    //                     <td>${i.entrada}</td>
-    //                     <td>${i.saida}</td>
-    //                     <td>${i.total}</td>
-    //                     <td>${i.usuario}</td>
-    //                 </tr>
-    //             `
-    //             const valores = i.total;
-    //             soma += parseFloat(valores);
-    //         }
-    //     } else {
-    //         console.log('e');
-    //     }
-    // })
-
     operantisModusDebito(debito, operacao, ontem, limiteorra, limiteHora)
 
     localStorage.setItem("debito", soma)
@@ -216,6 +131,7 @@ function debito(e) {
 
 function credito(e) {
     let soma = 0
+    let operacao = localStorage.getItem('operacao')
 
     const dataAtual = moment();
     const dataOntem = dataAtual.subtract(1, 'days');
@@ -228,49 +144,6 @@ function credito(e) {
 
     let tab = document.getElementById("tab_credito")
     tab.innerHTML = ""
-
-    // credito.forEach(i => {
-    //     if (
-    //         moment(i.data, 'DD/MM/YYYY').isSame(moment(data_atual(), 'DD/MM/YYYY'), 'day') ||
-    //         moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day')
-    //     ) {
-    //         if (
-    //             moment(i.data, 'DD/MM/YYYY').isSame(moment(ontem, 'DD/MM/YYYY'), 'day') &&
-    //             moment(i.saida, "HH:mm:ss").isAfter(moment(limiteHora, "HH:mm:ss"))
-    //         ) {
-    //             tab.innerHTML += `
-    //                 <tr>
-    //                     <td>${i.suite}</td>
-    //                     <td>${i.data}</td>
-    //                     <td>${i.entrada}</td>
-    //                     <td>${i.saida}</td>
-    //                     <td>${i.total}</td>
-    //                     <td>${i.usuario}</td>
-    //                 </tr>
-    //             `
-    //             const valores = i.total;
-    //             soma += parseFloat(valores);
-    //         } else if (
-    //             moment(i.data, 'DD/MM/YYYY').isSame(moment(data_atual(), 'DD/MM/YYYY'), 'day') &&
-    //             moment(i.saida, "HH:mm:ss").isBefore(moment(limiteorra, "HH:mm:ss"))
-    //         ) {
-    //             tab.innerHTML += `
-    //                 <tr>
-    //                     <td>${i.suite}</td>
-    //                     <td>${i.data}</td>
-    //                     <td>${i.entrada}</td>
-    //                     <td>${i.saida}</td>
-    //                     <td>${i.total}</td>
-    //                     <td>${i.usuario}</td>
-    //                 </tr>
-    //             `
-    //             const valores = i.total;
-    //             soma += parseFloat(valores);
-    //         }
-    //     } else {
-    //         console.log('e');
-    //     }
-    // })
 
     operantisModusCredito(credito, operacao, ontem, limiteorra, limiteHora)
 
