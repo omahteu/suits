@@ -44,7 +44,6 @@ $(document).on('click', '[class="card"]', function () {
     var passo3 = $(passo2[0].children[1])
     var passo4 = passo3.text()
     var cor = $(passo[0]).css("background-color")
-    console.log(cor)
     if (cor == 'rgb(75, 192, 192)') {
         $("#vh_painel").text('0')
         $("#vq_painel").text('0')

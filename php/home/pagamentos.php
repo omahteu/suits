@@ -1,6 +1,6 @@
 <?php
 include "../cnxInterna.php";
-$query = "SELECT id, usuario, data, codigo, suite, entrada, saida, total FROM ocupacao";
+$query = "SELECT id, usuario, data, codigo, suite, entrada, saida, total, forma, parcelas, permanencia, consumo FROM pagamento";
 $resultado = $conn->query($query);
 if ($resultado->num_rows > 0) {
     while($row = $resultado->fetch_assoc()) {
@@ -12,7 +12,11 @@ if ($resultado->num_rows > 0) {
             'suite' => $row["suite"],
             'entrada' => $row["entrada"],
             'saida' => $row["saida"],
-            'total' => $row["total"]
+            'total' => $row["total"],
+            'forma' => $row["forma"],
+            'parcelas' => $row["parcelas"],
+            'permanencia' => $row["permanencia"],
+            'consumo' => $row["consumo"]
         ];
     }
     $retorna = ['status' => true, 'dados' => $dados];

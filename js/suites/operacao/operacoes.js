@@ -26,7 +26,7 @@ function reacao(status, suite) {
     let m = $(`#minuto${suite}`).text();
     let s = $(`#segundo${suite}`).text();
     let tempo = `${h}:${m}:${s}`;
-    let usuario = String($("#saudacao_usuario").text()).split(",")[1].trim();
+    let usuario = localStorage.getItem('nome');
 
     switch (status) {
         case "Apagar Luz":

@@ -12,7 +12,6 @@
   <link rel="stylesheet" href="../css/matrix-media.css">
   <link rel="stylesheet" href="../css/campo.css">
   <link rel="stylesheet" href="../css/caixa_resp.css">
-
 </head>
 
 <body>
@@ -41,7 +40,6 @@
                   <h5>Caixa</h5>
                 </div>
                 <ul class="nav nav-tabs">
-
                   <li class="active">
                     <a data-toggle="tab" href="#af">Abrir/Fechar</a>
                   </li>
@@ -50,70 +48,53 @@
                   </li>
                 </ul>
 
-                <form class="form-horizontal" id="formCadastros">
+                <form class="form-horizontal" id="formCadastros" method="post">
                   <div class="widget-content nopadding tab-content">
 
-                    <!--Abrir/Fechar-->
+                    <!-- Abrir/Fechar -->
                     <div id="af" class="tab-pane fade in active">
 
-                      <!--Usuário-->
+                      <!-- Usuário -->
                       <div class="control-group">
                         <div class="controls">
                           <input type="text" id="usuario" placeholder="Usuário" disabled>
                         </div>
                       </div>
 
-                      <!--Usar Fundo de Caixa?-->
+                      <!-- Valor Fundo de Caixa -->
                       <div class="control-group">
                         <div class="controls">
-                          <select id="usarProdutosSemCaixa">
-                            <option hidden>Usar produtos sem estoque?</option>
+                          <input type="text" id="valorFundoCaixa" name="valorFundoCaixa" placeholder="R$ 0.00">
+                        </div>
+                      </div>
+
+                      <!-- Usar Produtos Sem Estoque? -->
+                      <div class="control-group">
+                        <div class="controls">
+                          <select id="usarProdutosSemCaixa" name="usarProdutosSemCaixa">
+                            <option value="nao" hidden>Usar produtos sem estoque?</option>
                             <option value="sim">Sim</option>
                             <option value="nao">Não</option>
                           </select>
                         </div>
                       </div>
 
-                      <!--Usar Fundo de Caixa?-->
-                      <div class="control-group">
-                        <div class="controls">
-                          <select id="usarFundoCaixa">
-                            <option hidden>Usar Fundo de Caixa?</option>
-                            <option value="sim">Sim</option>
-                            <option value="nao">Não</option>
-                          </select>
-                        </div>
-                      </div>
-
-                      <!--Valor Fundo de Caixa-->
-                      <div class="control-group">
-                        <div class="controls">
-                          <input type="text" id="valorFundoCaixa" placeholder="Valor Fundo de Caixa">
-                        </div>
-                      </div>
-
-                      <!--Botões-->
+                      <!-- Botões -->
                       <div class="form-actions">
                         <div class="span8">
                           <div class="span9">
-                            <button type="button" class="button btn btn-primary" id="abrirCaixa">
+                            <button type="submit" class="button btn btn-primary">
                               <span class="button__icon">
                                 <i class="fa-solid fa-floppy-disk"></i>
                               </span>
                               <span class="button__text2">Abrir Caixa</span>
-                            </button>
-                            <button type="button" class="button btn btn-danger" id="fecharCaixa">
-                              <span class="button__icon">
-                                <i class="fa-solid fa-xmark"></i>
-                              </span>
-                              <span class="button__text2">Encerrar Caixa</span>
                             </button>
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    <!--Histórico-->
+                    <!-- Histórico -->
                     <div id="historico" class="tab-pane fade">
                       <table class="table table-bordered  dataTable no-footer" role="grid">
                         <thead>
@@ -139,18 +120,21 @@
   </div>
 
   <!--LAYOUT-->
-  <script src="../js/jquery.js"></script>
+  <script src="../js/core/jquery.js"></script>
   <script src="../js/estilo/bootstrap.min.js"></script>
   <script src="https://kit.fontawesome.com/88ea2c002f.js" crossorigin="anonymous"></script>
-  <script src="../js/estilo/nomes.js"></script>
+  <!-- <script type="module" src="../js/tools/saudacao.js"></script> -->
   <!--FUNÇÕES CAIXA-->
-  <script type="module" src="../js/caixa/inicializado.js"></script>
-  <script type="module" src="../js/caixa/abertura/index.js"></script>
-  <script type="module" src="../js/caixa/fechamento/index.js"></script>
+  <!-- <script type="module" src="../js/caixa/inicializado.js"></script> -->
+
+ 
   <!--AUDITÓRIA-->
-  <script type="module" src="../js/contadores/auditoria.js"></script>
+  <!-- <script type="module" src="../js/contadores/auditoria.js"></script> -->
   <!--VALIDAÇÃO-->
-  <script src="../js/setup/validacao.js"></script>
+  <script type="module" src="../js/login/core/main.js"></script>
+
+  <script type="module" src="../js/caixa/core/main.js"></script>
+  <script type="module" src="../js/caixa/assets/abrir.js"></script>
 </body>
 
 </html>

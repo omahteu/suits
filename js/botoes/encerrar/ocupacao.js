@@ -13,6 +13,5 @@ export default function ocupacao() {
     let entrada = dadosOCupacao[0].hora
     localStorage.setItem(`codigo${suite}`, codigo_ocupacao)
     let caixa = 'usuario=' + localStorage.getItem("nome") + '&data=' + data_atual() + '&codigo=' + codigo_ocupacao + '&suite=' + suite + '&entrada=' + entrada + '&saida=' + hora_atual_segundos() + '&total=' + $("#totalGeral").text() + '&forma=' + forma
-    console.log(caixa)
     salvar(`http://${RAIZ}/suits/php/suites/ocupacao.php`, caixa)
 }

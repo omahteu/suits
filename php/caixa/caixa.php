@@ -1,6 +1,9 @@
 <?php
+header("Access-Control-Allow-Origin: http://localhost");
+header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Headers: Content-Type");
 include "../cnxInterna.php";
-include "../../urlbase.php";
+//include "../../urlbase.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -22,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $execval = $stmt->execute();
         $stmt->close();
         $conn->close();
-        echo "sucesso";
+        echo "true";
         exit;
     }
 }
