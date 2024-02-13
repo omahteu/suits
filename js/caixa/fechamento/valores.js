@@ -33,7 +33,13 @@ export default async function _valores() {
             soma_fundo == "0" ? ficha.push("0") : ficha.push(soma_fundo)
             setTimeout(() => {    
                 var total = parseFloat(soma) + parseFloat(ficha[4])
-                let dados = 'data=' + ficha[1] + '&entrada=' + ficha[2] + '&usuario=' + ficha[3] + '&fundo=' + ficha[4] + '&total=' + total + '&saida' + hora_atual_segundos()
+                let dados = 
+                'data=' + ficha[1] + 
+                '&entrada=' + ficha[2] + 
+                '&usuario=' + ficha[3] + 
+                '&fundo=' + ficha[4] + 
+                '&total=' + total + 
+                '&saida' + hora_atual_segundos()
                 alterar(`http://${RAIZ}/suits/php/suits/caixa.php`, dados)
             }, 200)
         }
