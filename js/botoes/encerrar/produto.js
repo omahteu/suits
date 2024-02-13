@@ -1,23 +1,42 @@
-import alterar from "../../olivia/altera.js"
-import { RAIZ } from "../../raiz.js"
+import make_url from "../../tools/urls.js"
+import fazerRequisicaoAjax from "../../tools/ajax.js"
 
-export default async function registrando(suite) {
-    const requestComanda = await fetch(`http://${RAIZ}/suits/php/suites/show/comanda.php`)
-    const responseComanda = await requestComanda.json()
-    if (responseComanda["status"]) {
-        var dadosComanda = responseComanda["dados"].filter(i => i.suite == suite)
-        dadosComanda.forEach(async x => {
-            const requestProdutos = await fetch(`http://${RAIZ}/suits/php/estoque/show/produtos.php`)
-            const responseProdutos = await requestProdutos.json()
-            if (responseProdutos["status"]) {
-                let produ = responseProdutos["dados"].filter(bu => bu.descricao == x.descricao)
-                produ.forEach(el => {
-                    var atual = parseInt(el.quantidade)
-                    var novo = parseInt(atual) - parseInt(x.quantidade)
-                    let caixa = 'codigo=' + el.codigo + '&descricao=' + el.descricao + '&valorunitario=' + el.valorunitario + '&quantidade=' + novo + '&categoria=' + el.categoria + '&data=' + el.data
-                    alterar(`http://${RAIZ}/suits/php/suites/editarprodutos.php`, caixa)
-                });
-            }
-        })
-    }
+export default async function estoque(suite) {
+    let url = make_url("assets", "comanda.php")
+    let url2 = make_url("assets", "estoque.php")
+    let url3 = make_url("estoque", "modificaQuantidadeProdutos.php")
+
+    fazerRequisicaoAjax(url, "GET", null, function (responseComanda) {
+        let responseComandaJSON = JSON.parse(responseComanda)
+        if (responseComandaJSON['status']) {
+            let comanda = responseComandaJSON["dados"].filter(i => i.suite == suite)
+            comanda.forEach(async item => {
+                fazerRequisicaoAjax(url2, "GET", null, function (responseEstoque) {
+                    let responseEstoqueJSON = JSON.parse(responseEstoque)
+                    if (responseEstoqueJSON['status']) {
+                        let estoque = responseEstoqueJSON["dados"].filter(i => i.descricao == item.descricao)
+                        estoque.forEach(produto => {
+                            var novo = parseInt(produto.quantidade) - parseInt(item.quantidade)
+                            let caixa = 
+                            'codigo=' + produto.codigo + 
+                            '&descricao=' + produto.descricao + 
+                            '&valorunitario=' + produto.valorunitario + 
+                            '&quantidade=' + novo + 
+                            '&categoria=' + produto.categoria + 
+                            '&data=' + produto.data
+                            fazerRequisicaoAjax(url3, "POST", caixa, function (e) {
+                                console.log(e)
+                            }, function (erro) {
+                                console.log(erro)
+                            })
+                        });
+                    }
+                }, function (erro) {
+                    console.log(erro)
+                })
+            });
+        }
+    }, function (erro) {
+        console.log(erro)
+    })
 }
