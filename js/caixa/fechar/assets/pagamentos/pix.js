@@ -28,3 +28,52 @@ export default function pix(responseData) {
         console.error("Erro na solicitação. Contate o Administrador");
     }
 }
+
+export default function processarDadosPix(responseData) {
+    const data = JSON.parse(responseData)
+    
+    if (data.status) {
+        exibirDadosPix(data.dados)
+    } else {
+        tratarPixVazio()
+    }
+}
+
+function exibirDadosPix(PixData) {
+    const pixTable = document.getElementById("")
+    pixTable.innerHTML = ""
+
+    let totalAmount = 0
+
+    PixData.forEach(entry => {
+        pixTable.innerHTML += criarLinhaTabela(entry)
+
+        const entryTotal = parseFloat(entry.total)
+        totalAmount += isNaN(entryTotal) ? 0 : entryTotal
+    });
+
+    localStorage.setItem("pix", totalAmount.toFixed(2))
+}
+
+function criarLinhaTabela(entry) {
+    return `
+    
+    `
+}
+
+function tratarPixVazio () {
+    const pixTable = document.getElementById("")
+    pixTable.innerHTML = ""
+
+    pixTable.innerHTML += criarLinhaTabelaVazia()
+
+    localStorage.setItem("pix", "0")
+}
+
+function criarLinhaTabelaVazia() {
+    const data = "0"
+
+    return `
+    
+    `
+}
