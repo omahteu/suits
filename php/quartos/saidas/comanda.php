@@ -1,6 +1,6 @@
 <?php
 
-include "../cnxInterna.php";
+include "../../cnxInterna.php";
 
 $suite = $_POST["suiteE"];
 $descricao = $_POST["descricao"];

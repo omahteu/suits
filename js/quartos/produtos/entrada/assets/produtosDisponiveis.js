@@ -1,70 +1,81 @@
-import {RAIZ} from "../../../raiz.js"
-import fazerRequisicaoAjax from "../../../../tools/ajax.js"
+import fazerRequisicaoAjax from "../../../../tools/ajax.js";
+import make_url from "../../../../tools/urls.js";
 
-$(document).ready(function () {
-    disponivel()
-})
+const url = make_url("quartos/entradas", "produtos.php");
 
-$(document).on('keydown', "#codigo_produto", function (e) {
-    if (e.which === 9) {
-        let codigoProduto = $(this).val()
-        popi(codigoProduto)
-        $("#checkbox_produto").hide()
-    }
-});
+function adicionarOpcaoCheckbox(descricao) {
+    $('#checkbox_produto').append(`<option>${descricao}</option>`);
+}
 
-function disponivel(){
-    fazerRequisicaoAjax(url, "GET", null, function(respoonse) {
-        const data = respoonse.dados
-    }, function(error) {
-        console.log(error)
-    })
+function atualizarCamposProduto(produto) {
+    $("#descricao").val(produto.descricao);
+    $("#valor_unitario").val(`R$ ${produto.valorunitario}`);
+}
 
-    if (rs["status"]) {
-        rs["dados"].forEach(item => {
-            var estoque = item.quantidade
-            var permis = localStorage.getItem("prod")
-            if (permis == "nao") {
-                if (estoque > 0) {
-                    $('#checkbox_produto').append(`<option>${item.descricao}</option>`)
-                }
-            } else if (permis == "sim") {
-                $('#checkbox_produto').append(`<option>${item.descricao}</option>`)
-            }
+function calcularEAtualizarValorTotal(valorUnitario, quantidade) {
+    const qtd = quantidade || 0;
+    const total = parseFloat(valorUnitario) * parseInt(qtd);
+    $("#valor_total").val(`R$ ${total.toFixed(2)}`);
+}
+
+function handleProdutoSelection(dados) {
+    $(document).on("change", "#checkbox_produto", function () {
+        const unid = $("#checkbox_produto :selected").text();
+        const filtroCard = dados.find(i => i.descricao === unid);
+
+        if (filtroCard) {
+            atualizarCamposProduto(filtroCard);
+
+            $(document).on("keyup", "#quantidade", function () {
+                calcularEAtualizarValorTotal(filtroCard.valorunitario, $(this).val());
+            });
+        }
+    });
+}
+
+function handleReadyData(dados) {
+    const permis = localStorage.getItem("prod");
+
+    dados.forEach(e => {
+        const estoque = e.quantidade;
+
+        if ((permis === "nao" && estoque > 0) || permis === "sim") {
+            adicionarOpcaoCheckbox(e.descricao);
+        }
+    });
+
+    handleProdutoSelection(dados);
+}
+
+function handleInputData(dados, produto) {
+    const buscandoProduto = dados.find(x => x.codigo == produto);
+
+    if (buscandoProduto) {
+        atualizarCamposProduto(buscandoProduto);
+        $("#valor_total").val(`R$ 0.00`);
+
+        $(document).on("keyup", "#quantidade", function () {
+            calcularEAtualizarValorTotal(buscandoProduto.valorunitario, $(this).val());
         });
-        $(document).on("change", "#checkbox_produto", function(){
-            var unid = $("#checkbox_produto :selected").text()
-            let filtroCard = rs["dados"].filter(i => i.descricao == unid)
-            $("#descricao").val(filtroCard[0].descricao)
-            $("#valor_unitario").val(`R$ ${filtroCard[0].valorunitario}`)
-            $(document).on("keyup", "#quantidade", function(){
-                let opu = $(this).val()
-                if (opu == "" || opu == 0) {
-                    $("#valor_total").val(`R$ 0.00`)
-                } else {
-                    var qtd = $(this).val()
-                    var total = parseFloat(filtroCard[0].valorunitario) * parseInt(qtd)
-                    $("#valor_total").val(`R$ ${total}`)
-                }
-
-            })
-        })
+    } else {
+        console.log("Produto não encontrado.");
     }
 }
 
-async function popi(codigoProduto) {
-    const rq = await fetch(`http://${RAIZ}/suits/php/estoque/show/produtos.php`)
-    const rs = await rq.json()
-    if (rs["status"]) {
-        let buscandoProduto = rs["dados"].filter(x => x.codigo == codigoProduto)
-        $("#descricao").val(buscandoProduto[0].descricao)
-        $("#valor_unitario").val(`R$ ${buscandoProduto[0].valorunitario}`)
-        $("#valor_total").val(`R$ 0.00`)
-        $(document).on("keyup", "#quantidade", function() {
-            var qtd = $(this).val()
-            console.log(qtd)
-            var total = parseFloat(buscandoProduto[0]['valorunitario']) * Number(qtd)
-            $("#valor_total").val(`R$ ${parseFloat(total).toFixed(2)}`)
-        });
-    }
+export default function estoqueDisponivel(entrada, produto) {
+    fazerRequisicaoAjax(url, "GET", null, function (response) {
+        const data = JSON.parse(response);
+
+        if (data.status) {
+            if (entrada === "r") {
+                handleReadyData(data.dados);
+            } else {
+                handleInputData(data.dados, produto);
+            }
+        } else {
+            console.log('Erro | Linha 21, produtosDisponiveis.js | Contate o Administrador.');
+        }
+    }, function (error) {
+        console.log(error);
+    });
 }

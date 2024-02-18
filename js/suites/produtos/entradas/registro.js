@@ -23,6 +23,7 @@ $(document).on("click", "#registrar_produto", function() {
 							document.getElementById("formCadastros").reset()
 							ll(suite)
 							calculo(suite)
+							$("#checkbox_produto").show();
 						}
 					};
 					xhr.send(dadosphp)
