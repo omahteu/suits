@@ -7,9 +7,9 @@ import limparLocalStorage from "../assets/limpar_ls.js";
 import limparSessionStorage from "../assets/limpar_ss.js";
 import usuario from "../assets/usuario.js";
 import processarDadosDinheiro from "../assets/pagamentos/dinheiro.js";
-import pix from "../assets/pagamentos/pix.js";
-import debito from "../assets/pagamentos/debito.js";
-import credito from "../assets/pagamentos/credito.js";
+import processarDadosPix from "../assets/pagamentos/pix.js";
+import processarDadosDebito from "../assets/pagamentos/debito.js";
+import processarDadosCredito from "../assets/pagamentos/credito.js";
 
 const identificadores = {
     fecharCaixa: "#fecharCaixa",
@@ -25,7 +25,7 @@ const calcularTotal = () => {
 };
 
 const fundoCaixaHandler = () => {
-    $(identificadores.fundoCaixa).html(`<tr><td>${fundoDeCaixa}</td></tr>`);
+    $(identificadores.fundoCaixa).html(`<tr><td>${fundoDeCaixa()}</td></tr>`);
 };
 
 const fecharCaixaHandler = () => {
@@ -54,9 +54,9 @@ const fecharCaixaHandler = () => {
 const relatorioValoresHandler = () => {
     const onSuccess = (response) => {
         processarDadosDinheiro(response);
-        pix(response);
-        debito(response);
-        credito(response);
+        processarDadosPix(response);
+        processarDadosDebito(response);
+        processarDadosCredito(response);
     };
 
     const onError = (erro) => {
@@ -111,33 +111,8 @@ const atualizarTabelaSaldo = () => {
     `;
 };
 
-// const atualizarTabelaSaldo = () => {
-//     const dinheiroValue = localStorage.getItem("dinheiro") || "0";
-//     const pixValue = localStorage.getItem("pix") || "0";
-//     const debitoValue = localStorage.getItem("debito") || "0";
-//     const creditoValue = localStorage.getItem("credito") || "0";
-//     const fundoValue = localStorage.getItem("fundo") || "0";
-
-//     const saldoComFundoCaixa = parseFloat(dinheiroValue) + parseFloat(pixValue) + parseFloat(debitoValue) + parseFloat(creditoValue) + parseFloat(fundoValue);
-//     const saldoSemFundoCaixa = parseFloat(dinheiroValue) + parseFloat(pixValue) + parseFloat(debitoValue) + parseFloat(creditoValue);
-
-//     const tabela = document.getElementById("tab_saldo");
-//     tabela.innerHTML = `
-//         <tr>
-//             <td>${saldoComFundoCaixa}</td>
-//             <td>${saldoSemFundoCaixa}</td>
-//             <td>${dinheiroValue}</td>
-//             <td>${pixValue}</td>
-//             <td>${creditoValue}</td>
-//             <td>${debitoValue}</td>
-//         </tr>
-//     `;
-// };
-
 $(document).on("click", identificadores.fecharCaixa, fecharCaixaHandler);
 $(identificadores.usuario).val(usuario());
 $(window).on("load", relatorioValoresHandler);
 $(window).on("load", fundoCaixaHandler);
-// $(document).on("click", identificadores.abaSaldo, atualizarTabelaSaldo);
-// Uso
 $(document).on("click", identificadores.abaSaldo, atualizarTabelaSaldo);

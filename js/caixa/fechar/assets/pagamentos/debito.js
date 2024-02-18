@@ -1,30 +1,62 @@
-export default function debito(responseData) {
-    const data = JSON.parse(responseData);
-    let totalAmount = 0;
+export default function processarDadosDebito (responseData) {
+    const data = JSON.parse(responseData)
 
     if (data.status) {
-        const dinheiroData = data.dados.filter(entry => entry.forma.slice(0, 6) === "Débito");
-        const dinheiroTable = document.getElementById("tab_debito");
-        dinheiroTable.innerHTML = "";
-
-        dinheiroData.forEach(entry => {
-            dinheiroTable.innerHTML += `
-                <tr>
-                    <td>${entry.suite}</td>
-                    <td>${entry.data}</td>
-                    <td>${entry.entrada}</td>
-                    <td>${entry.saida}</td>
-                    <td>${entry.total}</td>
-                    <td>${entry.usuario}</td>
-                </tr>
-            `;
-
-            const entryTotal = parseFloat(entry.total);
-            totalAmount += isNaN(entryTotal) ? 0 : entryTotal;
-        });
-
-        localStorage.setItem("debito", totalAmount.toFixed(2));
+        exibirDadosDebito(data.dados)
     } else {
-        console.error("Erro na solicitação. Contate o Administrador");
+        tratarDebitoVazio()
     }
+}
+
+function exibirDadosDebito (debitoData) {
+    const debitoTable = document.getElementById("tab_debito")
+    debitoTable.innerHTML = ""
+
+    let totalAmount = 0
+
+    debitoData.forEach(entry => {
+        debitoTable.innerHTML += criarLinhaTabela(entry)
+
+        const entryTotal = parseFloat(entry.total)
+        totalAmount += isNaN(entryTotal) ? 0 : entryTotal
+    });
+
+    localStorage.setItem("debito", totalAmount.toFixed(2))
+}
+
+function criarLinhaTabela(entry) {
+    return `
+        <tr>
+            <td>${entry.suite}</td>
+            <td>${entry.data}</td>
+            <td>${entry.entrada}</td>
+            <td>${entry.saida}</td>
+            <td>${entry.total}</td>
+            <td>${entry.usuario}</td>
+        </tr>
+    `
+}
+
+function tratarDebitoVazio() {
+    const debitoTable = document.getElementById("tab_debito")
+    debitoTable.innerHTML = ""
+
+    debitoTable.innerHTML += criarLinhaTabelaVazia()
+
+    localStorage.setItem("debito", "0")
+}
+
+function criarLinhaTabelaVazia() {
+    const data = "0"
+
+    return `
+        <tr>
+            <td>${data}</td>
+            <td>${data}</td>
+            <td>${data}</td>
+            <td>${data}</td>
+            <td>${data}</td>
+            <td>${data}</td>
+        </tr>
+    `
 }
