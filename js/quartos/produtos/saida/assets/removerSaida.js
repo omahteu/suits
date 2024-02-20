@@ -17,6 +17,7 @@ function promptForExclusionReason() {
 
 export default function removeProduto(id) {
     const url = makeUrl("suites", "excluir.php");
+    const urlComanda = makeUrl("assets", "comanda.php")
     const suite = $("#quarto_painel").text();
     
     const motivo = promptForExclusionReason();
@@ -30,8 +31,18 @@ export default function removeProduto(id) {
     const dados = `tabela=comanda&coluna=id&valor=${id}`;
     
     fazerRequisicaoAjax(url, "POST", dados, function() {
-        comandaSuite(suite);
-        calculo(suite);
+
+        fazerRequisicaoAjax(urlComanda, "GET", null, function(response) {
+            const data = JSON.parse(response)
+            if (!data.status) {
+                calculo(suite);
+            } else {
+                comandaSuite(suite);
+                calculo(suite);
+            }
+        }, function(error) {
+            console.log(error)
+        })
     }, function(error) {
         console.log(error);
     });
