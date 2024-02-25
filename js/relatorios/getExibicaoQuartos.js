@@ -2,7 +2,7 @@
 import { hora_atual_segundos } from "../geradores/hora.js";
 // import { ll } from "../armazem/leitura/produtos.js";
 // import calculo from "../suites/produtos/saidas/calculo_consumo.js";
-import { vv } from "../armazem/leitura/veiculos.js";
+// import { vv } from "../armazem/leitura/veiculos.js";
 // import calculoParcial from "../suites/conta/parcial.js";
 // import calculoSuite from "../suites/conta/suite.js";
 // import calculoAdicional from "../suites/conta/adicional.js";
@@ -58,7 +58,17 @@ $(document).on('click', '[class="card"]', function () {
     $("#suiteE").attr("value", passo4)
 	$("#hora").attr("value", hora_atual_segundos())
     // ll(passo4)
-    vv(passo4)
+
+
+
+    // ALTERAR LOCAL DE EXIBIÇÃO DA GARAGEM E REFATORAR O CODIGO
+    // vv(passo4)
+
+
+
+
+
+
     // calculo consumo
     // calculo(passo4)
     // calculo suite
