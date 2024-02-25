@@ -36,13 +36,12 @@ export default function removeProduto(id) {
             const data = JSON.parse(response)
             if (!data.status) {
                 calculo(suite);
-            } else {
-                comandaSuite(suite);
-                calculo(suite);
             }
         }, function(error) {
             console.log(error)
         })
+        comandaSuite(suite);
+        calculo(suite);
     }, function(error) {
         console.log(error);
     });

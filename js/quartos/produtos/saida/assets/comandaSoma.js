@@ -19,7 +19,8 @@ export default function calculo(suite) {
                 $("#consumo_painel").text(totalConsumption);
                 localStorage.setItem("consumo", totalConsumption)
             } else {
-                console.log("ERRO | Linha 13 | comandaSoma.js | Contate o Administrador |");
+                localStorage.setItem("consumo", "0.00")
+                // console.log("ERRO | Linha 13 | comandaSoma.js | Contate o Administrador |");
             }
         } catch (error) {
             console.log("produtos.js", `[LOGS] | ${error}`);

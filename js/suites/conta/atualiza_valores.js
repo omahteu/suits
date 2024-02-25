@@ -19,6 +19,7 @@ let tiposSuites = ['manutencao', 'faxina', 'limpeza', 'revisao', 'aguardando', '
 
 export default function atualizaValores(suite) {
     try {
+
         var alugados = receber("offs");
         var suites = receber("dados_suites");
         var precos = receber("tabela_precos");
@@ -132,6 +133,7 @@ export default function atualizaValores(suite) {
                     alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 290).toFixed(2));
                 }
             }
+            
             setTimeout(() => {
                 verificarHoraPassada();
             }, 1000);
@@ -212,6 +214,7 @@ export default function atualizaValores(suite) {
                 verificarHoraPassada();
             }, 1000);
         }
+
     } catch (error) {
         sessionStorage.setItem("porHora.js", `[LOGS] | ${error}`);
     }
