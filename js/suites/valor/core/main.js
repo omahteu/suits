@@ -1,3 +1,5 @@
 import atualizaValorSuite from "../assets/valorSuite.js"
 
-atualizaValorSuite("1")
+setTimeout(() => {
+    atualizaValorSuite("1")
+}, 2000);

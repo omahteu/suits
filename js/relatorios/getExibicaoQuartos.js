@@ -6,7 +6,7 @@ import { hora_atual_segundos } from "../geradores/hora.js";
 // import calculoParcial from "../suites/conta/parcial.js";
 // import calculoSuite from "../suites/conta/suite.js";
 // import calculoAdicional from "../suites/conta/adicional.js";
-import atualizaValores from "../suites/conta/atualiza_valores.js";
+// import atualizaValores from "../suites/conta/atualiza_valores.js";
 
 // setTimeout(() => {
 //     busca_e_exibe_quartos()
@@ -74,7 +74,7 @@ $(document).on('click', '[class="card"]', function () {
     // calculo suite
     // calculoSuite(passo4)
 
-    atualizaValores(passo4)
+    // atualizaValores(passo4)
     // calculo parcial
 
     // calculoAdicional(passo4)
