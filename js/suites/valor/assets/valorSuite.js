@@ -6,6 +6,8 @@ import { RAIZ } from "../../../raiz.js";
 import pernoite from "../../../tags/pernoite.js";
 import alterar from "../../../olivia/altera.js";
 import salvar from "../../../olivia/salva.js";
+import make_url from "../../../tools/urls.js";
+import fazerRequisicaoAjax from "../../../tools/ajax.js";
 
 
 
@@ -30,9 +32,6 @@ export default function atualizaValorSuite(index) {
             const funilSuite = suites.find(o => o.numeroSuite === funil.suite);
             const funilPrecos = precos.find(u => u.codigo === funilSuite.codigoSuite);
 
-
-            
-
             function verificarHoraPassada() {
 
                 const agora = hora_atual_segundos();
@@ -47,16 +46,65 @@ export default function atualizaValorSuite(index) {
                 const horasDiferenca = diferenca.hours();
                 const minutosDiferenca = diferenca.minutes();
 
-            
+                console.log(`HORAS DIFERENÇA | ${horasDiferenca}`)
+                console.log(`MINUTOS DIFERENÇA | ${minutosDiferenca}`)
+                console.log(`TOLERANCIA | ${tolerancia}`)
+                console.log('-------------------------------------------------------------------------------------------------------------------')
 
+                console.log(horasDiferenca > 0 && horasDiferenca <= 24)
+                console.log(minutosDiferenca > tolerancia)
+                console.log(funilPrecos)
 
-                if (horasDiferenca > 0 && horasDiferenca <= 35 && minutosDiferenca > tolerancia) {
-                    const precoBase = parseInt(funilPrecos.pernoite) + (Math.floor(horasDiferenca / 1) * 10);
-    
-                    alterarValor(index, parseFloat(precoBase).toFixed(2));
+                if (horasDiferenca > 0 && horasDiferenca <= 1 && minutosDiferenca > tolerancia) {
+                    alterarValor(index, funilPrecos.vh2);
+                } else if (horasDiferenca > 1 && horasDiferenca <= 2 && minutosDiferenca > tolerancia) {
+                    alterarValor(index, funilPrecos.vh3);
+                } else if (horasDiferenca > 2 && horasDiferenca <= 3 && minutosDiferenca > tolerancia) {
+                    alterarValor(index, funilPrecos.vh4);
+                } else if (horasDiferenca > 3 && horasDiferenca <= 4 && minutosDiferenca > tolerancia) {
+                    comecandoPernoite(index)
+                } else if (horasDiferenca > 6 && horasDiferenca <= 7 && minutosDiferenca > tolerancia) {
+                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 10).toFixed(2));
+                } else if (horasDiferenca > 7 && horasDiferenca <= 8 && minutosDiferenca > tolerancia) {
+                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 20).toFixed(2));
+                } else if (horasDiferenca > 8 && horasDiferenca <= 9 && minutosDiferenca > tolerancia) {
+                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 30).toFixed(2));
+                } else if (horasDiferenca > 9 && horasDiferenca <= 10 && minutosDiferenca > tolerancia) {
+                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 40).toFixed(2));
+                } else if (horasDiferenca > 10 && horasDiferenca <= 11 && minutosDiferenca > tolerancia) {
+                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 50).toFixed(2));
+                } else if (horasDiferenca > 11 && horasDiferenca <= 12 && minutosDiferenca > tolerancia) {
+                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 60).toFixed(2));
+                } else if (horasDiferenca > 12 && horasDiferenca <= 13 && minutosDiferenca > tolerancia) {
+                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 70).toFixed(2));
+                } else if (horasDiferenca > 13 && horasDiferenca <= 14 && minutosDiferenca > tolerancia) {
+                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 80).toFixed(2));
+                } else if (horasDiferenca > 14 && horasDiferenca <= 15 && minutosDiferenca > tolerancia) {
+                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 90).toFixed(2));
+                } else if (horasDiferenca > 15 && horasDiferenca <= 16 && minutosDiferenca > tolerancia) {
+                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 100).toFixed(2));
+                } else if (horasDiferenca > 16 && horasDiferenca <= 17 && minutosDiferenca > tolerancia) {
+                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 110).toFixed(2));
+                } else if (horasDiferenca > 17 && horasDiferenca <= 18 && minutosDiferenca > tolerancia) {
+                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 120).toFixed(2));
+                } else if (horasDiferenca > 18 && horasDiferenca <= 19 && minutosDiferenca > tolerancia) {
+                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 130).toFixed(2));
+                } else if (horasDiferenca > 19 && horasDiferenca <= 20 && minutosDiferenca > tolerancia) {
+                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 140).toFixed(2));
+                } else if (horasDiferenca > 20 && horasDiferenca <= 21 && minutosDiferenca > tolerancia) {
+                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 150).toFixed(2));
+                } else if (horasDiferenca > 21 && horasDiferenca <= 22 && minutosDiferenca > tolerancia) {
+                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 160).toFixed(2));
+                } else if (horasDiferenca > 22 && horasDiferenca <= 23 && minutosDiferenca > tolerancia) {
+                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 170).toFixed(2));
+                } else if (horasDiferenca > 23 && horasDiferenca <= 24 && minutosDiferenca > tolerancia) {
+                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 180).toFixed(2));
+                } else if (horasDiferenca > 24 && horasDiferenca <= 25 && minutosDiferenca > tolerancia) {
+                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 190).toFixed(2));
                 }
-                
             }
+
+            // APÓS 24H A SUITE VAI ENCERRAR, E CASO O CLIENTE AINDA PERMANEÇA, PRECISARÁ INICIAR NOVAMENTE, OU INICIARÁ AUTOMATICAMENTE.
 
             setTimeout(() => {
                 verificarHoraPassada();
@@ -145,65 +193,78 @@ export default function atualizaValorSuite(index) {
 
 }
 
-async function comecando_pernoite(index) {
-    const i1 = receber("dados_suites");
-    const i2 = receber("tabela_precos");
-    const i3 = receber("offs");
-    const rq = await fetch(`http://${RAIZ}/suits/php/configuracoes/show/pernoite.php`); // pernoite
-    const rs = await rq.json();
-    if (rs["status"]) {
-        rs["dados"].forEach((e) => {
-            let tipo = e.tipoPernoite;
-            let seAutomatica = tipo == "1";
-            let seFixa = tipo == "2";
-            if (seAutomatica) {
+function comecandoPernoite(index) {
+    const suitesData = receber("dados_suites");
+    const precosData = receber("tabela_precos");
+    const offsData = receber("offs");
 
-                let SuitePostu = i3.filter(mu => mu.suite == index)
+    const url = make_url("configuracoes/show", "pernoite.php");
 
-                if (SuitePostu[0].tipo === "locado") {
-                    let ficha = i1.filter((i) => i.numeroSuite == index);
-                    let codig = ficha[0].codigoSuite;
-                    let fich2 = i2.filter((x) => x.codigo == codig);
-                    ativar(index, fich2[0].pernoite);
-                }
+    fazerRequisicaoAjax(url, "GET", null, function(response) {
+        try {
+            const data = JSON.parse(response);
 
-                // i3.forEach((ele) => {
+            if (data.status) {
+                data.dados.forEach((pernoiteConfig) => {
+                    let tipo = pernoiteConfig.tipoPernoite;
+                    let isAutomatica = tipo === "1";
+                    let isFixa = tipo === "2";
 
-                //     if (ele.tipo == "locado") {
+                    if (isAutomatica) {
+                        let suitePostu = offsData.filter(mu => mu.suite == index);
 
-
-
-                //     }
-                // });
-            } else if (seFixa) {
-                i3.forEach((ili) => {
-                    let ficha = i1.filter((i) => i.numeroSuite == ili.suite);
-                    if (ili.tipo != "pernoite") {
-                        let codig = ficha[0].codigoSuite;
-                        let fich2 = i2.filter((x) => x.codigo == codig);
-                        ativar(ele.suite, fich2[0].pernoite);
+                        if (suitePostu[0].tipo === "locado") {
+                            let ficha = suitesData.filter((suite) => suite.numeroSuite == index);
+                            let codigo = ficha[0].codigoSuite;
+                            let fich2 = precosData.filter((item) => item.codigo == codigo);
+                            ativar(index, fich2[0].pernoite);
+                        }
+                    } else if (isFixa) {
+                        offsData.forEach((off) => {
+                            let ficha = suitesData.filter((suite) => suite.numeroSuite == off.suite);
+                            if (off.tipo !== "pernoite") {
+                                let codigo = ficha[0].codigoSuite;
+                                let fich2 = precosData.filter((item) => item.codigo == codigo);
+                                ativar(off.suite, fich2[0].pernoite);
+                            }
+                        });
                     }
                 });
+            } else {
+                console.log("Erro na leitura da Pernoite.");
             }
-        });
-    }
+        } catch (error) {
+            console.log(error);
+        }
+    }, function(error) {
+        console.log(error);
+    });
 }
 
 function ativar(index, valorpernoite) {
     // let ocupacoes = receber('offs')
     // let ocupacao = ocupacoes.filter(gt => gt.index = index)
 
-    setTimeout(() => {
-        let card = "antigo=" + index + "&novo=" + valorpernoite
-        salvar(`http://${RAIZ}/suits/php/suites/editarcofrep.php`, card)
-    }, 500);
+    const urlCofre = make_url()
+    const urlInfos = make_url()
+    const urlTasks = make_url()
 
-    pernoite(index);
-    let dados2 = "suite=" + index + "&tipo=" + "pernoite"
-    alterar(`http://${RAIZ}/suits/php/suites/editarinfosq.php`, dados2);
-    // insereValor(suite, valorpernoite, "pernoite");
-    setTimeout(() => {
-        let box = "suite=" + index + "&modo=" + "p" + "&tipo=" + "per" + "&horario=" + hora_atual_segundos();
-        salvar(`http://${RAIZ}/suits/php/suites/tarefas.php`, box);
-    }, 1000);
+    fazerRequisicaoAjax()
+    fazerRequisicaoAjax()
+    fazerRequisicaoAjax()
+
+
+    // setTimeout(() => {
+    //     let card = "antigo=" + index + "&novo=" + valorpernoite
+    //     salvar(`http://${RAIZ}/suits/php/suites/editarcofrep.php`, card)
+    // }, 500);
+
+    // pernoite(index);
+    // let dados2 = "suite=" + index + "&tipo=" + "pernoite"
+    // alterar(`http://${RAIZ}/suits/php/suites/editarinfosq.php`, dados2);
+    // // insereValor(suite, valorpernoite, "pernoite");
+    // setTimeout(() => {
+    //     let box = "suite=" + index + "&modo=" + "p" + "&tipo=" + "per" + "&horario=" + hora_atual_segundos();
+    //     salvar(`http://${RAIZ}/suits/php/suites/tarefas.php`, box);
+    // }, 1000);
 }
