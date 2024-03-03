@@ -1,14 +1,7 @@
 import { hora_atual_segundos } from "../../../geradores/hora.js";
 import alterarValor from "../../../quartos/ajax/alterar.js";
 import receber from "../../../quartos/auxiliares/funcao4.js";
-import { RAIZ } from "../../../raiz.js";
-// import { insereValor } from "../../pernoite/ajax/inserir.js";
-import pernoite from "../../../tags/pernoite.js";
-import alterar from "../../../olivia/altera.js";
-import salvar from "../../../olivia/salva.js";
-import make_url from "../../../tools/urls.js";
-import fazerRequisicaoAjax from "../../../tools/ajax.js";
-
+import startPernoite from "./pernoite.js";
 
 
 export default function atualizaValorSuite(index) {
@@ -62,7 +55,7 @@ export default function atualizaValorSuite(index) {
                 } else if (horasDiferenca > 2 && horasDiferenca <= 3 && minutosDiferenca > tolerancia) {
                     alterarValor(index, funilPrecos.vh4);
                 } else if (horasDiferenca > 3 && horasDiferenca <= 4 && minutosDiferenca > tolerancia) {
-                    comecandoPernoite(index)
+                    startPernoite(index)
                 } else if (horasDiferenca > 6 && horasDiferenca <= 7 && minutosDiferenca > tolerancia) {
                     alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 10).toFixed(2));
                 } else if (horasDiferenca > 7 && horasDiferenca <= 8 && minutosDiferenca > tolerancia) {
@@ -191,80 +184,4 @@ export default function atualizaValorSuite(index) {
         console.log(error)
     }
 
-}
-
-function comecandoPernoite(index) {
-    const suitesData = receber("dados_suites");
-    const precosData = receber("tabela_precos");
-    const offsData = receber("offs");
-
-    const url = make_url("configuracoes/show", "pernoite.php");
-
-    fazerRequisicaoAjax(url, "GET", null, function(response) {
-        try {
-            const data = JSON.parse(response);
-
-            if (data.status) {
-                data.dados.forEach((pernoiteConfig) => {
-                    let tipo = pernoiteConfig.tipoPernoite;
-                    let isAutomatica = tipo === "1";
-                    let isFixa = tipo === "2";
-
-                    if (isAutomatica) {
-                        let suitePostu = offsData.filter(mu => mu.suite == index);
-
-                        if (suitePostu[0].tipo === "locado") {
-                            let ficha = suitesData.filter((suite) => suite.numeroSuite == index);
-                            let codigo = ficha[0].codigoSuite;
-                            let fich2 = precosData.filter((item) => item.codigo == codigo);
-                            ativar(index, fich2[0].pernoite);
-                        }
-                    } else if (isFixa) {
-                        offsData.forEach((off) => {
-                            let ficha = suitesData.filter((suite) => suite.numeroSuite == off.suite);
-                            if (off.tipo !== "pernoite") {
-                                let codigo = ficha[0].codigoSuite;
-                                let fich2 = precosData.filter((item) => item.codigo == codigo);
-                                ativar(off.suite, fich2[0].pernoite);
-                            }
-                        });
-                    }
-                });
-            } else {
-                console.log("Erro na leitura da Pernoite.");
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    }, function(error) {
-        console.log(error);
-    });
-}
-
-function ativar(index, valorpernoite) {
-    // let ocupacoes = receber('offs')
-    // let ocupacao = ocupacoes.filter(gt => gt.index = index)
-
-    const urlCofre = make_url()
-    const urlInfos = make_url()
-    const urlTasks = make_url()
-
-    fazerRequisicaoAjax()
-    fazerRequisicaoAjax()
-    fazerRequisicaoAjax()
-
-
-    // setTimeout(() => {
-    //     let card = "antigo=" + index + "&novo=" + valorpernoite
-    //     salvar(`http://${RAIZ}/suits/php/suites/editarcofrep.php`, card)
-    // }, 500);
-
-    // pernoite(index);
-    // let dados2 = "suite=" + index + "&tipo=" + "pernoite"
-    // alterar(`http://${RAIZ}/suits/php/suites/editarinfosq.php`, dados2);
-    // // insereValor(suite, valorpernoite, "pernoite");
-    // setTimeout(() => {
-    //     let box = "suite=" + index + "&modo=" + "p" + "&tipo=" + "per" + "&horario=" + hora_atual_segundos();
-    //     salvar(`http://${RAIZ}/suits/php/suites/tarefas.php`, box);
-    // }, 1000);
 }
