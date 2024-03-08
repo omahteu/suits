@@ -18,6 +18,8 @@ export default function startPernoite(index) {
 
             if (data.status) {
                 data.dados.forEach((pernoiteConfig) => {
+
+   
                 
                     let tipo = pernoiteConfig.tipoPernoite;
                     let isAutomatica = tipo === "1";
@@ -25,13 +27,14 @@ export default function startPernoite(index) {
 
                     if (isAutomatica) {
                         let suitePostu = offsData.filter(mu => mu.suite == index);
+
+
                         
 
                         if (suitePostu[0].tipo === "locado") {
                             let ficha = suitesData.filter((suite) => suite.numeroSuite == index);
                             let codigo = ficha[0].codigoSuite;
                             let fich2 = precosData.filter((item) => item.codigo == codigo);
-                         
                             ativar(index, fich2[0].pernoite);
                         }
                     } else if (isFixa) {

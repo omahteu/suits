@@ -16,9 +16,9 @@ export default function atualizaValorSuite(index) {
         const tolerancia = parseInt(suiteFiltrada[0].toleranciaSuite);
         const modoCobranca = suiteFiltrada[0].cobrancaSuite;
 
-     
+
         if (modoCobranca == "hora") {
-  
+
 
             const funil = alugados.find(x => x.suite === index);
             const iniciado = funil.hora;
@@ -47,59 +47,69 @@ export default function atualizaValorSuite(index) {
                 console.log(horasDiferenca > 0 && horasDiferenca <= 24)
                 console.log(minutosDiferenca > tolerancia)
                 console.log(funilPrecos)
+                console.log(horasDiferenca == 1)
 
-                if (horasDiferenca > 0 && horasDiferenca <= 1 && minutosDiferenca > tolerancia) {
-                    alterarValor(index, funilPrecos.vh2);
-                } else if (horasDiferenca > 1 && horasDiferenca <= 2 && minutosDiferenca > tolerancia) {
-                    alterarValor(index, funilPrecos.vh3);
-                } else if (horasDiferenca > 2 && horasDiferenca <= 3 && minutosDiferenca > tolerancia) {
-                    alterarValor(index, funilPrecos.vh4);
-                } else if (horasDiferenca > 3 && horasDiferenca <= 4 && minutosDiferenca > tolerancia) {
-                    startPernoite(index)
-                } else if (horasDiferenca > 6 && horasDiferenca <= 7 && minutosDiferenca > tolerancia) {
-                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 10).toFixed(2));
-                } else if (horasDiferenca > 7 && horasDiferenca <= 8 && minutosDiferenca > tolerancia) {
-                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 20).toFixed(2));
-                } else if (horasDiferenca > 8 && horasDiferenca <= 9 && minutosDiferenca > tolerancia) {
-                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 30).toFixed(2));
-                } else if (horasDiferenca > 9 && horasDiferenca <= 10 && minutosDiferenca > tolerancia) {
-                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 40).toFixed(2));
-                } else if (horasDiferenca > 10 && horasDiferenca <= 11 && minutosDiferenca > tolerancia) {
-                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 50).toFixed(2));
-                } else if (horasDiferenca > 11 && horasDiferenca <= 12 && minutosDiferenca > tolerancia) {
-                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 60).toFixed(2));
-                } else if (horasDiferenca > 12 && horasDiferenca <= 13 && minutosDiferenca > tolerancia) {
-                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 70).toFixed(2));
-                } else if (horasDiferenca > 13 && horasDiferenca <= 14 && minutosDiferenca > tolerancia) {
-                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 80).toFixed(2));
-                } else if (horasDiferenca > 14 && horasDiferenca <= 15 && minutosDiferenca > tolerancia) {
-                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 90).toFixed(2));
-                } else if (horasDiferenca > 15 && horasDiferenca <= 16 && minutosDiferenca > tolerancia) {
-                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 100).toFixed(2));
-                } else if (horasDiferenca > 16 && horasDiferenca <= 17 && minutosDiferenca > tolerancia) {
-                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 110).toFixed(2));
-                } else if (horasDiferenca > 17 && horasDiferenca <= 18 && minutosDiferenca > tolerancia) {
-                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 120).toFixed(2));
-                } else if (horasDiferenca > 18 && horasDiferenca <= 19 && minutosDiferenca > tolerancia) {
-                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 130).toFixed(2));
-                } else if (horasDiferenca > 19 && horasDiferenca <= 20 && minutosDiferenca > tolerancia) {
-                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 140).toFixed(2));
-                } else if (horasDiferenca > 20 && horasDiferenca <= 21 && minutosDiferenca > tolerancia) {
-                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 150).toFixed(2));
-                } else if (horasDiferenca > 21 && horasDiferenca <= 22 && minutosDiferenca > tolerancia) {
-                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 160).toFixed(2));
-                } else if (horasDiferenca > 22 && horasDiferenca <= 23 && minutosDiferenca > tolerancia) {
-                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 170).toFixed(2));
-                } else if (horasDiferenca > 23 && horasDiferenca <= 24 && minutosDiferenca > tolerancia) {
-                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 180).toFixed(2));
-                } else if (horasDiferenca > 24 && horasDiferenca <= 25 && minutosDiferenca > tolerancia) {
-                    alterarValor(suite, parseFloat(parseInt(funil_precos[0].pernoite) + 190).toFixed(2));
+
+                if (horasDiferenca == 1 && minutosDiferenca > tolerancia || horasDiferenca == (1+1) && minutosDiferenca < tolerancia) {
+                    alterarValor(index, funilPrecos.vh2)
                 }
+
+                if (horasDiferenca == 2 && minutosDiferenca > tolerancia || horasDiferenca == (2+1) && minutosDiferenca < tolerancia) {
+                    alterarValor(index, funilPrecos.vh3)
+                }
+
+                if (horasDiferenca == 3 && minutosDiferenca > tolerancia || horasDiferenca == (3+1) && minutosDiferenca < tolerancia) {
+                    alterarValor(index, funilPrecos.vh4)
+                }
+
+                if (horasDiferenca == 4 && minutosDiferenca > tolerancia || horasDiferenca == (4+1) && minutosDiferenca < tolerancia) {
+                    startPernoite(index)
+                }
+
+                if (horasDiferenca == 7 && minutosDiferenca > tolerancia || horasDiferenca == (7+1) && minutosDiferenca < tolerancia) {  
+                    alterarValor(index, parseFloat(parseInt(funilPrecos.pernoite) + 10).toFixed(2))
+                }
+
+                if (horasDiferenca == 8 && minutosDiferenca > tolerancia || horasDiferenca == (8+1) && minutosDiferenca < tolerancia) {
+                    alterarValor(index, parseFloat(parseInt(funilPrecos.pernoite) + 20).toFixed(2))
+                }
+
+                if (horasDiferenca == 9 && minutosDiferenca > tolerancia || horasDiferenca == (9+1) && minutosDiferenca < tolerancia) {
+                    alterarValor(index, parseFloat(parseInt(funilPrecos.pernoite) + 30).toFixed(2))
+                }
+
+                if (horasDiferenca == 10 && minutosDiferenca > tolerancia || horasDiferenca == (10+1) && minutosDiferenca < tolerancia) {
+                    alterarValor(index, parseFloat(parseInt(funilPrecos.pernoite) + 40).toFixed(2))
+                }
+
+                if (horasDiferenca == 11 && minutosDiferenca > tolerancia || horasDiferenca == (11+1) && minutosDiferenca < tolerancia) {
+                    alterarValor(index, parseFloat(parseInt(funilPrecos.pernoite) + 50).toFixed(2))
+                }
+
+                if (horasDiferenca == 12 && minutosDiferenca > tolerancia || horasDiferenca == (12+1) && minutosDiferenca < tolerancia) {
+                    alterarValor(index, parseFloat(parseInt(funilPrecos.pernoite) + 60).toFixed(2))
+                }
+
+
+                //     alterarValor(index, parseFloat(parseInt(funilPrecos.pernoite) + 70).toFixed(2))
+                //     alterarValor(index, parseFloat(parseInt(funilPrecos.pernoite) + 80).toFixed(2))
+                //     alterarValor(index, parseFloat(parseInt(funilPrecos.pernoite) + 90).toFixed(2))
+                //     alterarValor(index, parseFloat(parseInt(funilPrecos.pernoite) + 100).toFixed(2))
+                //     alterarValor(index, parseFloat(parseInt(funilPrecos.pernoite) + 110).toFixed(2))
+                //     alterarValor(index, parseFloat(parseInt(funilPrecos.pernoite) + 120).toFixed(2))
+                //     alterarValor(index, parseFloat(parseInt(funilPrecos.pernoite) + 130).toFixed(2))
+                //     alterarValor(index, parseFloat(parseInt(funilPrecos.pernoite) + 140).toFixed(2))
+                //     alterarValor(index, parseFloat(parseInt(funilPrecos.pernoite) + 150).toFixed(2))
+                //     alterarValor(index, parseFloat(parseInt(funilPrecos.pernoite) + 160).toFixed(2))
+                //     alterarValor(index, parseFloat(parseInt(funilPrecos.pernoite) + 170).toFixed(2))
+                //     alterarValor(index, parseFloat(parseInt(funilPrecos.pernoite) + 180).toFixed(2))
+
             }
 
             // APÓS 24H A SUITE VAI ENCERRAR, E CASO O CLIENTE AINDA PERMANEÇA, PRECISARÁ INICIAR NOVAMENTE, OU INICIARÁ AUTOMATICAMENTE.
 
             setTimeout(() => {
+
                 verificarHoraPassada();
             }, 1000);
         } else if (modoCobranca == "fixa") {

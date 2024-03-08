@@ -9,8 +9,12 @@ export default function ativar(index, valorpernoite) {
     const urlTasks = make_url("suites", "tarefas.php")
 
     const dataCofre = {antigo: index, novo: valorpernoite}
-    const dataInfos = {suite: index, tipo: pernoite}
+    const dataInfos = {suite: index, tipo: 'pernoite'}
     const dataTasks = {suite: index, modo: "p", tipo: "per", horario: hora_atual_segundos()}
+
+    console.log(dataCofre)
+    console.log(dataInfos)
+    console.log(dataTasks)
 
     fazerRequisicaoAjax(urlCofre, "POST", dataCofre, function(response){console.log(response)}, function(){})
     fazerRequisicaoAjax(urlInfos, "POST", dataInfos, function(response){console.log(response)}, function(){})

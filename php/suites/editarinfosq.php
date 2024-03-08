@@ -1,6 +1,5 @@
 <?php
 include "../cnxInterna.php";
-include "../../urlbase.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $suite = $_POST["suite"];
@@ -9,7 +8,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "UPDATE infos SET tipo='$tipo' WHERE suite='$suite'";
 
     if ($conn->query($sql) === TRUE) {
-        $stmt->close();
         $conn->close();
         echo "sucesso";
         exit;

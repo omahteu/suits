@@ -991,3 +991,7 @@ div#container {
 #a1, #a2 {
     display: none;
 }
+
+label {
+    display: none;
+}

@@ -1,7 +1,9 @@
 import make_url from "../../tools/urls.js";
 import fazerRequisicaoAjax from "../../tools/ajax.js";
 
-// Checar se passa como um objeto ou se precisa ser string
+function checaSeRequisicaoJaFoiFeita(valorDoCofre, valorASerAdicionado) {
+    return valorDoCofre !== valorASerAdicionado;
+}
 
 export default function alterarValor(suite, valor) {
     const urlGet = make_url("suites/show", "cofre.php");
@@ -14,7 +16,7 @@ export default function alterarValor(suite, valor) {
             if (data.status) {
                 const filteredSuite = data.dados.find((item) => item.suite === suite);
 
-                if (filteredSuite && filteredSuite.tipo === "locado") {
+                if (filteredSuite && filteredSuite.tipo === "locado" && checaSeRequisicaoJaFoiFeita(filteredSuite.valor, valor)) {
                     const postData = {
                         antigo: suite,
                         novo: valor
@@ -22,7 +24,6 @@ export default function alterarValor(suite, valor) {
 
                     fazerRequisicaoAjax(urlPost, "POST", postData, function (postResponse) {
                         console.log(postResponse);
-                        // ENCONTRAR UMA REFORMA DE FAZER A REQUISIÇÃO APENAS UMA VEZ AO ATUALIZAR O VALOR
                     }, function (postError) {
                         console.log(postError);
                     });

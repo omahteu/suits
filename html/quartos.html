@@ -5,7 +5,6 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>Suits | Quartos</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link rel="shortcut icon" type="image/png" href="../imagens/motel (1).png">
   <!-- JQuery -->
   <script src="../js/core/jquery.js"></script>
@@ -192,6 +191,7 @@
                     <!--Produtos-->
                     <div class="control-group">
                       <div class="controls" id="campo_produtos">
+                        <label for="checkbox_produto">Escolha um produto:</label>
                         <select name="checkbox_produto" id="checkbox_produto">
                           <option hidden>Produto</option>
                         </select>
@@ -229,13 +229,19 @@
 
                     <div class="control-group" hidden>
                       <div class="controls" id="campo_produtos">
-                        <input type="text" name="hora" id="hora" value="">
+                        <label>
+                          Horário:
+                          <input type="text" name="hora" id="hora" value="">
+                        </label>
                       </div>
                     </div>
 
                     <div class="control-group" hidden>
                       <div class="controls" id="campo_produtos">
-                        <input type="text" name="vs" id="vs" value="">
+                        <label>
+                          Outro campo:
+                          <input type="text" name="vs" id="vs" value="">
+                        </label>
                       </div>
                     </div>
 
@@ -266,7 +272,11 @@
                     <!--Suite-->
                     <div class="control-group" hidden>
                       <div class="controls" id="campo_patio">
-                        <input type="text" name="suiteE" id="suiteE" value="">
+                        <label>
+                          Nome da suite:
+                          <input type="text" name="suiteE" id="suiteE" value="">
+                        </label>
+                        
                       </div>
                     </div>
 
