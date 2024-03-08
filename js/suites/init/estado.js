@@ -15,7 +15,7 @@ $(window).on("load", function () {
 			try {
 				restoreStatus(e.suite, e.tipo)
 			} catch (jqXHR) {
-				sessionStorage.setItem("viewquartos.js", `LOGS | ${jqXHR}`)
+				console.log(jqXHR)
 			}
 		});
 	}, 2000)
@@ -32,6 +32,6 @@ function restoreStatus(suite, tipo) {
 								tipo == "apagamento" ? ag_pagamento(suite) :
 									tipo == "revisao" ? revisao(suite) : ""
 	} catch (error) {
-		sessionStorage.setItem("viewquartos.js", `[LOGS] | ${error}`)
+		console.log(error)
 	}
 }

@@ -12,3 +12,5 @@ setInterval(() => {
     buscaSuites()
     tarefas()
 }, 500);
+
+// criar função que dispaare esse atualizador ao invés de ficar executando direto

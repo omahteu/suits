@@ -12,10 +12,6 @@ export default function ativar(index, valorpernoite) {
     const dataInfos = {suite: index, tipo: 'pernoite'}
     const dataTasks = {suite: index, modo: "p", tipo: "per", horario: hora_atual_segundos()}
 
-    console.log(dataCofre)
-    console.log(dataInfos)
-    console.log(dataTasks)
-
     fazerRequisicaoAjax(urlCofre, "POST", dataCofre, function(response){console.log(response)}, function(){})
     fazerRequisicaoAjax(urlInfos, "POST", dataInfos, function(response){console.log(response)}, function(){})
     fazerRequisicaoAjax(urlTasks, "POST", dataTasks, function(response){console.log(response)}, function(){})

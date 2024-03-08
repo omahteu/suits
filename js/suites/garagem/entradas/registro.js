@@ -2,6 +2,8 @@ import receber from "../../../quartos/auxiliares/funcao4.js"
 import {RAIZ} from "../../../raiz.js"
 import { vv } from "../../../armazem/leitura/veiculos.js"
 
+// mover a garagem para outra aba no painel e criar uma pasta apenas para o pátiow
+
 $(document).on("click", "#registrar_veiculo", function() {
 	let infos = receber("offs")
 	let suite = $("#quarto_painel").text()

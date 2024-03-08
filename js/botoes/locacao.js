@@ -20,15 +20,5 @@ $(document).on("click", ".locado", function () {
         setTimeout(() => { index(suite, "locado") }, 300)
         setTimeout(() => { fimMenu() }, 400)
         setTimeout(() => { play[suite](suite, "0", "0", "0") }, 500)
-        //setTimeout(() => { calculo(suite) }, 1000);
     }
 })
-
-function calculo(suite) {
-    let box = JSON.parse(sessionStorage.getItem('offs'))
-    let fil = box.filter(x => x.suite == suite)
-    $("#vh_painel").text("0.00")
-    $("#vq_painel").text(parseFloat(fil[0].valor).toFixed(2))
-    $("#consumo_painel").text("0.00")
-    $("#parcial_painel").text(parseFloat(fil[0].valor).toFixed(2))
-}

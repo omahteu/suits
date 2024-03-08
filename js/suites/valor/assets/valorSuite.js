@@ -39,15 +39,7 @@ export default function atualizaValorSuite(index) {
                 const horasDiferenca = diferenca.hours();
                 const minutosDiferenca = diferenca.minutes();
 
-                console.log(`HORAS DIFERENÇA | ${horasDiferenca}`)
-                console.log(`MINUTOS DIFERENÇA | ${minutosDiferenca}`)
-                console.log(`TOLERANCIA | ${tolerancia}`)
-                console.log('-------------------------------------------------------------------------------------------------------------------')
 
-                console.log(horasDiferenca > 0 && horasDiferenca <= 24)
-                console.log(minutosDiferenca > tolerancia)
-                console.log(funilPrecos)
-                console.log(horasDiferenca == 1)
 
 
                 if (horasDiferenca == 1 && minutosDiferenca > tolerancia || horasDiferenca == (1+1) && minutosDiferenca < tolerancia) {
