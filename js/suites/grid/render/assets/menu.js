@@ -1,18 +1,18 @@
-import { inicioMenu } from "../../setup/menu.js"
-import receber from "../../quartos/auxiliares/funcao4.js"
-import { RAIZ } from "../../raiz.js"
+import receber from "../../../../quartos/auxiliares/funcao4.js"
+import { inicioMenu } from "../../../../setup/menu.js"
+import make_url from "../../../../tools/urls.js"
+import fazerRequisicaoAjax from "../../../../tools/ajax.js"
 
-$(document).on('click', '#context', function () {
-    let contexto = $(this)[0].offsetParent
-    let contexto_num = $(contexto)[0].children[0].children[1]
-    let suite = $(contexto_num).text()
+export default function menu(core) {
+
+    let suite = $($(core)[0].offsetParent.children[0].children[1]).text();
     let book = receber("offs")
     let filtro = book.filter(t => t.suite == suite)
     var taf = receber("tarefas")
 
     inicioMenu("modau-menu")
     let fm = document.forms[2]
-    
+
     if (filtro.length == 0) {
         $(fm).html(
             `
@@ -111,33 +111,35 @@ $(document).on('click', '#context', function () {
                 break;
         }
     }
+}
 
-    
-})
-
-async function menuManutencao(suite) {
-    const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/acoes.php`)
-    const rs = await rq.json()
-    if (rs["status"]) {
-        inicioMenu("modau-menu")
-        let fm = document.forms[2]
-        let minhaSituacao = rs["dados"].filter(i => i.suite = suite)
-        if (minhaSituacao[0].situacao == "off") {
-            $(fm).html(
-                `
-                <input type="button" id="acoes1" class="btn btn-warning inferior" name="" data-toggle="" value="Disponibilizar Quarto">
-                <input type="button" id="acoes2" class="btn btn-warning inferior" name="" data-toggle="" value="Iniciar Faxina">
-                <input type="button" id="acoes3" class="btn btn-warning inferior" name="" data-toggle="" value="Ligar Luz">
-                `
-            )
-        } else {
-            $(fm).html(
-                `
-                <input type="button" id="acoes1" class="btn btn-warning inferior" name="" data-toggle="" value="Disponibilizar Quarto">
-                <input type="button" id="acoes2" class="btn btn-warning inferior" name="" data-toggle="" value="Iniciar Faxina">
-                <input type="button" id="acoes3" class="btn btn-warning inferior" name="" data-toggle="" value="Apagar Luz">
-                `
-            )
+function menuManutencao(suite) {
+    const url = make_url("suites/show", "acoes.php")
+    fazerRequisicaoAjax(url, "GET", null, function(response) {
+        const data = JSON.parse(response)
+        if (data.status) {
+            inicioMenu("modau-menu")
+            let fm = document.forms[2]
+            let minhaSituacao = data.dados.filter(i => i.suite = suite)
+            if (minhaSituacao[0].situacao == "off") {
+                $(fm).html(
+                    `
+                    <input type="button" id="acoes1" class="btn btn-warning inferior" name="" data-toggle="" value="Disponibilizar Quarto">
+                    <input type="button" id="acoes2" class="btn btn-warning inferior" name="" data-toggle="" value="Iniciar Faxina">
+                    <input type="button" id="acoes3" class="btn btn-warning inferior" name="" data-toggle="" value="Ligar Luz">
+                    `
+                )
+            } else {
+                $(fm).html(
+                    `
+                    <input type="button" id="acoes1" class="btn btn-warning inferior" name="" data-toggle="" value="Disponibilizar Quarto">
+                    <input type="button" id="acoes2" class="btn btn-warning inferior" name="" data-toggle="" value="Iniciar Faxina">
+                    <input type="button" id="acoes3" class="btn btn-warning inferior" name="" data-toggle="" value="Apagar Luz">
+                    `
+                )
+            }
         }
-    }
+    }, function(error) {
+        console.log(error)
+    })
 }

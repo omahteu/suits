@@ -1,30 +1,30 @@
-import registraLimiteTroca from "../../suites/tarefas/registros/locacao.js"
+import registraLimiteTroca from "../../../../suites/tarefas/registros/locacao.js"
 
-import ligar_luz from "../../automacao/ligar.js"
-import desligar_luz from "../../automacao/desligar.js"
+import ligar_luz from "../../../../automacao/ligar.js"
+import desligar_luz from "../../../../automacao/desligar.js"
 
-import tempo_pausado from "../../quartos/ajax/post/decorrido.js"
-import { registra_troca } from "../../quartos/ajax/post/troca.js"
+import tempo_pausado from "../../../../quartos/ajax/post/decorrido.js"
+import { registra_troca } from "../../../../quartos/ajax/post/troca.js"
 
-import alterar from "../../olivia/altera.js"
+import alterar from "../../../../olivia/altera.js"
 
-import encerrar_tarefas from "../../limpar/tarefas.js"
+import encerrar_tarefas from "../../../../limpar/tarefas.js"
 
-import receber from "../../quartos/auxiliares/funcao4.js"
+import receber from "../../../../quartos/auxiliares/funcao4.js"
 
-import {fimMenu} from "../../setup/menu.js"
-import { play } from "../../setup/start_relogios.js"
-import { stop } from "../../setup/stop_relogios.js"
+import {fimMenu} from "../../../../setup/menu.js"
+import { play } from "../../../../setup/start_relogios.js"
+import { stop } from "../../../../setup/stop_relogios.js"
 
-import locado from "../../tags/locacao.js"
-import aguardando from "../../tags/aguardo.js"
-import desfazer from "../../tags/desfazer.js"
+import locado from "../../../../tags/locacao.js"
+import aguardando from "../../../../tags/aguardo.js"
+import desfazer from "../../../../tags/desfazer.js"
 
-import {RAIZ} from "../../raiz.js"
+import {RAIZ} from "../../../../raiz.js"
 
 
 
-$(document).on("click", "#substituir", function () {
+export default function substituir() {
     let suite = $("#quarto_antigo").val()
     let novo = $("#quartos_disponiveis").val()
     let usuario = $("#usuario_sistema").text()
@@ -42,7 +42,7 @@ $(document).on("click", "#substituir", function () {
     setTimeout(() => { iniciando(suite, novo, hora, minuto, segundo) }, 1000)
     setTimeout(() => { finalizando(suite) }, 1500)
     setTimeout(() => {ligar_luz(novo)}, 2000)
-})
+}
 
 function iniciando(antigo, suite, hora, minuto, segundo) {
     var p = [hora, minuto, segundo]

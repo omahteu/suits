@@ -1,15 +1,15 @@
-import { play } from "../setup/start_relogios.js"
-import revisao from "../tags/revisao.js"
-import { index } from "../tags/particao.js"
-import { fimMenu } from "../setup/menu.js"
-import { limited } from "../suites/tarefas/registros/limites.js"
-import { RAIZ } from "../raiz.js"
-import ligar_luz from "../automacao/ligar.js"
-import salvar from "../olivia/salva.js"
-import registraMotivoExclusao from "../suites/operacao/remocao.js"
+import { play } from "../../../../setup/start_relogios.js"
+import revisao from "../../../../tags/revisao.js"
+import { index } from "../../../../tags/particao.js"
+import { fimMenu } from "../../../../setup/menu.js"
+import { limited } from "../../../../suites/tarefas/registros/limites.js"
+import { RAIZ } from "../../../../raiz.js"
+import ligar_luz from "../../../../automacao/ligar.js"
+import salvar from "../../../../olivia/salva.js"
+import registraMotivoExclusao from "../../../../suites/operacao/remocao.js"
 
 
-$(document).on("click", ".revisao", function () {
+export default function startRevisao() {
     const suite = $('#quarto_painel').text()
     const motivo = prompt("Motivo da Revisão")
     if (motivo != null) {
@@ -31,4 +31,4 @@ $(document).on("click", ".revisao", function () {
     } else {
         alert("Necessário informar o motivo da revisão")
     }
-})
+}

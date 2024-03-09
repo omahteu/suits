@@ -1,6 +1,8 @@
-import receber from "../../../auxiliares/funcao4.js";
+import receber from "../../../../quartos/auxiliares/funcao4.js";
 
 export default function exibe_suites() {
+    console.time("carregar suites");
+
     const base = receber("dados_suites");
     const cardBox = $(".cardBox");
 
@@ -26,4 +28,5 @@ export default function exibe_suites() {
 
         cardBox.append(cardHtml);
     });
+    console.timeEnd("carregar suites");
 }

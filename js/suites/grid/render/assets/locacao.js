@@ -1,13 +1,13 @@
-import { fimMenu } from "../setup/menu.js"
-import ligar_luz from "../automacao/ligar.js"
-import salvar from "../olivia/salva.js"
-import { play } from "../setup/start_relogios.js"
-import { index } from "../tags/particao.js"
-import locado from "../tags/locacao.js"
-import { limited } from "../suites/tarefas/registros/limites.js"
-import { RAIZ } from "../raiz.js"
+import { fimMenu } from "../../../../setup/menu.js"
+import ligar_luz from "../../../../automacao/ligar.js"
+import salvar from "../../../../olivia/salva.js"
+import { play } from "../../../../setup/start_relogios.js"
+import { index } from "../../../../tags/particao.js"
+import locado from "../../../../tags/locacao.js"
+import { limited } from "../../../../suites/tarefas/registros/limites.js"
+import { RAIZ } from "../../../../raiz.js"
 
-$(document).on("click", ".locado", function () {
+export default function startLocacao() {
     const suite = $('#quarto_painel').text()
     if (confirm(`Iniciar a Suíte ${suite}?`) == true) {
         setTimeout(() => { locado(suite) }, 1)
@@ -21,4 +21,4 @@ $(document).on("click", ".locado", function () {
         setTimeout(() => { fimMenu() }, 400)
         setTimeout(() => { play[suite](suite, "0", "0", "0") }, 500)
     }
-})
+}
