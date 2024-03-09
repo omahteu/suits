@@ -40,6 +40,7 @@ export default function atualizaValorSuite(index) {
                 const minutosDiferenca = diferenca.minutes();
 
 
+  
 
 
                 if (horasDiferenca == 1 && minutosDiferenca > tolerancia || horasDiferenca == (1+1) && minutosDiferenca < tolerancia) {
@@ -58,7 +59,12 @@ export default function atualizaValorSuite(index) {
                     startPernoite(index)
                 }
 
-                if (horasDiferenca == 7 && minutosDiferenca > tolerancia || horasDiferenca == (7+1) && minutosDiferenca < tolerancia) {  
+                if (horasDiferenca == 7 && minutosDiferenca > tolerancia || horasDiferenca == (7+1) && minutosDiferenca < tolerancia) {
+                    alterarValor(index, parseFloat(parseInt(funilPrecos.pernoite) + 10).toFixed(2))
+                    // const validate = JaDeviaTerAtivadoPernoite(funil)
+                    // if (!validate) {
+                    //     startPernoite(index)
+                    // }
                     alterarValor(index, parseFloat(parseInt(funilPrecos.pernoite) + 10).toFixed(2))
                 }
 
@@ -186,4 +192,11 @@ export default function atualizaValorSuite(index) {
         console.log(error)
     }
 
+}
+
+
+function JaDeviaTerAtivadoPernoite(data) {
+    if (data.tipo == "pernoite") {
+        return true
+    }
 }
