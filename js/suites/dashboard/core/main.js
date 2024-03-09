@@ -11,9 +11,14 @@ import calculoSuite from "../assets/calculoValorSuite.js"
 import calculoParcial from "../assets/calculoParcial.js"
 import listaComanda from "../assets/listaComanda.js"
 import atualizaValorSuite from "../assets/valorSuite.js"
+import buscaprecos from "../assets/buscarPrecos.js"
+import buscalocacoes from "../assets/buscarLocacoes.js"
+import buscasuites from "../assets/buscarSuites.js"
+import buscatarefas from "../assets/buscaTarefas.js"
 
 $(document).ready(function() {
     exibirImpressora()
+    buscaprecos() // executar por evento
 })
 
 $(document).on('click', '[class="card"]', function () {
@@ -60,3 +65,9 @@ $(document).on("click", "", function() {
     listaComanda()
     atualizaValorSuite("1")
 })
+
+setTimeout(() => {
+    buscalocacoes()
+    buscasuites()
+    buscatarefas()
+}, 500);
