@@ -1,5 +1,5 @@
-import makeUrl from "../../../../tools/urls.js";
-import fazerRequisicaoAjax from "../../../../tools/ajax.js";
+import makeUrl from "../../../tools/urls.js";
+import fazerRequisicaoAjax from "../../../tools/ajax.js";
 
 function calculateTotalValue(data, suite) {
     const filtroComanda = data.dados.filter(i => i.suite == suite);

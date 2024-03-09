@@ -1,8 +1,8 @@
-import receber from "../../../../quartos/auxiliares/funcao4.js"
-import comandaSuite from "../assets/comanda.js"
-import make_url from "../../../../tools/urls.js"
-import fazerRequisicaoAjax from "../../../../tools/ajax.js"
-import calculo from "../assets/comandaSoma.js"
+import receber from "../../../quartos/auxiliares/funcao4.js"
+import comandaSuite from "./comanda.js"
+import make_url from "../../../tools/urls.js"
+import fazerRequisicaoAjax from "../../../tools/ajax.js"
+import calculo from "./comandaSoma.js"
 
 export default function registraProduto() {
     const url = make_url("quartos/saidas", "comanda.php")

@@ -1,8 +1,8 @@
-import salvar from "../olivia/salva.js"
-import {RAIZ} from "../raiz.js"
+import salvar from "../../../olivia/salva.js"
+import {RAIZ} from "../../../raiz.js"
 
-$(document).on("click", "#imprimir_parcial", function() {
 
+export default function dadosImpressao() {
     let base = JSON.parse(sessionStorage.getItem('offs'))
 
     let suite = $("#quarto_painel").text()
@@ -27,14 +27,4 @@ $(document).on("click", "#imprimir_parcial", function() {
     let dados = 'suite=' + suite + '&inicio=' + inicio + '&fim=' + fim + '&tempo=' + tempo + '&tipo=' + tipo + '&vsuite=' + vsuite + '&vconsumo=' + consumo + '&vadd=' + add + '&total=' + total + '&receber=' + receber
     salvar(`http://${RAIZ}/suits/php/suites/impressao.php`, dados)
 
-})
-
-$(window).on("load", async function() {
-    const rq = await fetch(`http://${RAIZ}/suits/php/impressoras/show/emuso.php`)
-    const rs = await rq.json()
-    if (rs['dados']) {
-        if (rs['dados'][0].parcial == 's') {
-            $("#li3").hide()
-        }
-    }
-})
+}

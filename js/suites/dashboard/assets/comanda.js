@@ -1,5 +1,5 @@
-import makeUrl from "../../../../tools/urls.js";
-import fazerRequisicaoAjax from "../../../../tools/ajax.js";
+import makeUrl from "../../../tools/urls.js";
+import fazerRequisicaoAjax from "../../../tools/ajax.js";
 
 function formatCurrency(value) {
     const formattedValue = parseFloat(value).toFixed(2);

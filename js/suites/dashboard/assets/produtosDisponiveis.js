@@ -1,5 +1,5 @@
-import fazerRequisicaoAjax from "../../../../tools/ajax.js";
-import make_url from "../../../../tools/urls.js";
+import fazerRequisicaoAjax from "../../../tools/ajax.js";
+import make_url from "../../../tools/urls.js";
 
 const url = make_url("quartos/entradas", "produtos.php");
 

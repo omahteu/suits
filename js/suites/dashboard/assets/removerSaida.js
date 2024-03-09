@@ -1,8 +1,8 @@
-import registraMotivoExclusao from "../../../../suites/operacao/remocao.js";
-import comandaSuite from "../assets/comanda.js";
-import makeUrl from "../../../../tools/urls.js";
-import fazerRequisicaoAjax from "../../../../tools/ajax.js";
-import calculo from "../assets/comandaSoma.js";
+import registraMotivoExclusao from "../../operacao/remocao.js";
+import comandaSuite from "./comanda.js";
+import makeUrl from "../../../tools/urls.js";
+import fazerRequisicaoAjax from "../../../tools/ajax.js";
+import calculo from "./comandaSoma.js";
 
 function promptForExclusionReason() {
     const motivo = prompt('Motivo da retirada do produto:');
