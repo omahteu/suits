@@ -3,7 +3,7 @@ import apagar from "../../../olivia/apaga.js"
 import {RAIZ} from "../../../raiz.js"
 import registraMotivoExclusao from "../../operacao/remocao.js"
 
-$(document).on("click", "#remocaoVeiculo", function(){
+export default function remover() {
     let suite = $("#quarto_painel").text()
     let id = $(this).attr("name")
     let motivo = prompt('Motivo da retirada do veículo?:')
@@ -17,4 +17,4 @@ $(document).on("click", "#remocaoVeiculo", function(){
         apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, dados)
         vv(suite)
     }
-})
+}

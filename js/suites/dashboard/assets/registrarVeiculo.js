@@ -4,7 +4,7 @@ import { vv } from "../../../armazem/leitura/veiculos.js"
 
 // mover a garagem para outra aba no painel e criar uma pasta apenas para o pátiow
 
-$(document).on("click", "#registrar_veiculo", function() {
+export default function veiculo() {
 	let infos = receber("offs")
 	let suite = $("#quarto_painel").text()
 	let busca = infos.filter(o => o.suite == suite)
@@ -30,4 +30,4 @@ $(document).on("click", "#registrar_veiculo", function() {
 	} catch (error) {
 		alert('Selecione um Quarto!')
 	}
-})
+}
