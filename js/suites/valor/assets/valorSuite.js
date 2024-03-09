@@ -60,31 +60,50 @@ export default function atualizaValorSuite(index) {
                 }
 
                 if (horasDiferenca == 7 && minutosDiferenca > tolerancia || horasDiferenca == (7+1) && minutosDiferenca < tolerancia) {
-                    alterarValor(index, parseFloat(parseInt(funilPrecos.pernoite) + 10).toFixed(2))
-                    // const validate = JaDeviaTerAtivadoPernoite(funil)
-                    // if (!validate) {
-                    //     startPernoite(index)
-                    // }
+                    const validate = JaDeviaTerAtivadoPernoite(funil)
+                    if (!validate) {
+                        startPernoite(index)
+                    }
                     alterarValor(index, parseFloat(parseInt(funilPrecos.pernoite) + 10).toFixed(2))
                 }
 
                 if (horasDiferenca == 8 && minutosDiferenca > tolerancia || horasDiferenca == (8+1) && minutosDiferenca < tolerancia) {
+                    const validate = JaDeviaTerAtivadoPernoite(funil)
+                    if (!validate) {
+                        startPernoite(index)
+                    }
                     alterarValor(index, parseFloat(parseInt(funilPrecos.pernoite) + 20).toFixed(2))
                 }
 
                 if (horasDiferenca == 9 && minutosDiferenca > tolerancia || horasDiferenca == (9+1) && minutosDiferenca < tolerancia) {
+                    const validate = JaDeviaTerAtivadoPernoite(funil)
+                    if (!validate) {
+                        startPernoite(index)
+                    }
                     alterarValor(index, parseFloat(parseInt(funilPrecos.pernoite) + 30).toFixed(2))
                 }
 
                 if (horasDiferenca == 10 && minutosDiferenca > tolerancia || horasDiferenca == (10+1) && minutosDiferenca < tolerancia) {
+                    const validate = JaDeviaTerAtivadoPernoite(funil)
+                    if (!validate) {
+                        startPernoite(index)
+                    }
                     alterarValor(index, parseFloat(parseInt(funilPrecos.pernoite) + 40).toFixed(2))
                 }
 
                 if (horasDiferenca == 11 && minutosDiferenca > tolerancia || horasDiferenca == (11+1) && minutosDiferenca < tolerancia) {
+                    const validate = JaDeviaTerAtivadoPernoite(funil)
+                    if (!validate) {
+                        startPernoite(index)
+                    }
                     alterarValor(index, parseFloat(parseInt(funilPrecos.pernoite) + 50).toFixed(2))
                 }
 
                 if (horasDiferenca == 12 && minutosDiferenca > tolerancia || horasDiferenca == (12+1) && minutosDiferenca < tolerancia) {
+                    const validate = JaDeviaTerAtivadoPernoite(funil)
+                    if (!validate) {
+                        startPernoite(index)
+                    }
                     alterarValor(index, parseFloat(parseInt(funilPrecos.pernoite) + 60).toFixed(2))
                 }
 
@@ -107,7 +126,6 @@ export default function atualizaValorSuite(index) {
             // APÓS 24H A SUITE VAI ENCERRAR, E CASO O CLIENTE AINDA PERMANEÇA, PRECISARÁ INICIAR NOVAMENTE, OU INICIARÁ AUTOMATICAMENTE.
 
             setTimeout(() => {
-
                 verificarHoraPassada();
             }, 1000);
         } else if (modoCobranca == "fixa") {
