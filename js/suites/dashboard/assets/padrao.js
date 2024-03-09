@@ -1,6 +1,6 @@
-$(document).on('click', '[class="card"]', function () {
-    var passo4 = $($(this)[0].children[0].children[1]).text();
-    var cor = $($(this)[0]).css("background-color");
+export default function padraoDash(core) {
+    var passo4 = $($(core)[0].children[0].children[1]).text();
+    var cor = $($(core)[0]).css("background-color");
     $("#quarto_painel").text(passo4)
     if (cor == 'rgb(75, 192, 192)') {
         $("#vh_painel").text('0')
@@ -12,4 +12,4 @@ $(document).on('click', '[class="card"]', function () {
         var pat = document.getElementById('listaveiculosguardados')
         pat.innerHTML = ''
     }
-})
+}
