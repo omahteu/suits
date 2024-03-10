@@ -8,7 +8,7 @@ export default function buscalocacoes() {
         const data = JSON.parse(response)
 
         if (data.status) {
-            sessionStorage.setItem("offs", JSON.stringify(rs["dados"]))
+            sessionStorage.setItem("offs", JSON.stringify(data.dados))
         } else {
             sessionStorage.setItem("offs", JSON.stringify([]))
         }

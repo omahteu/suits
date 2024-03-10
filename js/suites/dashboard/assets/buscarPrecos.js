@@ -7,7 +7,7 @@ export default function buscaprecos() {
     fazerRequisicaoAjax(url, "GET", null, function(response) {
         const data = JSON.parse(response)
         if (data.status) {
-            sessionStorage.setItem("tabela_precos", JSON.stringify(rs["dados"]))
+            sessionStorage.setItem("tabela_precos", JSON.stringify(data.dados))
         }
     }, function(error) {
         console.log(error)

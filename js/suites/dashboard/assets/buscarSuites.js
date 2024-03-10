@@ -7,7 +7,7 @@ export default function buscasuites() {
     fazerRequisicaoAjax(url, "GET", null, function(response) {
         const data = JSON.parse(response)
         if (data.status) {
-            sessionStorage.setItem("dados_suites", JSON.stringify(rs["dados"]))
+            sessionStorage.setItem("dados_suites", JSON.stringify(data.dados))
         }
     }, function(error) {
         console.log(error)

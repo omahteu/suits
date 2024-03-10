@@ -6,7 +6,7 @@ export default function buscatarefas() {
     fazerRequisicaoAjax(url, "GET", null, function(response) {
         const data = JSON.parse(response)
         if (data.status) {
-            sessionStorage.setItem("tarefas", JSON.stringify(rs["dados"]))
+            sessionStorage.setItem("tarefas", JSON.stringify(data.dados))
         }
     }, function(error) {
         console.log(error)
