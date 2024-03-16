@@ -13,7 +13,6 @@ $(document).on("click", "#adicionar_produto", function(){
 $(document).on("click", "#removerProduto", function(){
 	var id = $(this).val()
 	removeProduto(id)
-	//mostraProduto()
 })
 
 function registroProduto(){
@@ -74,30 +73,5 @@ function removeProduto(id){
 		let dados = 'tabela=' + 'comanda' + '&coluna=' + 'id' + '&valor=' + id
         apagar(`http://${RAIZ}/suits/php/suites/excluir.php`, dados)
 		ll(suite)
-	}
-}
-
-async function mostraProduto(){
-	const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/comanda.php`)
-	const rs = await rq.json()
-	if (rs["status"]) {
-		var nQuarto =  localStorage.getItem("last")
-		var prateleira = document.getElementById('comanda');
-		prateleira.innerHTML = '';
-		var dados = rs["dados"].filter(quartos => quartos.quarto == nQuarto)
-		dados.forEach( (resultado) => {
-			var id = resultado.id
-			var descricao = resultado.descricao
-			var quantidade = resultado.quantidade
-			var valorUnitario = resultado.valor_unitario
-			var valorTotal = resultado.valor_total
-			prateleira.innerHTML += '<tr>'+
-										'<td>'+ descricao + '</td>' +
-										'<td>'+ quantidade + '</td>' +
-										'<td>'+ valorUnitario + '</td>' +
-										'<td>'+ valorTotal + '</td>' +
-										`<td><button type="button" id="removerProduto" value="${id}" class="btn btn-danger">Remover</button></td>`+
-									'</tr>';
-		})
 	}
 }
