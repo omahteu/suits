@@ -1,6 +1,7 @@
 import { hora_atual_segundos } from "../../../../geradores/hora.js"
-import { play } from "../../../../setup/start_relogios.js"
+// import { play } from "../../../../setup/start_relogios.js"
 import receber from "../../../../quartos/auxiliares/funcao4.js"
+import { inicia } from "../../../../contadores/relogio.js";
 
 const rr = ["aguardando", "apagamento"];
 
@@ -34,7 +35,8 @@ function atualizarTempoExecucao(inicio, suite) {
     const minutosDiferenca = diferenca.minutes();
     const segundosDiferenca = diferenca.seconds();
 
-    play[suite](suite, horasDiferenca, minutosDiferenca, segundosDiferenca)
+    // play[suite](suite, horasDiferenca, minutosDiferenca, segundosDiferenca)
+    inicia(suite, horasDiferenca, minutosDiferenca, segundosDiferenca)
 }
 
 function atualizarTempoPausado(suite) {

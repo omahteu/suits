@@ -4,13 +4,14 @@ import { data_atual } from "../../../geradores/data.js";
 import { hora_atual } from "../../../geradores/hora.js";
 import { fimMenu } from "../../../setup/menu.js";
 import atualiza_status_e_reinicia from "../../../setup/atualiza2.js";
-import { play } from "../../../setup/start_relogios.js";
+// import { play } from "../../../setup/start_relogios.js";
 import { stop } from "../../../setup/stop_relogios.js";
 import { clean } from "../../../setup/clean_relogios.js";
 import faxina from "../../../tags/faxina.js";
 import receber from "../../../quartos/auxiliares/funcao4.js";
 import salvar from "../../../olivia/salva.js";
 import { RAIZ } from "../../../raiz.js";
+import { inicia } from "../../../contadores/relogio.js";
 
 export default function comecandoFaxina(suite, usuario, tempo) {
     let base = receber("offs");
@@ -23,7 +24,8 @@ export default function comecandoFaxina(suite, usuario, tempo) {
             envia_dados_manutencao(usuario, data_atual(), hora_atual(), suite, razao, tempo);
             stop[suite]();
             clean[suite](suite);
-            play[suite](suite, "0", "0", "0");
+            // play[suite](suite, "0", "0", "0")
+            inicia(suite, "0", "0", "0")
             setTimeout(() => {
                 ligar_luz(suite);
                 let vai = "suite=" + suite + "&situacao=" + "on";
@@ -41,7 +43,8 @@ export default function comecandoFaxina(suite, usuario, tempo) {
         } else {
             stop[suite]();
             clean[suite](suite);
-            play[suite](suite, "0", "0", "0");
+            // play[suite](suite, "0", "0", "0")
+            inicia(suite, "0", "0", "0")
             setTimeout(() => {
                 ligar_luz(suite);
                 let vai = "suite=" + suite + "&situacao=" + "on";

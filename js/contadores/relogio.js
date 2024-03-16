@@ -4,7 +4,7 @@ import formata from "./cronometros/complemento.js";
 
 let suites = {}
 
-function inicia(id, h, m, s) {
+export function inicia(id, h, m, s) {
     suites[id] = {
         hora: parseInt(h),
         minuto: parseInt(m),
@@ -16,11 +16,11 @@ function inicia(id, h, m, s) {
     suites[id].contagem = setInterval(() => { corre(id); }, 10);
 }
 
-function para(id) {
+export function para(id) {
     clearInterval(suites[id].contagem);
 }
 
-function zera(id) {
+export function zera(id) {
     suites[id].hora = 0;
     suites[id].minuto = 0;
     suites[id].segundo = 0;

@@ -1,4 +1,4 @@
-import { play } from "../../../../setup/start_relogios.js"
+// import { play } from "../../../../setup/start_relogios.js"
 import manutencao from "../../../../tags/manutencao.js"
 import { index } from "../../../../tags/particao.js"
 import { fimMenu } from "../../../../setup/menu.js"
@@ -6,6 +6,7 @@ import {limited} from "../../../../suites/tarefas/registros/limites.js"
 import {RAIZ} from "../../../../raiz.js"
 import registraMotivoExclusao from "../../../../suites/operacao/remocao.js"
 import salvar from "../../../../olivia/salva.js"
+import { inicia } from "../../../../contadores/relogio.js"
 
 
 export default function startManutencao() {
@@ -26,7 +27,8 @@ export default function startManutencao() {
             }, 50);
             setTimeout(() => { index(suite, "manutencao") }, 300)
             setTimeout(() => { fimMenu() }, 400)
-            setTimeout(() => { play[suite](suite, "0", "0", "0") }, 500)
+            // setTimeout(() => { play[suite](suite, "0", "0", "0") }, 500)
+            setTimeout(() => { inicia(suite, "0", "0", "0") }, 500)
 
         } else {
             alert("Necessário informar o motivo da manutenção")

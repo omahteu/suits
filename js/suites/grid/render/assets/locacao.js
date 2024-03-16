@@ -1,11 +1,12 @@
 import { fimMenu } from "../../../../setup/menu.js"
 import ligar_luz from "../../../../automacao/ligar.js"
 import salvar from "../../../../olivia/salva.js"
-import { play } from "../../../../setup/start_relogios.js"
+// import { play } from "../../../../setup/start_relogios.js"
 import { index } from "../../../../tags/particao.js"
 import locado from "../../../../tags/locacao.js"
 import { limited } from "../../../../suites/tarefas/registros/limites.js"
 import { RAIZ } from "../../../../raiz.js"
+import {inicia} from "../../../../contadores/relogio.js"
 
 export default function startLocacao() {
     const suite = $('#quarto_painel').text()
@@ -19,6 +20,9 @@ export default function startLocacao() {
         setTimeout(() => { limited(`http://${RAIZ}/suits/php/suites/limitemanutencao.php`, `trocaTempo`, suite, "t", "troca") }, 150)
         setTimeout(() => { index(suite, "locado") }, 300)
         setTimeout(() => { fimMenu() }, 400)
-        setTimeout(() => { play[suite](suite, "0", "0", "0") }, 500)
+        // setTimeout(() => { play[suite](suite, "0", "0", "0") }, 500)
+        setTimeout(() => {
+            inicia(suite, "0", "0", "0")
+        }, 500);
     }
 }

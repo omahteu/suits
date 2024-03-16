@@ -2,10 +2,12 @@ import { hora_atual_segundos } from "../geradores/hora.js";
 import locado from "../tags/locacao.js";
 import receber from "../quartos/auxiliares/funcao4.js";
 import alterar from "../olivia/altera.js";
-import { play } from "../setup/start_relogios.js";
-import { clean } from "../setup/clean_relogios.js";
+// import { play } from "../setup/start_relogios.js";
+// import { clean } from "../setup/clean_relogios.js";
 import { RAIZ } from "../raiz.js";
 import apagar from "../olivia/altera.js";
+import { inicia } from "../contadores/relogio.js";
+import { zera } from "../contadores/relogio.js";
 
 $(document).on("click", '[class="card"]', function () {
     // comecando_pernoite();
@@ -73,8 +75,10 @@ async function rrew(suite, fim) {
 
 function desativar(suite) {
     locado(suite);
-    clean[suite](suite);
-    play[suite](suite, "0", "0", "0");
+    // clean[suite](suite)
+    zera(suite)
+    // play[suite](suite, "0", "0", "0");
+    inicia(suite, "0", "0", "0")
 
     setTimeout(() => {
         var dados =

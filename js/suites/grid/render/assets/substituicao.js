@@ -13,14 +13,16 @@ import encerrar_tarefas from "../../../../limpar/tarefas.js"
 import receber from "../../../../quartos/auxiliares/funcao4.js"
 
 import {fimMenu} from "../../../../setup/menu.js"
-import { play } from "../../../../setup/start_relogios.js"
-import { stop } from "../../../../setup/stop_relogios.js"
+// import { play } from "../../../../setup/start_relogios.js"
+// import { stop } from "../../../../setup/stop_relogios.js"
 
 import locado from "../../../../tags/locacao.js"
 import aguardando from "../../../../tags/aguardo.js"
 import desfazer from "../../../../tags/desfazer.js"
 
 import {RAIZ} from "../../../../raiz.js"
+import { inicia } from "../../../../contadores/relogio.js"
+import { para } from "../../../../contadores/relogio.js"
 
 
 
@@ -47,7 +49,8 @@ export default function substituir() {
 function iniciando(antigo, suite, hora, minuto, segundo) {
     var p = [hora, minuto, segundo]
     setTimeout(() => { locado(suite) }, 200)
-    setTimeout(() => { play[suite](suite, p[0], p[1], p[2]) }, 300)
+    // setTimeout(() => { play[suite](suite, p[0], p[1], p[2]) }, 300)
+    setTimeout(() => { inicia(suite, p[0], p[1], p[2]) }, 300)
     setTimeout(() => { fimMenu() }, 400)
     setTimeout(() => {
         let base = receber("offs")
@@ -73,7 +76,8 @@ function iniciando(antigo, suite, hora, minuto, segundo) {
 }
 
 function finalizando(suite) {
-    stop[suite]()
+    // stop[suite]()
+    para(suite)
     setTimeout(() => { desfazer(suite) }, 200)
     setTimeout(() => { aguardando(suite) }, 300)
     setTimeout(() => {

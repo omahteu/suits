@@ -2,13 +2,14 @@ import desligar_luz from "../../../automacao/desligar.js"
 import ultima_limpeza from "../../../botoes/limpar.js"
 import envia_dados_limpeza from "../../../caixa/limpeza.js"
 import encerrar_tarefas from "../../../limpar/tarefas.js"
-import { stop } from "../../../setup/stop_relogios.js"
-import { clean } from "../../../setup/clean_relogios.js"
+// import { stop } from "../../../setup/stop_relogios.js"
+// import { clean } from "../../../setup/clean_relogios.js"
 import desfazer from "../../../tags/desfazer.js"
 import { fimMenu } from "../../../setup/menu.js"
 import apagar from "../../../olivia/apaga.js"
 import { RAIZ } from "../../../raiz.js"
 import envia_dados_revisao from "../../../caixa/revisao.js"
+import { para, zera } from "../../../contadores/relogio.js"
 
 
 export default function encerrandoCicloLocacao(suite) {
@@ -19,8 +20,10 @@ export default function encerrandoCicloLocacao(suite) {
 
     alert('Camareira Selecionada')
 
-    stop[suite]()
-    clean[suite](suite)
+    // stop[suite]()
+    para(suite)
+    // clean[suite](suite)
+    zera(suite)
 
 
     if (tipo[0].tipo == 'revisao') {

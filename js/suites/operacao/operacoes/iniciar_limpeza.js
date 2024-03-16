@@ -1,13 +1,14 @@
 import { fimMenu } from "../../../setup/menu.js";
 import ligar_luz from "../../../automacao/ligar.js";
 import atualiza_status_e_reinicia from "../../../setup/atualiza2.js";
-import { play } from "../../../setup/start_relogios.js";
+// import { play } from "../../../setup/start_relogios.js";
 import { clean } from "../../../setup/clean_relogios.js";
 import limpeza from "../../../tags/limpeza.js";
 import salvar from "../../../olivia/salva.js";
 import { RAIZ } from "../../../raiz.js";
 import { limited } from "../../../suites/tarefas/registros/limites.js"
 import {index} from "../../../tags/particao.js"
+import { inicia } from "../../../contadores/relogio.js";
 
 export default function comecandoLimpeza(suite) {
     if (confirm(`Iniciar limpeza na Suíte ${suite}?`)) {
@@ -29,7 +30,8 @@ export default function comecandoLimpeza(suite) {
 
         setTimeout(() => {
             clean[suite](suite);
-            play[suite](suite, "0", "0", "0");
+            // play[suite](suite, "0", "0", "0")
+            inicia(suite, "0", "0", "0")
         }, 600);
     }
 }

@@ -5,12 +5,13 @@ import { data_atual } from "../../../geradores/data.js";
 import { hora_atual } from "../../../geradores/hora.js";
 import encerrar_tarefas from "../../../limpar/tarefas.js";
 import { fimMenu } from "../../../setup/menu.js";
-import { stop } from "../../../setup/stop_relogios.js";
-import { clean } from "../../../setup/clean_relogios.js";
+// import { stop } from "../../../setup/stop_relogios.js";
+// import { clean } from "../../../setup/clean_relogios.js";
 import desfazer from "../../../tags/desfazer.js";
 import receber from "../../../quartos/auxiliares/funcao4.js";
 import apagar from "../../../olivia/apaga.js";
 import { RAIZ } from "../../../raiz.js";
+import { para, zera } from "../../../contadores/relogio.js";
 
 export default async function disponibizandoSuite(suite, usuario, tempo) {
     // Variáveis
@@ -71,8 +72,10 @@ export default async function disponibizandoSuite(suite, usuario, tempo) {
         }, 700);
 
         setTimeout(() => {
-            stop[suite]();
-            clean[suite](suite);
+            // stop[suite]()
+            para(suite)
+            // clean[suite](suite);
+            zera(suite)
         }, 800);
     }
 }
