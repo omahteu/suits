@@ -4,10 +4,9 @@ import make_url from "../../../tools/urls.js"
 import fazerRequisicaoAjax from "../../../tools/ajax.js"
 import calculo from "./comandaSoma.js"
 
-export default function registraProduto() {
+export default function registraProduto(suite) {
     const url = make_url("quartos/saidas", "comanda.php")
 	let locacoes = receber("offs")
-	let suite = $("#quarto_painel").text()
 	let verificaLocacaoSuite = locacoes.filter(o => o.suite == suite)
 	var tipos = ['locado', 'pernoite']
 	let quantidade = $("#quantidade").val()

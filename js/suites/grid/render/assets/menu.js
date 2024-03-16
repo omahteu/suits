@@ -6,6 +6,7 @@ import fazerRequisicaoAjax from "../../../../tools/ajax.js"
 export default function menu(core) {
 
     let suite = $($(core)[0].offsetParent.children[0].children[1]).text();
+    console.log(`suite ${suite}`)
     let book = receber("offs")
     let filtro = book.filter(t => t.suite == suite)
     var taf = receber("tarefas")

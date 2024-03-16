@@ -12,9 +12,14 @@ export default function atualizaValorSuite(index) {
         const suites = receber("dados_suites");
         const precos = receber("tabela_precos");
 
+        
+
         const suiteFiltrada = suites.filter(suite => suite.numeroSuite == index);
         const tolerancia = parseInt(suiteFiltrada[0].toleranciaSuite);
         const modoCobranca = suiteFiltrada[0].cobrancaSuite;
+
+
+  
 
 
         if (modoCobranca == "hora") {

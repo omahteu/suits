@@ -1,4 +1,4 @@
-import link from "../../setup/index.js"
+// import link from "../../setup/index.js"
 import { dateToEN } from "../../geradores/data.js"
 
 export default async function dados_atividade(user, inicio, fim) {

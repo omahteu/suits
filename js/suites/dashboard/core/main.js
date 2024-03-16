@@ -16,6 +16,8 @@ import buscalocacoes from "../assets/buscarLocacoes.js"
 import buscasuites from "../assets/buscarSuites.js"
 import buscatarefas from "../assets/buscaTarefas.js"
 
+var suiteCurrent = $("#quarto_painel").text()
+
 $(document).ready(function() {
     exibirImpressora()
     buscaprecos() // executar por evento
@@ -26,15 +28,18 @@ $(document).on('click', '[class="card"]', function () {
 })
 
 $(document).on("click", "#registrar_veiculo", function() {
-    veiculo()
+    suiteCurrent = $("#quarto_painel").text()
+    veiculo(suiteCurrent)
 })
 
 $(document).on("click", "#remocaoVeiculo", function(){
-    remover()
+    suiteCurrent = $("#quarto_painel").text()
+    remover(suiteCurrent)
 })
 
 $(document).on("click", "#imprimir_parcial", function() {
-    dadosImpressao()
+    suiteCurrent = $("#quarto_painel").text()
+    dadosImpressao(suiteCurrent)
 })
 
 $(document).ready(function () {
@@ -50,7 +55,8 @@ $(document).on('keydown', "#codigo_produto", function (e) {
 });
 
 $(document).on("click", "#registrar_produto", function() {
-    registraProduto()
+    suiteCurrent = $("#quarto_painel").text()
+    registraProduto(suiteCurrent)
 })
 
 $(document).on("click", "#remocaoProduto", function () {
@@ -58,12 +64,13 @@ $(document).on("click", "#remocaoProduto", function () {
     removeProduto(id)
 })
 
-$(document).on("click", "", function() {
-    calculoHoraAdicional('1')
-    calculoSuite("1")
+$(document).on("click", '[class="card"]', function() {
+    suiteCurrent = $("#quarto_painel").text()
+    calculoHoraAdicional(suiteCurrent)
+    calculoSuite(suiteCurrent)
     calculoParcial()
-    listaComanda()
-    atualizaValorSuite("1")
+    listaComanda(suiteCurrent)
+    atualizaValorSuite(suiteCurrent)
 })
 
 setTimeout(() => {

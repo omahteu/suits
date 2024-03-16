@@ -26,10 +26,9 @@ export default function calculoHoraAdicional(suite) {
         const valorFicha = ficha.reduce((acc, el) => acc + parseFloat(el.valor), 0);
         const adicionado = parseFloat(valorFicha) - parseFloat(aberto.valor);
 
-        // $("#vh_painel").text(adicionado.toFixed(2));
-        localStorage.setItem("adicional", adicionado.toFixed(2));
+        localStorage.setItem("adicional", adicionado.toFixed(2))
       } catch (error) {
-        console.log(error);
+        localStorage.setItem("adicional", "0.00")
       }
     }
 

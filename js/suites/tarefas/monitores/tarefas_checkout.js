@@ -1,4 +1,4 @@
-import link from "../../../setup/index.js"
+
 import { hora_atual } from "../../../geradores/hora.js"
 import executor_tarefas from "../execucao/main.js"
 

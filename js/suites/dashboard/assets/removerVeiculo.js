@@ -3,8 +3,7 @@ import apagar from "../../../olivia/apaga.js"
 import {RAIZ} from "../../../raiz.js"
 import registraMotivoExclusao from "../../operacao/remocao.js"
 
-export default function remover() {
-    let suite = $("#quarto_painel").text()
+export default function remover(suite) {
     let id = $(this).attr("name")
     let motivo = prompt('Motivo da retirada do veículo?:')
     if (motivo == null) {

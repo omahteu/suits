@@ -1,5 +1,5 @@
 import { leituraObservacoes } from "../leitura/observacao.js"
-import link from "../../setup/index.js"
+// import link from "../../setup/index.js"
 import salvar from "../../olivia/salva.js"
 
 export function registroObservacao(){

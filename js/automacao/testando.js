@@ -1,4 +1,4 @@
-import link from "../setup/index.js"
+
 
 export async function ir(placa) {
     const requisicao = await fetch(link[27])

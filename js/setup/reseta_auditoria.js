@@ -1,4 +1,4 @@
-import link from "./index.js"
+
 import apagar from "../olivia/apaga.js"
 
 $(document).ready(function() {

@@ -1,4 +1,4 @@
-import link from "../setup/index.js"
+// import link from "../setup/index.js"
 
 export async function ver_tabela_emuso(){
     const resposta = await fetch(link[18])

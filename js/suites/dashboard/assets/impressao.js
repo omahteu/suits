@@ -2,10 +2,8 @@ import salvar from "../../../olivia/salva.js"
 import {RAIZ} from "../../../raiz.js"
 
 
-export default function dadosImpressao() {
+export default function dadosImpressao(suite) {
     let base = JSON.parse(sessionStorage.getItem('offs'))
-
-    let suite = $("#quarto_painel").text()
 
     let fsuits = base.filter(z => z.suite == suite)
 

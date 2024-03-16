@@ -4,9 +4,8 @@ import { vv } from "../../../armazem/leitura/veiculos.js"
 
 // mover a garagem para outra aba no painel e criar uma pasta apenas para o pátiow
 
-export default function veiculo() {
+export default function veiculo(suite) {
 	let infos = receber("offs")
-	let suite = $("#quarto_painel").text()
 	let busca = infos.filter(o => o.suite == suite)
 	var tipos = ['locado', 'pernoite']
 	try {

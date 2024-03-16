@@ -1,4 +1,4 @@
-import link from "../../setup/index.js"
+
 
 $(document).on("click", "#cadastrar_categoria", function(){
     var categoria = $("#add_categoria").val()

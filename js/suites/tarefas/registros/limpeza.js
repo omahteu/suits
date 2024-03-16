@@ -1,4 +1,4 @@
-import link from "../../../setup/index.js"
+
 import salvar from "../../../olivia/salva.js"
 import formatarData from "../../../geradores/data_formatada.js"
 import {RAIZ} from "../../../raiz.js"

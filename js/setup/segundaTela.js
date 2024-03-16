@@ -1,4 +1,4 @@
-import link from "./index.js"
+
 
 $(document).ready(function(){
     setInterval(() => {

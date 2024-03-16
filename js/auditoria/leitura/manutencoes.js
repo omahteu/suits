@@ -1,4 +1,4 @@
-import link from "../../setup/index.js"
+
 import { dateToEN } from "../../geradores/data.js"
 
 export default async function dados_manutencao(user, inicio, fim) {

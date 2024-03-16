@@ -1,4 +1,4 @@
-import link from "../../setup/index.js"
+
 import { dateToEN } from "../../geradores/data.js"
 
 

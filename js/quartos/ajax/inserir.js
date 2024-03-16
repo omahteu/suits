@@ -1,4 +1,4 @@
-import link from "../../setup/index.js"
+// import link from "../../setup/index.js"
 import salvar from "../../olivia/salva.js"
 
 

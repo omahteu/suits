@@ -1,4 +1,4 @@
-import formata from "./cronometros/complemento.js";
+import formata from "./complemento.js";
 
 "use strict";
 

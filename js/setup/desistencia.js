@@ -1,6 +1,6 @@
 import { data_atual } from "../geradores/data.js";
 import { hora_atual } from "../geradores/hora.js";
-import link from "./index.js";
+// import link from "./index.js";
 import salvar from "../olivia/salva.js";
 import apagar from "../olivia/apaga.js";
 import { RAIZ } from "../raiz.js";
