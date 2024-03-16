@@ -5,7 +5,7 @@ export default function padraoDash(core) {
     if (cor == 'rgb(75, 192, 192)') {
         $("#vh_painel").text('0')
         $("#vq_painel").text('0')
-        $("#consumo_painel").text('0')
+        $("#consumo_painel").text('0.00')
         $("#parcial_painel").text('0')
         var tab = document.getElementById('listaProdutosComprados')
         tab.innerHTML = ''

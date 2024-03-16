@@ -18,7 +18,7 @@ export default function atualizaValorSuite(index) {
         const tolerancia = parseInt(suiteFiltrada[0].toleranciaSuite);
         const modoCobranca = suiteFiltrada[0].cobrancaSuite;
 
-
+        
   
 
 

@@ -37,18 +37,18 @@ $(document).on("click", "#registrar_produto", function() {
 	}
 })
 
-async function calculo(suite) {
-	const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/comanda.php`)
-	const rs = await rq.json()
-	if (rs["status"]) {
-		let filtroComanda = rs["dados"].filter(i => i.suite == suite)
-		let valorSuite = $("#vq_painel").text()
-		let sum = 0
-		filtroComanda.forEach(el => {
-			sum += parseFloat(el.valor_total.replace(/[^\d.-]/g, ''))
-		})
-		let subTotal = sum + parseFloat(valorSuite)
-		$("#consumo_painel").text(sum.toFixed(2))
-		//$("#parcial_painel").text(subTotal.toFixed(2))
-	}
-}
+// async function calculo(suite) {
+// 	const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/comanda.php`)
+// 	const rs = await rq.json()
+// 	if (rs["status"]) {
+// 		let filtroComanda = rs["dados"].filter(i => i.suite == suite)
+// 		let valorSuite = $("#vq_painel").text()
+// 		let sum = 0
+// 		filtroComanda.forEach(el => {
+// 			sum += parseFloat(el.valor_total.replace(/[^\d.-]/g, ''))
+// 		})
+// 		let subTotal = sum + parseFloat(valorSuite)
+// 		$("#consumo_painel").text(sum.toFixed(2))
+// 		//$("#parcial_painel").text(subTotal.toFixed(2))
+// 	}
+// }

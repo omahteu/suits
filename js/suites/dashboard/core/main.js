@@ -15,6 +15,7 @@ import buscaprecos from "../assets/buscarPrecos.js"
 import buscalocacoes from "../assets/buscarLocacoes.js"
 import buscasuites from "../assets/buscarSuites.js"
 import buscatarefas from "../assets/buscaTarefas.js"
+import calculo from "../assets/comandaSoma.js"
 
 var suiteCurrent = $("#quarto_painel").text()
 
@@ -71,6 +72,7 @@ $(document).on("click", '[class="card"]', function() {
     calculoParcial()
     listaComanda(suiteCurrent)
     atualizaValorSuite(suiteCurrent)
+    calculo(suiteCurrent)
 })
 
 setTimeout(() => {

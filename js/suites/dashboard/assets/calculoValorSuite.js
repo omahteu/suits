@@ -7,7 +7,6 @@ export default function calculoSuite(suite) {
     
     const valorSuitx = ficha.length !== 0 ? parseFloat(ficha[0].valor) : 0;
 
-    // $("#vq_painel").text(valorSuitx.toFixed(2));
     localStorage.setItem("suitx", valorSuitx.toFixed(2));
   } catch (error) {
     console.log(error);
