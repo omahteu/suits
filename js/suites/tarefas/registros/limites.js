@@ -1,49 +1,54 @@
 import { RAIZ } from "../../../raiz.js"
 import formatarData from "../../../geradores/data_formatada.js"
+import make_url from "../../../tools/urls.js"
+import fazerRequisicaoAjax from "../../../tools/ajax.js"
 
 export async function limited(url, tt, suite, modo, tipo) {
-    const rq = await fetch(`http://${RAIZ}/suits/php/suites/show/tempos.php`)
-    const rs = await rq.json()
-    if (rs["status"]) {
-        switch (tt) {
-            case 'desistenciaTempo':
-                var tempo = rs["dados"][0].desistenciaTempo
-                break;
+    const uri = make_url("somelier", "main.php")
 
-            case 'faxinaTempo':
-                var tempo = rs["dados"][0].faxinaTempo
-                break;
-
-            case 'limpezaTempo':
-                var tempo = rs["dados"][0].limpezaTempo
-                break;
-
-            case 'manutencaoTempo':
-                var tempo = rs["dados"][0].manutencaoTempo
-                break;
-
-            case 'trocaTempo':
-                var tempo = rs["dados"][0].trocaTempo
-                break;
-
-            case 'revisaoTempo':
-                var tempo = rs["dados"][0].revisaoTempo
-                break;
-
-            default:
-                break;
-        }
-        const data = new Date
-        data.setMinutes(data.getMinutes() + parseInt(tempo))
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", url, true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                //console.log(xhr.responseText);
+    fazerRequisicaoAjax(uri, "POST", {tabela: "tempo"}, function(response) {
+        const data = JSON.parse(response)
+        if (data.status) {
+            switch (tt) {
+                case 'desistenciaTempo':
+                    var tempo = data.dados[0].desistenciaTempo
+                    break;
+    
+                case 'faxinaTempo':
+                    var tempo = data.dados[0].faxinaTempo
+                    break;
+    
+                case 'limpezaTempo':
+                    var tempo = data.dados[0].limpezaTempo
+                    break;
+    
+                case 'manutencaoTempo':
+                    var tempo = data.dados[0].manutencaoTempo
+                    break;
+    
+                case 'trocaTempo':
+                    var tempo = data.dados[0].trocaTempo
+                    break;
+    
+                case 'revisaoTempo':
+                    var tempo = data.dados[0].revisaoTempo
+                    break;
+    
+                default:
+                    break;
             }
-        };
-        var dados = "suite=" + suite + "&modo=" + modo + "&tipo=" + tipo + "&horario=" + String(formatarData(data));
-        xhr.send(dados);
-    }
+            const data = new Date
+            data.setMinutes(data.getMinutes() + parseInt(tempo))
+
+            var dados = "suite=" + suite + "&modo=" + modo + "&tipo=" + tipo + "&horario=" + String(formatarData(data));
+   
+            fazerRequisicaoAjax(url, "POST", dados, function(response) {
+                console.log(response)
+            }, function(error) {
+                console.error(error)
+            })
+        }
+    }, function(error) {
+        console.error(error)
+    })
 }
