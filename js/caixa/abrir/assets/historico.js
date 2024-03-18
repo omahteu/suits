@@ -1,5 +1,5 @@
 import fazerRequisicaoAjax from "../../../tools/ajax.js";
-import makeUrl from "../../../tools/urls.js";
+import make_url from "../../../tools/urls.js";
 
 function updateHistoricoTable(data, user) {
     const historico = document.getElementById("tab_historico");
@@ -33,8 +33,8 @@ function handleError(error) {
 }
 
 export default function historico() {
-    const url = makeUrl("caixa/abrir", "historico.php");
+    const url = make_url("somelier", "main.php");
     const user = localStorage.getItem("nome");
 
-    fazerRequisicaoAjax(url, "GET", null, handleSuccess, handleError);
+    fazerRequisicaoAjax(url, "POST", {tabela: "caixa"}, handleSuccess, handleError);
 }

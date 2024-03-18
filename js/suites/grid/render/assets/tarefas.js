@@ -4,9 +4,9 @@ import fazerRequisicaoAjax from "../../../../tools/ajax.js";
 
 export default function monitoramento() {
 
-    const url = make_url("suites/show", "tarefas.php")
+    const url = make_url("somelier", "main.php")
 
-    fazerRequisicaoAjax(url, "GET", null, function(response) {
+    fazerRequisicaoAjax(url, "POST", {tabela: "tarefa"}, function(response) {
         const data = JSON.parse(response)
 
 

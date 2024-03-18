@@ -1,4 +1,4 @@
-import makeUrl from "../../../tools/urls.js";
+import make_url from "../../../tools/urls.js";
 import fazerRequisicaoAjax from "../../../tools/ajax.js";
 
 function formatCurrency(value) {
@@ -22,10 +22,10 @@ function createProductRow(product) {
 }
 
 export default function comandaSuite(suite = "0") {
-    const url = makeUrl("assets", "comanda.php");
+    const url = make_url("somelier", "main.php");
     const comanda = document.getElementById('listaProdutosComprados');
 
-    fazerRequisicaoAjax(url, "GET", null, function(response) {
+    fazerRequisicaoAjax(url, "POST", {tabela: "comanda"}, function(response) {
         try {
             const data = JSON.parse(response);
 

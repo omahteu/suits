@@ -9,8 +9,8 @@ export default function startPernoite(index) {
     const suitesData = receber("dados_suites");
     const precosData = receber("tabela_precos");
     const offsData = receber("offs");
-    const url = make_url("configuracoes/show", "pernoite.php");
-    fazerRequisicaoAjax(url, "GET", null, function(response) {
+    const url = make_url("somelier", "main.php");
+    fazerRequisicaoAjax(url, "POST", {tabela: "pernoite"}, function(response) {
         try {
             const data = JSON.parse(response);
             if (data.status) {

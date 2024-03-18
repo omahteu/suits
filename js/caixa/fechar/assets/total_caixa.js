@@ -1,10 +1,10 @@
 import fazerRequisicaoAjax from "../../../tools/ajax.js";
 import make_url from "../../../tools/urls.js";
 
-const url = make_url("caixa/show", "pagamentos.php");
+const url = make_url("somelier", "main.php");
 
 export default function obterTotais() {
-    fazerRequisicaoAjax(url, "GET", null, handleSuccess, handleFailure);
+    fazerRequisicaoAjax(url, "POST", {tabela: "pagamento"}, handleSuccess, handleFailure);
 }
 
 function handleSuccess(response) {

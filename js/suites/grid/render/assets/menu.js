@@ -115,8 +115,8 @@ export default function menu(core) {
 }
 
 function menuManutencao(suite) {
-    const url = make_url("suites/show", "acoes.php")
-    fazerRequisicaoAjax(url, "GET", null, function(response) {
+    const url = make_url("somelier", "main.php")
+    fazerRequisicaoAjax(url, "POST", {tabela: "acoes"}, function(response) {
         const data = JSON.parse(response)
         if (data.status) {
             inicioMenu("modau-menu")

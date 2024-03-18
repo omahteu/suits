@@ -8,9 +8,9 @@ function calculateTotalValue(data, suite) {
 }
 
 export default function calculo(suite) {
-    const url = makeUrl("assets", "comanda.php");
+    const url = makeUrl("somelier", "main.php");
 
-    fazerRequisicaoAjax(url, "GET", null, function(response) {
+    fazerRequisicaoAjax(url, "POST", {tabela: "comanda"}, function(response) {
         try {
             const data = JSON.parse(response);
 

@@ -4,9 +4,9 @@ import make_url from "../../../tools/urls.js";
 export default function calculoHoraAdicional(suite) {
   try {
     const offs = JSON.parse(sessionStorage.getItem('offs'));
-    const url = make_url("suites/show", "cofre.php");
+    const url = make_url("somelier", "main.php");
 
-    fazerRequisicaoAjax(url, "GET", null, processarResposta, tratarErro);
+    fazerRequisicaoAjax(url, "POST", {tabela: "cofre"}, processarResposta, tratarErro);
 
     function processarResposta(response) {
       const data = JSON.parse(response);

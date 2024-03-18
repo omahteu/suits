@@ -1,9 +1,9 @@
 import fazerRequisicaoAjax from '../../tools/ajax.js'
 import make_url from '../../tools/urls.js'
 
-var url = make_url('home', 'pagamentos.php')
+var url = make_url('somelier', 'main.php')
 
-fazerRequisicaoAjax(url, "GET", null, function (reply) {
+fazerRequisicaoAjax(url, "POST", {tabela: "pagamento"}, function (reply) {
     var dados = JSON.parse(reply)
     var ocupacoes = document.getElementById('tabelaHomeOcupacoes')
     ocupacoes.innerHTML = ''

@@ -4,8 +4,8 @@ import make_url from "../../../tools/urls.js"
 import fazerRequisicaoAjax from "../../../tools/ajax.js"
 
 export default function registraLimiteTroca(suite, modo, tipo) {
-    const url = make_url("suites/show", "tempos.php")
-    fazerRequisicaoAjax(url, "GET", null, function(response) {
+    const url = make_url("somelier", "main.php")
+    fazerRequisicaoAjax(url, "POST", {tabela: "tempo"}, function(response) {
         const data = JSON.parse(response)
         if (data.status) {
             const tempoTroca = data.dados[0].trocaTempo

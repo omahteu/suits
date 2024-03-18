@@ -5,11 +5,11 @@ import fazerRequisicaoAjax from "../../../tools/ajax.js";
 
 
 export default function listaComanda(suite = "1") {
-	const url = make_url("assets", "comanda.php");
+	const url = make_url("somelier", "main.php");
 	var comanda = document.getElementById('listaProdutosComprados');
     
 
-    fazerRequisicaoAjax(url, "GET", null, function(response) {
+    fazerRequisicaoAjax(url, "POST", {tabela: "comanda"}, function(response) {
         const data = JSON.parse(response)
         
         if (data.status) {

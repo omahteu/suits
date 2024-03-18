@@ -1,7 +1,7 @@
 import fazerRequisicaoAjax from "../../../tools/ajax.js";
 import make_url from "../../../tools/urls.js";
 
-const url = make_url("quartos/entradas", "produtos.php");
+const url = make_url("somelier", "main.php");
 
 function adicionarOpcaoCheckbox(descricao) {
     $('#checkbox_produto').append(`<option>${descricao}</option>`);
@@ -63,7 +63,7 @@ function handleInputData(dados, produto) {
 }
 
 export default function estoqueDisponivel(entrada, produto) {
-    fazerRequisicaoAjax(url, "GET", null, function (response) {
+    fazerRequisicaoAjax(url, "POST", {tabela: "produto"}, function (response) {
         const data = JSON.parse(response);
 
         if (data.status) {
