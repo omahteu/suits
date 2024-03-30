@@ -1,6 +1,5 @@
 <?php
 include "../cnxInterna.php";
-include "../../urlbase.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $suite = $_POST["suite"];

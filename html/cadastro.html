@@ -400,63 +400,46 @@
                   <!--Suítes-->
                   <div id="suite" class="tab-pane fade">
 
-                    <form action="../php/cadastros/suites.php" method="post" class="form-horizontal" id="formSuites"
-                      name="formSuites">
-                      <!--Código-->
+                    <form action="../php/cadastros/suites.php" method="post" class="form-horizontal">
+                      <!-- Número -->
                       <div class="control-group">
                         <div class="controls">
-                          <input type="text" name="codigoSuite" id="codigoSuite" placeholder="Código" required>
+                          <input type="number" min="1" name="numero" placeholder="Número" required>
                         </div>
                       </div>
 
-                      <!--Nome-->
+                      <!-- Nome -->
                       <div class="control-group">
                         <div class="controls">
-                          <input type="text" name="nomeSuite" id="nomeSuite" placeholder="Nome" required>
+                          <input type="text" name="nome" placeholder="Nome" required>
                         </div>
                       </div>
 
-                      <!--Número-->
+                      <!-- Tolerância -->
                       <div class="control-group">
                         <div class="controls">
-                          <input type="text" name="numeroSuite" id="numeroSuite" placeholder="Número" required>
+                          <input type="number" min="1" name="tolerancia" placeholder="Tolerância" required>
                         </div>
                       </div>
 
-                      <!--Horas Locação-->
+                      <!-- Cobrança -->
                       <div class="control-group">
                         <div class="controls">
-                          <input type="number" min="1" name="horas_locacaoSuite" id="horas_locacaoSuite"
-                            placeholder="Horas Locação" required>
-                        </div>
-                      </div>
-
-                      <!--Tolerância-->
-                      <div class="control-group">
-                        <div class="controls">
-                          <input type="number" min="1" name="toleranciaSuite" id="toleranciaSuite"
-                            placeholder="Tolerância (Minutos)" required>
-                        </div>
-                      </div>
-
-                      <!--Cobrança-->
-                      <div class="control-group">
-                        <div class="controls">
-                          <select name="cobrancaSuite" id="cobrancaSuite" required>
+                          <select name="cobranca" required>
                             <option hidden>Cobrança</option>
-                            <option value="hora">Hora</option>
-                            <option value="fixa">Fixa</option>
+                            <option value="0">Hora</option>
+                            <option value="1">Fixa</option>
                           </select>
                         </div>
                       </div>
 
-                      <!--Excedente-->
+                      <!-- Excedente -->
                       <div class="control-group">
                         <div class="controls">
-                          <select name="excedenteSuite" id="excedenteSuite">
+                          <select name="excedente">
                             <option hidden>Excedente</option>
-                            <option value="hora">Hora</option>
-                            <option value="minuto">Minuto</option>
+                            <option value="0">Hora</option>
+                            <option value="1">Minuto</option>
                           </select>
                         </div>
                       </div>

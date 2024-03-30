@@ -9,9 +9,9 @@ import apagar from "../olivia/altera.js";
 import { inicia } from "../contadores/relogio.js";
 import { zera } from "../contadores/relogio.js";
 
-$(document).on("click", '[class="card"]', function () {
-    // comecando_pernoite();
-});
+// $(document).on("click", '[class="card"]', function () {
+//     comecando_pernoite();
+// });
 
 async function comecando_pernoite() {
     const i3 = receber("offs");

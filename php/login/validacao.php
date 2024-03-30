@@ -3,7 +3,7 @@ header("Access-Control-Allow-Origin: http://localhost");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Headers: Content-Type");
 
-include "../cnxExterna.php";
+include "../core/cnxExterna.php";
 $token = $_POST["token"];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

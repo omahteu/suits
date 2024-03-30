@@ -12,9 +12,9 @@ import calculoParcial from "../assets/calculoParcial.js"
 import listaComanda from "../assets/listaComanda.js"
 import atualizaValorSuite from "../assets/valorSuite.js"
 import buscaprecos from "../assets/buscarPrecos.js"
-import buscalocacoes from "../assets/buscarLocacoes.js"
-import buscasuites from "../assets/buscarSuites.js"
-import buscatarefas from "../assets/buscaTarefas.js"
+// import buscalocacoes from "../assets/buscarLocacoes.js"
+// import buscasuites from "../assets/buscarSuites.js"
+// import buscatarefas from "../assets/buscaTarefas.js"
 import calculo from "../assets/comandaSoma.js"
 
 var suiteCurrent = $("#quarto_painel").text()
@@ -75,8 +75,8 @@ $(document).on("click", '[class="card"]', function() {
     calculo(suiteCurrent)
 })
 
-setTimeout(() => {
-    buscalocacoes()
-    buscasuites()
-    buscatarefas()
-}, 500);
+// setTimeout(() => {
+//     buscalocacoes()
+//     buscasuites()
+//     buscatarefas()
+// }, 500);

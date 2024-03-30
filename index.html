@@ -29,7 +29,7 @@
             <img src="./imagens/dashboard-animate.svg" class="left-login-image">
         </div>
         <div id="loginbox">
-            <form class="form-vertical" id="login" method="post">
+            <form class="form-vertical" action="./php/login/login.php" method="post">
                 <div class="d-flex flex-column">
                     <div class="right-login">
                         <div class="container">
@@ -38,11 +38,11 @@
                                     <div id="mcell"></div>
                                     <div class="input-field">
                                         <label class="fas fa-user" for=""></label>
-                                        <input id="usuario" name="usuario" type="text" placeholder="Usuário">
+                                        <input name="usuario" type="text" placeholder="Usuário">
                                     </div>
                                     <div class="input-field">
                                         <label class="fas fa-lock" for=""></label>
-                                        <input id="senha" name="senha" type="password" placeholder="Senha">
+                                        <input name="senha" type="password" placeholder="Senha">
                                     </div>
                                     <div class="center">
                                         <button type="submit" id="">Acessar</button>

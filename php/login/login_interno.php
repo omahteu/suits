@@ -3,7 +3,7 @@ header("Access-Control-Allow-Origin: http://localhost");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Headers: Content-Type");
 
-include "../cnxInterna.php";
+include "../core/cnxInterna.php";
 $usuario = $_POST["usuario"];
 $senha = $_POST["senha"];
 
