@@ -1,19 +1,16 @@
-// export default function verifica_login_existente() {
-//     var usuarioLogado = localStorage.getItem('usuarioLogado')
-//     var caixa = localStorage.getItem('caixa')
-//     if (usuarioLogado && caixa == 'aberto') {
-//         window.location = "./html/home.html"
-//     }
-// }
+import credenciando from "./credenciais.js"
+import make_url from "../../tools/urls.js"
 
-// Função para fazer uma requisição AJAX
 export default function getSessionData() {
+    const url = make_url("login", "session.php")
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "./php/login/session.php", true);
+    xhr.open("GET", url, true);
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var sessionData = JSON.parse(xhr.responseText);
-            console.log(xhr.responseText);
+            if (sessionData.length != 0) {
+                credenciando(sessionData.tipoUsuario, sessionData.usuario, false)
+            }
         }
     };
     xhr.send();

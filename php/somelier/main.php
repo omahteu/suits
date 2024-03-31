@@ -1,5 +1,5 @@
 <?php
-include "../cnxInterna.php";
+include "../core/cnxInterna.php";
 
 $nome_da_tabela = $_POST["tabela"];
 

@@ -2,7 +2,6 @@
 
 include "./core.php";
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (isset($_POST["usuario"]) && isset($_POST["senha"])) {
@@ -15,7 +14,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($result->num_rows > 0) {
             session_start();
+            $row = $result->fetch_assoc(); // Obtém a linha do resultado
             $_SESSION["usuario"] = $usuario;
+            $_SESSION["tipoUsuario"] = $row["tipoUsuario"]; // Salva o tipo de usuário na sessão
             header("Location: ../../html/home.html");
             exit();
         } else {
